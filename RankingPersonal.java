@@ -10,6 +10,7 @@ public class RankingPersonal extends Ranking {
 	
 	public RankingPersonal(String usuari) {
 		this.usuari = usuari;
+		//crida al controlador
 	}
 	
 	public void printUsuari() {

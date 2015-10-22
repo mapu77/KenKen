@@ -1,3 +1,4 @@
-/* Format partida */
-
-usuari IdJoc temps #pistes
+mapu77 123 8.983 0
+ocapo 234 12.834 0
+teru 345 11.762 0
+jpont 456 0.073 3

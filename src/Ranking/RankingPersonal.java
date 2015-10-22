@@ -3,13 +3,14 @@ package Ranking;
 import java.util.*;
 
 public class RankingPersonal extends Ranking {
-	String usuari;
-	int jocsResolts;
-	double avgPistes;
-	ArrayList<Date> bestTimes;
+	private String usuari;
+	private int jocsResolts;
+	private double avgPistes;
+	private ArrayList<Date> bestTimes;
 	
 	public RankingPersonal(String usuari) {
 		this.usuari = usuari;
+		//crida al controlador
 	}
 	
 	public void printUsuari() {

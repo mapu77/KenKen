@@ -9,19 +9,27 @@ public class RankingPersonal extends Ranking {
 	private ArrayList<Date> bestTimes;
 	private ArrayList<Dificultat> dificultats;
 	
+	private void ompleatributs() {
+		double n=0;
+		for (int i=0; i<super.Info.size(); ++i) {
+			String[] s = super.Info.get(i).split("//s");
+			if (s[0] == usuari) {
+				++n;
+				++jocsResolts;
+				avgPistes += Double.parseDouble(s[3]);
+				
+			}
+		}
+	}
+	
 	public RankingPersonal(String usuari) {
 		this.usuari = usuari;
 		super.Info = CTRLRanking.carregar();
-		this.setResolts();
-		this.setPistes();
+		this.ompleatributs();
 	}
 	
 	public String getUsuari() {
 		return usuari;
-	}
-	
-	public void setUsuari(String usuari) {
-		this.usuari = usuari;
 	}
 		
 	public int getResolts() {
@@ -29,6 +37,7 @@ public class RankingPersonal extends Ranking {
 	}
 	
 	public void setResolts() {
+		
 	}
 	
 	public double getPistes() {
@@ -39,12 +48,12 @@ public class RankingPersonal extends Ranking {
 		
 	}
 	
-	public ArrayList<Date> getBestTimes() {
+	public ArrayList<Date> getTimes() {
 		return bestTimes;
 	}
 	
-	public void setBestTimes(ArrayList<Date> bestTimes) {
-		this.bestTimes = bestTimes;
+	public void setTimes() {
+		
 	}
 
 	public ArrayList<Dificultat> getDificultats() {

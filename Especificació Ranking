@@ -1,0 +1,137 @@
+Tots els setters sense paràmetres d’entrada són per atributs de les classes els quals el seu valor 
+s’ha de carregar de les bases de dades. En aquests casos, els setters accediran a les bases de dades 
+per reunir el valor que ens interessa.
+
+/* Entitat creadora de rànquings. Classe estàtica per tal de no haver d'instanciar-la i que sigui única */
+public static class FrabricaDeRanking {
+	/* mètode de l’objecte Ranking per generar un rànquing general */
+    public RankingGeneral generaRankingGeneral();
+    
+    /* mètode de l’objecte Ranking per generar un rànquing d’una dificultat del joc determinada 
+    amb el nombre d’estrades especificat */
+    public RankingPerTipus generaRankingPerTipus(int entrades, Dificultat d);
+
+    /* mètode de l’objecte Ranking per generar el rànquing personal d'un usuari */
+    public RankingPersonal generaRankingPersonal(String s);
+}
+
+/* Classe Rànquing que engloba els subtipus de rànquings */
+public class Ranking {
+    /* Creadora per defecte */
+    protected Ranking();
+    
+ }
+
+/* El rànquing personal consisteix en les següents estadístiques de joc:
+el nombre de partides resoltes, en nombre mitjà de pistes usades i els millor temps
+per cada dificultat */
+public class RankingPersonal extends Ranking {
+	// Millors temps per dificultat 
+	private ArrayList<Time> millorTemps;
+	
+	// Dificultats del joc
+    private ArrayList<Dificultat> dificultats;
+    
+    // Nombre de partides resoltes
+    private int jocsResolts;
+
+	// Mitjana de pistes utilitzades per partida
+	private int avgPistes;
+
+	/* Constructor de Rànquing Personal
+	<s> és l'usuari sobre el qual es vol consultar el rànquing
+	<dif> són les dificultats de que consta el joc */
+	private RankingPersonal (String s, ArrayList<Dificultat> dif);
+	
+	/* Modificadora del millor temps d'una dificultat
+	<t> és el nou temps obtingut
+	<d> és la dificultat associada a aquest nou temps */
+	public void setTemps(Time t, Dificultat d);
+	
+	/* Consultora dels temps */
+	public ArrayList<String> getTemps ();
+	
+	/* Modificadora del nombre de jocs resolts */
+	public void setResolts ();
+	
+	/* Consultora del nombre de jocs resolts */
+	public int getResolts ();
+	
+	/* Modificadora del nombre mitjà de pistes usades */
+	public void setPistes ();
+	
+	/* Consultora del nombre mitjà de pistes usades */
+	public int getPistes ();
+}
+
+/* Un rànquing per tipus consisteix en un conjunt d’estadístiques (jugador, temps) ordenades 
+i separades segons la dificultat. De cara a afrontar donar molta informació, 
+només es mostraran un subconjunt d’aquestes estadístiques. */
+public class RankingPerTipus extends Ranking {
+	// Nombre límit d'entrades a mostrar
+	private int nEntrades;
+	
+	// Dificultat del joc
+	private Dificultat d;
+	
+	/* Constructor de rànquing per tipus amb paràmetres.
+	<d> indica la dificultat del joc del qual es vol crear el rànquing
+	<entrades> és el nombre d’entrades que es volen visulitzar */
+	private RankingPerTipus (Dificultat d, int entrades);
+	
+	/* Modificadora del nombre d'entrades */
+	public void setNEntrades (int n);
+	
+	/* Consultora del nombre d'entrades visibles */
+	public int getNEntrades ();
+	
+	/* Modificadora de la dificultat a mostrar
+	public void setDificultat (Dificultats d);
+	
+	/* Consultora de la dificultat */
+	public Dificultat getDificultat ();
+}
+
+/* Un rànquing general consisteix en un seguit d'estadístiques generals
+sobre el joc com: el nombre de jocs, el nombre d'usuaris registrats,
+el nombre de partides, el joc més popular. */
+public class RankingGeneral extends Ranking {
+	// Nombre de jocs que emmagatzema el sistema
+	private int nJocs;
+	
+	// Nombre d'usuaris enregistrats
+	private int nUsuaris;
+	
+	// Nombre de partides efectuades
+	private int nPartides;
+	
+	// Identificadors del jocs més popular
+	private ArrayList<Integer> jocMesPopular;
+	
+	/* Constructor del rànquing general */
+	private RankingGeneral ();
+	
+	/* Modificadora del nombre jocs emmagatzemats */
+	public void setNJocs ();
+	
+	/* Consultora del nombre de jocs emmagatzemats */
+	public int getNJocs ();
+	
+	/* Modificadora del nombre d'usuaris enregistrats */
+	public void setNUsuaris ();
+	
+	/* Consultora del nombre d'usuari enregistrats */
+	public int getNUsuaris ();
+	
+	/* Modificadora del nombre de partides jugades */
+	public void setNPartides ();
+	
+	/* Consultora del nombre de partides jugades */
+	public int getNPartides ();
+	
+	/* Modificadora dels jocs més populars */
+	public void setPopular ();
+	
+	/* Consultora dels jocs més populars*/
+	public ArrayList<Integer> getPopular ();
+}

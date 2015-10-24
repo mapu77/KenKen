@@ -27,7 +27,7 @@ el nombre de partides resoltes, en nombre mitjà de pistes usades i els millor t
 per cada dificultat */
 public class RankingPersonal extends Ranking {
 	// Usuari
-	String user;
+	String usuari;
 	
 	// Millors temps per dificultat 
 	private ArrayList<Time> millorTemps;
@@ -45,6 +45,12 @@ public class RankingPersonal extends Ranking {
 	<s> és l'usuari sobre el qual es vol consultar el rànquing
 	<dif> són les dificultats de que consta el joc */
 	public RankingPersonal (String s, ArrayList<Dificultat> dif);
+	
+	/* Modificadora del usuari */
+	private setUser();
+	
+	/* Consultora del usuari */
+	public String getUser();
 	
 	/* Modificadora del millor temps d'una dificultat
 	<t> és el nou temps obtingut

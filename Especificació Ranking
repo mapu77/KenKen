@@ -30,10 +30,10 @@ public class RankingPersonal extends Ranking {
 	private ArrayList<Time> millorTemps;
 	
 	// Dificultats del joc
-    private ArrayList<Dificultat> dificultats;
-    
-    // Nombre de partides resoltes
-    private int jocsResolts;
+	private ArrayList<Dificultat> dificultats;
+	
+	// Nombre de partides resoltes
+	private int jocsResolts;
 
 	// Mitjana de pistes utilitzades per partida
 	private int avgPistes;

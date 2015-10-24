@@ -26,6 +26,9 @@ public class Ranking {
 el nombre de partides resoltes, en nombre mitjà de pistes usades i els millor temps
 per cada dificultat */
 public class RankingPersonal extends Ranking {
+	// Usuari
+	String user;
+	
 	// Millors temps per dificultat 
 	private ArrayList<Time> millorTemps;
 	
@@ -41,24 +44,24 @@ public class RankingPersonal extends Ranking {
 	/* Constructor de Rànquing Personal
 	<s> és l'usuari sobre el qual es vol consultar el rànquing
 	<dif> són les dificultats de que consta el joc */
-	private RankingPersonal (String s, ArrayList<Dificultat> dif);
+	public RankingPersonal (String s, ArrayList<Dificultat> dif);
 	
 	/* Modificadora del millor temps d'una dificultat
 	<t> és el nou temps obtingut
 	<d> és la dificultat associada a aquest nou temps */
-	public void setTemps(Time t, Dificultat d);
+	private void setTemps(Time t, Dificultat d);
 	
 	/* Consultora dels temps */
-	public ArrayList<String> getTemps ();
+	public Time getTemps(Dificultat d);
 	
 	/* Modificadora del nombre de jocs resolts */
-	public void setResolts ();
+	private void setResolts ();
 	
 	/* Consultora del nombre de jocs resolts */
 	public int getResolts ();
 	
 	/* Modificadora del nombre mitjà de pistes usades */
-	public void setPistes ();
+	private void setPistes ();
 	
 	/* Consultora del nombre mitjà de pistes usades */
 	public int getPistes ();
@@ -77,7 +80,7 @@ public class RankingPerTipus extends Ranking {
 	/* Constructor de rànquing per tipus amb paràmetres.
 	<d> indica la dificultat del joc del qual es vol crear el rànquing
 	<entrades> és el nombre d’entrades que es volen visulitzar */
-	private RankingPerTipus (Dificultat d, int entrades);
+	public RankingPerTipus (Dificultat d, int entrades);
 	
 	/* Modificadora del nombre d'entrades */
 	public void setNEntrades (int n);
@@ -106,31 +109,31 @@ public class RankingGeneral extends Ranking {
 	private int nPartides;
 	
 	// Identificadors del jocs més popular
-	private ArrayList<Integer> jocMesPopular;
+	private ArrayList<String> jocMesPopular;
 	
 	/* Constructor del rànquing general */
-	private RankingGeneral ();
+	public RankingGeneral ();
 	
 	/* Modificadora del nombre jocs emmagatzemats */
-	public void setNJocs ();
+	private void setNJocs ();
 	
 	/* Consultora del nombre de jocs emmagatzemats */
 	public int getNJocs ();
 	
 	/* Modificadora del nombre d'usuaris enregistrats */
-	public void setNUsuaris ();
+	private void setNUsuaris ();
 	
 	/* Consultora del nombre d'usuari enregistrats */
 	public int getNUsuaris ();
 	
 	/* Modificadora del nombre de partides jugades */
-	public void setNPartides ();
+	private void setNPartides ();
 	
 	/* Consultora del nombre de partides jugades */
 	public int getNPartides ();
 	
 	/* Modificadora dels jocs més populars */
-	public void setPopular ();
+	set void setPopular ();
 	
 	/* Consultora dels jocs més populars*/
 	public ArrayList<Integer> getPopular ();

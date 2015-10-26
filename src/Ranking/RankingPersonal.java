@@ -6,16 +6,14 @@ public class RankingPersonal extends Ranking {
 	private String usuari;
 	private int jocsResolts;
 	private double avgPistes;
-	private ArrayList<Calendar> bestTimes;
-	private ArrayList<Dificultat> dificultats;
+	private Map<Dificultat,Double> bestTime;
 	
 	private void ompleatributs() {
 		for (int i=0; i<super.Info.size(); ++i) {
 			String[] s = super.Info.get(i).split("//s");
 			if (s[0] == usuari) {
 				++jocsResolts;
-				avgPistes += Double.parseDouble(s[3]);
-				
+				avgPistes += Double.parseDouble(s[5]);
 			}
 		}
 		avgPistes = avgPistes/(double)jocsResolts;
@@ -25,7 +23,6 @@ public class RankingPersonal extends Ranking {
 		this.usuari = usuari;
 		super.Info = CTRLRanking.carregar();
 		avgPistes = jocsResolts = 0;
-		bestTimes = ArrayList<Date>
 		this.ompleatributs();
 	}
 	
@@ -37,31 +34,15 @@ public class RankingPersonal extends Ranking {
 		return jocsResolts;
 	}
 	
-	public void setResolts() {
-		
-	}
-	
 	public double getPistes() {
 		return avgPistes;
 	}
-	
-	public void setPistes() {
-		
-	}
-	
-	public ArrayList<Date> getTimes() {
-		return bestTimes;
-	}
-	
-	public void setTimes() {
-		
+
+	public Map<Dificultat,Double> getBestTime() {
+		return bestTime;
 	}
 
-	public ArrayList<Dificultat> getDificultats() {
-		return dificultats;
-	}
-
-	public void setDificultats(ArrayList<Dificultat> dificultats) {
-		this.dificultats = dificultats;
+	public void setBestTime(Map<Dificultat,Double> bestTime) {
+		this.bestTime = bestTime;
 	}
 }

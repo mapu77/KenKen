@@ -1,6 +1,7 @@
 package Ranking;
 
 import java.util.*;
+import Dificultat.*;
 
 public class RankingPersonal extends Ranking {
 	private String usuari;
@@ -11,9 +12,18 @@ public class RankingPersonal extends Ranking {
 	private void ompleatributs() {
 		for (int i=0; i<super.Info.size(); ++i) {
 			String[] s = super.Info.get(i).split("//s");
-			if (s[0] == usuari) {
+			String user;
+			user = new String(s[0]);
+			int idjoc = Integer.parseInt(s[1]);
+			String dif = s[2];
+			double time = Double.parseDouble(s[3]);
+			int pistes = Integer.parseInt(s[4]);
+			if (usuari.equals(user)) {
 				++jocsResolts;
-				avgPistes += Double.parseDouble(s[5]);
+				avgPistes += pistes;
+				if (bestTime.containsKey(dif) && 
+						bestTime.get(dif) > time) bestTime.put(dif,time);
+				else bestTime.put(dif,time);
 			}
 		}
 		avgPistes = avgPistes/(double)jocsResolts;
@@ -40,9 +50,5 @@ public class RankingPersonal extends Ranking {
 
 	public Map<Dificultat,Double> getBestTime() {
 		return bestTime;
-	}
-
-	public void setBestTime(Map<Dificultat,Double> bestTime) {
-		this.bestTime = bestTime;
 	}
 }

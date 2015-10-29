@@ -1,3 +1,17 @@
+IMPORTANT:
+Per afegir una partida cal fer-ho amb el següent format:
+
+nom_usuari idJoc Dificultat temps #pistes
+
+Exemple classe Sudoku:
+	pepito 123 Facil 12.95 0
+
+Exemple classe Hidato:
+	pepito 123 Mediana 12.95 2
+	
+Exemple classe KenKen:
+	pepito 123 x5 19.95 0
+
 Tots els setters sense paràmetres d’entrada són per atributs de les classes els quals el seu valor 
 s’ha de carregar de les bases de dades. En aquests casos, els setters accediran a les bases de dades 
 per reunir el valor que ens interessa.

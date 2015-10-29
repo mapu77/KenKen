@@ -1,14 +1,16 @@
+package Ranking;
+
 public class RanquingFactory {
 	
 	public RankingGeneral generarRankGen() {
-		RankingGeneral();
+		return new RankingGeneral();
 	}
 	
-	public RankingTipus generarRankTipus (String Dificultat) {
-		int a;
+	public RankingPerTipus generarRankTipus (Dificultat d, int nEntrades) {
+		return new RankingPerTipus(d, nEntrades);
 	}
 	
-	public RankigPersonal generarRankPersonal (String username) {
-		
+	public RankingPersonal generarRankPersonal (String username) {
+		return new RankingPersonal(username);
 	}
 }

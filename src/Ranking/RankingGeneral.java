@@ -1,4 +1,4 @@
-package KenKen;
+package Ranking;
 import java.io.*;
 import java.util.*;
 

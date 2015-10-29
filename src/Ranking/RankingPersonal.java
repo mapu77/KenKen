@@ -10,13 +10,13 @@ public class RankingPersonal extends Ranking {
 	private Map<String,Double> bestTime;
 	
 	private void ompleatributs() {
-		for (int i=0; i<super.Info.size(); ++i) {
-			String[] s = super.Info.get(i).split("//s");
+		for (int i=0; i<Info.size(); ++i) {
+			ArrayList<String> s = Info.get(i);
 			String user;
-			user = new String(s[0]);
-			String dif = (Dificultat.esValida(s[2])) ? s[2] : null;
-			double time = Double.parseDouble(s[3]);
-			int pistes = Integer.parseInt(s[4]);
+			user = new String(s.get(0));
+			String dif = (Dificultat.esValida(s.get(2))) ? s.get(2) : null;
+			double time = Double.parseDouble(s.get(3));
+			int pistes = Integer.parseInt(s.get(4));
 			if (usuari.equals(user)) {
 				++jocsResolts;
 				avgPistes += pistes;

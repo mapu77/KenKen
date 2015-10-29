@@ -9,4 +9,8 @@ abstract public class Dificultat {
 		}
 		return false;
 	}
+	
+	public static String[] getAll() {
+		return d;
+	}
 }

@@ -5,7 +5,7 @@ abstract public class Dificultat {
 	
 	public static boolean esValida(String s) {
 		for (int i=0; i<d.length; ++i) {
-			if (d[i] == s) return true;
+			if (d[i].equals(s)) return true;
 		}
 		return false;
 	}

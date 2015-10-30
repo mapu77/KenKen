@@ -21,8 +21,9 @@ public class RankingPersonal extends Ranking {
 				++jocsResolts;
 				avgPistes += pistes;
 				if (dif != null) {
-					if (bestTime.containsKey(dif) && bestTime.get(dif) > time) 
-						bestTime.put(dif,time);						
+					if (bestTime.containsKey(dif)) {
+						if (bestTime.get(dif) > time) bestTime.put(dif,time);
+					}
 					else bestTime.put(dif,time);
 				}
 			}
@@ -42,10 +43,11 @@ public class RankingPersonal extends Ranking {
 				BufferedReader bf = new BufferedReader(new FileReader("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/data/Partides.txt"));
 				String linia;
 				while ((linia = bf.readLine()) != null) {
-					ArrayList<String> s = new ArrayList<String>(Arrays.asList(linia.split("\\s")));
+					ArrayList<String> s = new ArrayList<String>(Arrays.asList(linia.split(" ")));
 					Info.add(s);
 				}
 				this.avgPistes = this.jocsResolts = 0;
+				this.bestTime = new HashMap<String,Double>();
 				this.ompleatributs();
 				bf.close();
 			} catch (IOException e) {
@@ -73,8 +75,9 @@ public class RankingPersonal extends Ranking {
 		return bestTime;
 	}
 	
-	public Double getBestTime(String dificultat) {
-		return bestTime.get(dificultat);
+	public String getBestTime(String dificultat) {
+		if (bestTime.get(dificultat) == null) return "-";
+		return String.valueOf(bestTime.get(dificultat));
 		
 	}
 }

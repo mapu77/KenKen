@@ -6,12 +6,12 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class RankingPerTipus extends Ranking {
-	private Dificultat d;
+	private String d;
 	private String usuari;
 	private int nEntrades;
 	
 	
-	public RankingPerTipus (Dificultat d, int nEntrades){
+	public RankingPerTipus (String d, int nEntrades){
 		this.nEntrades=nEntrades;
 		this.d=d;
 	}
@@ -30,7 +30,7 @@ public class RankingPerTipus extends Ranking {
             DataInputStream entrada = new DataInputStream(fstream);
             // Creem el buffer de lectura
             BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
-            // Llegim l'arxiu línia per línia
+            // Llegim l'arxiu lï¿½nia per lï¿½nia
             while (buffer.readLine() != null)   {
                 // Incrementem nJocs
                 this.nEntrades++;
@@ -44,7 +44,7 @@ public class RankingPerTipus extends Ranking {
 		return this.nEntrades;
 	}
 
-	public Dificultat getd() {
+	public String getdificultat() {
 		return d;
 	}
 	

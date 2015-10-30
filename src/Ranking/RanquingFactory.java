@@ -6,7 +6,7 @@ public class RanquingFactory {
 		return new RankingGeneral();
 	}
 	
-	public RankingPerTipus generarRankTipus (Dificultat d, int nEntrades) {
+	public RankingPerTipus generarRankTipus (String d, int nEntrades) {
 		return new RankingPerTipus(d, nEntrades);
 	}
 	

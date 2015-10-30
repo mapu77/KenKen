@@ -13,13 +13,13 @@ Exemple classe KenKen:
 	pepito 123 x5 19.95 0
 
 /* Entitat creadora de rànquings. Classe estàtica per tal de no haver d'instanciar-la i que sigui única */
-public static class FrabricaDeRanking {
+public static class RankingFactory {
 	/* mètode de l’objecte Ranking per generar un rànquing general */
-    public RankingGeneral generaRankingGeneral();
+    public RankingGeneral generaRankGen();
     
     /* mètode de l’objecte Ranking per generar un rànquing d’una dificultat del joc determinada 
     amb el nombre d’estrades especificat */
-    public RankingPerTipus generaRankingPerTipus(int entrades, Dificultat d);
+    public RankingPerTipus generaRankTipus(String dificultat, int nEntrades);
 
     /* mètode de l’objecte Ranking per generar el rànquing personal d'un usuari */
     public RankingPersonal generaRankingPersonal(String s);
@@ -27,6 +27,10 @@ public static class FrabricaDeRanking {
 
 /* Classe Rànquing que engloba els subtipus de rànquings */
 public class Ranking {
+    // Contenidor d'informació.
+    // Protected perquè cada subtipus de rànquing pugui accedir a ella
+	protected ArrayList<ArrayList<String>> Info;
+    
     /* Creadora per defecte */
     protected Ranking();
     
@@ -39,48 +43,34 @@ public class RankingPersonal extends Ranking {
 	// Usuari
 	String usuari;
 	
-	// Millors temps per dificultat 
-	private ArrayList<Time> millorTemps;
-	
-	// Dificultats del joc
-	private ArrayList<Dificultat> dificultats;
-	
 	// Nombre de partides resoltes
 	private int jocsResolts;
 
 	// Mitjana de pistes utilitzades per partida
-	private int avgPistes;
+	private double avgPistes;
+	
+	// Millors temps
+	private Map<String,Double> bestTime;
 
 	/* Constructor de Rànquing Personal
 	<s> és l'usuari sobre el qual es vol consultar el rànquing
-	<dif> són les dificultats de que consta el joc */
-	public RankingPersonal (String s, ArrayList<Dificultat> dif);
-	
-	/* Modificadora del usuari */
-	private setUser();
-	
+	public RankingPersonal (String s);
+		
 	/* Consultora del usuari */
 	public String getUser();
-	
-	/* Modificadora del millor temps d'una dificultat
-	<t> és el nou temps obtingut
-	<d> és la dificultat associada a aquest nou temps */
-	private void setTemps(Time t, Dificultat d);
-	
-	/* Consultora dels temps */
-	public Time getTemps(Dificultat d);
-	
-	/* Modificadora del nombre de jocs resolts */
-	private void setResolts ();
 	
 	/* Consultora del nombre de jocs resolts */
 	public int getResolts ();
 	
-	/* Modificadora del nombre mitjà de pistes usades */
-	private void setPistes ();
-	
 	/* Consultora del nombre mitjà de pistes usades */
 	public int getPistes ();
+	
+	/* Consultora completa dels millors temps */
+	public Map<String,Double> getBestTime();
+	
+	/* Consultora concreta del millor temps
+	<dif> és la dificultat sobre la qual es vol consultar el temps */
+	public String getBestTime(String dif);
 }
 
 /* Un rànquing per tipus consisteix en un conjunt d’estadístiques (jugador, temps) ordenades 
@@ -91,7 +81,7 @@ public class RankingPerTipus extends Ranking {
 	private int nEntrades;
 	
 	// Dificultat del joc
-	private Dificultat d;
+	private String d;
 	
 	/* Constructor de rànquing per tipus amb paràmetres.
 	<d> indica la dificultat del joc del qual es vol crear el rànquing

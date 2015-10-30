@@ -7,9 +7,9 @@ public class RankingFactory {
 		return G;
 	}
 	
-/*	public RankingTipus generarRankTipus (String Dificultat) {
-		return new RankingPerTipus
-	}*/
+	public RankingPerTipus generarRankTipus (String d, int nEntrades) {
+		return new RankingPerTipus(d, nEntrades);
+	}
 	
 	public RankingPersonal generarRankPersonal (String username) {
 		return new RankingPersonal(username);

@@ -75,8 +75,7 @@ public class RankingPersonal extends Ranking {
 		return bestTime;
 	}
 	
-	public String getBestTime(String dif) {
-		if (bestTime.get(dif) == null) return "-";
-		return String.valueOf(bestTime.get(dif));
+	public Double getBestTime(String dif) {
+		return bestTime.get(dif);
 	}
 }

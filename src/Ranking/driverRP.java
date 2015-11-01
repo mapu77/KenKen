@@ -42,7 +42,10 @@ public class driverRP {
 						System.out.println(u+" ha jugat "+ RP.getResolts()+" partida/es");
 						System.out.println(u+" ha usat "+ RP.getPistes()+" pistes en mitjana");
 						for (String d : Dificultat.getAll()) {
-							System.out.println(d + ": " + RP.getBestTime(d));
+							if (RP.getBestTime(d) != null)
+								System.out.println(d + ": " + RP.getBestTime(d));
+							else System.out.println(d + ": -");
+
 						}	
 					}
 					System.out.println("Què vols consultar?");

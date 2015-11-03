@@ -38,7 +38,7 @@ public class RankingPersonal extends Ranking {
 		if (CTRLUser.getUser(usuari) != null) {
 			this.usuari = usuari;
 			System.out.println("Carregant informació...");
-			CTRLRanking.carregar();
+			CTRLRanking.carregar(this, "Partides");
 			System.out.println("Generant rànquing...");
 			this.inicialitza();
 		}

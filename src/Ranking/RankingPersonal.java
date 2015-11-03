@@ -10,7 +10,9 @@ public class RankingPersonal extends Ranking {
 	private double avgPistes;
 	private Map<String,Double> bestTime;
 	
-	private void ompleatributs() {
+	private void inicialitza() {
+		this.avgPistes = this.jocsResolts = 0;
+		this.bestTime = new HashMap<String,Double>();
 		for (int i=0; i<Info.size(); ++i) {
 			ArrayList<String> s = Info.get(i);
 			String user = new String(s.get(0));
@@ -32,31 +34,17 @@ public class RankingPersonal extends Ranking {
 	}
 	
 	public RankingPersonal(String usuari) {
-		System.out.println("Crida al CTRLUsuari per comprovar si l'usuari"
-				+ " del qual volem realitzar la consulta, existeix");
-		//if (CTRLUser.getUser(usuari) != null) {
+		System.out.println("Comprovant usuari...");
+		if (CTRLUser.getUser(usuari) != null) {
 			this.usuari = usuari;
-			//Info = CTRLRanking.carregar();
-			System.out.println("Crida al CTRLRanking per carregar les partides");
-			System.out.println("Les carreguem localment");
-			try {
-				BufferedReader bf = new BufferedReader(new FileReader("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/data/Partides.txt"));
-				String linia;
-				while ((linia = bf.readLine()) != null) {
-					ArrayList<String> s = new ArrayList<String>(Arrays.asList(linia.split(" ")));
-					Info.add(s);
-				}
-				this.avgPistes = this.jocsResolts = 0;
-				this.bestTime = new HashMap<String,Double>();
-				this.ompleatributs();
-				bf.close();
-			} catch (IOException e) {
-				System.err.println("Error: " + e);
-			}
-		//}
-		/*else {
+			System.out.println("Carregant informació...");
+			CTRLRanking.carregar();
+			System.out.println("Generant rànquing...");
+			this.inicialitza();
+		}
+		else {
 			System.err.println("No existeix l'usuari");
-		}*/
+		}
 	}
 	
 	public String getUsuari() {

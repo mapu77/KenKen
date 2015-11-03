@@ -11,7 +11,8 @@ public class RankingPersonal extends Ranking {
 	private Map<String,Double> bestTime;
 	
 	private void inicialitza() {
-		this.avgPistes = this.jocsResolts = 0;
+		this.avgPistes = 0.0;
+		this.jocsResolts = 0;
 		this.bestTime = new HashMap<String,Double>();
 		for (int i=0; i<Info.size(); ++i) {
 			ArrayList<String> s = Info.get(i);

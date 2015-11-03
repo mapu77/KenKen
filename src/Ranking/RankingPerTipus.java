@@ -1,57 +1,61 @@
 package Ranking;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
+import Dificultat.Dificultat;
+
 public class RankingPerTipus extends Ranking {
-	private String d;
 	private String usuari;
-	private int nEntrades;
+	private int nEntrades; //nombre d'entrades a mostrar
+	private Map<String,Double> tempsJugador; //jugador, temps
 	
+	private void Inicialitza(){
+		this.tempsJugador = new HashMap<String,Double>();
+		for (int i=0; i<Info.size(); ++i) {
+			ArrayList<String> s = Info.get(i);
+			String user = new String(s.get(0));
+			String dif = (Dificultat.esValida(s.get(2))) ? s.get(2) : null;
+			double time = Double.parseDouble(s.get(3));
+			if (usuari.equals(user)) {
+				if (user != null) {
+					if (tempsJugador.containsKey(user)) {
+						if (tempsJugador.get(user) > time) tempsJugador.put(user,time);
+					}
+					else tempsJugador.put(user,time);
+				}
+			}
+		}
+	}
 	
 	public RankingPerTipus (String d, int nEntrades){
 		this.nEntrades=nEntrades;
-		this.d=d;
+		this.Inicialitza();
+		for (int i=0; i<nEntrades; i++){
+			Dificultat.getD();
+		}
+		
 	}
 	
-
 	public void setnEntrades(int nEntrades) {
 		this.nEntrades = nEntrades;
 	}
 	
 	public int getnEntrades() {
-		try {
-			this.nEntrades = 0;
-			// Obrim l'arxiu
-            FileInputStream fstream = new FileInputStream("C:\\Users\\Jordi\\workspace\\KenKenP\\src\\Ranking\\Jocs.txt");
-            // Creem l'objecte d'entrada
-            DataInputStream entrada = new DataInputStream(fstream);
-            // Creem el buffer de lectura
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
-            // Llegim l'arxiu l�nia per l�nia
-            while (buffer.readLine() != null)   {
-                // Incrementem nJocs
-                this.nEntrades++;
-            }
-            // Tanquem l'arxiu
-            entrada.close();
-        }
-		catch (Exception e){ //Catch d'excepcions
-            System.err.println("Hi ha hagut un error: " + e.getMessage());
-        }
-		return this.nEntrades;
+		return nEntrades;
 	}
 
-	public String getdificultat() {
-		return d;
+	public Map<String, Double> getTempsJugador() {
+		return tempsJugador;
+	}
+
+	public void setTempsJugador(Map<String, Double> tempsJugador) {
+		this.tempsJugador = tempsJugador;
 	}
 	
 	
-
-
-	
-	
-	
+		
 }

@@ -8,6 +8,7 @@ public class driverRP {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner (System.in);
 		System.out.println("Ranking Personal");
+		System.out.println("----------------");
 		System.out.println("Opcions:");
 		System.out.println("1. Consultar rànquing");
 		System.out.println("0. Exit");
@@ -17,6 +18,7 @@ public class driverRP {
 				System.out.println("De qui vols consultar el rànquing?");
 				String u = scan.nextLine();
 				RankingPersonal RP = new RankingPersonal(u);
+				System.out.println();
 				System.out.println("Què vols consultar?");
 				System.out.println("Opcions:");
 				System.out.println("1: Nombre de partides");
@@ -42,12 +44,14 @@ public class driverRP {
 						System.out.println(u+" ha jugat "+ RP.getResolts()+" partida/es");
 						System.out.println(u+" ha usat "+ RP.getPistes()+" pistes en mitjana");
 						for (String d : Dificultat.getAll()) {
-							if (RP.getBestTime(d) != null)
+							if (RP.getBestTime(d) != null) {
 								System.out.println(d + ": " + RP.getBestTime(d));
+							}
 							else System.out.println(d + ": -");
 
 						}	
 					}
+					System.out.println();
 					System.out.println("Què vols consultar?");
 					System.out.println("Opcions:");
 					System.out.println("1: Nombre de partides");
@@ -62,6 +66,7 @@ public class driverRP {
 				System.out.println("Error: Opció no vàlida");
 				System.out.println("0 per sortir");
 			}
+			System.out.println();
 			System.out.println("Ranking Personal");
 			System.out.println("Opcions:");
 			System.out.println("1. Consultar rànquing");

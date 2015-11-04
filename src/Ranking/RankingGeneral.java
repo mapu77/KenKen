@@ -1,5 +1,5 @@
 package Ranking;
-import java.io.*;
+
 import java.util.*;
 
 public class RankingGeneral extends Ranking {
@@ -7,7 +7,56 @@ public class RankingGeneral extends Ranking {
 	int nUsuaris;
 	int nPartides;
 	String popular;
+
+	public int getnJocs() {		
+		this.nJocs = 0;
+		CTRLRanking.carregar(this, "Jocs");
+		this.nJocs = Info.size();			
+		return this.nJocs;
+    }
+	
+	public int getnUsuaris() {
+		this.nUsuaris = 0;
+		CTRLRanking.carregar(this, "Usuaris");
+		this.nUsuaris = Info.size();
+		return this.nUsuaris;
+	}
+	
+	public int getnPartides() {
+		this.nPartides = 0;
+		CTRLRanking.carregar(this,  "Partides");
+		this.nPartides = Info.size();
+		return this.nPartides;
+	}
+	
+	public String getPopular(int N) {
+		CTRLRanking.carregar(this, "Jocs");
+		ArrayList<Integer> cont = new ArrayList<Integer>(Info.size());
+		for (int i = 0; i < cont.size(); ++i) cont.add(i, 0);
 		
+		CTRLRanking.carregar(this, "Partides");
+		for (int i = 0; i < Info.size(); ++i) {
+			ArrayList<String> s = Info.get(i);
+			String id = s.get(1);
+			int posicio = Integer.parseInt(id)-1;
+			int valor = cont.get(posicio);
+			cont.add(posicio, ++valor);
+		}
+		
+		int max = cont.get(0);
+    	this.popular = Integer.toString(1);
+    	for (int i = 1; i < N; ++i) {
+    		if (max < cont.get(i)) {
+    			max = cont.get(i);
+    			this.popular = Integer.toString(i+1);
+    		}
+    	}
+    	return this.popular;
+	}
+}
+	
+/*------------------------------------------------------------------------
+	
 	public int getnJocs() {
 		try {
 			this.nJocs = 0;
@@ -28,54 +77,6 @@ public class RankingGeneral extends Ranking {
 		catch (Exception e){ //Catch d'excepcions
             System.err.println("Hi ha hagut un error: " + e.getMessage());
         }
-		return this.nJocs;
-    }
-	
-	public int getnUsuaris() {
-		try {
-			this.nUsuaris = 0;
-			// Obrim l'arxiu
-            FileInputStream fstream = new FileInputStream("C:\\Users\\Jan\\Programes\\eclipse\\eclipse-epsilon-1.2-win32\\workspace\\KenKen_PROP\\Usuaris.txt");
-            // Creem l'objecte d'entrada
-            DataInputStream entrada = new DataInputStream(fstream);
-            // Creem el buffer de lectura
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
-            // Llegim l'arxiu línia per línia
-            while (buffer.readLine() != null)   {
-                // Incrementem nUsuaris
-                this.nUsuaris++;
-            }
-            // Tanquem l'arxiu
-            entrada.close();
-        }
-		catch (Exception e){ //Catch d'excepcions
-            System.err.println("Hi ha hagut un error: " + e.getMessage());
-        }
-		return this.nUsuaris;
-	}
-	
-	public int getnPartides() {
-		try {
-			this.nPartides = 0;
-			// Obrim l'arxiu
-            FileInputStream fstream = new FileInputStream("C:\\Users\\Jan\\Programes\\eclipse\\eclipse-epsilon-1.2-win32\\workspace\\KenKen_PROP\\Partides.txt");
-            // Creem l'objecte d'entrada
-            DataInputStream entrada = new DataInputStream(fstream);
-            // Creem el buffer de lectura
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
-            // Llegim l'arxiu línia per línia
-            while (buffer.readLine() != null)   {
-                // Incrementem nPartides
-                this.nPartides++;
-            }
-            // Tanquem l'arxiu
-            entrada.close();
-        }
-		catch (Exception e){ //Catch d'excepcions
-            System.err.println("Hi ha hagut un error: " + e.getMessage());
-        }
-		return this.nPartides;
-	}
 
 	public String getPopular(int N) {
 		try {
@@ -116,4 +117,5 @@ public class RankingGeneral extends Ranking {
         }
 		return this.popular;
 	}
-}
+	
+	*/

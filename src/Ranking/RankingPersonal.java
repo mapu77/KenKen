@@ -1,6 +1,5 @@
 package Ranking;
 
-import java.io.*;
 import java.util.*;
 import Dificultat.*;
 
@@ -36,10 +35,10 @@ public class RankingPersonal extends Ranking {
 	
 	public RankingPersonal(String usuari) {
 		System.out.println("Comprovant usuari...");
-		if (CTRLUser.getUser(usuari) != null) {
+		if (stubCTRLUser.getUser(usuari) != null) {
 			this.usuari = usuari;
 			System.out.println("Carregant informació...");
-			CTRLRanking.carregar(this, "Partides");
+			stubCTRLRanking.carregar(this, "Partides");
 			System.out.println("Generant rànquing...");
 			this.inicialitza();
 		}

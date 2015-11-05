@@ -81,7 +81,7 @@ public class KenKenSolver {
 		
 	static void backtracking(int i, int j, int max) {
 		// Tenim solucio
-		if ((i+1)*(j+1) == max) System.out.println("Solucio!");
+		if ((i+1)*(j+1) == max) ImprimeixKenKen(KK);
 		// Continuem provant
 		else {
 			for (int value=1; value<=9; ++value) {

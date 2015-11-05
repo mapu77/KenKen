@@ -84,7 +84,7 @@ public class KenKenSolver {
 		if ((i+1)*(j+1) == max) System.out.println("Solucio");
 		// Continuem provant
 		else {
-			for (int value=1; value<=9; ++value) {
+			for (int value=1; value<=KK.getNCols(); ++value) {
 				KK.setNumero(i, j, value);
 				if (checkFila(i,value) && checkCol(j,value)) {
 					RegioKenKen r = KK.getRegio(KK.nRegio(new Cella(i,j)));

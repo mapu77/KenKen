@@ -21,6 +21,11 @@ public class TaulerKenKen extends Tauler {
 		return 0;
 	}
 	
+	public RegioKenKen getRegio(int index) {
+		return VR.get(index);
+	}
+	
+	
 	public void afegeixRegio (RegioKenKen r) {
 		VR.add(r);
 	}

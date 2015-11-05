@@ -8,30 +8,26 @@ public class RankingGeneral extends Ranking {
 	int nPartides;
 	String popular;
 
-	public int getnJocs() {		
+	public RankingGeneral() {
 		this.nJocs = 0;
-		CTRLRanking.carregar(this, "Jocs");
-		this.nJocs = Info.size();			
-		return this.nJocs;
-    }
-	
-	public int getnUsuaris() {
 		this.nUsuaris = 0;
-		CTRLRanking.carregar(this, "Usuaris");
-		this.nUsuaris = Info.size();
-		return this.nUsuaris;
-	}
-	
-	public int getnPartides() {
 		this.nPartides = 0;
-		CTRLRanking.carregar(this,  "Partides");
-		this.nPartides = Info.size();
-		return this.nPartides;
+		this.popular = "-";
+		inicialitza();
 	}
 	
-	public String getPopular(int N) {
+	public void inicialitza() {
+		//nombre de jocs
 		CTRLRanking.carregar(this, "Jocs");
 		ArrayList<Integer> cont = new ArrayList<Integer>(Info.size());
+		this.nJocs = Info.size();
+		//nombre d'usuaris
+		CTRLRanking.carregar(this, "Usuaris");
+		this.nUsuaris = Info.size();
+		//nombre de partides
+		CTRLRanking.carregar(this,  "Partides");
+		this.nPartides = Info.size();
+		//joc més popular
 		for (int i = 0; i < cont.size(); ++i) cont.add(i, 0);
 		
 		CTRLRanking.carregar(this, "Partides");
@@ -45,12 +41,27 @@ public class RankingGeneral extends Ranking {
 		
 		int max = cont.get(0);
     	this.popular = Integer.toString(1);
-    	for (int i = 1; i < N; ++i) {
+    	for (int i = 1; i < cont.size(); ++i) {
     		if (max < cont.get(i)) {
     			max = cont.get(i);
     			this.popular = Integer.toString(i+1);
     		}
     	}
+	}
+	
+	public int getnJocs() {					
+		return this.nJocs;
+    }
+	
+	public int getnUsuaris() {
+		return this.nUsuaris;
+	}
+	
+	public int getnPartides() {
+		return this.nPartides;
+	}
+	
+	public String getPopular() {	
     	return this.popular;
 	}
 }

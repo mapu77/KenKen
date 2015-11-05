@@ -6,8 +6,8 @@ public class TaulerKenKen extends Tauler {
 
 	private Vector<RegioKenKen> VR;
 	
-	public TaulerKenKen(int m, int n) {
-		super(m, n);
+	public TaulerKenKen(int n) {
+		super(n, n);
 		VR = new Vector<RegioKenKen>();
 	}
 	

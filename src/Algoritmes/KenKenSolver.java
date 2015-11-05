@@ -53,16 +53,16 @@ public class KenKenSolver {
 	private static boolean checkRegion(RegioKenKen r) {
 		int result;
 		switch (r.getOperation()) {
-		case '+':
+		case "+":
 			result = calculaRegioSuma(r);
 			break;
-		case '-':
+		case "-":
 			result = calculaRegioResta(r);
 			break;
-		case 'x':
+		case "*":
 			result = calculaRegioMult(r);
 			break;
-		case '/':
+		case "/":
 			result = calculaRegioDiv(r);
 			break;
 		default:
@@ -79,9 +79,9 @@ public class KenKenSolver {
 		return true;
 	}
 		
-	static void backtracking(int i, int j, int max) {
+	private static void backtracking(int i, int j, int max) {
 		// Tenim solucio
-		if ((i+1)*(j+1) == max) ImprimeixKenKen(KK);
+		if ((i+1)*(j+1) == max) System.out.println("Solucio");
 		// Continuem provant
 		else {
 			for (int value=1; value<=9; ++value) {
@@ -114,7 +114,7 @@ public class KenKenSolver {
 			
 	}
 	
-	static void backtrackingSolver(TaulerKenKen T) {		
+	public void backtrackingSolver(TaulerKenKen T) {		
 		KK = T;
 		backtracking(0, 0, KK.getNumCeldas());
 	}

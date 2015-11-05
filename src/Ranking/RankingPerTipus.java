@@ -9,35 +9,48 @@ import java.util.*;
 import Dificultat.Dificultat;
 
 public class RankingPerTipus extends Ranking {
-	private String usuari;
 	private int nEntrades; //nombre d'entrades a mostrar
-	private Map<String,Double> tempsJugador; //jugador, temps
+	private ArrayList<Tupla> tempsJugador; //jugador, temps
 	
-	private void Inicialitza(){
-		this.tempsJugador = new HashMap<String,Double>();
-		for (int i=0; i<Info.size(); ++i) {
-			ArrayList<String> s = Info.get(i);
-			String user = new String(s.get(0));
-			String dif = (Dificultat.esValida(s.get(2))) ? s.get(2) : null;
-			double time = Double.parseDouble(s.get(3));
-			if (usuari.equals(user)) {
-				if (user != null) {
-					if (tempsJugador.containsKey(user)) {
-						if (tempsJugador.get(user) > time) tempsJugador.put(user,time);
-					}
-					else tempsJugador.put(user,time);
-				}
-			}
-		}
+ class Tupla{
+	private String user;
+	private Double temps;
+	
+	public String getUser() {
+		return user;
 	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public Double getTemps() {
+		return temps;
+	}
+	public void setTemps(Double temps) {
+		this.temps = temps;
+	}
+}
 	
 	public RankingPerTipus (String d, int nEntrades){
+		this.tempsJugador = new ArrayList<Tupla>();
 		this.nEntrades=nEntrades;
-		this.Inicialitza();
-		for (int i=0; i<nEntrades; i++){
-			Dificultat.getD();
-		}
+		if(Dificultat.esValida(d)){
+		stubCTRLRanking.carregar(this, "Partides");
+			for (int j=0; j<Info.size(); j++){
+			ArrayList<String> s = Info.get(j);
+				if (s.get(2).equals(d)){
+						String user = new String(s.get(0));
+						double time = Double.parseDouble(s.get(3));
+						Tupla aux = new Tupla();
+						aux.setTemps(time);
+						aux.setUser(user);
+						this.tempsJugador.add(aux);
+				}
+			}
 		
+		}
+		else{
+			System.err.println("No existeix la dificultat");
+		}
 	}
 	
 	public void setnEntrades(int nEntrades) {
@@ -48,12 +61,8 @@ public class RankingPerTipus extends Ranking {
 		return nEntrades;
 	}
 
-	public Map<String, Double> getTempsJugador() {
+	public ArrayList<Tupla> getTempsJugador() {
 		return tempsJugador;
-	}
-
-	public void setTempsJugador(Map<String, Double> tempsJugador) {
-		this.tempsJugador = tempsJugador;
 	}
 	
 	

@@ -41,6 +41,13 @@ public class driverEntraKenKen {
 				T.setNumero(i,j,x);
 			}
 		}
+		
+		for (int i=0; i<n; ++i) {
+			for (int j=0; j<n; ++j) {
+				System.out.print(T.getNumero(i,j)+ " ");
+			}
+			System.out.println();
+		}
 		sn.close();
 	}
 }

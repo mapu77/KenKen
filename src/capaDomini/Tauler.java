@@ -120,7 +120,8 @@ public class Tauler {
         }
     }
 	
-	protected int ancho, alto;
+	protected int ancho;
+	protected int alto;
 	private Vector<Cella> vCellas;
 	
 }

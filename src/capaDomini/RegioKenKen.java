@@ -12,6 +12,13 @@ public class RegioKenKen extends Regio {
 		super(n);
 	}
 	
+	public RegioKenKen (int tamano, Vector<Cella> vc, String op, int res, int id) {
+		super(tamano,vc);
+		this.operation = op;
+		this.result = res;
+		this.id = id;
+	}
+	
 	public RegioKenKen(Vector<Cella> vc) {
 		super(vc.size(), vc);
 	}

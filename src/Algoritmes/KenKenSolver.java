@@ -1,6 +1,5 @@
 package Algoritmes;
 
-import java.util.*;
 import capaDomini.*;
 
 public class KenKenSolver {
@@ -45,7 +44,8 @@ public class KenKenSolver {
 	
 	private static int calculaRegioDiv(RegioKenKen r) {
 		int op1 = r.getCella(0).getNumero()/r.getCella(1).getNumero();
-		return (op1 >= 1) ? op1 : 1/op1 ;
+		int op2 = r.getCella(1).getNumero()/r.getCella(0).getNumero();
+		return (op1 >= 1) ? op1 : op2;
 	}
 	
 	/* Pre: r està complerta */
@@ -78,7 +78,7 @@ public class KenKenSolver {
 		}
 		return true;
 	}
-	
+		
 	static void backtracking(int i, int j, int max) {
 		// Tenim solucio
 		if ((i+1)*(j+1) == max) System.out.println("Solucio!");
@@ -87,6 +87,7 @@ public class KenKenSolver {
 			for (int value=1; value<=9; ++value) {
 				KK.setNumero(i, j, value);
 				if (checkFila(i,value) && checkCol(j,value)) {
+					RegioKenKen r = KK.getRegio(KK.nRegio(new Cella(i,j)));
 					if (completedRegion(r) && checkRegion(r)) {
 						if (j==9) {
 							j=0;

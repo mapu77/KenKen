@@ -8,6 +8,7 @@ public class TaulerKenKen extends Tauler {
 	
 	public TaulerKenKen(int m, int n) {
 		super(m, n);
+		VR = new Vector<RegioKenKen>();
 	}
 	
 	public int nRegio(Cella c) {
@@ -22,14 +23,6 @@ public class TaulerKenKen extends Tauler {
 	
 	public void afegeixRegio (RegioKenKen r) {
 		VR.add(r);
-	}
-	
-	public int getNCols() {
-		return alto;
-	}
-	
-	public int getNFiles() {
-		return ancho;
 	}
 
 }

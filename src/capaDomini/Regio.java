@@ -97,5 +97,5 @@ public class Regio {
     }
      
     private int tam;
-    private Vector<Cella> vCellas;
+    protected Vector<Cella> vCellas;
 }

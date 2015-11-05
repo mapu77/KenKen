@@ -4,14 +4,21 @@ import java.util.*;
 
 public class RegioKenKen extends Regio {
 
-	private char operation;
+	private String operation;
 	private int result;
+	private int id;
+	
+	public RegioKenKen(int n) {
+		super(n);
+	}
 	
 	public RegioKenKen(Vector<Cella> vc) {
 		super(vc.size(), vc);
 	}
-
-	private int id;
+	
+	public void Relaciona(int i, Cella c) {
+		vCellas.add(i,c);
+	}
 
 	public int getId() {
 		return id;
@@ -21,11 +28,11 @@ public class RegioKenKen extends Regio {
 		this.id = id;
 	}
 
-	public char getOperation() {
+	public String getOperation() {
 		return operation;
 	}
 
-	public void setOperation(char operation) {
+	public void setOperation(String operation) {
 		this.operation = operation;
 	}
 

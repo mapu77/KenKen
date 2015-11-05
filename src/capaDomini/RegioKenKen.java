@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RegioKenKen extends Regio {
 
-	private String operation;
+	private char operation;
 	private int result;
 	
 	public RegioKenKen(Vector<Cella> vc) {
@@ -21,11 +21,11 @@ public class RegioKenKen extends Regio {
 		this.id = id;
 	}
 
-	public String getOperation() {
+	public char getOperation() {
 		return operation;
 	}
 
-	public void setOperation(String operation) {
+	public void setOperation(char operation) {
 		this.operation = operation;
 	}
 

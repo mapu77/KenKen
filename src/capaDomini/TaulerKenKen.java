@@ -23,5 +23,13 @@ public class TaulerKenKen extends Tauler {
 	public void afegeixRegio (RegioKenKen r) {
 		VR.add(r);
 	}
+	
+	public int getNCols() {
+		return alto;
+	}
+	
+	public int getNFiles() {
+		return ancho;
+	}
 
 }

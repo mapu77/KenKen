@@ -10,7 +10,7 @@ public class TaulerKenKen extends Tauler {
 		super(n, n);
 		VR = new Vector<RegioKenKen>();
 	}
-	
+
 	public int nRegio(Cella c) {
 		for (int i=0; i<VR.size(); ++i) {
 			for (int j=0; j<VR.get(i).getNumCeldas(); ++j) {

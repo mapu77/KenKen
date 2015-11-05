@@ -87,7 +87,7 @@ public class KenKenSolver {
 			for (int value=1; value<=KK.getNCols(); ++value) {
 				KK.setNumero(i, j, value);
 				if (checkFila(i,value) && checkCol(j,value)) {
-					RegioKenKen r = KK.getRegio(KK.nRegio(new Cella(i,j)));
+					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
 					if (completedRegion(r) && checkRegion(r)) {
 						if (j==9) {
 							j=0;

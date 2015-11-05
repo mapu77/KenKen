@@ -8,21 +8,21 @@ public class driverEntraKenKen {
 	public static void main(String[] args) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Mida del KenKen");
-		int n = Integer.parseInt(sn.nextLine());
+		int n = sn.nextInt();
 		System.out.println("He llegit " + n);
 		TaulerKenKen T = new TaulerKenKen(n);
 		System.out.println("Nombre regions");
-		int nr = Integer.parseInt(sn.nextLine());
+		int nr = sn.nextInt();
 		System.out.println("He llegit " + nr);
 		for (int i=1; i<=nr; ++i) {
 			RegioKenKen r = new RegioKenKen(nr);
 			r.setId(i);
 			System.out.println("Operacio de la regio " + i);
-			String op = sn.nextLine();
+			String op = sn.next();
 			r.setOperation(op);
 			System.out.println("He llegit " + op);
-			System.out.println("Resultat de la regio" + i);
-			int res = Integer.parseInt(sn.nextLine());
+			System.out.println("Resultat de la regio " + i);
+			int res = sn.nextInt();
 			r.setResult(res);
 			System.out.println("He llegit " + res);
 			System.out.println("Nombre cel.les de la regio " + i);

@@ -2,6 +2,8 @@ package capaDomini;
 
 import java.util.*;
 
+import Algoritmes.KenKenSolver;
+
 
 //import capaDomini.*;
 
@@ -16,10 +18,10 @@ public class driverEntraKenKen {
 		int nr = sn.nextInt();
 		for (int i=1; i<=nr; ++i) {
 			Vector<Cella> VC = new Vector<Cella>();
-			System.out.println("Cel·les de la regio " + i);
+			System.out.println("Celï¿½les de la regio " + i);
 			int nc = sn.nextInt();
 			for (int j=0; j<nc; ++j) {
-				System.out.println("Cordenades cel·la " + j + " de la regio " + i);
+				System.out.println("Cordenades celï¿½la " + j + " de la regio " + i);
 				Cella c = new Cella(sn.nextInt(),sn.nextInt());
 				VC.add(c);
 			}
@@ -30,6 +32,7 @@ public class driverEntraKenKen {
 			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
 			T.afegeixRegio(r);
 		}
+		
 		System.out.println("Introdueix la teva solucio");
 		int x;
 		for (int i = 0; i < n; ++i) {

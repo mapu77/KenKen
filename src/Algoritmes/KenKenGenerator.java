@@ -23,7 +23,7 @@ public class KenKenGenerator {
 		used = new Vector<Boolean> (n+1);
 		for (int i=0; i<=used.size(); ++i) used.set(i, false);
 		Random random = new Random();
-
+		probStop = 0.3;
 	}
 	
 	/* Retorna si x és un nombre valid per la fila r */
@@ -64,13 +64,18 @@ public class KenKenGenerator {
 		}
 	}
 	
-	private void generateRegions() {
-		
+	private void generateRegions(int i, int j, int max) {
+		if ((i-1)*(j-1) < max) {
+			double rand = random.nextDouble();
+			if (rand > probStop) {
+				int rand = random.nextInt(3)+1;
+			}
+		}
 	}
 	
 	public TaulerKenKen generateRandomly() {
 		backtrackingGenerateNumbers(0,0,K.getNumCeldas());
-		generateRegions();
+		generateRegions(0,0,K.getNumCeldas());
 		return K;
 	}
 	

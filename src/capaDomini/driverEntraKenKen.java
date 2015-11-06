@@ -24,6 +24,8 @@ public class driverEntraKenKen {
 				System.out.println("Cordenades cel�la " + j + " de la regio " + i);
 				Cella c = new Cella(sn.nextInt(),sn.nextInt());
 				VC.add(c);
+				System.out.println("Cordenades cel�la " + j + " de la regio " + i);
+				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
 			}
 			System.out.println("Operacio de la regio " + i);
 			String op = sn.next();

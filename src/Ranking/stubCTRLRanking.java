@@ -3,7 +3,7 @@ package Ranking;
 import java.util.*;
 
 public class stubCTRLRanking {
-	public static void carregar(RankingPersonal r, String p) {
+	public static void carregar(Ranking r, String p) {
 		ArrayList<ArrayList<String>> i = new ArrayList<ArrayList<String>>();
 		ArrayList<String> a = new ArrayList<String>(
 			    Arrays.asList("mapu77", "123", "4x4", "8.983", "0"));

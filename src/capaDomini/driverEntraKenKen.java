@@ -20,8 +20,7 @@ public class driverEntraKenKen {
 			int nc = sn.nextInt();
 			for (int j=0; j<nc; ++j) {
 				System.out.println("Cordenades cel·la " + j + " de la regio " + i);
-				Cella c = new Cella(sn.nextInt(),sn.nextInt());
-				VC.add(c);
+				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
 			}
 			System.out.println("Operacio de la regio " + i);
 			String op = sn.next();

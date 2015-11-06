@@ -21,58 +21,77 @@ public class TaulerKenKen extends Tauler {
 		return 0;
 	}
 	
-	public RegioKenKen getRegio(int index) {
-		return VR.get(index);
-	}
-	
-	
 	public void afegeixRegio (RegioKenKen r) {
 		VR.add(r);
 	}
 
 	public void PrintaKenKen () {
-		String[][] mat;
+		String[][] mat, matR;
 		mat = new String[alto*2+1][ancho*2+1];
+		matR = new String[alto*2+1][ancho*2+1];
 		int r1,r2;
 		for (int i=0; i<=alto*2; ++i) {
 			for (int j=0; j<=ancho*2; ++j) {
-				if ((i == 0 || i == alto*2) && !(j == 0 || j == 2*ancho)) mat[i][j] = "-";
-				else if ((j == 0 || j == ancho*2) && !(i == 0 || i == 2*alto)) mat[i][j] = "|";
-				else if ((i==0 && (j==0 || j==2*ancho)) || (i==2*alto && (j==0 || j==2*ancho))) mat[i][j] = " ";
+				if ((i == 0 || i == alto*2) && !(j == 0 || j == 2*ancho)) { 
+					mat[i][j] = matR[i][j] = "-"; 
+				}
+				else if ((j == 0 || j == ancho*2) && !(i == 0 || i == 2*alto)) {
+					mat[i][j] = matR[i][j] = "|";
+				}
+				else if ((i==0 && (j==0 || j==2*ancho)) || (i==2*alto && (j==0 || j==2*ancho))) {
+					mat[i][j] = matR[i][j] = "+";
+				}
 				else {
 					if (i%2 != 0 && j%2 != 0) {
 						mat[i][j] = Integer.toString(this.getNumero(i/2, j/2));
+						matR[i][j] = Integer.toString(this.nRegio(i/2, j/2));
 						if (j+2 < 2*ancho) {
 							r1 = this.nRegio(i/2, j/2);
 							r2 = this.nRegio(i/2, (j/2)+1);
 							if (r1 != r2) {
-								mat[i][j+1] = "|";
+								mat[i][j+1] = matR[i][j+1] = "|";
 							}
 							else {
-								mat[i][j+1] = " ";
+								mat[i][j+1] = matR[i][j+1] = " ";
 							}
 						}
 						if (i+2 < 2*alto) {
 							r1 = this.nRegio(i/2, j/2);
 							r2 = this.nRegio((i/2)+1, j/2);
 							if (r1 != r2) {
-								mat[i+1][j] = "-";
+								mat[i+1][j] = matR[i+1][j] = "-";
 							}
 							else {
-								mat[i+1][j] = " ";
+								mat[i+1][j] = matR[i+1][j] = " ";
 							}
 						}
 					}
-					else if (i%2 == 0 && j%2 == 0) mat[i][j] = "+";
+					else if (i%2 == 0 && j%2 == 0) {
+						mat[i][j] = matR[i][j] = "+";
+					}
 				}
 			}
 		}
+		// Printa el taulell per regions
 		System.out.print("\n");
+		for (int i=0; i<=2*alto; ++i) {
+			for (int j=0; j<=2*ancho; ++j) {
+				System.out.print(matR[i][j]);
+			}
+			System.out.print("\n");
+		}
+		// Printa la solució proposada per l'usuari
+		System.out.print("--------------------------\n");
 		for (int i=0; i<=2*alto; ++i) {
 			for (int j=0; j<=2*ancho; ++j) {
 				System.out.print(mat[i][j]);
 			}
 			System.out.print("\n");
+		}
+		// Printa l'operació i resultat de cada regió
+		for (int k=0; k<VR.size(); ++k) {
+			System.out.println("Regio nº" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
+								", Resultat: " + VR.get(k).getResult());
 		}
 	}
 }

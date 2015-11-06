@@ -66,9 +66,9 @@ public class KenKenGenerator {
 	
 	private void generateRegions(int i, int j, int max) {
 		if ((i-1)*(j-1) < max) {
-			double rand = random.nextDouble();
-			if (rand > probStop) {
-				int rand = random.nextInt(3)+1;
+			double rand_d = random.nextDouble();
+			if (rand_d > probStop) {
+				int rand_i = random.nextInt(3)+1;
 			}
 		}
 	}

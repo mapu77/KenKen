@@ -25,6 +25,10 @@ public class TaulerKenKen extends Tauler {
 		VR.add(r);
 	}
 
+	public RegioKenKen getRegio (int id) {
+		return VR.get(id);
+	}
+	
 	public void PrintaKenKen () {
 		String[][] mat, matR;
 		mat = new String[alto*2+1][ancho*2+1];
@@ -81,7 +85,7 @@ public class TaulerKenKen extends Tauler {
 			System.out.print("\n");
 		}
 		// Printa la solució proposada per l'usuari
-		System.out.print("--------------------------\n");
+		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
 		for (int i=0; i<=2*alto; ++i) {
 			for (int j=0; j<=2*ancho; ++j) {
 				System.out.print(mat[i][j]);

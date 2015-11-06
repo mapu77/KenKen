@@ -1,6 +1,7 @@
 package capaDomini;
 
 import java.util.*;
+import Algoritmes.*;
 
 
 //import capaDomini.*;
@@ -16,10 +17,10 @@ public class driverEntraKenKen {
 		int nr = sn.nextInt();
 		for (int i=1; i<=nr; ++i) {
 			Vector<Cella> VC = new Vector<Cella>();
-			System.out.println("Cel·les de la regio " + i);
+			System.out.println("Celï¿½les de la regio " + i);
 			int nc = sn.nextInt();
 			for (int j=0; j<nc; ++j) {
-				System.out.println("Cordenades cel·la " + j + " de la regio " + i);
+				System.out.println("Cordenades celï¿½la " + j + " de la regio " + i);
 				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
 			}
 			System.out.println("Operacio de la regio " + i);
@@ -29,14 +30,17 @@ public class driverEntraKenKen {
 			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
 			T.afegeixRegio(r);
 		}
-		System.out.println("Introdueix la teva solucio");
+		/*System.out.println("Introdueix la teva solucio");
 		int x;
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < n; ++j) {
 				x = sn.nextInt();
 				T.setNumero(i,j,x);
 			}
-		}
+		}*/
+		KenKenSolver ks = new KenKenSolver();
+		ks.backtrackingSolver(T);
+		
 		T.PrintaKenKen();
 		sn.close();
 	}

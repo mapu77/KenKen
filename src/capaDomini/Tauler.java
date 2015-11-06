@@ -120,6 +120,14 @@ public class Tauler {
         }
     }
 	
+	public int getancho() {
+		return ancho;
+	}
+	
+	public int getalto() {
+		return alto;
+	}
+	
 	private int ancho;
 	private int alto;
 	private Vector<Cella> vCellas;

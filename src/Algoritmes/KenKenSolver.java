@@ -7,17 +7,17 @@ public class KenKenSolver {
 	private static TaulerKenKen KK;
 	
 	/* Retorna si x és un nombre valid per la fila r */
-	private static boolean checkFila(int fila, int x) {
+	private static boolean esValidenFila(int fila, int i, int x) {
 		for (int col=0; col<KK.getancho(); ++col) {
-			if (KK.getNumero(fila,col) == x) return false;
+			if (i != col && KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
 	}
 	
 	/* Retorna si x és un nombre vàlid per la columna c */
-	private static boolean checkCol(int col, int x) {
+	private static boolean esValidenColumna(int i, int col, int x) {
 		for (int fila = 0; fila < KK.getalto(); ++fila) {
-			if (KK.getNumero(fila,col) == x) return false;
+			if (i != fila && KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
 	}
@@ -86,9 +86,9 @@ public class KenKenSolver {
 		else {
 			for (int value=1; value<=KK.getancho(); ++value) {
 				KK.setNumero(i, j, value);
-				if (checkFila(i,value) && checkCol(j,value)) {
+				if (esValidenFila(i,j,value) && esValidenColumna(i,j,value)) {
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
-					System.out.println(r.getId());
+					System.out.println("La regio de " + i + " " + j + " es " + r.getId());
 					if (completedRegion(r)) {
 						if (checkRegion(r)) {
 							if (j==9) {

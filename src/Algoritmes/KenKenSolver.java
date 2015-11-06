@@ -7,9 +7,9 @@ public class KenKenSolver {
 	private static TaulerKenKen KK;
 	
 	/* Retorna si x és un nombre valid per la fila r */
-	private static boolean esValidenFila(int fila, int i, int x) {
+	private static boolean esValidenFila(int fila, int j, int x) {
 		for (int col=0; col<KK.getancho(); ++col) {
-			if (i != col && KK.getNumero(fila,col) == x) return false;
+			if (j != col && KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
 	}
@@ -73,10 +73,7 @@ public class KenKenSolver {
 	}
 	
 	private static boolean completedRegion(RegioKenKen r) {
-		for (int i=0; i<r.getNumCeldas(); ++i) {
-			if (r.getCella(i).estaVacia()) return false;
-		}
-		return true;
+		return r.getNumCeldasRellenas() == r.getNumCeldas();
 	}
 		
 	private static void backtracking(int i, int j, int max) {
@@ -87,6 +84,7 @@ public class KenKenSolver {
 			for (int value=1; value<=KK.getancho(); ++value) {
 				KK.setNumero(i, j, value);
 				if (esValidenFila(i,j,value) && esValidenColumna(i,j,value)) {
+					System.out.println(KK.nRegio(i, j));
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
 					System.out.println("La regio de " + i + " " + j + " es " + r.getId());
 					if (completedRegion(r)) {
@@ -114,7 +112,7 @@ public class KenKenSolver {
 				}
 			}
 		}
-			
+		KK.setNumero(i, j, -1);	
 	}
 	
 	public void backtrackingSolver(TaulerKenKen T) {		

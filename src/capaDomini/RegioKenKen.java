@@ -24,7 +24,9 @@ public class RegioKenKen extends Regio {
 	}
 	
 	public void Relaciona(int i, Cella c) {
-		vCellas.add(i,c);
+		Vector<Cella> aux = this.getvCellas();
+		aux.add(i,c);
+		this.setvCellas(aux);
 	}
 
 	public int getId() {

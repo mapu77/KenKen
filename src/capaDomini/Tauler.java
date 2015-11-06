@@ -15,6 +15,14 @@ public class Tauler {
 		}
 	}
 	
+	public int getAncho() {
+		return ancho;
+	}
+	
+	public int getAlto() {
+		return alto;
+	}
+	
 	public int getNumCeldas() {
 		return ancho*alto;
 	}
@@ -120,16 +128,7 @@ public class Tauler {
         }
     }
 	
-	public int getancho() {
-		return ancho;
-	}
-	
-	public int getalto() {
-		return alto;
-	}
-	
-	private int ancho;
-	private int alto;
+	private int ancho, alto;
 	private Vector<Cella> vCellas;
 	
 }

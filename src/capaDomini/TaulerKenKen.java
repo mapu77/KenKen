@@ -31,25 +31,25 @@ public class TaulerKenKen extends Tauler {
 	
 	public void PrintaKenKen () {
 		String[][] mat, matR;
-		mat = new String[getalto()*2+1][getancho()*2+1];
-		matR = new String[getalto()*2+1][getancho()*2+1];
+		mat = new String[this.getAlto()*2+1][this.getAncho()*2+1];
+		matR = new String[this.getAlto()*2+1][this.getAncho()*2+1];
 		int r1,r2;
-		for (int i=0; i<=getalto()*2; ++i) {
-			for (int j=0; j<=getancho()*2; ++j) {
-				if ((i == 0 || i == getalto()*2) && !(j == 0 || j == 2*getancho())) { 
+		for (int i=0; i<=this.getAlto()*2; ++i) {
+			for (int j=0; j<=this.getAncho()*2; ++j) {
+				if ((i == 0 || i == this.getAlto()*2) && !(j == 0 || j == 2*this.getAncho())) { 
 					mat[i][j] = matR[i][j] = "-"; 
 				}
-				else if ((j == 0 || j == getancho()*2) && !(i == 0 || i == 2*getalto())) {
+				else if ((j == 0 || j == this.getAncho()*2) && !(i == 0 || i == 2*this.getAlto())) {
 					mat[i][j] = matR[i][j] = "|";
 				}
-				else if ((i==0 && (j==0 || j==2*getancho())) || (i==2*getalto() && (j==0 || j==2*getancho()))) {
+				else if ((i==0 && (j==0 || j==2*this.getAncho())) || (i==2*this.getAlto() && (j==0 || j==2*this.getAncho()))) {
 					mat[i][j] = matR[i][j] = "+";
 				}
 				else {
 					if (i%2 != 0 && j%2 != 0) {
 						mat[i][j] = Integer.toString(this.getNumero(i/2, j/2));
 						matR[i][j] = Integer.toString(this.nRegio(i/2, j/2));
-						if (j+2 < 2*getancho()) {
+						if (j+2 < 2*this.getAncho()) {
 							r1 = this.nRegio(i/2, j/2);
 							r2 = this.nRegio(i/2, (j/2)+1);
 							if (r1 != r2) {
@@ -59,7 +59,7 @@ public class TaulerKenKen extends Tauler {
 								mat[i][j+1] = matR[i][j+1] = " ";
 							}
 						}
-						if (i+2 < 2*getalto()) {
+						if (i+2 < 2*this.getAlto()) {
 							r1 = this.nRegio(i/2, j/2);
 							r2 = this.nRegio((i/2)+1, j/2);
 							if (r1 != r2) {
@@ -78,16 +78,16 @@ public class TaulerKenKen extends Tauler {
 		}
 		// Printa el taulell per regions
 		System.out.print("\n");
-		for (int i=0; i<=2*getalto(); ++i) {
-			for (int j=0; j<=2*getancho(); ++j) {
+		for (int i=0; i<=2*this.getAlto(); ++i) {
+			for (int j=0; j<=2*this.getAncho(); ++j) {
 				System.out.print(matR[i][j]);
 			}
 			System.out.print("\n");
 		}
 		// Printa la soluci� proposada per l'usuari
 		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-		for (int i=0; i<=2*getalto(); ++i) {
-			for (int j=0; j<=2*getancho(); ++j) {
+		for (int i=0; i<=2*this.getAlto(); ++i) {
+			for (int j=0; j<=2*this.getAncho(); ++j) {
 				System.out.print(mat[i][j]);
 			}
 			System.out.print("\n");

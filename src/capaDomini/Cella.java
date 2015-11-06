@@ -12,9 +12,10 @@ public class Cella {
 	public Cella(int x, int y) {
 		this.x = x;
 		this.y = y;
+		numero = -1;
 	}
 	
-	// si la celda está vacía, devuelve -1
+	// si la celda estï¿½ vacï¿½a, devuelve -1
 	public int getNumero() {
 		return numero;
 	}

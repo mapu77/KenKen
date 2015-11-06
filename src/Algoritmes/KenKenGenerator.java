@@ -9,21 +9,12 @@ public class KenKenGenerator {
 	private static TaulerKenKen K;
 	private int n;
 	Random random;
-	private static enum Direccio {
-		UP,
-		RIGHT,
-		DOWN,
-		LEFT,
-	}
+	private int X[] = {1,0,-1,0};
+	private int Y[] = {0,1,0,-1};
 	private static double probStop;
 	
-	public KenKenGenerator(int n) {
-		this.n = n;
-		K = new TaulerKenKen(n);
-		used = new Vector<Boolean> (n+1);
-		for (int i=0; i<=used.size(); ++i) used.set(i, false);
+	public KenKenGenerator() {
 		Random random = new Random();
-		probStop = 0.3;
 	}
 	
 	/* Retorna si x és un nombre valid per la fila r */
@@ -64,18 +55,49 @@ public class KenKenGenerator {
 		}
 	}
 	
-	private void generateRegions(int i, int j, int max) {
-		if ((i-1)*(j-1) < max) {
-			double rand_d = random.nextDouble();
-			if (rand_d > probStop) {
-				int rand_i = random.nextInt(3)+1;
+	private void generateRegions() {
+		int reg_count = 1;
+		for (int i=0; i<K.getancho(); ++i) {
+			for (int j=0; j<K.getalto(); ++j) {
+				if (K.nRegio(i, j) == 0) { // no te regio
+					Stack<Cella> s = new Stack<Cella>();
+					Vector<Cella> vc = new Vector<Cella>();
+					probStop = 0.3;
+					vc.add(new Cella(i,j));
+					s.push(new Cella(i,j));
+					while (random.nextDouble() > probStop) { //No parem
+						int rand = random.nextInt(3);
+						int ii = s.peek().getX()+Y[rand];
+						int jj = s.peek().getY()+X[rand];
+						if (ii >= 0 && ii < K.getancho() && jj >= 0 && jj < K.getalto()){
+							if (!vc.contains(new Cella(ii,jj))) {
+								vc.add(new Cella(ii,jj));
+								s.push(new Cella(ii,jj));
+							}
+						}
+						probStop += 0.1; 
+					}
+					RegioKenKen r = new RegioKenKen(vc.size(), vc, "+", 0, reg_count);
+					++reg_count;
+					K.afegeixRegio(r);
+				}
+					
 			}
 		}
 	}
 	
-	public TaulerKenKen generateRandomly() {
+	public void generateRegionSolution() {
+		
+	}
+	
+	public TaulerKenKen generateRandomly(int size) {
+		n = size;
+		K = new TaulerKenKen(n);
+		used = new Vector<Boolean> (n+1);
+		for (int i=0; i<=used.size(); ++i) used.set(i, false);
 		backtrackingGenerateNumbers(0,0,K.getNumCeldas());
-		generateRegions(0,0,K.getNumCeldas());
+		generateRegions();
+		generateRegionSolution();
 		return K;
 	}
 	

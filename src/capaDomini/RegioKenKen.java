@@ -28,6 +28,13 @@ public class RegioKenKen extends Regio {
 		aux.add(i,c);
 		this.setvCellas(aux);
 	}
+	
+	public boolean estaCompleta() {
+		for (int i=0; i<this.getNumCeldas(); ++i) {
+			if (this.getCella(i).estaVacia()) return false;
+		}
+		return true;
+	}
 
 	public int getId() {
 		return id;

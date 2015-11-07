@@ -116,12 +116,6 @@ public class KenKenGenerator {
 		return res;
 	}
 	
-	private static int calculaRegioDiv(RegioKenKen r) {
-		int op1 = r.getCella(0).getNumero()/r.getCella(1).getNumero();
-		int op2 = r.getCella(1).getNumero()/r.getCella(0).getNumero();
-		return (op1 >= 1) ? op1 : op2;
-	}
-	
 	public void generateRegionSolution() {
 		for (int i=0; i<K.getNRegio(); ++i) {
 			RegioKenKen r = K.getRegio(i);

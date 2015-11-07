@@ -85,6 +85,8 @@ public class KenKenSolver {
 				if (checkFila(i,value) && checkCol(j,value)) {
 					KK.setNumero(i, j, value);
 					KK.setNumeroRegio(i, j, value);
+					System.out.println(KK.nRegio(i,j));
+					System.out.println(KK.getNRegio());
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
 					if ((r.estaCompleta() && checkRegion(r)) || !(r.estaCompleta())) {
 						if (j+1==KK.getAncho()) {

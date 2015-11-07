@@ -56,39 +56,116 @@ public class KenKenGenerator {
 		}
 	}
 	
+	private boolean contains(Vector<Cella> v, Cella c) {
+		for (int i=0; i<v.size(); ++i) {
+			if (v.get(i).equals(c)) return true;
+		}
+		return false;
+	}
+	
 	private void generateRegions() {
-		int reg_count = 1;
+		int reg_count = 0;
 		for (int i=0; i<K.getAncho(); ++i) {
 			for (int j=0; j<K.getAlto(); ++j) {
-				if (K.nRegio(i, j) == 0) { // no te regio
+				if (K.nRegio(i,j) == -1) { // no te regio
 					Stack<Cella> s = new Stack<Cella>();
 					Vector<Cella> vc = new Vector<Cella>();
 					probStop = 0.1;
-					vc.add(new Cella(i,j));
-					s.push(new Cella(i,j));
+					Cella c = K.getCella(i,j);
+					vc.add(c);
+					s.push(c);
 					while (new Random().nextDouble() > probStop) { //No parem
-						int rand = new Random().nextInt(3);
+						int rand = new Random().nextInt(4);
 						int ii = s.peek().getX()+Y[rand];
 						int jj = s.peek().getY()+X[rand];
-						if (ii >= 0 && ii < K.getAncho() && jj >= 0 && jj < K.getAlto()){
-							if (!vc.contains(new Cella(ii,jj))) {
-								vc.add(new Cella(ii,jj));
-								s.push(new Cella(ii,jj));
+						if (ii >= 0 && ii < K.getAncho() && jj >= 0 && jj < K.getAlto() && K.nRegio(ii,jj) == -1){
+							Cella aux = K.getCella(ii,jj);
+							if (!contains(vc,aux)) {
+								vc.add(aux);
+								s.push(aux);
 							}
 						}
-						probStop += 0.1; 
+						probStop += 0.05; 
 					}
 					RegioKenKen r = new RegioKenKen(vc.size(), vc, "+", 0, reg_count);
 					++reg_count;
 					K.afegeixRegio(r);
+					System.out.println(r.getId());
+					for (int q=0; q<vc.size(); ++q) {
+						System.out.println("(" + vc.get(q).getX() + "," + vc.get(q).getY() +")");
+
+					}
 				}
 					
 			}
 		}
 	}
 	
+	private static int calculaRegioSuma(RegioKenKen r) {
+		int res = 0;
+		for (int i=0; i<r.getNumCeldas(); ++i) {
+			res += r.getCella(i).getNumero();
+		}
+		return res;
+	}
+	
+	private static int calculaRegioResta(RegioKenKen r) {
+		return Math.abs(r.getCella(0).getNumero() - r.getCella(1).getNumero());
+	}
+	
+	private static int calculaRegioMult(RegioKenKen r) {
+		int res = 1;
+		for (int i=0; i<r.getNumCeldas(); ++i) {
+			res *= r.getCella(i).getNumero();
+		}
+		return res;
+	}
+	
+	private static int calculaRegioDiv(RegioKenKen r) {
+		int op1 = r.getCella(0).getNumero()/r.getCella(1).getNumero();
+		int op2 = r.getCella(1).getNumero()/r.getCella(0).getNumero();
+		return (op1 >= 1) ? op1 : op2;
+	}
+	
 	public void generateRegionSolution() {
+		for (int i=0; i<K.getNRegio(); ++i) {
+			RegioKenKen r = K.getRegio(i);
+			switch (r.getNumCeldas()) {
+			case 1:
+				r.setOperation("+");
+				r.setResult(r.getNumero(0));
+				break;
+			case 2:
+				boolean resta = new Random().nextBoolean();
+				if (resta){
+					r.setOperation("-");
+					r.setResult(calculaRegioResta(r));
+				}
+				else {
+					r.setOperation("/");		
+					r.setResult(calculaRegioDiv(r));
+				}
+				break;
+			default:
+				boolean suma = new Random().nextBoolean();
+				if (suma) {
+					r.setOperation("+");
+					r.setResult(calculaRegioSuma(r));
+				}
+				else {
+					r.setOperation("*");
+					r.setResult(calculaRegioMult(r));
+				}
+				break;
+			}
+		}
 		
+		// Traiem els numeros del tauler
+		for (int i=0; i<K.getAlto(); ++i) {
+			for (int j=0; j<K.getAncho(); ++j) {
+				K.borra(i,j);
+			}
+		}
 	}
 	
 	public TaulerKenKen generateRandomly(int size) {
@@ -97,7 +174,7 @@ public class KenKenGenerator {
 		K = new TaulerKenKen(n);
 		backtrackingGenerateNumbers(0,0);
 		generateRegions();
-		//generateRegionSolution();
+		generateRegionSolution();
 		return K;
 	}
 	

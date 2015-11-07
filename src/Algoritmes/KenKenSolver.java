@@ -9,7 +9,7 @@ public class KenKenSolver {
 	
 	/* Retorna si x és un nombre valid per la fila r */
 	private static boolean checkFila(int fila, int x) {
-		for (int col=0; col<KK.getancho(); ++col) {
+		for (int col=0; col<KK.getAncho(); ++col) {
 			if (KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
@@ -17,7 +17,7 @@ public class KenKenSolver {
 	
 	/* Retorna si x és un nombre vàlid per la columna c */
 	private static boolean checkCol(int col, int x) {
-		for (int fila = 0; fila < KK.getalto(); ++fila) {
+		for (int fila = 0; fila < KK.getAncho(); ++fila) {
 			if (KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
@@ -73,31 +73,24 @@ public class KenKenSolver {
 		else return false;
 	}
 	
-	private static boolean completedRegion(RegioKenKen r) {
-		for (int i=0; i<r.getNumCeldas(); ++i) {
-			if (r.getCella(i).estaVacia()) return false;
-		}
-		return true;
-	}
-		
 	private static void backtracking(int i, int j) {
 		// Tenim solucio
-		if (i==KK.getalto()) {
+		if (i==KK.getAlto()) {
 			System.out.println("Solucio");
 			trobat = true;
 		}
 		// Continuem provant
 		else {
-			for (int value=1; value<=KK.getancho() && !trobat; ++value) {
+			for (int value=1; value<=KK.getAncho() && !trobat; ++value) {
 				if (checkFila(i,value) && checkCol(j,value)) {
 					KK.setNumero(i, j, value);
 					KK.setNumeroRegio(i, j, value);
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
-					if (completedRegion(r)) {
+					if (r.estaCompleta()) {
 						if (checkRegion(r)) {
 							int ii = i;
 							int jj = j;
-							if (jj==KK.getancho()-1) {
+							if (jj==KK.getAncho()-1) {
 								jj=0;
 								++ii;
 							}
@@ -110,7 +103,7 @@ public class KenKenSolver {
 					else {
 						int ii = i;
 						int jj = j;
-						if (jj==KK.getancho()-1) {
+						if (jj==KK.getAncho()-1) {
 							jj=0;
 							++ii;
 						}

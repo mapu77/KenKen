@@ -81,7 +81,6 @@ public class Tauler {
 	public void setNumero(int x, int y, int val) {
 		try {
 			if ((x < 0 || x >= alto) || (y < 0 || y >= ancho)) {
-				//System.out.println("Pos no valida -> x:"+x+" ,y:"+y);
 				throw (new ExcepcionPosicionFueraRango());
 			}
 			if (val < 0) throw (new ExcepcionValorFueraRango()); //FALTA: mirar valor por arriba
@@ -123,11 +122,11 @@ public class Tauler {
         }
     }
 	
-	public int getancho() {
+	public int getAncho() {
 		return ancho;
 	}
 	
-	public int getalto() {
+	public int getAlto() {
 		return alto;
 	}
 	

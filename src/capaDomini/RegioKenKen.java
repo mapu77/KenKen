@@ -10,6 +10,7 @@ public class RegioKenKen extends Regio {
 	
 	public RegioKenKen(int n) {
 		super(n);
+		this.id = -1;
 	}
 	
 	public RegioKenKen (int tamano, Vector<Cella> vc, String op, int res, int id) {
@@ -21,6 +22,7 @@ public class RegioKenKen extends Regio {
 	
 	public RegioKenKen(Vector<Cella> vc) {
 		super(vc.size(), vc);
+		this.id = -1;
 	}
 	
  	public void Relaciona(int i, Cella c) {

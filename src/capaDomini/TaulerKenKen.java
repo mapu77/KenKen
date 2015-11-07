@@ -15,18 +15,22 @@ public class TaulerKenKen extends Tauler {
 		for (int i=0; i<VR.size(); ++i) {
 			for (int j=0; j<VR.get(i).getNumCeldas(); ++j) {
 				Cella aux = VR.get(i).getCella(j);
-				if (aux.getX() == x && aux.getY() == y) return VR.get(i).getId();	
+				if (this.getCella(x,y).equals(aux)) return VR.get(i).getId();	
 			}
 		}
-		return 0;
+		return -1;
 	}
 	
 	public void afegeixRegio (RegioKenKen r) {
 		VR.add(r);
 	}
-
+	
 	public RegioKenKen getRegio (int id) {
 		return VR.get(id);
+	}
+	
+	public int getNRegio() {
+		return VR.size();
 	}
 	
 	public void setNumeroRegio (int x, int y, int value) {

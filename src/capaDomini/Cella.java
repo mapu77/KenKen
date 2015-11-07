@@ -15,7 +15,12 @@ public class Cella {
 		this.numero = -1;
 	}
 	
-	// si la celda está vacía, devuelve -1
+	public boolean equals(Cella c) {
+		if (this.x == c.getX() && this.y == c.getY()) return true;
+		return false;
+	}
+	
+	// si la celda estï¿½ vacï¿½a, devuelve -1
 	public int getNumero() {
 		return numero;
 	}

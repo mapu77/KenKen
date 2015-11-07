@@ -26,7 +26,7 @@ public class TaulerKenKen extends Tauler {
 	}
 
 	public RegioKenKen getRegio (int id) {
-		return VR.get(id);
+		return VR.get(id-1);
 	}
 	
 	public void PrintaKenKen () {

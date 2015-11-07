@@ -9,42 +9,48 @@ import Algoritmes.*;
 public class driverEntraKenKen {
 	
 	public static void main(String[] args) {
+		System.out.println("KenKen");
+		System.out.println("Options:");
+		System.out.println("0. Sortir");
+		System.out.println("1. Maquina genera KenKen");
+		System.out.println("2. Usuari genera KenKen");
 		Scanner sn = new Scanner(System.in);
-		System.out.println("Mida del KenKen");
-		int n = sn.nextInt();
+		int option;
 		KenKenGenerator KG = new KenKenGenerator();
-		TaulerKenKen K = KG.generateRandomly(n);
-		/*TaulerKenKen T = new TaulerKenKen(n);
-		System.out.println("Nombre regions");
-		int nr = sn.nextInt();
-		for (int i=0; i<nr; ++i) {
-			Vector<Cella> VC = new Vector<Cella>();
-			System.out.println("Cel.les de la regio " + i);
-			int nc = sn.nextInt();
-			for (int j=0; j<nc; ++j) {
-				System.out.println("Cordenades cel.la " + j + " de la regio " + i);
-				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
+		while ((option = sn.nextInt()) != 0) {
+			TaulerKenKen K;
+			switch (option) {
+			case 1:
+				System.out.println("Generador aleatori");
+				System.out.println("Mida del KenKen?");
+				int n = sn.nextInt();
+				K = KG.generateRandomly(n);
+				K.PrintaRegioKenKen();
+				break;
+			case 2:
+				System.out.println("Generador per l'usuari");
+				K = KG.generateKenKenbyUser();
+				K.PrintaRegioKenKen();
+				break;
+			default:
+				K = new TaulerKenKen(4);
+					
 			}
-			System.out.println("Operacio de la regio " + i);
-			String op = sn.next();
-			System.out.println("Resultat de la regio " + i);
-			int res = sn.nextInt();
-			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
-			T.afegeixRegio(r);
+			System.out.println("1.Soluciona maquina");
+			System.out.println("2. Soluciona usuari");
+			int op2 = sn.nextInt();
+			if (op2 == 1) {
+				KenKenSolver KS = new KenKenSolver();
+				KS.backtrackingSolver(K);
+				K.PrintaKenKen();
+			}
+			System.out.println("KenKen");
+			System.out.println("Options:");
+			System.out.println("0. Sortir");
+			System.out.println("1. Maquina genera KenKen");
+			System.out.println("2. Usuari genera KenKen");
 		}
-		/*
-		System.out.println("Introdueix la teva solucio");
-		int x;
-		for (int i = 0; i < n; ++i) {
-			for (int j = 0; j < n; ++j) {
-				x = sn.nextInt();
-				T.setNumero(i,j,x);
-			}
-		}*/
-		KenKenSolver ks = new KenKenSolver();
-		ks.backtrackingSolver(K);
-		
-		K.PrintaKenKen();
 		sn.close();
+		System.out.println("Fi Programa");
 	}
 }

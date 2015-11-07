@@ -86,32 +86,14 @@ public class KenKenSolver {
 					KK.setNumero(i, j, value);
 					KK.setNumeroRegio(i, j, value);
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
-					if (r.estaCompleta()) {
-						if (checkRegion(r)) {
-							int ii = i;
-							int jj = j;
-							if (jj==KK.getAncho()-1) {
-								jj=0;
-								++ii;
-							}
-							else {
-								++jj;
-							}
-							backtracking(ii,jj);
-						}
-					}
-					else {
-						int ii = i;
-						int jj = j;
-						if (jj==KK.getAncho()-1) {
-							jj=0;
-							++ii;
+					if ((r.estaCompleta() && checkRegion(r)) || !(r.estaCompleta())) {
+						if (j+1==KK.getAncho()) {
+							backtracking(i+1,0);
 						}
 						else {
-							++jj;
+							backtracking(i,j+1);
 						}
-						backtracking(ii,jj);
-					}	
+					}
 				}
 			}
 			if (!trobat){

@@ -90,11 +90,6 @@ public class KenKenGenerator {
 					RegioKenKen r = new RegioKenKen(vc.size(), vc, "+", 0, reg_count);
 					++reg_count;
 					K.afegeixRegio(r);
-					System.out.println(r.getId());
-					for (int q=0; q<vc.size(); ++q) {
-						System.out.println("(" + vc.get(q).getX() + "," + vc.get(q).getY() +")");
-
-					}
 				}
 					
 			}
@@ -136,14 +131,19 @@ public class KenKenGenerator {
 				r.setResult(r.getNumero(0));
 				break;
 			case 2:
-				boolean resta = new Random().nextBoolean();
-				if (resta){
-					r.setOperation("-");
-					r.setResult(calculaRegioResta(r));
+				int op1 = r.getCella(0).getNumero()/r.getCella(1).getNumero();
+				int op2 = r.getCella(1).getNumero()/r.getCella(0).getNumero();
+				if (op1 >= 1 && r.getCella(0).getNumero()%r.getCella(1).getNumero() == 0) {
+					r.setOperation("/");		
+					r.setResult(op1);
+				}
+				else if (op1 < 1 && r.getCella(1).getNumero()%r.getCella(0).getNumero()==0) {
+					r.setOperation("/");		
+					r.setResult(op2);
 				}
 				else {
-					r.setOperation("/");		
-					r.setResult(calculaRegioDiv(r));
+					r.setOperation("-");
+					r.setResult(calculaRegioResta(r));
 				}
 				break;
 			default:
@@ -178,11 +178,33 @@ public class KenKenGenerator {
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKenby() {
+	public TaulerKenKen generateKenKenbyParameters() {
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKen() {
+	public TaulerKenKen generateKenKenbyUser() {
+		Scanner sn = new Scanner(System.in);
+		System.out.println("Mida del KenKen");
+		int n = sn.nextInt();
+		K = new TaulerKenKen(n);
+		System.out.println("Nombre regions");
+		int nr = sn.nextInt();
+		for (int i=0; i<nr; ++i) {
+			Vector<Cella> VC = new Vector<Cella>();
+			System.out.println("Cel.les de la regio " + i);
+			int nc = sn.nextInt();
+			for (int j=0; j<nc; ++j) {
+				System.out.println("Cordenades cel.la " + j + " de la regio " + i);
+				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
+			}
+			System.out.println("Operacio de la regio " + i);
+			String op = sn.next();
+			System.out.println("Resultat de la regio " + i);
+			int res = sn.nextInt();
+			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
+			K.afegeixRegio(r);
+		}
+		sn.close();
 		return K;
 	}
 	

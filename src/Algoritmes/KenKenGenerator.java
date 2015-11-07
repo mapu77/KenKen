@@ -5,7 +5,6 @@ import capaDomini.*;
 
 public class KenKenGenerator {
 	
-	private Vector<Boolean> used; //llistat del 0 a n+1 de valors usats
 	private static TaulerKenKen K;
 	private int n;
 	private static boolean fi;
@@ -31,28 +30,29 @@ public class KenKenGenerator {
 		}
 		return true;
 	}
-	
-	private void backtrackingGenerateNumbers(int i, int j, int max) {
-		if ((i+1)*(j+1) == max) {
+
+	private void backtrackingGenerateNumbers(int i, int j) {
+		if (i == K.getAlto()) {
 			fi = true;
 		}
 		else {
-			int rand = new Random().nextInt(n)+1; //genera nombre aleatori entre 1 i n
-			for (int k=1; k<=n && !fi; ++k) {
-				for (int ii=1; ii<used.size(); ++ii) used.set(ii,false);
-				while (used.get(rand)) rand = new Random().nextInt(n)+1;
-				used.set(rand,true);
+			Vector<Boolean> used = new Vector<Boolean>();
+			for (int k=0; k<=K.getAncho();++k) used.add(k,false); //inicialitzacio used
+			int rand = new Random().nextInt(n)+1;
+			for (int ii=0; ii<K.getAncho() && !fi; ++ii) {
+				while (used.get(rand)) { rand = new Random().nextInt(n)+1; }
+				used.set(rand, true);
 				if (checkFila(i,rand) && checkCol(j,rand)) {
-					K.setNumero(i,j,rand);
-					if (j==n) {
-						backtrackingGenerateNumbers(i+1,0,max);
+					K.setNumero(i, j, rand);
+					if (j+1 == K.getAncho()) {
+						backtrackingGenerateNumbers(i+1,0);
 					}
 					else {
-						backtrackingGenerateNumbers(i,j+1,max);
+						backtrackingGenerateNumbers(i,j+1);
 					}
-				}				
+				}
 			}
-			if (!fi) K.borra(i, j);
+			if (!fi) { K.getCella(i, j).borra(); }
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class KenKenGenerator {
 				if (K.nRegio(i, j) == 0) { // no te regio
 					Stack<Cella> s = new Stack<Cella>();
 					Vector<Cella> vc = new Vector<Cella>();
-					probStop = 0.3;
+					probStop = 0.1;
 					vc.add(new Cella(i,j));
 					s.push(new Cella(i,j));
 					while (new Random().nextDouble() > probStop) { //No parem
@@ -95,10 +95,8 @@ public class KenKenGenerator {
 		n = size;
 		fi = false;
 		K = new TaulerKenKen(n);
-		used = new Vector<Boolean> ();
-		for (int i=0; i<n+1; ++i) used.add(i,false);
-		backtrackingGenerateNumbers(0,0,K.getNumCeldas());
-		//generateRegions();
+		backtrackingGenerateNumbers(0,0);
+		generateRegions();
 		//generateRegionSolution();
 		return K;
 	}

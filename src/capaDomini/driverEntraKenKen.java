@@ -12,7 +12,10 @@ public class driverEntraKenKen {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Mida del KenKen");
 		int n = sn.nextInt();
-		TaulerKenKen T = new TaulerKenKen(n);
+		KenKenGenerator KG = new KenKenGenerator();
+		TaulerKenKen K = KG.generateRandomly(n);
+		K.PrintaKenKen();
+		/*TaulerKenKen T = new TaulerKenKen(n);
 		System.out.println("Nombre regions");
 		int nr = sn.nextInt();
 		for (int i=0; i<nr; ++i) {
@@ -39,10 +42,10 @@ public class driverEntraKenKen {
 				T.setNumero(i,j,x);
 			}
 		}*/
-		KenKenSolver ks = new KenKenSolver();
-		ks.backtrackingSolver(T);
+		//KenKenSolver ks = new KenKenSolver();
+		//ks.backtrackingSolver(T);
 		
-		T.PrintaKenKen();
+		//T.PrintaKenKen();
 		sn.close();
 	}
 }

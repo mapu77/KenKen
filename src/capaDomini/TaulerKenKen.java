@@ -95,7 +95,7 @@ public class TaulerKenKen extends Tauler {
 			}
 			System.out.print("\n");
 		}
-		// Printa la soluci� proposada per l'usuari
+		// Printa la solucio proposada per l'usuari
 		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
 		for (int i=0; i<=2*getAlto(); ++i) {
 			for (int j=0; j<=2*getAncho(); ++j) {
@@ -103,7 +103,7 @@ public class TaulerKenKen extends Tauler {
 			}
 			System.out.print("\n");
 		}
-		// Printa l'operaci� i resultat de cada regi�
+		// Printa l'operacio i resultat de cada regio
 		for (int k=0; k<VR.size(); ++k) {
 			System.out.println("Regio num" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
 								", Resultat: " + VR.get(k).getResult());

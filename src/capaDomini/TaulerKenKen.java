@@ -26,30 +26,41 @@ public class TaulerKenKen extends Tauler {
 	}
 
 	public RegioKenKen getRegio (int id) {
-		return VR.get(id-1);
+		return VR.get(id);
+	}
+	
+	public void setNumeroRegio (int x, int y, int value) {
+		for (int i=0; i<VR.size(); ++i) {
+			for (int j=0; j<this.getRegio(i).getNumCeldas(); ++j) {
+				Cella c = this.getRegio(i).getCella(j);
+				if (c.getX()==x && c.getY()==y) {
+					c.setNumero(value);
+				}
+			}
+		}
 	}
 	
 	public void PrintaKenKen () {
 		String[][] mat, matR;
-		mat = new String[this.getAlto()*2+1][this.getAncho()*2+1];
-		matR = new String[this.getAlto()*2+1][this.getAncho()*2+1];
+		mat = new String[getalto()*2+1][getancho()*2+1];
+		matR = new String[getalto()*2+1][getancho()*2+1];
 		int r1,r2;
-		for (int i=0; i<=this.getAlto()*2; ++i) {
-			for (int j=0; j<=this.getAncho()*2; ++j) {
-				if ((i == 0 || i == this.getAlto()*2) && !(j == 0 || j == 2*this.getAncho())) { 
+		for (int i=0; i<=getalto()*2; ++i) {
+			for (int j=0; j<=getancho()*2; ++j) {
+				if ((i == 0 || i == getalto()*2) && !(j == 0 || j == 2*getancho())) { 
 					mat[i][j] = matR[i][j] = "-"; 
 				}
-				else if ((j == 0 || j == this.getAncho()*2) && !(i == 0 || i == 2*this.getAlto())) {
+				else if ((j == 0 || j == getancho()*2) && !(i == 0 || i == 2*getalto())) {
 					mat[i][j] = matR[i][j] = "|";
 				}
-				else if ((i==0 && (j==0 || j==2*this.getAncho())) || (i==2*this.getAlto() && (j==0 || j==2*this.getAncho()))) {
+				else if ((i==0 && (j==0 || j==2*getancho())) || (i==2*getalto() && (j==0 || j==2*getancho()))) {
 					mat[i][j] = matR[i][j] = "+";
 				}
 				else {
 					if (i%2 != 0 && j%2 != 0) {
 						mat[i][j] = Integer.toString(this.getNumero(i/2, j/2));
 						matR[i][j] = Integer.toString(this.nRegio(i/2, j/2));
-						if (j+2 < 2*this.getAncho()) {
+						if (j+2 < 2*getancho()) {
 							r1 = this.nRegio(i/2, j/2);
 							r2 = this.nRegio(i/2, (j/2)+1);
 							if (r1 != r2) {
@@ -59,7 +70,7 @@ public class TaulerKenKen extends Tauler {
 								mat[i][j+1] = matR[i][j+1] = " ";
 							}
 						}
-						if (i+2 < 2*this.getAlto()) {
+						if (i+2 < 2*getalto()) {
 							r1 = this.nRegio(i/2, j/2);
 							r2 = this.nRegio((i/2)+1, j/2);
 							if (r1 != r2) {
@@ -78,23 +89,23 @@ public class TaulerKenKen extends Tauler {
 		}
 		// Printa el taulell per regions
 		System.out.print("\n");
-		for (int i=0; i<=2*this.getAlto(); ++i) {
-			for (int j=0; j<=2*this.getAncho(); ++j) {
+		for (int i=0; i<=2*getalto(); ++i) {
+			for (int j=0; j<=2*getancho(); ++j) {
 				System.out.print(matR[i][j]);
 			}
 			System.out.print("\n");
 		}
 		// Printa la soluci� proposada per l'usuari
 		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-		for (int i=0; i<=2*this.getAlto(); ++i) {
-			for (int j=0; j<=2*this.getAncho(); ++j) {
+		for (int i=0; i<=2*getalto(); ++i) {
+			for (int j=0; j<=2*getancho(); ++j) {
 				System.out.print(mat[i][j]);
 			}
 			System.out.print("\n");
 		}
 		// Printa l'operaci� i resultat de cada regi�
 		for (int k=0; k<VR.size(); ++k) {
-			System.out.println("Regio n�" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
+			System.out.println("Regio num" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
 								", Resultat: " + VR.get(k).getResult());
 		}
 	}

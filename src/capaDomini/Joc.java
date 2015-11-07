@@ -7,7 +7,7 @@ import capaDomini.Tauler;
 
 public abstract class Joc {
 	private int n;
-	private String dificultad;
+	private tipoDificultad dificultad;
 	private String id;
 	private Tauler tauler;
 	
@@ -18,14 +18,14 @@ public abstract class Joc {
 		id = null;
 	}
 	
-	public Joc(int mida, String dif, String idJoc) {
+	public Joc(int mida, tipoDificultad dif, String idJoc) {
 		n = mida;
 		dificultad = dif;
 		id = idJoc;
 		//tauler = new Tauler[n][n]; --------------> millor nomes per sudoku i kenken, ja que hidato no te perque tenir un tauler quadrat
 	}
 	
-	public Joc(int mida, String dif, String idJoc, Tauler t) {
+	public Joc(int mida, tipoDificultad dif, String idJoc, Tauler t) {
 		n = mida;
 		dificultad = dif;
 		id = idJoc;
@@ -40,7 +40,7 @@ public abstract class Joc {
 		return n;
 	}
 	
-	public String getDificultad() {
+	public tipoDificultad getDificultad() {
 		return dificultad;
 	}
 	

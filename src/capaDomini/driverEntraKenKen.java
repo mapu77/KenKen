@@ -15,13 +15,13 @@ public class driverEntraKenKen {
 		TaulerKenKen T = new TaulerKenKen(n);
 		System.out.println("Nombre regions");
 		int nr = sn.nextInt();
-		for (int i=1; i<=nr; ++i) {
+		for (int i=0; i<nr; ++i) {
 			Vector<Cella> VC = new Vector<Cella>();
-			System.out.println("Cel�les de la regio " + i);
+			System.out.println("Cel.les de la regio " + i);
 			int nc = sn.nextInt();
 			for (int j=0; j<nc; ++j) {
-				System.out.println("Cordenades cel�la " + j + " de la regio " + i);
-				VC.add(T.getCella(sn.nextInt(),sn.nextInt()));
+				System.out.println("Cordenades cel.la " + j + " de la regio " + i);
+				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
 			}
 			System.out.println("Operacio de la regio " + i);
 			String op = sn.next();
@@ -30,7 +30,8 @@ public class driverEntraKenKen {
 			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
 			T.afegeixRegio(r);
 		}
-		/*System.out.println("Introdueix la teva solucio");
+		/*
+		System.out.println("Introdueix la teva solucio");
 		int x;
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < n; ++j) {

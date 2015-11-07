@@ -5,21 +5,20 @@ import capaDomini.*;
 public class KenKenSolver {
 	
 	private static TaulerKenKen KK;
+	private static boolean trobat;
 	
 	/* Retorna si x és un nombre valid per la fila r */
-	private static boolean esValidenFila(int fila, int j, int x) {
-		System.out.println("Comprovo " + x + " en fila");
-		for (int col=0; col<KK.getAncho(); ++col) {
-			if (j != col && KK.getNumero(fila,col) == x) return false;
+	private static boolean checkFila(int fila, int x) {
+		for (int col=0; col<KK.getancho(); ++col) {
+			if (KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
 	}
 	
 	/* Retorna si x és un nombre vàlid per la columna c */
-	private static boolean esValidenColumna(int i, int col, int x) {
-		System.out.println("Comprovo " + x + " en columna");
-		for (int fila = 0; fila < KK.getAlto(); ++fila) {
-			if (i != fila && KK.getNumero(fila,col) == x) return false;
+	private static boolean checkCol(int col, int x) {
+		for (int fila = 0; fila < KK.getalto(); ++fila) {
+			if (KK.getNumero(fila,col) == x) return false;
 		}
 		return true;
 	}
@@ -50,7 +49,7 @@ public class KenKenSolver {
 		return (op1 >= 1) ? op1 : op2;
 	}
 	
-	/* Pre: r està completa */
+	/* Pre: r està complerta */
 	/* Post: retorna si al aplicar la operacio de r a les celes de r, s'obte el resultat associat a la regio */
 	private static boolean checkRegion(RegioKenKen r) {
 		int result;
@@ -73,46 +72,66 @@ public class KenKenSolver {
 		if (result == r.getResult()) return true;
 		else return false;
 	}
+	
+	private static boolean completedRegion(RegioKenKen r) {
+		for (int i=0; i<r.getNumCeldas(); ++i) {
+			if (r.getCella(i).estaVacia()) return false;
+		}
+		return true;
+	}
 		
-	private static void backtracking(int i, int j, int max) {
+	private static void backtracking(int i, int j) {
 		// Tenim solucio
-		if ((i+1)*(j+1) == max) System.out.println("Solucio");
+		if (i==KK.getalto()) {
+			System.out.println("Solucio");
+			trobat = true;
+		}
 		// Continuem provant
 		else {
-			System.out.println("Estic a (" + i + "," + j + ")");
-			for (int value=1; value<=KK.getAncho(); ++value) {
-				KK.setNumero(i,j,value);
-				if (esValidenFila(i,j,value) && esValidenColumna(i,j,value)) {
+			for (int value=1; value<=KK.getancho() && !trobat; ++value) {
+				if (checkFila(i,value) && checkCol(j,value)) {
+					KK.setNumero(i, j, value);
+					KK.setNumeroRegio(i, j, value);
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
-					if (r.estaCompleta()) {
-						System.out.println("La regio " + r.getId() + " esta completa");
+					if (completedRegion(r)) {
 						if (checkRegion(r)) {
-							if (j == KK.getAncho()-1) {
-								backtracking(i+1,0,max);
+							int ii = i;
+							int jj = j;
+							if (jj==KK.getancho()-1) {
+								jj=0;
+								++ii;
 							}
 							else {
-								backtracking(i,j+1,max);
+								++jj;
 							}
+							backtracking(ii,jj);
 						}
 					}
 					else {
-						System.out.println("La regio " + r.getId() + " esta incompleta");
-						if (j==KK.getAncho()-1) {
-							backtracking(i+1,0,max);
+						int ii = i;
+						int jj = j;
+						if (jj==KK.getancho()-1) {
+							jj=0;
+							++ii;
 						}
 						else {
-							backtracking(i,j+1,max);
+							++jj;
 						}
+						backtracking(ii,jj);
 					}	
 				}
 			}
-			//KK.borra(i,j);
+			if (!trobat){
+				KK.getCella(i, j).borra();
+				KK.setNumeroRegio(i, j, -1);
+			}
 		}
-		KK.borra(i,j);
+			
 	}
 	
 	public void backtrackingSolver(TaulerKenKen T) {		
 		KK = T;
-		backtracking(0, 0, KK.getNumCeldas());
+		trobat = false;
+		backtracking(0, 0);
 	}
 }

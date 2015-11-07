@@ -122,9 +122,11 @@ public class Tauler {
 	private void creaCeldas() {
     	vCellas = new Vector<Cella>();
         Cella cellaAux = null;
-        for (int i = 0; i < ancho * alto; ++i) {
-            cellaAux = new Cella();
-            vCellas.addElement(cellaAux);
+        for (int i=0; i < alto; ++i) {
+        	for (int j=0; j < ancho; ++j) {
+        		cellaAux = new Cella(i,j);
+        		vCellas.addElement(cellaAux);
+        	}   
         }
     }
 	

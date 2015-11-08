@@ -10,7 +10,7 @@ public class KenKenSolver {
 	private static void backtracking(int i, int j) {
 		// Tenim solucio
 		if (i==KK.getAlto()) {
-			System.out.println("Solucio");
+			System.out.println("SOLUCIO");
 			trobat = true;
 		}
 		// Continuem provant
@@ -18,7 +18,6 @@ public class KenKenSolver {
 			for (int value=1; value<=KK.getAncho() && !trobat; ++value) {
 				if (KK.checkFila(i,value) && KK.checkCol(j,value)) {
 					KK.setNumero(i, j, value);
-					KK.setNumeroRegio(i, j, value);
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
 					if ((r.estaCompleta() && r.checkRegion()) || !(r.estaCompleta())) {
 						if (j+1==KK.getAncho()) {
@@ -32,7 +31,6 @@ public class KenKenSolver {
 			}
 			if (!trobat){
 				KK.getCella(i, j).borra();
-				KK.setNumeroRegio(i, j, -1);
 			}
 		}	
 	}

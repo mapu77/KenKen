@@ -42,7 +42,7 @@ public class KenKenGenerator {
 	
 	private boolean contains(Vector<Cella> v, Cella c) {
 		for (int i=0; i<v.size(); ++i) {
-			if (v.get(i).equals(c)) return true;
+			if (v.get(i).getX()==c.getX() && v.get(i).getY()==c.getY()) return true;
 		}
 		return false;
 	}
@@ -54,7 +54,7 @@ public class KenKenGenerator {
 				if (K.nRegio(i,j) == -1) { // no te regio
 					Stack<Cella> s = new Stack<Cella>();
 					Vector<Cella> vc = new Vector<Cella>();
-					probStop = 0.05;
+					probStop = 0.1;
 					Cella c = K.getCella(i,j);
 					vc.add(c);
 					s.push(c);
@@ -158,7 +158,8 @@ public class KenKenGenerator {
 			int nc = sn.nextInt();
 			for (int j=0; j<nc; ++j) {
 				System.out.println("Cordenades cel.la " + j + " de la regio " + i);
-				VC.add(new Cella(sn.nextInt(),sn.nextInt()));
+				Cella c = K.getCella(sn.nextInt(), sn.nextInt());
+				VC.add(c);
 			}
 			System.out.println("Operacio de la regio " + i);
 			String op = sn.next();
@@ -167,7 +168,6 @@ public class KenKenGenerator {
 			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
 			K.afegeixRegio(r);
 		}
-		sn.close();
 		return K;
 	}
 	

@@ -70,11 +70,11 @@ public class KenKenGenerator {
 				if (K.nRegio(i,j) == -1) { // no te regio
 					Stack<Cella> s = new Stack<Cella>();
 					Vector<Cella> vc = new Vector<Cella>();
-					probStop = 0.1;
+					probStop = 0.05;
 					Cella c = K.getCella(i,j);
 					vc.add(c);
 					s.push(c);
-					while (new Random().nextDouble() > probStop) { //No parem
+					while ((new Random().nextDouble() > probStop) && vc.size() <= 5) { //No parem
 						int rand = new Random().nextInt(4);
 						int ii = s.peek().getX()+Y[rand];
 						int jj = s.peek().getY()+X[rand];
@@ -96,26 +96,6 @@ public class KenKenGenerator {
 		}
 	}
 	
-	private static int calculaRegioSuma(RegioKenKen r) {
-		int res = 0;
-		for (int i=0; i<r.getNumCeldas(); ++i) {
-			res += r.getCella(i).getNumero();
-		}
-		return res;
-	}
-	
-	private static int calculaRegioResta(RegioKenKen r) {
-		return Math.abs(r.getCella(0).getNumero() - r.getCella(1).getNumero());
-	}
-	
-	private static int calculaRegioMult(RegioKenKen r) {
-		int res = 1;
-		for (int i=0; i<r.getNumCeldas(); ++i) {
-			res *= r.getCella(i).getNumero();
-		}
-		return res;
-	}
-	
 	public void generateRegionSolution() {
 		for (int i=0; i<K.getNRegio(); ++i) {
 			RegioKenKen r = K.getRegio(i);
@@ -125,32 +105,37 @@ public class KenKenGenerator {
 				r.setResult(r.getNumero(0));
 				break;
 			case 2:
-				int op1 = r.getCella(0).getNumero()/r.getCella(1).getNumero();
-				int op2 = r.getCella(1).getNumero()/r.getCella(0).getNumero();
-				if (op1 >= 1 && r.getCella(0).getNumero()%r.getCella(1).getNumero() == 0) {
+				int res1 = r.getCella(0).getNumero();
+				int res2 = r.getCella(1).getNumero();
+				int op1 = res1/res2;
+				int op2 = res2/res1;
+				if (op1 >= 1 && res1/res2 == 0) {
 					r.setOperation("/");		
 					r.setResult(op1);
 				}
-				else if (op1 < 1 && r.getCella(1).getNumero()%r.getCella(0).getNumero()==0) {
+				else if (op1 < 1 && res2/res1 ==0) {
 					r.setOperation("/");		
 					r.setResult(op2);
 				}
 				else {
 					r.setOperation("-");
-					r.setResult(calculaRegioResta(r));
+					r.setResult(r.calculaRegioResta());
 				}
 				break;
-			default:
-				boolean suma = new Random().nextBoolean();
+			case 3: case 4:
+				Boolean suma = new Random().nextBoolean();
 				if (suma) {
 					r.setOperation("+");
-					r.setResult(calculaRegioSuma(r));
+					r.setResult(r.calculaRegioSuma());
 				}
 				else {
 					r.setOperation("*");
-					r.setResult(calculaRegioMult(r));
+					r.setResult(r.calculaRegioMult());
 				}
 				break;
+			default:
+				r.setOperation("+");
+				r.setResult(r.calculaRegioSuma());
 			}
 		}
 		

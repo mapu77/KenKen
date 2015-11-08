@@ -25,18 +25,62 @@ public class RegioKenKen extends Regio {
 		this.id = -1;
 	}
 	
- 	public void Relaciona(int i, Cella c) {
-		Vector<Cella> aux = this.getvCellas();
-		aux.add(i,c);
-		this.setvCellas(aux);
-	}
-	
 	public boolean estaCompleta() {
 		for (int i=0; i<this.getNumCeldas(); ++i) {
 			if (this.getCella(i).estaVacia()) return false;
 		}
 		return true;
  	}
+	
+	public int calculaRegioSuma() {
+		int res = 0;
+		for (int i=0; i<getNumCeldas(); ++i) {
+			res += getCella(i).getNumero();
+		}
+		return res;
+	}
+	
+	public int calculaRegioResta() {
+		return Math.abs(getCella(0).getNumero() - getCella(1).getNumero());
+	}
+	
+	public int calculaRegioMult() {
+		int res = 1;
+		for (int i=0; i<getNumCeldas(); ++i) {
+			res *= getCella(i).getNumero();
+		}
+		return res;
+	}
+	
+	public int calculaRegioDiv() {
+		int op1 = getCella(0).getNumero()/getCella(1).getNumero();
+		int op2 = getCella(1).getNumero()/getCella(0).getNumero();
+		return (op1 >= 1) ? op1 : op2;
+	}
+	
+	/* Pre: r està complerta */
+	/* Post: retorna si al aplicar la operacio de r a les celes de r, s'obte el resultat associat a la regio */
+	public boolean checkRegion() {
+		int res;
+		switch (operation) {
+		case "+":
+			res = calculaRegioSuma();
+			break;
+		case "-":
+			res = calculaRegioResta();
+			break;
+		case "*":
+			res = calculaRegioMult();
+			break;
+		case "/":
+			res = calculaRegioDiv();
+			break;
+		default:
+			res = 0;
+		}
+		if (res == this.result) return true;
+		else return false;
+	}
 
 	public int getId() {
 		return id;

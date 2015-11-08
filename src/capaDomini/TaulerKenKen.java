@@ -21,6 +21,22 @@ public class TaulerKenKen extends Tauler {
 		return -1;
 	}
 	
+	/* Retorna si x és un nombre valid per la fila r */
+	public boolean checkFila(int fila, int x) {
+		for (int col=0; col<getAncho(); ++col) {
+			if (getCella(fila, col).getNumero() == x) return false;
+		}
+		return true;
+	}
+	
+	/* Retorna si x és un nombre vàlid per la columna c */
+	public boolean checkCol(int col, int x) {
+		for (int fila = 0; fila < getAlto(); ++fila) {
+			if (getCella(fila, col).getNumero() == x) return false;
+		}
+		return true;
+	}
+	
 	public void afegeixRegio (RegioKenKen r) {
 		VR.add(r);
 	}

@@ -9,10 +9,18 @@ public class Tauler {
 		try {
 			if (m <= 0 || n <= 0) throw (new ExcepcionTamanoIncorrecto());
 			ancho = m; alto = n;
-			creaCeldas();
+			creaCeldasConPosicion();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public int getAncho() {
+		return ancho;
+	}
+	
+	public int getAlto() {
+		return alto;
 	}
 	
 	public int getNumCeldas() {
@@ -80,9 +88,7 @@ public class Tauler {
 	
 	public void setNumero(int x, int y, int val) {
 		try {
-			if ((x < 0 || x >= alto) || (y < 0 || y >= ancho)) {
-				throw (new ExcepcionPosicionFueraRango());
-			}
+			if ((x < 0 || x >= alto) || (y < 0 || y >= ancho)) throw (new ExcepcionPosicionFueraRango());
 			if (val < 0) throw (new ExcepcionValorFueraRango()); //FALTA: mirar valor por arriba
 			if (vCellas.get(x*ancho + y).estaFija()) throw (new ExcepcionNumeroFijo());
 			if (vCellas.get(x*ancho + y).estaBloqueada()) throw (new ExcepcionCasillaBloqueada());
@@ -113,24 +119,16 @@ public class Tauler {
 		}
 	}
 
-	private void creaCeldas() {
+	private void creaCeldasConPosicion() {
     	vCellas = new Vector<Cella>();
         Cella cellaAux = null;
         for (int i = 0; i < alto; ++i) {
-        	for (int j=0; j< ancho; ++j) {
-        		cellaAux = new Cella(i,j);
-        		vCellas.addElement(cellaAux);
-        	}   
+        	for (int j = 0; j < ancho; ++j) {
+        		cellaAux = new Cella(i, j);
+                vCellas.addElement(cellaAux);
+        	}
         }
     }
-	
-	public int getAncho() {
-		return ancho;
-	}
-	
-	public int getAlto() {
-		return alto;
-	}
 	
 	private int ancho;
 	private int alto;

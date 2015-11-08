@@ -1,8 +1,6 @@
 package capaDomini;
 //import java.util.*;
 
-import capaDomini.Tauler;
-
 //per fer el typedef hi ha la opcio enum -> public enum tipoDificultad {trivial, facil, medio, dificil}
 
 public abstract class Joc {

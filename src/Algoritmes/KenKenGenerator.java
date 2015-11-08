@@ -14,22 +14,6 @@ public class KenKenGenerator {
 	
 	public KenKenGenerator() {
 	}
-	
-	/* Retorna si x és un nombre valid per la fila r */
-	private static boolean checkFila(int fila, int x) {
-		for (int col=0; col<K.getAncho(); ++col) {
-			if (K.getCella(fila, col).getNumero() == x) return false;
-		}
-		return true;
-	}
-	
-	/* Retorna si x és un nombre vàlid per la columna c */
-	private static boolean checkCol(int col, int x) {
-		for (int fila = 0; fila < K.getAlto(); ++fila) {
-			if (K.getCella(fila, col).getNumero() == x) return false;
-		}
-		return true;
-	}
 
 	private void backtrackingGenerateNumbers(int i, int j) {
 		if (i == K.getAlto()) {
@@ -37,12 +21,12 @@ public class KenKenGenerator {
 		}
 		else {
 			Vector<Boolean> used = new Vector<Boolean>();
-			for (int k=0; k<=K.getAncho();++k) used.add(k,false); //inicialitzacio used
+			for (int k=0; k<=K.getAncho();++k) used.add(k,false); //initialization used
 			int rand = new Random().nextInt(n)+1;
 			for (int ii=0; ii<K.getAncho() && !fi; ++ii) {
 				while (used.get(rand)) { rand = new Random().nextInt(n)+1; }
 				used.set(rand, true);
-				if (checkFila(i,rand) && checkCol(j,rand)) {
+				if (K.checkFila(i,rand) && K.checkCol(j,rand)) {
 					K.setNumero(i, j, rand);
 					if (j+1 == K.getAncho()) {
 						backtrackingGenerateNumbers(i+1,0);

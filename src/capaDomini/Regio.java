@@ -95,15 +95,6 @@ public class Regio {
 			System.out.println(e.getMessage());
 		}
     }
-    
-
-    public Vector<Cella> getvCellas() {
-		return vCellas;
-	}
-
-	public void setvCellas(Vector<Cella> vCellas) {
-		this.vCellas = vCellas;
-	}
      
     private int tam;
     private Vector<Cella> vCellas;

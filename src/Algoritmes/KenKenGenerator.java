@@ -58,7 +58,7 @@ public class KenKenGenerator {
 					Cella c = K.getCella(i,j);
 					vc.add(c);
 					s.push(c);
-					while ((new Random().nextDouble() > probStop) && vc.size() <= 5) { //No parem
+					while ((new Random().nextDouble() > probStop) && vc.size() <= 3) { //No parem
 						int rand = new Random().nextInt(4);
 						int ii = s.peek().getX()+Y[rand];
 						int jj = s.peek().getY()+X[rand];
@@ -93,11 +93,11 @@ public class KenKenGenerator {
 				int res2 = r.getCella(1).getNumero();
 				int op1 = res1/res2;
 				int op2 = res2/res1;
-				if (op1 >= 1 && res1/res2 == 0) {
+				if (op1 >= 1 && res1%res2 == 0) {
 					r.setOperation("/");		
 					r.setResult(op1);
 				}
-				else if (op1 < 1 && res2/res1 ==0) {
+				else if (op1 < 1 && res2%res1 ==0) {
 					r.setOperation("/");		
 					r.setResult(op2);
 				}
@@ -106,7 +106,7 @@ public class KenKenGenerator {
 					r.setResult(r.calculaRegioResta());
 				}
 				break;
-			case 3: case 4:
+			case 3:
 				Boolean suma = new Random().nextBoolean();
 				if (suma) {
 					r.setOperation("+");

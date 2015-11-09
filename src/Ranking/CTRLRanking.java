@@ -2,11 +2,11 @@ package Ranking;
 
 import java.io.*;
 import java.util.*;
-import persistencia.*;
+import capaPersistencia.*;
 
 public class CTRLRanking {
 		
-	public static void carregar(Ranking r, String arxiu) {
-		r.Info = CtrlPersistencia.LoadTable("./data/" + arxiu + ".txt");
+	public static void carregar(Ranking r, String arxiu) throws IOException {
+		r.Info = CtrlPersistencia.loadTable("./data/" + arxiu + ".txt");
 	}
 }

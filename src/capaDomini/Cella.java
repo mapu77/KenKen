@@ -17,11 +17,6 @@ public class Cella {
 		bloqueada = false;
 	}
 	
-	public boolean equals(Cella c) {
-		if (this.x == c.getX() && this.y == c.getY()) return true;
-		return false;
-	}
-	
 	// si la celda est� vac�a, devuelve -1
 	public int getNumero() {
 		return numero;

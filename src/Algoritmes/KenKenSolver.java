@@ -17,7 +17,7 @@ public class KenKenSolver {
 		}
 	}
 	
-	private static void backtracking(int i, int j) {
+	private static void backtrackingIA(int i, int j) {
 		// Tenim solucio
 		if (i==KK.getAlto()) {
 			System.out.println("SOLUCIO");
@@ -27,18 +27,47 @@ public class KenKenSolver {
 		else {
 			if (KK.getCella(i, j).estaBloqueada()) {
 				if (j+1==KK.getAncho()) {
-					backtracking(i+1,0);
+					backtrackingIA(i+1,0);
 				}
 				else {
-					backtracking(i,j+1);
+					backtrackingIA(i,j+1);
 				}
 			}
 			else {
+				for (int value=1; value<=KK.getAncho() && !trobat; ++value) {
+					if (KK.checkFila(i,value) && KK.checkCol(j,value)) {
+						KK.setNumero(i, j, value);
+						RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
+						if ((r.estaCompleta() && r.checkRegionC()) || (!r.estaCompleta() && r.checkRegionI())) {
+							if (j+1==KK.getAncho()) {
+								backtrackingIA(i+1,0);
+							}
+							else {
+								backtrackingIA(i,j+1);
+							}
+						}
+					}
+				}
+				if (!trobat){
+					KK.getCella(i, j).borra();
+				}
+			}
+		}	
+	}
+	
+	private static void backtracking(int i, int j) {
+		// Tenim solucio
+		if (i==KK.getAlto()) {
+			System.out.println("SOLUCIO");
+			trobat = true;
+		}
+		// Continuem provant
+		else {
 			for (int value=1; value<=KK.getAncho() && !trobat; ++value) {
 				if (KK.checkFila(i,value) && KK.checkCol(j,value)) {
 					KK.setNumero(i, j, value);
 					RegioKenKen r = KK.getRegio(KK.nRegio(i,j));
-					if ((r.estaCompleta() && r.checkRegionC()) || (!r.estaCompleta() && r.checkRegionI())) {
+					if ((r.estaCompleta() && r.checkRegionC()) || !r.estaCompleta()) {
 						if (j+1==KK.getAncho()) {
 							backtracking(i+1,0);
 						}
@@ -51,7 +80,6 @@ public class KenKenSolver {
 			if (!trobat){
 				KK.getCella(i, j).borra();
 			}
-			}
 		}	
 	}
 	
@@ -59,6 +87,6 @@ public class KenKenSolver {
 		KK = T;
 		trobat = false;
 		IA();
-		backtracking(0, 0);
+		backtrackingIA(0, 0);
 	}
 }

@@ -30,7 +30,7 @@ public class CtrlUser
 	protected static void carrega() throws Exception
     {
         try {
-            ArrayList<ArrayList<String>> users = CtrlPersistencia.loadTable("users");  //cal definir el path!
+            ArrayList<ArrayList<String>> users = CtrlPersistencia.loadTable("data/Usuaris.txt");  //cal definir el path!
             for (ArrayList<String> fila : users)
             {
                 String nom = fila.get(0);

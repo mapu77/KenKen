@@ -2,6 +2,7 @@ package Ranking;
 
 import java.util.*;
 import Dificultat.*;
+import capaDomini.CtrlUser;
 
 public class RankingPersonal extends Ranking {
 	private String usuari;
@@ -33,12 +34,12 @@ public class RankingPersonal extends Ranking {
 		avgPistes = avgPistes/(double)jocsResolts;
 	}
 	
-	public RankingPersonal(String usuari) {
+	public RankingPersonal(String usuari) throws Exception {
 		System.out.println("Comprovant usuari...");
-		if (stubCTRLUser.getUser(usuari) != null) {
+		if (CtrlUser.getUsuari(usuari) != null) {
 			this.usuari = usuari;
 			System.out.println("Carregant informació...");
-			stubCTRLRanking.carregar(this, "Partides");
+			CTRLRanking.carregar(this, "Partides");
 			System.out.println("Generant rànquing...");
 			this.inicialitza();
 		}

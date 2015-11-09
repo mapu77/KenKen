@@ -168,6 +168,7 @@ public class KenKenGenerator {
 			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
 			K.afegeixRegio(r);
 		}
+		sn.close();
 		return K;
 	}
 	

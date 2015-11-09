@@ -2,8 +2,6 @@ package Ranking;
 
 import java.util.*;
 
-import Dificultat.Dificultat;
-
 public class driverRT {
 
 	public static void main(String[] args) {
@@ -29,11 +27,12 @@ public class driverRT {
 						System.out.println("S'estan visualitzant "+ RT.getnEntrades()+" entrades");	
 					}
 					else if (opt2 == 2) {
+						System.out.println("Dificultat: " +d);
 						for(int i=0; i<n;i++){
-								System.out.println(d + ": " + RT.getTempsJugador().get(i).getUser() + RT.getTempsJugador().get(i).getTemps());
+								System.out.println(i+1 +"a posició " + RT.getTempsJugador().get(i).getUser()+ "  " + RT.getTempsJugador().get(i).getTemps());
 						}
 					}	
-					System.out.println("Que vols consultar?");
+					System.out.println("\nQue vols consultar?");
 					System.out.println("Opcions:");
 					System.out.println("1: Consultar el nombre d'entrades visibles");
 					System.out.println("2: Consultar temps dels jugadors");

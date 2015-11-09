@@ -35,7 +35,9 @@ public class RegioKenKen extends Regio {
 	public int calculaRegioSuma() {
 		int res = 0;
 		for (int i=0; i<getNumCeldas(); ++i) {
-			res += getCella(i).getNumero();
+			if (! getCella(i).estaVacia()) {
+				res += getCella(i).getNumero();
+			}
 		}
 		return res;
 	}
@@ -47,7 +49,9 @@ public class RegioKenKen extends Regio {
 	public int calculaRegioMult() {
 		int res = 1;
 		for (int i=0; i<getNumCeldas(); ++i) {
-			res *= getCella(i).getNumero();
+			if (! getCella(i).estaVacia()) {
+				res *= getCella(i).getNumero();
+			}
 		}
 		return res;
 	}
@@ -60,7 +64,21 @@ public class RegioKenKen extends Regio {
 	
 	/* Pre: r està complerta */
 	/* Post: retorna si al aplicar la operacio de r a les celes de r, s'obte el resultat associat a la regio */
-	public boolean checkRegion() {
+	public boolean checkRegionC() {
+		int res = resCheck();
+		if (res == this.result) return true;
+		else return false;
+	}
+	
+	public boolean checkRegionI() {
+		if (operation=="+" || operation=="*") {
+			int res = resCheck();
+			if (res > result) return false;
+		}
+		return true;
+	}
+	
+	private int resCheck () {
 		int res;
 		switch (operation) {
 		case "+":
@@ -78,8 +96,7 @@ public class RegioKenKen extends Regio {
 		default:
 			res = 0;
 		}
-		if (res == this.result) return true;
-		else return false;
+		return res;
 	}
 
 	public int getId() {

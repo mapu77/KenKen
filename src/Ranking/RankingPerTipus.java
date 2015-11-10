@@ -14,11 +14,11 @@ public class RankingPerTipus extends Ranking{
 			return t1.getTemps().compareTo(t2.getTemps());
 		}
 	}
-	public RankingPerTipus (String d, int nEntrades){
+	public RankingPerTipus (String d, int nEntrades) throws Exception{
 		RankingPerTipus.tempsJugador = new ArrayList<Tupla>();
 		this.nEntrades=nEntrades;
 		if(Dificultat.esValida(d)){ //Validem que la dificultat introduida sigui valida
-			stubCTRLRanking.carregar(this, "Partides");
+			CTRLRanking.carregar(this, "Partides");
 			for (int j=0; j<Info.size(); j++){ //Per cada linia d'info
 				ArrayList<String> s = Info.get(j);
 				if (s.get(2).equals(d)){ //Selecciona la linia de la dificultat seleccionada per l'usuari

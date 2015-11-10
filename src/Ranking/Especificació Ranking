@@ -73,20 +73,24 @@ public class RankingPersonal extends Ranking {
 	public Double getBestTime(String dif);
 }
 
-/* Un rànquing per tipus consisteix en un conjunt d’estadístiques (jugador, temps) ordenades 
+/* Un ranquing per tipus consisteix en un conjunt d’estadístiques (jugador, temps) ordenades 
 i separades segons la dificultat. De cara a afrontar donar molta informació, 
 només es mostraran un subconjunt d’aquestes estadístiques. */
 public class RankingPerTipus extends Ranking {
-	// Nombre límit d'entrades a mostrar
+	// Nombre limit d'entrades a mostrar
 	private int nEntrades;
 	
-	// Dificultat del joc
-	private String d;
+	//Tupla de Usuaris i millors temps
+	private static ArrayList<Tupla> tempsJugador;
 	
 	/* Constructor de rànquing per tipus amb paràmetres.
 	<d> indica la dificultat del joc del qual es vol crear el rànquing
 	<entrades> és el nombre d’entrades que es volen visulitzar */
 	public RankingPerTipus (Dificultat d, int entrades);
+	
+	/* Comparador que implementa la classe Tupla per a l'ordenaci�
+	de la llista de Jugadors,Temps */
+	public class CustomComparator implements Comparator<Tupla>
 	
 	/* Modificadora del nombre d'entrades */
 	public void setNEntrades (int n);
@@ -94,11 +98,6 @@ public class RankingPerTipus extends Ranking {
 	/* Consultora del nombre d'entrades visibles */
 	public int getNEntrades ();
 	
-	/* Modificadora de la dificultat a mostrar
-	public void setDificultat (Dificultats d);
-	
-	/* Consultora de la dificultat */
-	public Dificultat getDificultat ();
 }
 
 /* Un rànquing general consisteix en un seguit d'estadístiques generals

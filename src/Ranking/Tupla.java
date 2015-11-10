@@ -1,13 +1,13 @@
 package Ranking;
 
-public class Tupla {
+public class Tupla { //Tupla d'Usuari + Temps per a RankingPerTipus
 	private String user;
 	private Double temps;
 	
 	public Tupla(){
 	}
 	
-	public Tupla(String user, Double temps){
+	public Tupla(String user, Double temps){ 
 		this.user=user;
 		this.temps=temps;
 	}

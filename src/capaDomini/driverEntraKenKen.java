@@ -44,6 +44,10 @@ public class driverEntraKenKen {
 				KS.backtrackingSolver(K);
 				K.PrintaKenKen();
 			}
+			if (op2 == 2) {
+				KenKenUserSolver KUS = new KenKenUserSolver();
+				KUS.usersolver(K);				
+			}
 			System.out.println("KenKen");
 			System.out.println("Options:");
 			System.out.println("0. Sortir");

@@ -4,7 +4,30 @@ import java.util.*;
 import capaDomini.Utils.*;
 
 public class KenKenUserSolver {
-
+	
+	private static void findcellavacia(TaulerKenKen T, Cella c) {
+		int randx = new Random().nextInt(T.getAlto());
+		int randy = new Random().nextInt(T.getAlto());
+		if (!(T.estaVacia(randx,randy))) { findcellavacia(T,c); }
+		else {
+			c.setX(randx);
+			c.setY(randy);
+		}
+	}
+	
+	private static void KenKenClone(TaulerKenKen T, TaulerKenKen K) {
+		for (int i = 0; i < T.getNRegio(); i++) {
+			Vector<Cella> v = new Vector<Cella>();
+			for (int j =  0; j < T.getRegio(i).getNumCeldas(); j++) {
+				Cella C = new Cella(T.getRegio(i).getCella(j).getX(),T.getRegio(i).getCella(j).getY());
+				v.add(C);
+			}
+			RegioKenKen R = new RegioKenKen(T.getRegio(i).getNumCeldas(),v, T.getRegio(i).getOperation(), 
+					T.getRegio(i).getResult(),i);
+			K.afegeixRegio(R);
+		}
+	}
+	
 	public void usersolver(TaulerKenKen T) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Opcions");
@@ -16,6 +39,7 @@ public class KenKenUserSolver {
 		System.out.println("6.Reiniciar partida");
 		System.out.println("0. Sortir");
 		int option;
+		int pistes_demanades = 0;
 		Stack<Cella> s = new Stack<Cella>();
 		while ((option = sn.nextInt())!= 0) {
 			switch (option) {
@@ -61,15 +85,24 @@ public class KenKenUserSolver {
 					T.PrintaKenKen();
 				}
 				break;
-			case 3:	//no funciona -> clonar taulell
-				int randx = new Random().nextInt(T.getAlto());
-				int randy = new Random().nextInt(T.getAlto());
-				while (!(T.getCella(randx, randy).estaVacia()));
-				TaulerKenKen K = T;
-				KenKenSolver KS = new KenKenSolver();
-				KS.backtrackingSolver(K);
-				T.setNumero(randx, randy, K.getNumero(randx, randy));
-				T.PrintaKenKen();
+			case 3:	//funciona
+				if (T.getNumCeldasRellenas() < T.getNumCeldas()) {
+					if (pistes_demanades < T.getAlto()-2) {
+						TaulerKenKen K = new TaulerKenKen(T.getAlto());
+						KenKenClone(T,K);
+						KenKenSolver KS = new KenKenSolver();
+						KS.backtrackingSolver(K);
+						Cella ret = new Cella();
+						findcellavacia(T,ret);
+						System.out.println("Pista a les coordenades (" + ret.getX() + "," + ret.getY() + ") amb valor " 
+								+ K.getNumero(ret.getX(), ret.getY()));
+						T.setNumero(ret.getX(), ret.getY(), K.getNumero(ret.getX(), ret.getY()));
+						T.PrintaKenKen();
+						++pistes_demanades;
+					}
+					else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
+				}
+				else { System.out.println("El taulell ja està ple"); }
 				break;
 			case 4:
 				break;
@@ -78,11 +111,13 @@ public class KenKenUserSolver {
 			case 6:	//funciona
 				for (int i = 0; i < T.getAlto(); i++) {
 					for (int j = 0; j < T.getAncho(); j++) {
-						if (!(T.getCella(i, j).estaVacia())) 
+						if (!(T.getCella(i, j).estaVacia())) {
 							T.borra(i, j);
+						}
 					}
 				}
 				T.PrintaKenKen();
+				pistes_demanades = 0;
 				break;
 			}
 			System.out.println("Opcions");

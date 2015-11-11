@@ -3,7 +3,10 @@ package capaDomini.Utils;
 import java.util.*;
 import capaPersistencia.*;
 import java.io.*;
+import capaDomini.Usuari.CtrlUser;
+import capaDomini.Usuari.User;
 import capaDomini.*;
+import capaDomini.Ranking.CTRLRanking;
 
 public class Kenken extends Joc {
 	
@@ -11,25 +14,24 @@ public class Kenken extends Joc {
 		System.out.print("OPCIONS \n"
 				+ " 0 Sortir \n"
 				+ " 1 Crear Usuari \n"
-				+ " 2 Accedir amb Usuari creat");
+				+ " 2 Accedir amb Usuari creat \n");
 	}
 	public static void menuPrincipal(){
-		System.out.print("MENÚ PRINCIPAL \n"
+		System.out.print("MENU PRINCIPAL \n"
 				+ " 0 Sortir \n"
-				+ " 1 Crear Kenken"
-				+ " 2 Jugar al Kenken"
-				+ " 3 Gestió d'Usuari"
-				+ " 4 Consultar Ranking"
-				);
+				+ " 1 Crear Kenken \n"
+				+ " 2 Jugar al Kenken \n"
+				+ " 3 Gestio d'Usuari \n"
+				+ " 4 Consultar Ranking \n");
 	}
 	public static void menuKenken(){
-		System.out.print("MENÚ KENKEN \n"
+		System.out.print("MENU KENKEN \n"
 				+ " 0 Sortir \n"
 				+ " 1 Crear Kenken per usuari"
 				+ " 2 Crear Kenken per parametre");
 	}
 	public static void menuGestioUsuari(){
-		System.out.print("GESTIÓ USUARI \n"
+		System.out.print("GESTIO USUARI \n"
 				+ " 0 Sortir \n"
 				+ " 1 Modificar usuari"
 				+ " 2 Modificar contrasenya");
@@ -100,7 +102,7 @@ public class Kenken extends Joc {
 		System.out.println("Introdueix la teva contrasenya");
 		String password2= sn.next();
 			if(password2.equals(password)){
-				System.out.println("Què vols modificar? \n"
+				System.out.println("Que vols modificar? \n"
 						+ " 1 Modificar el nom"
 						+ " 2 Modificar contrasenya");
 				int opt=sn.nextInt();
@@ -132,7 +134,7 @@ public class Kenken extends Joc {
 					CtrlUser.end();
 					}
 					else{
-						System.out.println("Error: Opció no valida");
+						System.out.println("Error: Opcio no valida");
 					}
 					}
 		
@@ -141,8 +143,82 @@ public class Kenken extends Joc {
 	public static void crearKenkenUser(){
 		
 	}
-	public static void main(String[] args) {
+	public static void crearKenkenParam(){
 		
+	} 
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int opt = -1;
+		CtrlUser ctrlu = new CtrlUser();
+		
+		while (opt != 0){
+			menuIntro();
+			opt = sc.nextInt();
+			switch (opt){
+				case 1: //Crear Usuari
+					crearUsuari(ctrlu, sc);
+					System.out.println("Usuari registrat correctament \n");
+					System.out.println("Torna a introduir les teves dades per a continuar \n");
+					accedirAmbUsuari(ctrlu, sc);
+					System.out.println("Benvingut!");
+				break;
+				case 2: //Accedir amb usuari
+					accedirAmbUsuari(ctrlu, sc);
+					System.out.println("Benvingut!");
+				break;	
+			}
+			menuPrincipal();
+			opt = sc.nextInt();
+			switch (opt){
+			case 1: //Crear Kenken
+				menuKenken();
+				opt = sc.nextInt();
+				while(opt!=0){
+					switch(opt){
+					case 1: //Crear Kenken per usuari
+						break;
+					case 2: //Crear Kenken per paramatres
+						break;
+					}
+				}
+				break;
+			case 2: //Jugar al Kenken
+				menuJugaKenken();
+				opt = sc.nextInt();
+				while(opt!=0){
+					switch(opt){
+					case 1: //Continuar la partida
+						break;
+					case 2: //Seleccionar Kenken ja creat
+						break;
+					case 3: //Generar Kenken aleatori
+						break;
+					}
+				}
+				break;
+			case 3: //Gestio d'Usuari
+			//	gestionarUsuari(ctrlu, sc);
+				break;
+			case 4: //Consultar ranking
+				menuRanking();
+				opt = sc.nextInt();
+				while(opt!=0){
+					switch (opt){
+					case 1: //Ranking general
+					
+						break;
+					case 2: //Ranking per tipus
+						
+						break;
+					case 3: //Ranking personal
+						
+						break;
+					}
+					
+				}
+				default: break;
+			}
+		}
 
 	}
 

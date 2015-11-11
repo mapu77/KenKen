@@ -38,10 +38,10 @@ public class KenKenUserSolver {
 		System.out.println("5.Guardar partida");
 		System.out.println("6.Reiniciar partida");
 		System.out.println("0. Sortir");
-		int option;
+		int option = sn.nextInt();
 		int pistes_demanades = 0;
 		Stack<Cella> s = new Stack<Cella>();
-		while ((option = sn.nextInt())!= 0) {
+		while (option!= 0 || option != 5) {
 			switch (option) {
 			case 1:	//funciona
 				System.out.println("Indica les coordenades(format: x y)");
@@ -64,7 +64,7 @@ public class KenKenUserSolver {
 
 				}
 				else {
-					System.out.println("Aquesta celï¿½la ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
+					System.out.println("Aquesta cel·la ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
 					System.out.println("1. Si // 2. No");
 					if (sn.nextInt() == 1) {
 						s.addElement(copia);
@@ -88,6 +88,7 @@ public class KenKenUserSolver {
 			case 3:	//funciona
 				if (T.getNumCeldasRellenas() < T.getNumCeldas()) {
 					if (pistes_demanades < T.getAlto()-2) {
+						
 						TaulerKenKen K = new TaulerKenKen(T.getAlto());
 						KenKenClone(T,K);
 						KenKenSolver KS = new KenKenSolver();
@@ -105,8 +106,12 @@ public class KenKenUserSolver {
 				else { System.out.println("El taulell ja està ple"); }
 				break;
 			case 4:
-				break;
-			case 5:
+				/* 
+				 * Es para el temps de la partida
+				 * System.out.println("Prem 1 per continuar la partida");
+				 * while (sn.nextInt()!= 1){}
+				 * Es torna a iniciar el temps de la partida
+				 */
 				break;
 			case 6:	//funciona
 				for (int i = 0; i < T.getAlto(); i++) {
@@ -128,7 +133,15 @@ public class KenKenUserSolver {
 			System.out.println("5.Guardar partida");
 			System.out.println("6.Reiniciar partida");
 			System.out.println("0. Sortir");
+			option = sn.nextInt();
 		}
+		if (option == 5) {
+		/*
+		 * Es guarda l'estat actual de la partida (valors introduits i temps jugat)
+		 * P.guardarKenKenKen();
+		 */
+		}
+		else {System.out.println("Estas sortint de la partida..."); }
 		sn.close();
 	}
 }

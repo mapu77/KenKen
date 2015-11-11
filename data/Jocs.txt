@@ -1,3 +1,16 @@
-/* Format Jocs */
+3x3:
+1 /Taulells/3x3/1.txt
 
-IdJoc path("./Taulells/nom_arxiu.txt")
+4x4:
+1 /Taulells/4x4/1.txt
+
+5x5:
+
+6x6:
+1 /Taulells/6x6/1.txt
+
+7x7:
+
+8x8:
+
+9x9:

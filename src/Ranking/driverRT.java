@@ -32,9 +32,9 @@ public class driverRT {
 					else if (opt2 == 2) {
 						System.out.println("Dificultat: " +d);
 						int max=RT.getTempsJugador().size();
-						for(int i=0; i<n;i++){
-							if(i<max)
-								System.out.println(i+1 +"a posició " + RT.getTempsJugador().get(i).getUser()+ "  " + RT.getTempsJugador().get(i).getTemps());
+						for(int i=0; i<n && i<max;i++){
+								System.out.println(i+1 +"a posició " + RT.getTempsJugador().get(i).getUser()+ "  " + 
+						                           RT.getTempsJugador().get(i).getTemps()+ "  " + RT.getTempsJugador().get(i).getId());
 							}
 					}	
 					System.out.println("\nQue vols consultar?");

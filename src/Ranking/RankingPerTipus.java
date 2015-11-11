@@ -23,10 +23,12 @@ public class RankingPerTipus extends Ranking{
 				ArrayList<String> s = Info.get(j);
 				if (s.get(2).equals(d)){ //Selecciona la linia de la dificultat seleccionada per l'usuari
 					String user = new String(s.get(0)); //Agafa l'user
-					double time = Double.parseDouble(s.get(3)); //Agafa el temps
+					double time = Double.parseDouble(s.get(3));
+					String id = new String(s.get(1));
 					Tupla aux = new Tupla();
 					aux.setTemps(time);
 					aux.setUser(user); //Ho coloquem a la tupla
+					aux.setId(id);
 					RankingPerTipus.tempsJugador.add(aux); //Ho afegim a ArrayList
 				}
 			Collections.sort(tempsJugador, new CustomComparator()); //Ordenem ArrayList

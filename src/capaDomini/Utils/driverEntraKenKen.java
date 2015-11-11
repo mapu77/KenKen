@@ -26,7 +26,20 @@ public class driverEntraKenKen {
 				break;
 			case 2:
 				System.out.println("Generador per l'usuari");
-				K = KG.generateKenKenbyUser();
+				System.out.println("1-Generador KenKen per l'usuari");
+				System.out.println("2-Generar KenKen a partir s'una serie de parametres:");
+				option = sn.nextInt();
+				switch (option) {
+				case 1:
+					K = KG.generateKenKenbyUser();
+					break;
+				case 2:
+					K = KG.generateKenKenbyParameters();
+					break;
+				default:
+					K = new TaulerKenKen(0);
+					break;
+				}
 				K.PrintaRegioKenKen();
 				break;
 			default:

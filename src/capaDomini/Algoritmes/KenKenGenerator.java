@@ -47,6 +47,24 @@ public class KenKenGenerator {
 		return false;
 	}
 	
+	private void regions1C (int iniX) {
+		int nr = -2;
+		for (int i=0; i<iniX; ++i) {
+			int x = new Random().nextInt(n);
+			int y = new Random().nextInt(n);
+			while (K.nRegio(x, y) != -1) {
+				x = new Random().nextInt(n);
+				y = new Random().nextInt(n);
+			}
+			Cella c = K.getCella(x,y);
+			Vector<Cella> vc = new Vector<Cella>();
+			vc.add(c);
+			RegioKenKen r = new RegioKenKen(1,vc,"+",c.getNumero(),nr);
+			--nr;
+			K.afegeixRegio(r);
+		}
+	}
+	
 	private void generateRegions() {
 		int reg_count = 0;
 		for (int i=0; i<K.getAncho(); ++i) {
@@ -54,7 +72,7 @@ public class KenKenGenerator {
 				if (K.nRegio(i,j) == -1) { // no te regio
 					Stack<Cella> s = new Stack<Cella>();
 					Vector<Cella> vc = new Vector<Cella>();
-					probStop = 0.1;
+					probStop = 0.0;
 					Cella c = K.getCella(i,j);
 					vc.add(c);
 					s.push(c);
@@ -74,6 +92,10 @@ public class KenKenGenerator {
 					RegioKenKen r = new RegioKenKen(vc.size(), vc, "+", 0, reg_count);
 					++reg_count;
 					K.afegeixRegio(r);
+				}
+				else if (K.nRegio(i, j) < -1) {
+					K.getRegioIJ(i, j).setId(reg_count);
+					++reg_count;
 				}
 					
 			}
@@ -141,7 +163,19 @@ public class KenKenGenerator {
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyParameters() {
+	public TaulerKenKen generateKenKenbyParameters() { //(int size, int iniX, String[] vOps) {
+		Scanner sn = new Scanner(System.in);
+		fi = false;
+		System.out.println("Mida del KenKen:");
+		n = sn.nextInt();
+		K = new TaulerKenKen(n);
+		backtrackingGenerateNumbers(0,0);
+		System.out.println("Nombre inicial minim de regions inicials d'una cel.la:");
+		int iniX = sn.nextInt();
+		regions1C (iniX);
+		generateRegions();
+		K.OrdenaVR();
+		//generateRegionSolutionByOps (vOps);
 		return K;
 	}
 	

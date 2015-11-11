@@ -51,6 +51,18 @@ public class TaulerKenKen extends Tauler {
 		return VR.size();
 	}
 	
+	public RegioKenKen getRegioIJ (int x, int y) {
+		for (int i=0; i<VR.size(); ++i) {
+			RegioKenKen r = VR.get(i);
+			for (int j=0; j<r.getNumCeldas(); ++j) {
+				if (r.getCella(j).getX()==x && r.getCella(j).getY()==y) {
+					return r;
+				}
+			}
+		}
+		return new RegioKenKen(0);
+	}
+	
 	public void setNumeroRegio (int x, int y, int value) {
 		for (int i=0; i<VR.size(); ++i) {
 			for (int j=0; j<this.getRegio(i).getNumCeldas(); ++j) {
@@ -60,6 +72,16 @@ public class TaulerKenKen extends Tauler {
 				}
 			}
 		}
+	}
+	
+	private class RegioComparator implements Comparator<RegioKenKen> {
+		public int compare (RegioKenKen r1, RegioKenKen r2) {
+			return Integer.compare(r1.getId(), r2.getId());
+		}
+	}
+	
+	public void OrdenaVR () {
+		Collections.sort(VR, new RegioComparator());
 	}
 	
 	public void PrintaKenKen () {

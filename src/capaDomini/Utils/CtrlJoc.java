@@ -1,7 +1,8 @@
 package capaDomini.Utils;
 
 public class CtrlJoc {
-
+	
+	
 	public CtrlJoc() {
 		
 	}

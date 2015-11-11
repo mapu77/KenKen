@@ -6,55 +6,34 @@ import capaDomini.Dificultat.Dificultat;
 public class Partida {
 	private String usuari;
 	private String idJoc; 		//Identificador del tauler
-	private String D;	//Dificultat tauler
-	private int pistes;
-	private long initialTime;
-	private long currentTime = 0;
-	private TaulerKenKen K;
-	private CtrlPartida CP;
+	private String D;			//Dificultat tauler
+	private int pistes = 0;
 	private CtrlJoc CJ;
+	private TaulerKenKen K;
 	
 	public Partida() {
 		
 	}
 	
-	/* Creador partda amb KenKen aleatori */
+	/* Creador partida amb KenKen aleatori */
 	public Partida(String u, String d) {
-		CP = new CtrlPartida();
 		CJ = new CtrlJoc();
 		this.D = d;
-		int n;
-		n = Dificultat.toInt(d);
+		int n = Dificultat.toInt(d);
 		K = new KenKenGenerator().generateRandomly(n);
 	}
 	
-	public Partida(String u, String d, String id) {
-		CP = new CtrlPartida();
+	public Partida(String u, String d, String id, boolean saved) {
 		CJ = new CtrlJoc();
 		this.D = d;
+		if (!saved) {
+			K = CJ.llegeixTauler(id,d);
+		}
+		else {
+			
+		}
 	}
 	
-	/* Guarda a la BD una partida acabada */
-	private void save() {
-		CP.save(this);
-	}
-
-	/* Guarda a la BD l'estat del KenKen */
-	public void saveKenKen() {
-	
-	}
-	
-	public void play() {
-		this.initialTime = System.nanoTime();
-	}
-
-	public void stop() {
-		this.currentTime += System.nanoTime() - initialTime;
-	}
-	
-	public void resume() {
-		this.initialTime = System.nanoTime();
-	}
 	
 	public String getUsuari() {
 		return usuari;
@@ -87,16 +66,12 @@ public class Partida {
 	public void setPistes(int pistes) {
 		this.pistes = pistes;
 	}
-
+	
 	public TaulerKenKen getK() {
 		return K;
 	}
 
 	public void setK(TaulerKenKen k) {
 		K = k;
-	}
-	
-	public long getcurrentTime() {
-		return System.nanoTime() - initialTime;
 	}
 }

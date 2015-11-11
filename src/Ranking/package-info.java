@@ -1,5 +1,0 @@
-/**
- * @author KenKen
- *
- */
-package Ranking;

@@ -13,4 +13,15 @@ abstract public class Dificultat {
 	public static String[] getAll() {
 		return d;
 	}
+	
+	/* La dificultat d és valida */
+	public static int toInt(String s) {
+		int i = 0;
+		boolean trobat = false;
+		while (!trobat) {
+			if (d[i].equals(s)) trobat = true;
+			++i;
+		}
+		return Integer.parseInt(d[i].substring(0,1));
+	}
 }

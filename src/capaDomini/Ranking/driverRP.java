@@ -40,7 +40,10 @@ public class driverRP {
 					case 3:
 						System.out.println("Dificultat\t\tTemps");
 						for (String d : Dificultat.getAll()) {
-							System.out.println(d + ":\t\t" + RP.getBestTime(d));
+							if (RP.getBestTime(d) != null) {
+								System.out.println(d + ":\t\t" + RP.getBestTime(d));
+							}
+							else System.out.println(d + ":\t\t-");
 						}
 						break;
 					case 4:

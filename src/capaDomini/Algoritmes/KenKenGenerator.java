@@ -102,6 +102,119 @@ public class KenKenGenerator {
 		}
 	}
 	
+	private int comprovaOp (String[] vOps, String op) {
+		for (int i=0; i<vOps.length; ++i) {
+			if (vOps[i] == op) return i;
+		}
+		return -1;
+	}
+	private int comprovaDiv (RegioKenKen r) {
+		int res1 = r.getCella(0).getNumero();
+		int res2 = r.getCella(1).getNumero();
+		int op1 = res1/res2;
+		int op2 = res2/res1;
+		if (op1 >= 1 && res1%res2 == 0) {
+			return op1;
+		}
+		else if (op1 < 1 && res2%res1 ==0) {
+			return op2;
+		}
+		return -1;
+	}
+	
+	public void generateRegionSolutionByOps (String[] vOps) {
+		boolean hi_es;
+		boolean pot;
+		int rand;
+		for (int i=0; i<K.getNRegio(); ++i) {
+			RegioKenKen r = K.getRegio(i);
+			if (vOps.length == 1 || r.getNumCeldas() == 1) {
+				r.setOperation("+");
+				r.setResult(r.calculaRegioSuma());
+			}
+			else {
+				switch (r.getNumCeldas()) {
+				case 2:
+					switch (vOps.length){
+					case 2:
+						if (comprovaOp(vOps,"/") != -1) {
+							System.out.println("HI HA DIVISIO");
+							if (comprovaDiv(r) != -1 && new Random().nextBoolean()) {
+								r.setOperation("/");
+								r.setResult(r.calculaRegioDiv());
+							}
+							else {
+								r.setOperation("+");
+								r.setResult(r.calculaRegioSuma());
+							}
+						}
+						else {
+							System.out.println("NO HI HA DIVISIO");
+							rand = new Random().nextInt(2);
+							r.setOperation(vOps[rand]);
+							if (vOps[rand].equals("*")) r.setResult(r.calculaRegioMult());
+							else if (vOps[rand].equals("-")) r.setResult(r.calculaRegioResta());
+							else if (vOps[rand].equals("+")) r.setResult(r.calculaRegioSuma());
+						}
+						break;
+					case 3:
+						hi_es = comprovaOp(vOps,"/") != -1;
+						pot = (hi_es && comprovaDiv(r) != -1);
+						if (! hi_es) {
+							rand = new Random().nextInt(3);
+							r.setOperation(vOps[rand]);
+							if (vOps[rand].equals("*")) r.setResult(r.calculaRegioMult());
+							else if (vOps[rand].equals("-")) r.setResult(r.calculaRegioResta());
+							else if (vOps[rand].equals("+")) r.setResult(r.calculaRegioSuma());
+						}
+						else {
+							rand = new Random().nextInt(3);
+							while (vOps[rand].equals("/") && !pot) rand = new Random().nextInt(3); 
+							r.setOperation(vOps[rand]);
+							if (vOps[rand].equals("*")) r.setResult(r.calculaRegioMult());
+							else if (vOps[rand].equals("-")) r.setResult(r.calculaRegioResta());
+							else if (vOps[rand].equals("+")) r.setResult(r.calculaRegioSuma());
+							else if (vOps[rand].equals("/")) r.setResult(r.calculaRegioDiv());
+						}
+						break;
+					case 4:
+						pot = (comprovaDiv(r) != -1);
+						rand = new Random().nextInt(4);
+						while (vOps[rand].equals("/") && !pot) rand = new Random().nextInt(4);
+						r.setOperation(vOps[rand]);
+						if (vOps[rand].equals("*")) r.setResult(r.calculaRegioMult());
+						else if (vOps[rand].equals("-")) r.setResult(r.calculaRegioResta());
+						else if (vOps[rand].equals("+")) r.setResult(r.calculaRegioSuma());
+						else if (vOps[rand].equals("/")) r.setResult(r.calculaRegioDiv());
+						break;
+					}
+					break;
+				case 3: case 4:
+					if (comprovaOp(vOps,"*") != -1 && new Random().nextBoolean()) {
+						r.setOperation("*");
+						r.setResult(r.calculaRegioMult());
+					}
+					else {
+						r.setOperation("+");
+						r.setResult(r.calculaRegioSuma());
+					}
+					break;
+				case 5:
+					r.setOperation("+");
+					r.setResult(r.calculaRegioSuma());
+					break;
+				}
+			}
+		}
+		
+		// Traiem els numeros del tauler
+		for (int i=0; i<K.getAlto(); ++i) {
+			for (int j=0; j<K.getAncho(); ++j) {
+				K.borra(i,j);
+			}
+		}
+	}
+	
 	public void generateRegionSolution() {
 		for (int i=0; i<K.getNRegio(); ++i) {
 			RegioKenKen r = K.getRegio(i);
@@ -175,7 +288,18 @@ public class KenKenGenerator {
 		regions1C (iniX);
 		generateRegions();
 		K.OrdenaVR();
-		//generateRegionSolutionByOps (vOps);
+		System.out.println("Nombre de diferents operacions (mínim 1)");
+		int nOps = sn.nextInt();
+		System.out.println("Selecciona les operacions (\"+\" es obligatori)");
+		System.out.println("\"+\",\"-\",\"*\",\"/\"");
+		String[] vOps = new String[nOps];
+		int i=0;
+		while (i < nOps) {
+			vOps[i] = sn.next();
+			++i;
+		}
+		//generateRegionSolution();
+		generateRegionSolutionByOps (vOps);
 		return K;
 	}
 	

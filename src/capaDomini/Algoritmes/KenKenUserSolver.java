@@ -3,52 +3,66 @@ package capaDomini.Algoritmes;
 import java.util.*;
 import capaDomini.Utils.*;
 
-public class KenKenUserSolver {
+
+public class KenKenUserSolver extends Thread {
 	
-	private static void findcellavacia(TaulerKenKen T, Cella c) {
+	private void findcellabuida(TaulerKenKen T, Cella c) {
 		int randx = new Random().nextInt(T.getAlto());
 		int randy = new Random().nextInt(T.getAlto());
-		if (!(T.estaVacia(randx,randy))) { findcellavacia(T,c); }
+		if (!(T.estaVacia(randx,randy))) { findcellabuida(T,c); }
 		else {
 			c.setX(randx);
 			c.setY(randy);
 		}
 	}
 	
-	private static void KenKenClone(TaulerKenKen T, TaulerKenKen K) {
-		for (int i = 0; i < T.getNRegio(); i++) {
-			Vector<Cella> v = new Vector<Cella>();
-			for (int j =  0; j < T.getRegio(i).getNumCeldas(); j++) {
-				Cella C = new Cella(T.getRegio(i).getCella(j).getX(),T.getRegio(i).getCella(j).getY());
-				v.add(C);
+	private void KenKenClone(TaulerKenKen sol, TaulerKenKen copia) {
+		Stack<Cella> s = new Stack <Cella>();
+		for (int i = 0; i < sol.getAlto(); i++) {
+			for (int j = 0; j < sol.getAncho(); j++) {
+				if (!sol.estaVacia(i, j)) {
+					Cella c = new Cella();
+					c.setX(i); c.setY(j); c.setNumero(sol.getNumero(i, j));
+					s.addElement(c);
+				}
 			}
-			RegioKenKen R = new RegioKenKen(T.getRegio(i).getNumCeldas(),v, T.getRegio(i).getOperation(), 
-					T.getRegio(i).getResult(),i);
-			K.afegeixRegio(R);
 		}
+		KenKenSolver KS = new KenKenSolver();
+		System.out.println("Afegint pista. Aquesta accio pot trigar una estona");
+		KS.backtrackingSolver(sol);
+		sol.PrintaKenKen();
+		for (int i = 0; i < sol.getAlto(); i++) {
+			for (int j = 0; j < sol.getAncho(); j++) {
+				copia.setNumero(i, j, sol.getNumero(i, j));
+				sol.borra(i, j);
+			}
+		}
+		while (!s.empty()) {
+			sol.setNumero(s.peek().getX(), s.peek().getY(), s.peek().getNumero());
+			s.pop();
+		}
+		
 	}
 	
 	public void usersolver(TaulerKenKen T) {
-		Scanner sn = new Scanner(System.in);
+		Scanner ns = new Scanner(System.in);
 		System.out.println("Opcions");
-		System.out.println("1. Introduir numero");
-		System.out.println("2. Undo");
-		System.out.println("3. Demanar Pista");
-		System.out.println("4. Pausa");
-		System.out.println("5.Guardar partida");
-		System.out.println("6.Reiniciar partida");
+		System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
+		System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
 		System.out.println("0. Sortir");
-		int option = sn.nextInt();
+		int option;
 		int pistes_demanades = 0;
+		boolean solucionat = false;
 		Stack<Cella> s = new Stack<Cella>();
-		while (option!= 0 || option != 5) {
+		TaulerKenKen K = new TaulerKenKen(T.getAlto());
+		while ((option=ns.nextInt()) != 0 && option != 5) {
 			switch (option) {
 			case 1:	//funciona
 				System.out.println("Indica les coordenades(format: x y)");
-				int x = sn.nextInt();
-				int y = sn.nextInt();
+				int x = ns.nextInt();
+				int y = ns.nextInt();
 				System.out.println("Indica el valor a afegir");
-				int val = sn.nextInt();
+				int val = ns.nextInt();
 				if (val > T.getAlto() || val < 1) {
 					System.out.println("El valor es  un numero entre "+ 1 + " i " + T.getAlto());
 					break;
@@ -66,12 +80,21 @@ public class KenKenUserSolver {
 				else {
 					System.out.println("Aquesta cel·la ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
 					System.out.println("1. Si // 2. No");
-					if (sn.nextInt() == 1) {
+					if (ns.nextInt() == 1) {
 						s.addElement(copia);
 						T.setNumero(x, y, val);
 					}
 				}
 				T.PrintaKenKen();
+				if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
+					KenKenCheck KC = new KenKenCheck();
+					if (!KC.checkKenKen(T)) {
+						System.out.println("Enhorabona! La solucio es correcta");
+					}
+					else {
+						System.out.println("Aquesta solucio no es correcta");
+					}
+				}
 				break;
 			case 2:	//funciona
 				if (s.empty()) {System.out.println("No es pot tirar mes endarrere");}
@@ -88,18 +111,27 @@ public class KenKenUserSolver {
 			case 3:	//funciona
 				if (T.getNumCeldasRellenas() < T.getNumCeldas()) {
 					if (pistes_demanades < T.getAlto()-2) {
-						
-						TaulerKenKen K = new TaulerKenKen(T.getAlto());
-						KenKenClone(T,K);
-						KenKenSolver KS = new KenKenSolver();
-						KS.backtrackingSolver(K);
+						if (!solucionat) {
+							KenKenClone(T,K);
+							K.PrintaKenKen();
+							solucionat = true;
+						}
 						Cella ret = new Cella();
-						findcellavacia(T,ret);
+						findcellabuida(T,ret);
 						System.out.println("Pista a les coordenades (" + ret.getX() + "," + ret.getY() + ") amb valor " 
 								+ K.getNumero(ret.getX(), ret.getY()));
 						T.setNumero(ret.getX(), ret.getY(), K.getNumero(ret.getX(), ret.getY()));
 						T.PrintaKenKen();
 						++pistes_demanades;
+						if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
+							KenKenCheck KC = new KenKenCheck();
+							if (KC.checkKenKen(T)) {
+								System.out.println("Enhorabona! La solucio es correcta");
+							}
+							else {
+								System.out.println("Aquesta solucio no es correcta");
+							}
+						}
 					}
 					else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
 				}
@@ -109,7 +141,7 @@ public class KenKenUserSolver {
 				/* 
 				 * Es para el temps de la partida
 				 * System.out.println("Prem 1 per continuar la partida");
-				 * while (sn.nextInt()!= 1){}
+				 * while (ns.nextInt()!= 1){}
 				 * Es torna a iniciar el temps de la partida
 				 */
 				break;
@@ -124,24 +156,30 @@ public class KenKenUserSolver {
 				T.PrintaKenKen();
 				pistes_demanades = 0;
 				break;
+			case 7:
+				if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
+					KenKenCheck KC = new KenKenCheck();
+					if (!KC.checkKenKen(T)) {
+						System.out.println("Enhorabona! La solucio es correcta");
+					}
+					else {
+						System.out.println("Aquesta solucio no es correcta");
+					}
+				}
 			}
 			System.out.println("Opcions");
-			System.out.println("1. Introduir numero");
-			System.out.println("2. Undo");
-			System.out.println("3. Demanar Pista");
-			System.out.println("4. Pausa");
-			System.out.println("5.Guardar partida");
-			System.out.println("6.Reiniciar partida");
+			System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
+			System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
 			System.out.println("0. Sortir");
-			option = sn.nextInt();
 		}
 		if (option == 5) {
 		/*
 		 * Es guarda l'estat actual de la partida (valors introduits i temps jugat)
 		 * P.guardarKenKenKen();
 		 */
+			System.out.println("Partida guardada"); 
+
 		}
-		else {System.out.println("Estas sortint de la partida..."); }
-		sn.close();
+		System.out.println("Estas sortint de la partida..."); 
 	}
 }

@@ -2,13 +2,14 @@ package capaDomini.Ranking;
 
 public class driverRG {
 
-	public static void main(String[] args) {
+	public static void mostraRankingGeneral() {
 		RankingFactory RF = new RankingFactory();
 		RankingGeneral rg = RF.generarRankingGeneral();
-		System.out.println ("R�nquing General:");
-		System.out.println ("nJocs: " + rg.getnJocs());
-		System.out.println ("nUsuaris: " + rg.getnUsuaris());
-		System.out.println ("nPartides: " + rg.getnPartides());
-		System.out.println ("Popular: " + rg.getPopular());
+		System.out.println ("Ranquing General:");
+		System.out.println ("----------------");
+		System.out.println ("Nombre de jocs:\t\t\t" + rg.getnJocs());
+		System.out.println ("Nombre d'usuaris:\t\t" + rg.getnUsuaris());
+		System.out.println ("Nombre de partides jugades:\t" + rg.getnPartides());
+		System.out.println ("Joc més popular:\t\t" + rg.getPopular());
 	}
 }

@@ -2,79 +2,70 @@ package capaDomini.Ranking;
 
 import java.util.*;
 import capaDomini.Dificultat.*;
+import capaDomini.Usuari.CtrlUser;
+import excepciones.*;
 
 public class driverRP {
 
-	public static void main(String[] args) throws Exception {
-		Scanner scan = new Scanner (System.in);
-		System.out.println("Ranking Personal");
-		System.out.println("----------------");
+	private static void mostraOpcions() {
 		System.out.println("Opcions:");
-		System.out.println("1. Consultar rànquing");
-		System.out.println("0. Exit");
-		int opt = scan.nextInt();
-		while (opt != 0) {
-			if (opt == 1) {
-				RankingFactory RF = new RankingFactory();
-				System.out.println("De qui vols consultar el rànquing?");
-				String u = scan.next();
-				RankingPersonal RP = RF.generarRankingPersonal(u);
-				System.out.println();
-				System.out.println("Què vols consultar?");
-				System.out.println("Opcions:");
-				System.out.println("1: Nombre de partides");
-				System.out.println("2: Nombre de pistes usades (en mitjana)");
-				System.out.println("3: Millors temps");
-				System.out.println("4: Veure-ho tot");
-				System.out.println("0: Canviar usuari");
-				int opt2 = scan.nextInt();
-				while (opt2 != 0) {
-					if (opt2 == 1) {
-						System.out.println(u+" ha jugat "+ RP.getResolts()+" partida/es");	
-					}
-					else if (opt2 == 2) {
-						System.out.println(u+" ha usat "+ RP.getPistes()+" pistes en mitjana");
-					}
-					else if (opt2 == 3) {
-						for (String d : Dificultat.getAll()) {
-							System.out.println(d + ": " + RP.getBestTime(d));
-						}
-					}
-					else if (opt2 == 4) {
-						System.out.println("Usuari: " + u);
+		System.out.println("1: Nombre de partides");
+		System.out.println("2: Nombre de pistes usades (en mitjana)");
+		System.out.println("3: Millors temps");
+		System.out.println("4: Veure-ho tot");
+		System.out.println("0: Sortir");
+	}
+	
+	public static void mostraRankingPersonal() {
+		Scanner scan = new Scanner (System.in);
+		System.out.println("Ranking Personal:");
+		System.out.println("----------------");
+		System.out.println("De qui vols consultar el rànquing?");
+		try {
+			String u = scan.next();
+			RankingFactory RF = new RankingFactory();
+			if (CtrlUser.getUsuari(u) == null) throw (new ExcepcionUsuariNoExisteix());
+			else {
+				RankingPersonal RP = RF.generarRankingPersonal(u);				
+				int opt2;
+				mostraOpcions();
+				while ((opt2 = scan.nextInt()) != 0) {
+					switch(opt2) {
+					case 1:
 						System.out.println(u+" ha jugat "+ RP.getResolts()+" partida/es");
+						break;
+					case 2:
 						System.out.println(u+" ha usat "+ RP.getPistes()+" pistes en mitjana");
+						break;
+					case 3:
+						System.out.println("Dificultat\t\tTemps");
+						for (String d : Dificultat.getAll()) {
+							System.out.println(d + ":\t\t" + RP.getBestTime(d));
+						}
+						break;
+					case 4:
+						System.out.println("Usuari: " + u);
+						System.out.println(u+" ha jugat " + RP.getResolts()+ " partida/es");
+						System.out.println(u+" ha usat " + RP.getPistes()+ " pistes en mitjana");
+						System.out.println("Dificultat\tTemps");
 						for (String d : Dificultat.getAll()) {
 							if (RP.getBestTime(d) != null) {
-								System.out.println(d + ": " + RP.getBestTime(d));
+								System.out.println(d + ":\t\t" + RP.getBestTime(d));
 							}
-							else System.out.println(d + ": -");
+							else System.out.println(d + ":\t\t-");
 
 						}	
+						break;
+					default:
+						System.err.println("Opcio erronia");
+						break;
 					}
-					System.out.println();
-					System.out.println("Què vols consultar?");
-					System.out.println("Opcions:");
-					System.out.println("1: Nombre de partides");
-					System.out.println("2: Nombre de pistes usades (en mitjana)");
-					System.out.println("3: Millors temps");
-					System.out.println("4: Veure-ho tot");
-					System.out.println("0: Canviar usuari");
-					opt2 = scan.nextInt();
+					mostraOpcions();
 				}
-			}
-			else {
-				System.out.println("Error: Opció no vàlida");
-				System.out.println("0 per sortir");
-			}
-			System.out.println();
-			System.out.println("Ranking Personal");
-			System.out.println("Opcions:");
-			System.out.println("1. Consultar rànquing");
-			System.out.println("0. Exit");
-			opt = scan.nextInt();
-		}
+			}	
+		} catch (ExcepcionUsuariNoExisteix e) {
+			System.out.println(e.getMessage());
+		}				
 		System.out.println("Fi del programa");
-		scan.close();
 	}
 }

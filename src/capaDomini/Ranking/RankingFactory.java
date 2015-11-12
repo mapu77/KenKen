@@ -7,6 +7,7 @@ public class RankingFactory {
 	
 	public RankingFactory() {
 		CtrlPersistencia.setSeparator(" ");
+		System.out.println("---");
 		CtrlUser CU = new CtrlUser();
 	}
 	
@@ -15,16 +16,10 @@ public class RankingFactory {
 	}
 	
 	public RankingPerTipus generarRankingPerTipus (String d, int nEntrades) {
-		try {
-			return new RankingPerTipus(d, nEntrades);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-		return null;
+		return new RankingPerTipus(d, nEntrades);
 	}
 	
-	public RankingPersonal generarRankingPersonal (String username) throws Exception {
+	public RankingPersonal generarRankingPersonal(String username) {
 		return new RankingPersonal(username);
 	}
 }

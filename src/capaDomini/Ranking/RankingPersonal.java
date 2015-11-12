@@ -2,7 +2,6 @@ package capaDomini.Ranking;
 
 import java.util.*;
 import capaDomini.Dificultat.*;
-import capaDomini.Usuari.*;
 
 public class RankingPersonal extends Ranking {
 	private String usuari;
@@ -34,18 +33,12 @@ public class RankingPersonal extends Ranking {
 		avgPistes = avgPistes/(double)jocsResolts;
 	}
 	
-	public RankingPersonal(String usuari) throws Exception {
-		System.out.println("Comprovant usuari...");
-		if (CtrlUser.getUsuari(usuari) != null) {
-			this.usuari = usuari;
-			System.out.println("Carregant informació...");
-			CTRLRanking.carregar(this, "Partides");
-			System.out.println("Generant rànquing...");
-			this.inicialitza();
-		}
-		else {
-			System.err.println("No existeix l'usuari");
-		}
+	public RankingPersonal(String usuari){
+		this.usuari = usuari;
+		System.out.println("Carregant informació...");
+		CTRLRanking.carregar(this, "Partides");
+		System.out.println("Generant rànquing...");
+		this.inicialitza();
 	}
 	
 	public String getUsuari() {

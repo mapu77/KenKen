@@ -28,8 +28,8 @@ public class KenKenUserSolver implements Runnable {
 	}
 	
 	private void KenKenClone(TaulerKenKen sol, TaulerKenKen copia, TaulerKenKen aux) {
-		Stack<Cella> s = new Stack <Cella>();
-		for (int i = 0; i < sol.getAlto(); i++) {
+		//Stack<Cella> s = new Stack <Cella>();
+		/*for (int i = 0; i < sol.getAlto(); i++) {
 			for (int j = 0; j < sol.getAncho(); j++) {
 				if (!sol.estaVacia(i, j)) {
 					Cella c = new Cella();
@@ -37,9 +37,9 @@ public class KenKenUserSolver implements Runnable {
 					s.addElement(c);
 				}
 			}
-		}
+		}*/
 		//KenKenSolver KS = new KenKenSolver();
-		System.out.println("Afegint pista. Aquesta accio pot trigar una estona");
+		//System.out.println("Afegint pista. Aquesta accio pot trigar una estona");
 		//KS.backtrackingSolver(sol);
 		//sol.PrintaKenKen();
 		for (int i = 0; i < sol.getAlto(); i++) {
@@ -48,10 +48,10 @@ public class KenKenUserSolver implements Runnable {
 				sol.borra(i, j);
 			}
 		}
-		while (!s.empty()) {
+		/*while (!s.empty()) {
 			sol.setNumero(s.peek().getX(), s.peek().getY(), s.peek().getNumero());
 			s.pop();
-		}
+		}*/
 		for (int i = 0; i < sol.getAlto(); i++) {
 			for (int j = 0; j < sol.getAncho(); j++) {
 				if (!aux.estaVacia(i,j)) {
@@ -64,8 +64,8 @@ public class KenKenUserSolver implements Runnable {
 	public void run() {
 		KenKenSolver KS = new KenKenSolver();
 		KS.backtrackingSolver(t1);
-		System.out.println("Ja hem acabat de resoldre el Tauler");
-		//KenKenClone(t1,t2,t3);
+		System.out.println("Ja es pot utilitzar la opcio \"Demanar Pista\"");
+		KenKenClone(t1,t2,t3);
 	}
 	
 	private void introdueixvalor(TaulerKenKen T, int x, int y, int val, Stack<Cella> s, Scanner ns ) {
@@ -84,7 +84,7 @@ public class KenKenUserSolver implements Runnable {
 	
 			}
 			else {
-				System.out.println("Aquesta celÂ·la ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
+				System.out.println("Aquesta cella ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
 				System.out.println("1. Si // 2. No");
 				if (ns.nextInt() == 1) {
 					s.addElement(copia);
@@ -102,7 +102,7 @@ public class KenKenUserSolver implements Runnable {
 		System.out.println("0. Sortir");
 		int option;
 		int pistes_demanades = 0;
-		boolean solucionat = false;
+		//boolean solucionat = false;
 		Stack<Cella> s = new Stack<Cella>();
 		TaulerKenKen K = new TaulerKenKen(T.getAlto());
 		TaulerKenKen auxiliar = new TaulerKenKen(T.getAlto());
@@ -140,43 +140,58 @@ public class KenKenUserSolver implements Runnable {
 			case 2:	//funciona
 				if (s.empty()) {System.out.println("No es pot tirar mes endarrere");}
 				else {
-					Cella top = s.peek();
-					if (top.getNumero() != -1) {
-						T.setNumero(top.getX(), top.getY(), top.getNumero());
+					if (K.getNumCeldas() == K.getNumCeldasRellenas()) {
+						Cella top = s.peek();
+						if (top.getNumero() != -1) {
+							T.setNumero(top.getX(), top.getY(), top.getNumero());
+						}
+						else { T.borra(top.getX(), top.getY()); }
+						s.pop();
+						T.PrintaKenKen();
 					}
-					else { T.borra(top.getX(), top.getY()); }
-					s.pop();
-					T.PrintaKenKen();
+					else {
+						Cella top = s.peek();
+						if (top.getNumero() != -1) {
+							auxiliar.setNumero(top.getX(), top.getY(), top.getNumero());
+						}
+						else { auxiliar.borra(top.getX(), top.getY()); }
+						s.pop();
+						T.PrintaRegioKenKen();
+						auxiliar.PrintaSolucio();	
+					}
+						
 				}
 				break;
 			case 3:	//funciona
 				if (T.getNumCeldasRellenas() < T.getNumCeldas()) {
-					if (pistes_demanades < T.getAlto()-2) {
-						if (!solucionat) {
-							KenKenClone(T,K,auxiliar);
-							//K.PrintaKenKen();
-							solucionat = true;
-						}
-						Cella ret = new Cella();
-						findcellabuida(T,ret);
-						System.out.println("Pista a les coordenades (" + ret.getX() + "," + ret.getY() + ") amb valor " 
-								+ K.getNumero(ret.getX(), ret.getY()));
-						T.setNumero(ret.getX(), ret.getY(), K.getNumero(ret.getX(), ret.getY()));
-						T.PrintaKenKen();
-						++pistes_demanades;
-						if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
-							KenKenCheck KC = new KenKenCheck();
-							if (KC.checkKenKen(T)) {
-								System.out.println("Enhorabona! La solucio es correcta");
-							}
-							else {
-								System.out.println("Aquesta solucio no es correcta");
-							}
-						}
+					if (K.getNumCeldasRellenas() != K.getNumCeldas()) {
+						System.out.println("Aplicant la pista. Aquesta acció pot trigar una estona");
+						System.out.println("Presiona 1 si vols triar una altra opcio");
+						while (K.getNumCeldasRellenas() != K.getNumCeldas() && ns.nextInt() != 1);
 					}
-					else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
+					else {
+						if (pistes_demanades < T.getAlto()-2) {
+							Cella ret = new Cella();
+							findcellabuida(T,ret);
+							System.out.println("Pista a les coordenades (" + ret.getX() + "," + ret.getY() + ") amb valor " 
+									+ K.getNumero(ret.getX(), ret.getY()));
+							T.setNumero(ret.getX(), ret.getY(), K.getNumero(ret.getX(), ret.getY()));
+							T.PrintaKenKen();
+							++pistes_demanades;
+							if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
+								KenKenCheck KC = new KenKenCheck();
+								if (KC.checkKenKen(T)) {
+									System.out.println("Enhorabona! La solucio es correcta");
+								}
+								else {
+									System.out.println("Aquesta solucio no es correcta");
+								}
+							}
+						}
+						else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
+					}
 				}
-				else { System.out.println("El taulell ja estÃ  ple"); }
+				else { System.out.println("El taulell ja esta  ple"); }
 				break;
 			case 4:
 				/* 

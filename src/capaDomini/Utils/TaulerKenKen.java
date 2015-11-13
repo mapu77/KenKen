@@ -112,6 +112,25 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 		}
 	}
 	
+	public void PrintaSolucio() {
+		String[][] mat = new String[getAlto()*2+1][getAncho()*2+1];
+		String[][] matR = new String[getAlto()*2+1][getAlto()*2+1];
+		ModificaMatrius (mat,matR);
+		// Printa la solucio proposada per l'usuari
+		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+		for (int i=0; i<=2*getAlto(); ++i) {
+			for (int j=0; j<=2*getAncho(); ++j) {
+				System.out.print(mat[i][j]);
+			}
+			System.out.print("\n");
+		}
+		// Printa l'operacio i resultat de cada regio
+		for (int k=0; k<VR.size(); ++k) {
+			System.out.println("Regio num" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
+								", Resultat: " + VR.get(k).getResult());
+		}
+	}
+	
 	public void PrintaRegioKenKen () {
 		String[][] mat = new String[getAlto()*2+1][getAncho()*2+1];
 		String[][] matR = new String[getAlto()*2+1][getAlto()*2+1];

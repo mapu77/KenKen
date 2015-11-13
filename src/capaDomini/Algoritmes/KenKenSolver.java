@@ -20,7 +20,6 @@ public class KenKenSolver {
 	private static void backtrackingIA(int i, int j) {
 		// Tenim solucio
 		if (i==KK.getAlto()) {
-			System.out.println("SOLUCIO");
 			trobat = true;
 		}
 		// Continuem provant
@@ -58,7 +57,6 @@ public class KenKenSolver {
 	private static void backtracking(int i, int j) {
 		// Tenim solucio
 		if (i==KK.getAlto()) {
-			System.out.println("SOLUCIO");
 			trobat = true;
 		}
 		// Continuem provant

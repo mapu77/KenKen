@@ -2,15 +2,16 @@ package capaDomini.Utils;
 
 import java.util.*;
 
-public class TaulerKenKen extends Tauler {
-
+public class TaulerKenKen extends Tauler implements java.io.Serializable {
+	
+	private static final long serialVersionUID = 1000L;
 	private Vector<RegioKenKen> VR;
 	
 	public TaulerKenKen(int n) {
 		super(n, n);
 		VR = new Vector<RegioKenKen>();
 	}
-	
+
 	public int nRegio(int x, int y) {
 		for (int i=0; i<VR.size(); ++i) {
 			for (int j=0; j<VR.get(i).getNumCeldas(); ++j) {

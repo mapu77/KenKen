@@ -4,7 +4,18 @@ import java.util.*;
 import capaDomini.Utils.*;
 
 
-public class KenKenUserSolver extends Thread {
+public class KenKenUserSolver implements Runnable {
+	
+	TaulerKenKen t1;
+	TaulerKenKen t2;
+	TaulerKenKen t3;
+	
+	public KenKenUserSolver() {}
+	public KenKenUserSolver(TaulerKenKen T1, TaulerKenKen T2, TaulerKenKen T3) {
+		this.t1 = T1;
+		this.t2 = T2;
+		this.t3 = T3;
+	}
 	
 	private void findcellabuida(TaulerKenKen T, Cella c) {
 		int randx = new Random().nextInt(T.getAlto());
@@ -16,7 +27,7 @@ public class KenKenUserSolver extends Thread {
 		}
 	}
 	
-	private void KenKenClone(TaulerKenKen sol, TaulerKenKen copia) {
+	private void KenKenClone(TaulerKenKen sol, TaulerKenKen copia, TaulerKenKen aux) {
 		Stack<Cella> s = new Stack <Cella>();
 		for (int i = 0; i < sol.getAlto(); i++) {
 			for (int j = 0; j < sol.getAncho(); j++) {
@@ -27,10 +38,10 @@ public class KenKenUserSolver extends Thread {
 				}
 			}
 		}
-		KenKenSolver KS = new KenKenSolver();
+		//KenKenSolver KS = new KenKenSolver();
 		System.out.println("Afegint pista. Aquesta accio pot trigar una estona");
-		KS.backtrackingSolver(sol);
-		sol.PrintaKenKen();
+		//KS.backtrackingSolver(sol);
+		//sol.PrintaKenKen();
 		for (int i = 0; i < sol.getAlto(); i++) {
 			for (int j = 0; j < sol.getAncho(); j++) {
 				copia.setNumero(i, j, sol.getNumero(i, j));
@@ -41,7 +52,46 @@ public class KenKenUserSolver extends Thread {
 			sol.setNumero(s.peek().getX(), s.peek().getY(), s.peek().getNumero());
 			s.pop();
 		}
-		
+		for (int i = 0; i < sol.getAlto(); i++) {
+			for (int j = 0; j < sol.getAncho(); j++) {
+				if (!aux.estaVacia(i,j)) {
+					sol.setNumero(i, j, aux.getNumero(i, j));
+				}
+			}
+		}
+	}
+	
+	public void run() {
+		KenKenSolver KS = new KenKenSolver();
+		KS.backtrackingSolver(t1);
+		System.out.println("Ja hem acabat de resoldre el Tauler");
+		//KenKenClone(t1,t2,t3);
+	}
+	
+	private void introdueixvalor(TaulerKenKen T, int x, int y, int val, Stack<Cella> s, Scanner ns ) {
+		if (val > T.getAlto() || val < 1) {
+			System.out.println("El valor es  un numero entre "+ 1 + " i " + T.getAlto());
+		}
+		else {
+			Cella c = T.getCella(x, y);
+			Cella copia = new Cella();
+			copia.setX(c.getX());
+			copia.setY(c.getY());
+			copia.setNumero(c.getNumero());
+			if (c.estaVacia()) {
+				s.addElement(copia);
+				T.setNumero(x, y, val);
+	
+			}
+			else {
+				System.out.println("Aquesta celÂ·la ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
+				System.out.println("1. Si // 2. No");
+				if (ns.nextInt() == 1) {
+					s.addElement(copia);
+					T.setNumero(x, y, val);
+				}
+			}
+		}
 	}
 	
 	public void usersolver(TaulerKenKen T) {
@@ -55,6 +105,9 @@ public class KenKenUserSolver extends Thread {
 		boolean solucionat = false;
 		Stack<Cella> s = new Stack<Cella>();
 		TaulerKenKen K = new TaulerKenKen(T.getAlto());
+		TaulerKenKen auxiliar = new TaulerKenKen(T.getAlto());
+		KenKenUserSolver p = new KenKenUserSolver(T,K,auxiliar);
+		new Thread(p).start();
 		while ((option=ns.nextInt()) != 0 && option != 5) {
 			switch (option) {
 			case 1:	//funciona
@@ -63,30 +116,18 @@ public class KenKenUserSolver extends Thread {
 				int y = ns.nextInt();
 				System.out.println("Indica el valor a afegir");
 				int val = ns.nextInt();
-				if (val > T.getAlto() || val < 1) {
-					System.out.println("El valor es  un numero entre "+ 1 + " i " + T.getAlto());
-					break;
-				}
-				Cella c = T.getCella(x, y);
-				Cella copia = new Cella();
-				copia.setX(c.getX());
-				copia.setY(c.getY());
-				copia.setNumero(c.getNumero());
-				if (c.estaVacia()) {
-					s.addElement(copia);
-					T.setNumero(x, y, val);
-
+				if (K.getNumCeldasRellenas() == K.getNumCeldas()) {
+					introdueixvalor(T,x,y,val,s,ns);
+					T.PrintaKenKen();
 				}
 				else {
-					System.out.println("Aquesta cel·la ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
-					System.out.println("1. Si // 2. No");
-					if (ns.nextInt() == 1) {
-						s.addElement(copia);
-						T.setNumero(x, y, val);
-					}
+					introdueixvalor(auxiliar,x,y,val,s,ns);
+					T.PrintaRegioKenKen();
+					auxiliar.PrintaSolucio();
 				}
-				T.PrintaKenKen();
-				if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
+				
+				if (T.getNumCeldasRellenas() == T.getNumCeldas() &&
+						K.getNumCeldasRellenas() == K.getNumCeldas()) {
 					KenKenCheck KC = new KenKenCheck();
 					if (!KC.checkKenKen(T)) {
 						System.out.println("Enhorabona! La solucio es correcta");
@@ -112,8 +153,8 @@ public class KenKenUserSolver extends Thread {
 				if (T.getNumCeldasRellenas() < T.getNumCeldas()) {
 					if (pistes_demanades < T.getAlto()-2) {
 						if (!solucionat) {
-							KenKenClone(T,K);
-							K.PrintaKenKen();
+							KenKenClone(T,K,auxiliar);
+							//K.PrintaKenKen();
 							solucionat = true;
 						}
 						Cella ret = new Cella();
@@ -135,7 +176,7 @@ public class KenKenUserSolver extends Thread {
 					}
 					else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
 				}
-				else { System.out.println("El taulell ja està ple"); }
+				else { System.out.println("El taulell ja estÃ  ple"); }
 				break;
 			case 4:
 				/* 

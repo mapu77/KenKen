@@ -4,44 +4,48 @@ package capaDomini.Algoritmes;
 import capaDomini.Utils.*;
 
 public class KenKenCheck {
-	private boolean controlrepeat(TaulerKenKen T, Cella c) {
+	/*public KenKenCheck(TaulerKenken T) {
+		
+	}*/
+	
+	private boolean ctrlFilaAndCol (TaulerKenKen T, Cella c) {
 		boolean repeat = false;
-		//comprovem columna
-		int i = c.getX() + 1;
+		int i = c.getX();
 		int j = c.getY();
-		while (i < T.getAlto() && !repeat) {
-			repeat = (c.getNumero() == T.getNumero(i, j));
-			i++;
-		}
-		//comprovem fila
-		i = c.getX();
-		j += 1;
-		while (j < T.getAncho() && !repeat) {
-			repeat = (c.getNumero() == T.getNumero(i, j));
-			j++;
+		int incr = 1;
+		while((j+incr < T.getAncho() || i+incr < T.getAlto()) && !repeat) {
+			if (j+incr < T.getAncho()) {
+				repeat = (c.getNumero() == T.getNumero(i, j+incr));
+			}
+			if (i+incr < T.getAncho() && !repeat) {
+				repeat = (c.getNumero() == T.getNumero(i+incr, j));
+			}
+			incr++;
 		}
 		return repeat;
-	}	
+	}
+	
+	private boolean ctrlRegio (TaulerKenKen T) {
+		int i = 0;
+		boolean mistake = false;
+		while (i < T.getNRegio() && !mistake) {
+			mistake = (T.getRegio(i).checkRegionC());
+			i++;
+		}
+		return mistake;
+	}
 	
 	public boolean checkKenKen(TaulerKenKen T) {
-		int i = 0;
-		boolean error = false;
-		while (i<T.getNRegio() && error==false) {
-			if (T.getRegio(i).checkRegionC() || T.getRegio(i).checkRegionI()) {
-				i++;	
+		boolean error = ctrlRegio(T);
+		if (!error) {
+			int i;
+			int j;
+			i = j = 0;
+			while (i < T.getAlto() && !error) {
+				while (j < T.getAncho() && !error) {
+					error = ctrlFilaAndCol(T,T.getCella(i, j));
+				}
 			}
-			else {
-				error = true;
-			}
-		}
-		int j;
-		i = j = 0;
-		while (i < T.getAlto() && error==false) {
-			while (j < T.getAlto() && error==false) {
-				error = controlrepeat(T,T.getCella(i, j));
-				j++;
-			}
-			i++;
 		}
 		return error;
 	}

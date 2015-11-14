@@ -3,6 +3,7 @@ package capaDomini.Utils;
 import java.io.*;
 import java.util.*;
 
+import capaDomini.Algoritmes.KenKenCheck;
 import capaDomini.Algoritmes.KenKenUserSolver;
 import capaPersistencia.*;
 
@@ -57,11 +58,47 @@ public class CtrlPartida {
 	    }
 	}
 	
+	private static void mostrarOpcions() {
+		System.out.println("Opcions");
+		System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
+		System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
+		System.out.println("0. Sortir");
+	}
+	
 	public void play() {
 		this.initialTime = System.nanoTime();
+		int option;
+		Scanner ns = new Scanner(System.in);
 		KenKenUserSolver KUS = new KenKenUserSolver();
-		KUS.usersolver(P.getK());
-		
+		mostrarOpcions();
+		while ((option=ns.nextInt()) != 0 && option != 5) {
+			switch (option) {
+			case 1:	//funciona
+				KUS.entraCella();
+				break;
+			case 2:	//funciona
+				KUS.undo();
+				break;
+			case 3:	//funciona
+				KUS.getPista();
+				break;
+			/* Pausar partida */
+			case 4:
+				this.pause();
+				while (ns.nextInt()!= 1);
+				this.resume();
+				break;
+			case 5:
+				this.saveKenKen();
+				break;
+			case 6:	//funciona
+				KUS.reinicia();
+			}
+			System.out.println("Opcions");
+			System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
+			System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
+			System.out.println("0. Sortir");
+		}
 	}
 
 	public void pause() {

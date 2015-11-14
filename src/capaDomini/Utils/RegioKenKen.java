@@ -2,8 +2,9 @@ package capaDomini.Utils;
 
 import java.util.*;
 
-public class RegioKenKen extends Regio {
+public class RegioKenKen extends Regio implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1001L;
 	private String operation;
 	private int result;
 	private int id;

@@ -8,6 +8,10 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 	private Vector<RegioKenKen> VR;
 	private String autor;
 	
+	public TaulerKenKen() {
+		super(0,0);
+	}
+	
 	public TaulerKenKen(int n) {
 		super(n, n);
 		this.autor = "Sistema";

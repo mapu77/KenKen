@@ -10,6 +10,7 @@ import capaPersistencia.*;
 public class CtrlPartida {
 	
 	private Partida P;
+	private boolean FI;
 	private long initialTime;
 	private long currentTime = 0;
 	private CtrlPersistencia CP;
@@ -19,6 +20,7 @@ public class CtrlPartida {
 	
 	public CtrlPartida(Partida p) {
 		this.P = p;
+		this.FI = false;
 		CP = new CtrlPersistencia();
 		CtrlPersistencia.setSeparator(" ");
 		try {
@@ -46,16 +48,7 @@ public class CtrlPartida {
 
 	/* Guarda a la BD l'estat del KenKen */
 	public void saveKenKen() {
-		try {
-	         FileOutputStream fileOut = new FileOutputStream(pathGuardats + P.getUsuari() + ".txt");
-	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-	         out.writeObject(P.getK());
-	         out.close();
-	         fileOut.close();
-	         System.out.printf("Serialized data is saved in " + pathGuardats + P.getUsuari() + ".txt");
-	    } catch(IOException i) {
-	    	System.err.println(i.getMessage());
-	    }
+		
 	}
 	
 	private static void mostrarOpcions() {
@@ -69,12 +62,20 @@ public class CtrlPartida {
 		this.initialTime = System.nanoTime();
 		int option;
 		Scanner ns = new Scanner(System.in);
-		KenKenUserSolver KUS = new KenKenUserSolver();
+		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
+		TaulerKenKen aux = new TaulerKenKen(P.getK().getAlto());
+		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,aux);
+		KUS.combinarTaulers();
 		mostrarOpcions();
-		while ((option=ns.nextInt()) != 0 && option != 5) {
+		while ((option=ns.nextInt()) != 0 && !FI) {
 			switch (option) {
 			case 1:	//funciona
 				KUS.entraCella();
+				if () {
+					if () {
+						FI = true;	
+					}
+				}
 				break;
 			case 2:	//funciona
 				KUS.undo();
@@ -98,6 +99,11 @@ public class CtrlPartida {
 			System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
 			System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
 			System.out.println("0. Sortir");
+		}
+		if (FI) this.save();
+		else {
+			/* Guardar estat tauler */
+			/* o marxar */
 		}
 	}
 

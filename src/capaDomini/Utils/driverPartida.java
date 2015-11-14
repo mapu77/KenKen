@@ -41,13 +41,13 @@ public class driverPartida {
 					int n;
 					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 					else {
-						n = Dificultat.toInt(d);;
+						n = Dificultat.toInt(d);
 						Partida p = new Partida(u,d);
 						CtrlPartida CP = new CtrlPartida(p);
 						CP.play();
 					}
 				} catch (ExcepcionDificultatInvalida e) {
-					
+					System.err.println(e.getMessage());
 				}		
 				break;
 			default:

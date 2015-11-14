@@ -23,27 +23,43 @@ public class driverPartida {
 		mostrarOpcions();
 		int op;
 		while ((op = scan.nextInt()) != 0) {
+			String d;
+			CtrlPartida CP;
 			switch(op) {
 			case 1:
 				CtrlJoc CJ = new CtrlJoc();
 				if (CJ.existeixPartidaGuardada()) {
-					TaulerKenKen K = CJ.loadPartidaGuardada(u);
-					K.PrintaKenKen();
+					Partida p = new Partida(u);
+					CP = new CtrlPartida(p);
+					CP.play();
 				}
 				break;
 			case 2:
-				break;
-			case 3:
-				System.out.println("Mida KenKen:");
+				System.out.println("Dificultat");
 				System.out.println("3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
-				String d = scan.next();
+				d = scan.next();
 				try {
-					int n;
 					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 					else {
-						n = Dificultat.toInt(d);
+						/* Cal imprimir al usuari els id de tots els taulells de dificultat d */
+						String iden = scan.next();
+						Partida p = new Partida(u, d, iden);
+						CP = new CtrlPartida(p);
+						CP.play();
+					}
+				} catch (ExcepcionDificultatInvalida e) {
+					System.err.println(e.getMessage());
+				}
+				break;
+			case 3:
+				System.out.println("Dificultat KenKen:");
+				System.out.println("3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
+				d = scan.next();
+				try {
+					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
+					else {
 						Partida p = new Partida(u,d);
-						CtrlPartida CP = new CtrlPartida(p);
+						CP = new CtrlPartida(p);
 						CP.play();
 					}
 				} catch (ExcepcionDificultatInvalida e) {

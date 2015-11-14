@@ -57,7 +57,7 @@ public class driverEntraKenKen {
 			}
 			else if (op2 == 2) {
 				KenKenUserSolver KUS = new KenKenUserSolver();
-				KUS.usersolver(K);
+				//KUS.usersolver(K);
 			}
 			System.out.println("KenKen");
 			System.out.println("Options:");

@@ -16,6 +16,14 @@ public class Partida {
 		
 	}
 	
+	/* Constructor partida partida guardada */
+	public Partida(String u) {
+		CJ = new CtrlJoc();
+		this.usuari = u;
+		K = CJ.loadPartidaGuardada(u);
+		this.D = (String)(String.valueOf(K.getAlto())+"x"+String.valueOf(K.getAlto()));
+	}
+	
 	/* Creador partida amb KenKen aleatori */
 	public Partida(String u, String d) {
 		CJ = new CtrlJoc();
@@ -26,26 +34,11 @@ public class Partida {
 	}
 	
 	/* Constructor partida seleccionada */
-	/* Si saved, es carregarà l'última partida guardada de l'usuari u (si existeix)
-	 * Si no saved, es selecciona el tauler identificat per id i d
-	 */
-	public Partida(String u, String d, String id, boolean saved) {
+	public Partida(String u, String d, String id) {
 		CJ = new CtrlJoc();
 		this.usuari = u;
 		this.D = d;
-		if (!saved) {
-			K = CJ.llegeixTauler(id,d);
-		}
-		else {
-			try {
-				if (CJ.existeixPartidaGuardada()) {
-					K = CJ.loadPartidaGuardada(u);
-				}
-				else throw (new ExcepcionNoExistePartidaGuardada());
-			} catch (ExcepcionNoExistePartidaGuardada e) {
-				System.err.println(e.getMessage());
-			}
-		}
+		K = CJ.llegirTauler(id,d);
 	}
 	
 	

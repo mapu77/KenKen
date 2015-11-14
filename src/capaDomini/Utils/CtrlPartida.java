@@ -69,17 +69,20 @@ public class CtrlPartida {
 		mostrarOpcions();
 		while ((option=ns.nextInt()) != 0 && !FI) {
 			switch (option) {
+			/* Introduir valor */
 			case 1:	//funciona
 				KUS.entraCella();
-				if () {
+				/*if () {
 					if () {
 						FI = true;	
 					}
-				}
+				}*/
 				break;
+			/* Undo */
 			case 2:	//funciona
 				KUS.undo();
 				break;
+			/* Demanar pista */
 			case 3:	//funciona
 				KUS.getPista();
 				break;
@@ -89,9 +92,11 @@ public class CtrlPartida {
 				while (ns.nextInt()!= 1);
 				this.resume();
 				break;
+			/* Guardar l'estat de la partida */
 			case 5:
 				this.saveKenKen();
 				break;
+			/* Reiniciar partida */
 			case 6:	//funciona
 				KUS.reinicia();
 			}

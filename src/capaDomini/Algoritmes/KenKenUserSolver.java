@@ -165,7 +165,7 @@ public class KenKenUserSolver implements Runnable {
 			case 3:	//funciona
 				if (T.getNumCeldasRellenas() < T.getNumCeldas()) {
 					if (K.getNumCeldasRellenas() != K.getNumCeldas()) {
-						System.out.println("Aplicant la pista. Aquesta acció pot trigar una estona");
+						System.out.println("Aplicant la pista. Aquesta acciï¿½ pot trigar una estona");
 						System.out.println("Presiona 1 si vols triar una altra opcio");
 						while (K.getNumCeldasRellenas() != K.getNumCeldas() && ns.nextInt() != 1);
 					}
@@ -191,8 +191,9 @@ public class KenKenUserSolver implements Runnable {
 						else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
 					}
 				}
-				else { System.out.println("El taulell ja esta  ple"); }
+				else { System.out.println("El taulell ja estaï¿½ ple"); }
 				break;
+			/* Pausar partida */
 			case 4:
 				/* 
 				 * Es para el temps de la partida
@@ -211,7 +212,10 @@ public class KenKenUserSolver implements Runnable {
 				}
 				T.PrintaKenKen();
 				pistes_demanades = 0;
-				break;
+				break;/*
+				 * Es guarda l'estat actual de la partida (valors introduits i temps jugat)
+				 * P.guardarKenKenKen();
+				 */
 			case 7:
 				if (T.getNumCeldasRellenas() == T.getNumCeldas()) {
 					KenKenCheck KC = new KenKenCheck();

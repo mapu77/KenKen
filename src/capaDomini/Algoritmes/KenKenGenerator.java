@@ -276,19 +276,19 @@ public class KenKenGenerator {
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyParameters() { //(int size, int iniX, String[] vOps) {
+	public TaulerKenKen generateKenKenbyParameters(String u) { //(int size, int iniX, String[] vOps) {
 		Scanner sn = new Scanner(System.in);
 		fi = false;
 		System.out.println("Mida del KenKen:");
 		n = sn.nextInt();
-		K = new TaulerKenKen(n);
+		K = new TaulerKenKen(n, u);
 		backtrackingGenerateNumbers(0,0);
 		System.out.println("Nombre inicial minim de regions inicials d'una cel.la:");
 		int iniX = sn.nextInt();
 		regions1C (iniX);
 		generateRegions();
 		K.OrdenaVR();
-		System.out.println("Nombre de diferents operacions (mínim 1)");
+		System.out.println("Nombre de diferents operacions (mï¿½nim 1)");
 		int nOps = sn.nextInt();
 		System.out.println("Selecciona les operacions (\"+\" es obligatori)");
 		System.out.println("\"+\",\"-\",\"*\",\"/\"");
@@ -303,11 +303,11 @@ public class KenKenGenerator {
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyUser() {
+	public TaulerKenKen generateKenKenbyUser(String u) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Mida del KenKen");
 		int n = sn.nextInt();
-		K = new TaulerKenKen(n);
+		K = new TaulerKenKen(n, u);
 		System.out.println("Nombre regions");
 		int nr = sn.nextInt();
 		for (int i=0; i<nr; ++i) {

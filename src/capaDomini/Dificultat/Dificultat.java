@@ -20,7 +20,7 @@ abstract public class Dificultat {
 		boolean trobat = false;
 		while (!trobat) {
 			if (d[i].equals(s)) trobat = true;
-			++i;
+			else ++i;
 		}
 		return Integer.parseInt(d[i].substring(0,1));
 	}

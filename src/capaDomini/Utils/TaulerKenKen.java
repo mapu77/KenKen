@@ -3,12 +3,20 @@ package capaDomini.Utils;
 import java.util.*;
 
 public class TaulerKenKen extends Tauler implements java.io.Serializable {
-	
+
 	private static final long serialVersionUID = 1000L;
 	private Vector<RegioKenKen> VR;
+	private String autor;
 	
 	public TaulerKenKen(int n) {
 		super(n, n);
+		this.autor = "Sistema";
+		VR = new Vector<RegioKenKen>();
+	}
+	
+	public TaulerKenKen(int n, String autor) {
+		super(n, n);
+		this.autor = autor;
 		VR = new Vector<RegioKenKen>();
 	}
 

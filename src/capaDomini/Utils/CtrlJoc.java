@@ -6,7 +6,8 @@ import capaPersistencia.*;
 public class CtrlJoc {
 	
 	private CtrlPersistencia CP;
-	private String pathTaulers = "/data/Taulers/";
+	private String pathTaulers = "./data/Taulers/";
+	private String pathGuardats = "./data/Saved/";
 	
 	public CtrlJoc() {
 		CP = new CtrlPersistencia();
@@ -30,7 +31,7 @@ public class CtrlJoc {
 	         c.printStackTrace();
 	         return K;
 	    }
-		return null;
+		return K;
 	}
 
 	public boolean existeixPartidaGuardada() {
@@ -38,8 +39,23 @@ public class CtrlJoc {
 		return false;
 	}
 
-	public TaulerKenKen loadPartidaGuardada() {
-
-		return null;
+	/* S'asumeix que existeix partida del usuari u */
+	public TaulerKenKen loadPartidaGuardada(String u) {
+		TaulerKenKen K = null;
+		try {
+			FileInputStream fileIn = new FileInputStream(pathGuardats + "/" + u + ".txt");
+	        ObjectInputStream in = new ObjectInputStream(fileIn);
+	        K = (TaulerKenKen) in.readObject();
+	        in.close();
+	        fileIn.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+			return K;
+		} catch (ClassNotFoundException c) {
+			System.err.println("Ha anat malament");
+	         c.printStackTrace();
+	         return K;
+		}
+		return K;
 	}
 }

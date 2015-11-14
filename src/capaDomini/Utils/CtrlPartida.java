@@ -2,6 +2,8 @@ package capaDomini.Utils;
 
 import java.io.*;
 import java.util.*;
+
+import capaDomini.Algoritmes.KenKenUserSolver;
 import capaPersistencia.*;
 
 public class CtrlPartida {
@@ -10,8 +12,8 @@ public class CtrlPartida {
 	private long initialTime;
 	private long currentTime = 0;
 	private CtrlPersistencia CP;
-	private String pathPartides = "/data/Partides.txt";
-	private String pathGuardats = "/data/Saved/";
+	private String pathPartides = "./data/Partides.txt";
+	private String pathGuardats = "./data/Saved/";
 	private ArrayList<ArrayList<String>> Info;
 	
 	public CtrlPartida(Partida p) {
@@ -19,7 +21,7 @@ public class CtrlPartida {
 		CP = new CtrlPersistencia();
 		CtrlPersistencia.setSeparator(" ");
 		try {
-			Info = CP.loadTable(pathPartides);
+			Info = CtrlPersistencia.loadTable(pathPartides);
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
@@ -35,7 +37,7 @@ public class CtrlPartida {
 		fila.add(String.valueOf(P.getPistes()));
 		Info.add(fila);
 		try {
-			CP.storeTable(pathPartides,Info);
+			CtrlPersistencia.storeTable(pathPartides,Info);
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
@@ -57,9 +59,12 @@ public class CtrlPartida {
 	
 	public void play() {
 		this.initialTime = System.nanoTime();
+		KenKenUserSolver KUS = new KenKenUserSolver();
+		KUS.usersolver(P.getK());
+		
 	}
 
-	public void stop() {
+	public void pause() {
 		this.currentTime += System.nanoTime() - initialTime;
 	}
 	
@@ -68,7 +73,7 @@ public class CtrlPartida {
 	}
 		
 	public long getcurrentTime() {
-		currentTime = System.nanoTime() - initialTime;
+		currentTime += System.nanoTime() - initialTime;
 		return currentTime;
-	}	
+	}
 }

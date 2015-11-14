@@ -39,7 +39,7 @@ public class Partida {
 		else {
 			try {
 				if (CJ.existeixPartidaGuardada()) {
-					K = CJ.loadPartidaGuardada();
+					K = CJ.loadPartidaGuardada(u);
 				}
 				else throw (new ExcepcionNoExistePartidaGuardada());
 			} catch (ExcepcionNoExistePartidaGuardada e) {

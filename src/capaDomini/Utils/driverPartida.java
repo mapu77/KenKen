@@ -23,10 +23,13 @@ public class driverPartida {
 		mostrarOpcions();
 		int op;
 		while ((op = scan.nextInt()) != 0) {
-			Partida p;
 			switch(op) {
 			case 1:
-				System.out.println("Not implemented yet");
+				CtrlJoc CJ = new CtrlJoc();
+				if (CJ.existeixPartidaGuardada()) {
+					TaulerKenKen K = CJ.loadPartidaGuardada(u);
+					K.PrintaKenKen();
+				}
 				break;
 			case 2:
 				break;
@@ -39,8 +42,9 @@ public class driverPartida {
 					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 					else {
 						n = Dificultat.toInt(d);;
-						p = new Partida(u,d);
-						
+						Partida p = new Partida(u,d);
+						CtrlPartida CP = new CtrlPartida(p);
+						CP.play();
 					}
 				} catch (ExcepcionDificultatInvalida e) {
 					

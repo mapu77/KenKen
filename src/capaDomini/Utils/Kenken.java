@@ -1,12 +1,8 @@
 package capaDomini.Utils;
 
 import java.util.*;
-import capaPersistencia.*;
-import java.io.*;
 import capaDomini.Usuari.CtrlUser;
 import capaDomini.Usuari.User;
-import capaDomini.*;
-import capaDomini.Ranking.CTRLRanking;
 
 public class Kenken extends Joc {
 	

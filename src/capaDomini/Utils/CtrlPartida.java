@@ -115,10 +115,10 @@ public class CtrlPartida {
 	public void play() {
 		this.initialTime = System.nanoTime();
 		int option;
+		P.getK().PrintaKenKen();
 		Scanner ns = new Scanner(System.in);
 		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
-		TaulerKenKen aux = new TaulerKenKen(P.getK().getAlto());
-		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,aux);
+		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K);
 		KenKenCheck KC = new KenKenCheck(P.getK());
 		KUS.combinarTaulers();
 		KUS.resolPerPista();

@@ -1,6 +1,5 @@
 package capaDomini.Algoritmes;
 
-//import java.util.*;
 import capaDomini.Utils.*;
 
 public class KenKenCheck {
@@ -17,11 +16,9 @@ public class KenKenCheck {
 		int incr = 1;
 		while((j+incr < t1.getAncho() || i+incr < t1.getAlto()) && !repeat) {
 			if (j+incr < t1.getAncho()) {
-				System.out.println("fila->valor original " + c.getNumero() + ". Valor possible copia " + t1.getNumero(i, j+incr));
 				repeat = (c.getNumero() == t1.getNumero(i, j+incr));
 			}
 			if (i+incr < t1.getAncho() && !repeat) {
-				System.out.println("columna->valor original " + c.getNumero() + ". Valor possible copia " + t1.getNumero(i+incr, j));
 				repeat = (c.getNumero() == t1.getNumero(i+incr, j));
 			}
 			incr++;
@@ -36,11 +33,9 @@ public class KenKenCheck {
 			//mistake = (t1.getRegio(i).checkRegionC());
 			if (t1.getRegio(i).checkRegionC()) {
 				mistake = false;
-				System.out.println("La regio " + i + " es correcta");
 			}
 			else {
 				mistake = true;
-				System.out.println("La regio " + i + " es INcorrecta");
 			}
 			i++;
 		}
@@ -54,7 +49,6 @@ public class KenKenCheck {
 			while (i < t1.getAlto() && !error) {
 				int j = 0;
 				while (j < t1.getAncho() && !error) {
-					System.out.println("Controlant la cella (" + i + "," + j + ")");
 					error = ctrlFilaAndCol(t1.getCella(i, j));
 					j++;
 				}

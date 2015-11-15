@@ -10,17 +10,15 @@ public class KenKenUserSolver {
 	
 	private TaulerKenKen t1;
 	private TaulerKenKen t2;
-	private TaulerKenKen t3;
 	private Stack<Cella> s = new Stack<Cella>();
 	private int pistes_demanades = 0;
 	private Scanner ns = new Scanner(System.in);
 	
 	public KenKenUserSolver() {}
 
-	public KenKenUserSolver(TaulerKenKen T1, TaulerKenKen T2, TaulerKenKen T3) {
+	public KenKenUserSolver(TaulerKenKen T1, TaulerKenKen T2) {
 		this.t1 = T1;
 		this.t2 = T2;
-		this.t3 = T3;
 	}
 	
 	public void entraCella() {
@@ -32,15 +30,8 @@ public class KenKenUserSolver {
 			System.out.println("Indica el valor a afegir");
 			int val = ns.nextInt();
 			if (val<=0 || val>t1.getAlto()) throw (new ExcepcionValorFueraRango());
-			if (t2.getNumCeldasRellenas() == t2.getNumCeldas()) {
-				introdueixvalor(t1,x,y,val);
-				t1.PrintaKenKen();
-			}
-			else {
-				introdueixvalor(t3,x,y,val);
-				t3.PrintaRegioKenKen();
-				t3.PrintaSolucio();
-			}
+			introdueixvalor(t1,x,y,val);
+			t1.PrintaKenKen();
 		} catch (ExcepcionPosicionFueraRango e) {
 			System.out.println(e.getMessage());
 		} catch (ExcepcionValorFueraRango e) {
@@ -72,25 +63,13 @@ public class KenKenUserSolver {
 	public void undo() {
 		if (s.empty()) {System.out.println("No es pot tirar mes endarrere");}
 		else {
-			if (t2.getNumCeldas() == t2.getNumCeldasRellenas()) {
-				Cella top = s.peek();
-				if (top.getNumero() != -1) {
-					t1.setNumero(top.getX(), top.getY(), top.getNumero());
-				}
-				else { t1.borra(top.getX(), top.getY()); }
-				s.pop();
-				t1.PrintaKenKen();
+			Cella top = s.peek();
+			if (top.getNumero() != -1) {
+				t1.setNumero(top.getX(), top.getY(), top.getNumero());
 			}
-			else {
-				Cella top = s.peek();
-				if (top.getNumero() != -1) {
-					t3.setNumero(top.getX(), top.getY(), top.getNumero());
-				}
-				else { t3.borra(top.getX(), top.getY()); }
-				s.pop();
-				t1.PrintaRegioKenKen();
-				t3.PrintaSolucio();	
-			}	
+			else { t1.borra(top.getX(), top.getY()); }
+			s.pop();
+			t1.PrintaKenKen();	
 		}
 	}
 	
@@ -148,41 +127,23 @@ public class KenKenUserSolver {
 	
 	public void resolPerPista() {
 		KenKenSolver KS = new KenKenSolver();
-		KS.backtrackingSolver(t1);
+		KS.backtrackingSolver(t2);
 		System.out.println("Ja es pot utilitzar la opcio \"Demanar Pista\"");
-		KenKenCopy(t1,t2,t3);
-	}
-	
-	private void KenKenCopy(TaulerKenKen sol, TaulerKenKen copia, TaulerKenKen aux) {
-		for (int i = 0; i < sol.getAlto(); i++) {
-			for (int j = 0; j < sol.getAncho(); j++) {
-				copia.setNumero(i, j, sol.getNumero(i, j));
-				sol.borra(i, j);
-			}
-		}
-		for (int i = 0; i < sol.getAlto(); i++) {
-			for (int j = 0; j < sol.getAncho(); j++) {
-				if (!aux.estaVacia(i,j)) {
-					sol.setNumero(i, j, aux.getNumero(i, j));
-				}
-			}
-		}
 	}
 	
 	public void combinarTaulers() {
 		for (int i=0; i < t1.getNRegio(); i++) {
 			Vector <Cella> vc = new Vector<Cella>();
 			for (int j=0; j < t1.getRegio(i).getNumCeldas(); j++) {
-				Cella c = new Cella();
-				c.setX(t1.getRegio(i).getCella(j).getX());
-				c.setY(t1.getRegio(i).getCella(j).getY());
-				vc.add(c);
+				Cella c1 = t1.getRegio(i).getCella(j);
+				Cella c2 = t2.getCella(c1.getX(), c1.getY());
+				c2.setNumero(c1.getNumero());
+				vc.add(c2);
 			}
 			RegioKenKen r = new RegioKenKen(t1.getRegio(i).getNumCeldas(),vc,t1.getRegio(i).getOperation(),
 					t1.getRegio(i).getResult(),i);
-			t3.afegeixRegio(r);
+			t2.afegeixRegio(r);
 		}
-		t3.PrintaKenKen();
 	}
 	
 		/*KenKenUserSolver p = new KenKenUserSolver(T,K,auxiliar);

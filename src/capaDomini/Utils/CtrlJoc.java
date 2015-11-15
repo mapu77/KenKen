@@ -52,7 +52,7 @@ public class CtrlJoc {
 
 	
 	public boolean existeixTauler(String id, String d) {
-		
+		return true;
 	}
 	
 	public boolean existeixPartidaGuardada(String u) {

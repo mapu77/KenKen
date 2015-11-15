@@ -122,7 +122,7 @@ public class CtrlPartida {
 		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K);
 		KenKenCheck KC = new KenKenCheck(P.getK());
 		KUS.combinarTaulers();
-		KUS.resolPerPista();
+		KUS.resolPerPista(P.getK(),K);
 		mostrarOpcions();
 		while (!FI && (option=ns.nextInt()) != 0) {
 			switch (option) {

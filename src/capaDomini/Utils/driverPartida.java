@@ -28,7 +28,7 @@ public class driverPartida {
 			switch(op) {
 			case 1:
 				CtrlJoc CJ = new CtrlJoc();
-				if (CJ.existeixPartidaGuardada()) {
+				if (CJ.existeixPartidaGuardada(u)) {
 					Partida p = new Partida(u);
 					CP = new CtrlPartida(p);
 					CP.play();

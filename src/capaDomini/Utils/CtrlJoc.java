@@ -13,6 +13,7 @@ public class CtrlJoc {
 	private String pathTaulers = "data/Taulells/";
 	private String pathGuardats = "data/Saved/";
 	private ArrayList<ArrayList<String>> T;
+	private ArrayList<ArrayList<String>> TaulaJocs;
 	
 	public CtrlJoc() {
 		CtrlPersistencia.setSeparator(" ");
@@ -110,6 +111,11 @@ public class CtrlJoc {
 	}
 
 	public void guardarTauler(TaulerKenKen K) {
+		try {
+			TaulaJocs = CtrlPersistencia.loadTable("data/Jocs.txt");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		int i = 1;
 		String path = Paths.get(pathTaulers + "/" + K.getAlto() + "x" + K.getAlto() + "/" + i + ".txt").toAbsolutePath().toString();
 		File file = new File(path);
@@ -146,8 +152,10 @@ public class CtrlJoc {
 		}
 		try {
 			CtrlPersistencia.storeTable(path,T);
+			fila.add(Paths.get(pathTaulers + "/" + K.getAlto() + "x" + K.getAlto() + "/" + i + ".txt").toString());
+			TaulaJocs.add(fila);
+			CtrlPersistencia.storeTable("data/Jocs.txt", TaulaJocs);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

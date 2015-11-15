@@ -143,7 +143,9 @@ public class CtrlPartida {
 			/* Pausar partida */
 			case 4:
 				this.pause();
+				System.out.println("Premi 1 per continuar");
 				while (ns.nextInt()!= 1);
+				System.out.println("Joc restaurat");
 				this.resume();
 				break;
 			/* Guardar l'estat de la partida */
@@ -154,10 +156,7 @@ public class CtrlPartida {
 			case 6:	//funciona
 				KUS.reinicia();
 			}
-			System.out.println("Opcions");
-			System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
-			System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
-			System.out.println("0. Sortir");
+			mostrarOpcions();
 		}
 		if (FI) this.save();
 		else {

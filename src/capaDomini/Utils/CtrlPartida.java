@@ -50,43 +50,58 @@ public class CtrlPartida {
 
 	/* Guarda a la BD l'estat de la partida */
 	public void savePartida() {
+		boolean guarda = true;
 		String u = P.getUsuari();
 		String path = Paths.get(pathGuardats + "/" + u + ".txt").toAbsolutePath().toString();
-		ArrayList<ArrayList<String>> T = new ArrayList<ArrayList<String>>();
-		for (int i=0; i<7+P.getK().getNRegio(); ++i) {
-			T.add(new ArrayList<String>());
-		}
-		T.get(0).add(u);							//user
-		T.get(1).add(String.valueOf(P.getIdJoc())); //IdTauler
-		T.get(2).add(P.getD());						//Dificultat
-		T.get(3).add(String.valueOf(P.getPistes()));//NumPistes
-		T.get(4).add(String.valueOf(currentTime));	//CurrentTime
-		//A partir d'aqui es guarda la conf del tauler
-		TaulerKenKen K = P.getK();
-		T.get(5).add(String.valueOf(K.getAlto()));	//N
-		int nr = K.getNRegio();
-		T.get(6).add(String.valueOf(nr));			//NR
-		for (int i=7; i<nr+7;++i) {
-			int nc = K.getRegio(i-7).getNumCeldas();//NC
-			T.get(i).add(String.valueOf(nc));
-			for (int k=0; k<nc; ++k) {
-				int x = K.getRegio(i-7).getCella(k).getX();
-				int y = K.getRegio(i-7).getCella(k).getY();
-				int val = K.getRegio(i-7).getCella(k).getNumero();
-				T.get(i).add(String.valueOf(x));
-				T.get(i).add(String.valueOf(y));
-				T.get(i).add(String.valueOf(val));
+		File file = new File(path);
+		if (file.exists()) {
+			System.out.println("Ja existeix una partida guardada per aquest usuari");
+			System.out.println("Vols sobreescriure la partida?");
+			System.out.println("1-Si");
+			System.out.println("2-No");
+			Scanner sn = new Scanner (System.in);
+			String op = sn.next();
+			if (op.equals("2")) {
+				guarda = false;
 			}
-			String op = K.getRegio(i-7).getOperation();
-			int res = K.getRegio(i-7).getResult();
-			T.get(i).add(op);
-			T.get(i).add(String.valueOf(res));
 		}
-		try {
-			CtrlPersistencia.storeTable(path,T);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (guarda) {
+			ArrayList<ArrayList<String>> T = new ArrayList<ArrayList<String>>();
+			for (int i=0; i<7+P.getK().getNRegio(); ++i) {
+				T.add(new ArrayList<String>());
+			}
+			T.get(0).add(u);							//user
+			T.get(1).add(String.valueOf(P.getIdJoc())); //IdTauler
+			T.get(2).add(P.getD());						//Dificultat
+			T.get(3).add(String.valueOf(P.getPistes()));//NumPistes
+			T.get(4).add(String.valueOf(currentTime));	//CurrentTime
+			//A partir d'aqui es guarda la conf del tauler
+			TaulerKenKen K = P.getK();
+			T.get(5).add(String.valueOf(K.getAlto()));	//N
+			int nr = K.getNRegio();
+			T.get(6).add(String.valueOf(nr));			//NR
+			for (int i=7; i<nr+7;++i) {
+				int nc = K.getRegio(i-7).getNumCeldas();//NC
+				T.get(i).add(String.valueOf(nc));
+				for (int k=0; k<nc; ++k) {
+					int x = K.getRegio(i-7).getCella(k).getX();
+					int y = K.getRegio(i-7).getCella(k).getY();
+					int val = K.getRegio(i-7).getCella(k).getNumero();
+					T.get(i).add(String.valueOf(x));
+					T.get(i).add(String.valueOf(y));
+					T.get(i).add(String.valueOf(val));
+				}
+				String op = K.getRegio(i-7).getOperation();
+				int res = K.getRegio(i-7).getResult();
+				T.get(i).add(op);
+				T.get(i).add(String.valueOf(res));
+			}
+			try {
+				CtrlPersistencia.storeTable(path,T);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

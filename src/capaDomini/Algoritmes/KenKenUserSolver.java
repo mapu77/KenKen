@@ -139,13 +139,6 @@ public class KenKenUserSolver {
 		pistes_demanades = 0;
 	}
 	
-	/*public void run() {
-		KenKenSolver KS = new KenKenSolver();
-		KS.backtrackingSolver(t1);
-		System.out.println("Ja es pot utilitzar la opcio \"Demanar Pista\"");
-		KenKenCopy(t1,t2,t3);
-	}*/
-	
 	private void KenKenCopy(TaulerKenKen sol, TaulerKenKen copia, TaulerKenKen aux) {
 		for (int i = 0; i < sol.getAlto(); i++) {
 			for (int j = 0; j < sol.getAncho(); j++) {

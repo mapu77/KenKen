@@ -90,7 +90,7 @@ public class CtrlJoc {
 			return p;
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("No existeix cap partida guardada per aquest usuari");
 			e.printStackTrace();
 		}
 		return null;		

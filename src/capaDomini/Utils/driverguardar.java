@@ -43,8 +43,8 @@ public class driverguardar {
 		System.out.println("Hem guardat la partida");
 	}
 	
-	public static void main(String[] args) {		
-		Partida p = new Partida("ocapo","3x3");
+	public static void main(String[] args) {
+		Partida p = new Partida("ocapo");
 		CtrlPartida cp = new CtrlPartida(p);
 		cp.play();
 		//carregarKenKen();

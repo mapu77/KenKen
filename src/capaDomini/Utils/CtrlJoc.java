@@ -50,8 +50,10 @@ public class CtrlJoc {
 		return null;
 	}
 
-	public boolean existeixPartidaGuardada() {
-
+	public boolean existeixPartidaGuardada(String u) {
+		String path = Paths.get(pathGuardats + "/" + u + ".txt").toAbsolutePath().toString();
+		File file = new File(path);
+		if (file.exists()) return true;
 		return false;
 	}
 

@@ -119,26 +119,41 @@ public class CtrlPartida {
 		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
 		TaulerKenKen aux = new TaulerKenKen(P.getK().getAlto());
 		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,aux);
+		KenKenCheck KC = new KenKenCheck(P.getK());
 		KUS.combinarTaulers();
+		KUS.resolPerPista();
 		mostrarOpcions();
-		while ((option=ns.nextInt()) != 0 && !FI) {
+		while (!FI && (option=ns.nextInt()) != 0) {
 			switch (option) {
 			/* Introduir valor */
-			case 1:	//funciona
+			case 1:
 				KUS.entraCella();
-				/*if () {
-					if () {
-						FI = true;	
+				if (P.getK().getNumCeldas() == P.getK().getNumCeldasRellenas()) {	//tauler resolt
+					if (!KC.checkKenKen()) {
+						FI = true;
+						System.out.println("Enhorabona! La solucio es correcta");
 					}
-				}*/
+					else {
+						System.out.println("Aquesta solucio no es correcta");
+					}
+				}
 				break;
 			/* Undo */
-			case 2:	//funciona
+			case 2:
 				KUS.undo();
 				break;
 			/* Demanar pista */
-			case 3:	//funciona
+			case 3:
 				KUS.getPista();
+				if (P.getK().getNumCeldas() == P.getK().getNumCeldasRellenas()) {	//tauler resolt
+					if (!KC.checkKenKen()) {
+						FI = true;
+						System.out.println("Enhorabona! La solucio es correcta");
+					}
+					else {
+						System.out.println("Aquesta solucio no es correcta");
+					}
+				}
 				break;
 			/* Pausar partida */
 			case 4:
@@ -151,14 +166,12 @@ public class CtrlPartida {
 				this.savePartida();
 				break;
 			/* Reiniciar partida */
-			case 6:	//funciona
+			case 6:
 				KUS.reinicia();
 			}
-			System.out.println("Opcions");
-			System.out.println("1. Introduir numero \t 2. Undo \t\t 3. Demanar Pista");
-			System.out.println("4. Pausa \t\t 5. Guardar Partida \t 6. Reiniciar Partida");
-			System.out.println("0. Sortir");
+			mostrarOpcions();
 		}
+		System.out.println("Sortint del programa...");
 		if (FI) this.save();
 		else {
 			/* Guardar estat tauler */

@@ -6,7 +6,7 @@ import capaDomini.Utils.*;
 import excepciones.*;
 
 
-public class KenKenUserSolver {
+public class KenKenUserSolver implements Runnable {
 	
 	private TaulerKenKen t1;
 	private TaulerKenKen t2;
@@ -125,7 +125,12 @@ public class KenKenUserSolver {
 		pistes_demanades = 0;
 	}
 	
-	public void resolPerPista() {
+	public void resolPerPista(TaulerKenKen T, TaulerKenKen K) {
+		KenKenUserSolver p = new KenKenUserSolver(T,K);
+		new Thread(p).start();
+	}
+	
+	public void run() {
 		KenKenSolver KS = new KenKenSolver();
 		KS.backtrackingSolver(t2);
 		System.out.println("Ja es pot utilitzar la opcio \"Demanar Pista\"");
@@ -145,7 +150,4 @@ public class KenKenUserSolver {
 			t2.afegeixRegio(r);
 		}
 	}
-	
-		/*KenKenUserSolver p = new KenKenUserSolver(T,K,auxiliar);
-		new Thread(p).start();*/
 }

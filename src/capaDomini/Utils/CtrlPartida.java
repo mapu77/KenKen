@@ -98,6 +98,7 @@ public class CtrlPartida {
 			}
 			try {
 				CtrlPersistencia.storeTable(path,T);
+				System.out.println("Partida guardada");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -174,8 +175,14 @@ public class CtrlPartida {
 		System.out.println("Sortint del programa...");
 		if (FI) this.save();
 		else {
-			/* Guardar estat tauler */
-			/* o marxar */
+			System.out.println("Vols guardar la partida?");
+			System.out.println("1-Si");
+			System.out.println("2-No");
+			option = ns.nextInt();
+			if (option == 1) { 
+				this.savePartida(); 
+				System.out.println("Partida guardada");
+			}
 		}
 	}
 

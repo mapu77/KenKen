@@ -56,10 +56,44 @@ public class CtrlJoc {
 	}
 
 	/* S'asumeix que existeix partida del usuari u */
-	public TaulerKenKen loadPartidaGuardada(String u) {
-		TaulerKenKen K = null;
-		
-		return K;
+	public Partida loadPartidaGuardada(String u) {
+		String path = Paths.get(pathGuardats + "/" + u + ".txt").toAbsolutePath().toString();
+		try {
+			T = CtrlPersistencia.loadTable(path);
+			Partida p = new Partida();
+			p.setUsuari(T.get(0).get(0));
+			p.setIdJoc(T.get(1).get(0));
+			p.setD(T.get(2).get(0));
+			p.setPistes(Integer.parseInt(T.get(3).get(0)));
+			p.setTime(Long.parseLong(T.get(4).get(0)));
+			int n = Integer.parseInt(T.get(5).get(0));
+			TaulerKenKen K = new TaulerKenKen(n);
+			int nr = Integer.parseInt(T.get(6).get(0));
+			for (int i=7; i<nr+7; ++i) {
+				Vector<Cella> VC = new Vector<Cella>();
+				int nc = Integer.parseInt(T.get(i).get(0));
+				int j;
+				for (j=1; j<3*nc; j+=3) {
+					int x = Integer.parseInt(T.get(i).get(j));
+					int y = Integer.parseInt(T.get(i).get(j+1));
+					int v = Integer.parseInt(T.get(i).get(j+2));
+					Cella c = new Cella(x,y);
+					c.setNumero(v);
+					VC.add(c);
+				}
+				String op = T.get(i).get(j);
+				int res = Integer.parseInt(T.get(i).get(j+1));
+				RegioKenKen r = new RegioKenKen(nc,VC,op,res,i-7);
+				K.afegeixRegio(r);
+			}
+			p.setK(K);
+			return p;
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;		
 	}
 
 	public void guardarTauler(TaulerKenKen K) {

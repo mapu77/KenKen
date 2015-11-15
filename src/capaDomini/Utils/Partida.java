@@ -9,6 +9,7 @@ public class Partida {
 	private String idJoc; 		//Identificador del tauler
 	private String D;			//Dificultat tauler
 	private int pistes = 0;
+	private long time;
 	private CtrlJoc CJ;
 	private TaulerKenKen K;
 	
@@ -20,8 +21,12 @@ public class Partida {
 	public Partida(String u) {
 		CJ = new CtrlJoc();
 		this.usuari = u;
-		K = CJ.loadPartidaGuardada(u);
-		this.D = (String)(String.valueOf(K.getAlto())+"x"+String.valueOf(K.getAlto()));
+		Partida p = CJ.loadPartidaGuardada(u);
+		this.idJoc = p.getIdJoc();
+		this.D = p.getD();
+		this.pistes = p.getPistes();
+		this.time = p.getTime();
+		this.K = p.getK();
 	}
 	
 	/* Creador partida amb KenKen aleatori */
@@ -29,6 +34,7 @@ public class Partida {
 		CJ = new CtrlJoc();
 		this.D = d;
 		this.usuari = u;
+		this.time = 0;
 		int n = Dificultat.toInt(d);
 		K = new KenKenGenerator().generateRandomly(n);
 	}
@@ -38,6 +44,7 @@ public class Partida {
 		CJ = new CtrlJoc();
 		this.usuari = u;
 		this.D = d;
+		this.time = 0;
 		K = CJ.llegirTauler(id,d);
 	}
 	
@@ -72,6 +79,14 @@ public class Partida {
 
 	public void setPistes(int pistes) {
 		this.pistes = pistes;
+	}
+	
+	public long getTime() {
+		return time;
+	}
+
+	public void setTime(long time) {
+		this.time = time;
 	}
 	
 	public TaulerKenKen getK() {

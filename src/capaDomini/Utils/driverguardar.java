@@ -44,8 +44,9 @@ public class driverguardar {
 	}
 	
 	public static void main(String[] args) {		
-		CJ = new CtrlJoc();
-		guardarKenKen();
+		Partida p = new Partida("ocapo","3x3");
+		CtrlPartida cp = new CtrlPartida(p);
+		cp.play();
 		//carregarKenKen();
 		//guardarPartida();
 	}

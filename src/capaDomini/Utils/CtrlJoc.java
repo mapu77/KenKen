@@ -1,6 +1,7 @@
 package capaDomini.Utils;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -110,7 +111,7 @@ public class CtrlJoc {
 		return null;		
 	}
 
-	public void guardarTauler(TaulerKenKen K) {
+	public int guardarTauler(TaulerKenKen K) {
 		try {
 			TaulaJocs = CtrlPersistencia.loadTable("data/Jocs.txt");
 		} catch (IOException e1) {
@@ -158,6 +159,7 @@ public class CtrlJoc {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return i;
 	}
 	
 	public String mostrarIdTaulers(String d) {

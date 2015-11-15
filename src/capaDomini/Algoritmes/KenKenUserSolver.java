@@ -96,22 +96,29 @@ public class KenKenUserSolver {
 	
 	public void getPista() {
 		if (t1.getNumCeldasRellenas() < t1.getNumCeldas()) {
-			if (t2.getNumCeldasRellenas() != t2.getNumCeldas()) {
-				System.out.println("Aplicant la pista. Aquesta accio pot trigar una estona");
-				System.out.println("Presiona 1 si vols triar una altra opcio");
-				while (t2.getNumCeldasRellenas() != t2.getNumCeldas() && ns.nextInt() != 1);
+			if (pistes_demanades == 0) {
+				System.out.println("Tingues en compte que la solucio dun KenKen no es unica.\n"
+						+ "El fet de demanar una pista pot alterar la teva solucio proposada.\n"
+						+ "Presiona 1 si vols rebre una pista, 0 en cas contrari.");
 			}
-			else {
-				if (pistes_demanades < t1.getAlto()-2) {
-					Cella ret = new Cella();
-					findcellabuida(t1,ret);
-					System.out.println("Pista a les coordenades (" + ret.getX() + "," + ret.getY() + ") amb valor " 
-							+ t2.getNumero(ret.getX(), ret.getY()));
-					t1.setNumero(ret.getX(), ret.getY(), t2.getNumero(ret.getX(), ret.getY()));
-					t1.PrintaKenKen();
-					++pistes_demanades;
+			if (pistes_demanades > 0 || ns.nextInt() == 1) 	{		
+				if (t2.getNumCeldasRellenas() != t2.getNumCeldas()) {
+					System.out.println("Aplicant la pista. Aquesta accio pot trigar una estona");
+					System.out.println("Presiona 1 si vols triar una altra opcio");
+					while (t2.getNumCeldasRellenas() != t2.getNumCeldas() && ns.nextInt() != 1);
 				}
-				else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
+				else {
+					if (pistes_demanades < t1.getAlto()-2) {
+						Cella ret = new Cella();
+						findcellabuida(t1,ret);
+						System.out.println("Pista a les coordenades (" + ret.getX() + "," + ret.getY() + ") amb valor " 
+								+ t2.getNumero(ret.getX(), ret.getY()));
+						t1.setNumero(ret.getX(), ret.getY(), t2.getNumero(ret.getX(), ret.getY()));
+						t1.PrintaKenKen();
+						++pistes_demanades;
+					}
+					else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
+				}
 			}
 		}
 		else { System.out.println("El taulell ja esta ple"); }
@@ -137,6 +144,13 @@ public class KenKenUserSolver {
 		}
 		t1.PrintaKenKen();
 		pistes_demanades = 0;
+	}
+	
+	public void resolPerPista() {
+		KenKenSolver KS = new KenKenSolver();
+		KS.backtrackingSolver(t1);
+		System.out.println("Ja es pot utilitzar la opcio \"Demanar Pista\"");
+		KenKenCopy(t1,t2,t3);
 	}
 	
 	private void KenKenCopy(TaulerKenKen sol, TaulerKenKen copia, TaulerKenKen aux) {

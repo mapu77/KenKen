@@ -50,6 +50,11 @@ public class CtrlJoc {
 		return null;
 	}
 
+	
+	public boolean existeixTauler(String id, String d) {
+		
+	}
+	
 	public boolean existeixPartidaGuardada(String u) {
 		String path = Paths.get(pathGuardats + "/" + u + ".txt").toAbsolutePath().toString();
 		File file = new File(path);
@@ -79,8 +84,8 @@ public class CtrlJoc {
 					int x = Integer.parseInt(T.get(i).get(j));
 					int y = Integer.parseInt(T.get(i).get(j+1));
 					int v = Integer.parseInt(T.get(i).get(j+2));
-					Cella c = new Cella(x,y);
-					c.setNumero(v);
+					Cella c = K.getCella(x,y);
+					if (v != -1) c.setNumero(v);
 					VC.add(c);
 				}
 				String op = T.get(i).get(j);
@@ -139,5 +144,16 @@ public class CtrlJoc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public String mostrarIdTaulers(String d) {
+		String s = new String();
+		String path = Paths.get(pathTaulers + d).toAbsolutePath().toString();
+		File directori = new File(path);
+		String vs[] = directori.list();
+		for (int i=0; i<vs.length; ++i) {
+			s += vs[i] + "\t";
+		}
+		return s;
 	}
 }

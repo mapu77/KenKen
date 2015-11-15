@@ -25,11 +25,12 @@ public class driverPartida {
 		while ((op = scan.nextInt()) != 0) {
 			String d;
 			CtrlPartida CP;
+			CtrlJoc CJ;
 			switch(op) {
 			case 1:
-				CtrlJoc CJ = new CtrlJoc();
+				CJ = new CtrlJoc();
 				if (CJ.existeixPartidaGuardada(u)) {
-					Partida p = new Partida(u);
+					Partida p = CJ.loadPartidaGuardada(u);
 					CP = new CtrlPartida(p);
 					CP.play();
 				}
@@ -41,10 +42,12 @@ public class driverPartida {
 				System.out.println("Dificultat");
 				System.out.println("3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
 				d = scan.next();
+				CJ = new CtrlJoc();
 				try {
 					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 					else {
-						/* Cal imprimir al usuari els id de tots els taulells de dificultat d */
+						System.out.println("Quin tauler vols jugar?");
+						System.out.println(CJ.mostrarIdTaulers(d));
 						String iden = scan.next();
 						Partida p = new Partida(u, d, iden);
 						CP = new CtrlPartida(p);

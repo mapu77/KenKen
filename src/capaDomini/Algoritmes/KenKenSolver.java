@@ -81,22 +81,29 @@ public class KenKenSolver {
 		}	
 	}
 	
-	public long backtrackingSolver(TaulerKenKen T) {		
+	public boolean comprovaSol (TaulerKenKen T) {
+		KK = T;
+		trobat = false;
+		backtrackingIA(0,0);
+		return trobat;
+	}
+	
+	public double backtrackingSolver(TaulerKenKen T) {		
 		KK = T;
 		trobat = false;
 		long t0 = System.nanoTime();
 		backtracking(0,0);
 		long t1 = System.nanoTime();
-		return (t1-t0)/(long)Math.pow(10,9);
+		return (double)(t1-t0)/(double)Math.pow(10,9);
 	}
 	
-	public long intelligentSolver(TaulerKenKen T) {
+	public double intelligentSolver(TaulerKenKen T) {
 		KK = T;
 		trobat = false;
 		long t0 = System.nanoTime();
 		IA();
 		backtrackingIA(0,0);
 		long t1 = System.nanoTime();
-		return (t1-t0)/(long)Math.pow(10,9);
+		return (double)(t1-t0)/(double)Math.pow(10,9);
 	}
 }

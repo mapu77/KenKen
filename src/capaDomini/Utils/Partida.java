@@ -37,11 +37,13 @@ public class Partida {
 		this.time = 0;
 		int n = Dificultat.toInt(d);
 		K = new KenKenGenerator().generateRandomly(n);
+		this.idJoc = String.valueOf(CJ.guardarTauler(K));
 	}
 	
 	/* Constructor partida seleccionada */
 	public Partida(String u, String d, String id) {
 		CJ = new CtrlJoc();
+		this.idJoc = id;
 		this.usuari = u;
 		this.D = d;
 		this.time = 0;

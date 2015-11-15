@@ -3,6 +3,7 @@ package capaDomini.Utils;
 import java.util.*;
 import capaDomini.Usuari.CtrlUser;
 import capaDomini.Usuari.User;
+import capaPersistencia.CtrlPersistencia;
 
 public class Kenken extends Joc {
 	
@@ -144,12 +145,11 @@ public class Kenken extends Joc {
 	} 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int opt = -1;
+		CtrlPersistencia.setSeparator(" ");
 		CtrlUser ctrlu = new CtrlUser();
-		
+		menuIntro();
+		int opt = sc.nextInt();
 		while (opt != 0){
-			menuIntro();
-			opt = sc.nextInt();
 			switch (opt){
 				case 1: //Crear Usuari
 					crearUsuari(ctrlu, sc);
@@ -214,6 +214,8 @@ public class Kenken extends Joc {
 				}
 				default: break;
 			}
+			menuIntro();
+			opt = sc.nextInt();
 		}
 
 	}

@@ -283,7 +283,7 @@ public class KenKenGenerator {
 		n = sn.nextInt();
 		K = new TaulerKenKen(n, u);
 		backtrackingGenerateNumbers(0,0);
-		System.out.println("Nombre inicial minim de regions inicials d'una cel.la:");
+		System.out.println("Nombre inicial minim de regions d'una cel.la:");
 		int iniX = sn.nextInt();
 		regions1C (iniX);
 		generateRegions();
@@ -298,7 +298,6 @@ public class KenKenGenerator {
 			vOps[i] = sn.next();
 			++i;
 		}
-		//generateRegionSolution();
 		generateRegionSolutionByOps (vOps);
 		return K;
 	}
@@ -326,7 +325,6 @@ public class KenKenGenerator {
 			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
 			K.afegeixRegio(r);
 		}
-		sn.close();
 		return K;
 	}
 	

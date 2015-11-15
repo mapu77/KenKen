@@ -102,6 +102,7 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 		String[][] matR = new String[getAlto()*2+1][getAlto()*2+1];
 		ModificaMatrius (mat,matR);
 		// Printa el taulell per regions
+		System.out.print("Configuracio del KenKen per regions");
 		System.out.print("\n");
 		for (int i=0; i<=2*getAlto(); ++i) {
 			for (int j=0; j<=2*getAncho(); ++j) {
@@ -110,7 +111,7 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 			System.out.print("\n");
 		}
 		// Printa la solucio proposada per l'usuari
-		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+		System.out.println("\nEstat del KenKen");
 		for (int i=0; i<=2*getAlto(); ++i) {
 			for (int j=0; j<=2*getAncho(); ++j) {
 				System.out.print(mat[i][j]);
@@ -118,6 +119,7 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 			System.out.print("\n");
 		}
 		// Printa l'operacio i resultat de cada regio
+		System.out.println("Informacio de les regions");
 		for (int k=0; k<VR.size(); ++k) {
 			System.out.println("Regio num" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
 								", Resultat: " + VR.get(k).getResult());
@@ -129,13 +131,14 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 		String[][] matR = new String[getAlto()*2+1][getAlto()*2+1];
 		ModificaMatrius (mat,matR);
 		// Printa la solucio proposada per l'usuari
-		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+		System.out.println("\nEstat del KenKen");
 		for (int i=0; i<=2*getAlto(); ++i) {
 			for (int j=0; j<=2*getAncho(); ++j) {
 				System.out.print(mat[i][j]);
 			}
 			System.out.print("\n");
 		}
+		System.out.println("Informacio de les regions");
 		// Printa l'operacio i resultat de cada regio
 		for (int k=0; k<VR.size(); ++k) {
 			System.out.println("Regio num" + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
@@ -148,6 +151,7 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 		String[][] matR = new String[getAlto()*2+1][getAlto()*2+1];
 		ModificaMatrius (mat,matR);
 		// Printa el taulell per regions
+		System.out.print("Configuracio del KenKen per regions");
 		System.out.print("\n");
 		for (int i=0; i<=2*getAlto(); ++i) {
 			for (int j=0; j<=2*getAncho(); ++j) {
@@ -156,6 +160,7 @@ public class TaulerKenKen extends Tauler implements java.io.Serializable {
 			System.out.print("\n");
 		}
 		// Printa l'operacio i resultat de cada regio
+		System.out.println("Informacio de les regions");
 		for (int k=0; k<VR.size(); ++k) {
 			System.out.println("Regio num " + VR.get(k).getId() + " -> Operacio: " + VR.get(k).getOperation() +
 								", Resultat: " + VR.get(k).getResult());

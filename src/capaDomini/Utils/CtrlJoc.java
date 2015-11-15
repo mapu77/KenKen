@@ -52,7 +52,14 @@ public class CtrlJoc {
 
 	
 	public boolean existeixTauler(String id, String d) {
-		return true;
+		boolean trobat = false;
+		String path = Paths.get(pathTaulers + d).toAbsolutePath().toString();
+		File directori = new File(path);
+		String vs[] = directori.list();
+		for (int i=0; i<vs.length; ++i) {
+			if (vs[i].equals(id+".txt")) return true;
+		}
+		return false;
 	}
 	
 	public boolean existeixPartidaGuardada(String u) {

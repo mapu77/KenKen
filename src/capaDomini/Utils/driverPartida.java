@@ -49,9 +49,14 @@ public class driverPartida {
 						System.out.println("Quin tauler vols jugar?");
 						System.out.println(CJ.mostrarIdTaulers(d));
 						String iden = scan.next();
-						Partida p = new Partida(u, d, iden);
-						CP = new CtrlPartida(p);
-						CP.play();
+						if (CJ.existeixTauler(iden,d)) {
+							Partida p = new Partida(u, d, iden);
+							CP = new CtrlPartida(p);
+							CP.play();
+						}
+						else {
+							System.err.println("Aquest tauler no existeix");
+						}
 					}
 				} catch (ExcepcionDificultatInvalida e) {
 					System.err.println(e.getMessage());

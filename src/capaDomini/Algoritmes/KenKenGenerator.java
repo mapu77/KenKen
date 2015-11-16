@@ -283,10 +283,9 @@ public class KenKenGenerator {
 		System.out.println("Mida del KenKen?");
 		System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
 		String d = sn.next();
-		int n;
 		try {
 			if (Dificultat.esValida(d)) {
-				n=Dificultat.toInt(d);
+				n = Dificultat.toInt(d);
 				K = new TaulerKenKen(n);
 				backtrackingGenerateNumbers(0,0);
 				System.out.println("Nombre inicial minim de regions d'una cel.la:");

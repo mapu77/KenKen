@@ -1,0 +1,106 @@
+MENU RANKING
+1 Consulta Ranking General
+2 Consulta Ranking per Tipus
+3 Consulta Ranking Personal
+0 Sortir
+Ranquing General:
+----------------
+Nombre de jocs:			16
+Nombre d'usuaris:		5
+Nombre de partides jugades:	28
+Joc més popular:		1
+
+MENU RANKING
+1 Consulta Ranking General
+2 Consulta Ranking per Tipus
+3 Consulta Ranking Personal
+0 Sortir
+Ranking per Tipus:
+-----------------
+Introdueix la dificultat
+Introdueix el nombre d'entrades
+Opcions:
+1: Consultar el nombre d'entrades visibles
+2: Modificar el nombre d'entrades visibles
+3: Consultar els millors temps dels 3x3
+0: Sortir
+Dificultat: 3x3
+Posicio		Usuari		IdJoc		Temps
+-------		------		-----		-----
+1a		ocapo		1		465.625961592
+2a		teru		1		482.186624438
+3a		jpont		1		493.12312453
+4a		mapu77		1		561.092841564
+
+Opcions:
+1: Consultar el nombre d'entrades visibles
+2: Modificar el nombre d'entrades visibles
+3: Consultar els millors temps dels 3x3
+0: Sortir
+S'estan visualitzant 5 entrades
+
+Opcions:
+1: Consultar el nombre d'entrades visibles
+2: Modificar el nombre d'entrades visibles
+3: Consultar els millors temps dels 3x3
+0: Sortir
+Quantes entrades vols veure?
+
+Opcions:
+1: Consultar el nombre d'entrades visibles
+2: Modificar el nombre d'entrades visibles
+3: Consultar els millors temps dels 3x3
+0: Sortir
+Dificultat: 3x3
+Posicio		Usuari		IdJoc		Temps
+-------		------		-----		-----
+1a		ocapo		1		465.625961592
+
+Opcions:
+1: Consultar el nombre d'entrades visibles
+2: Modificar el nombre d'entrades visibles
+3: Consultar els millors temps dels 3x3
+0: Sortir
+Fi Ranking Per Tipus
+
+MENU RANKING
+1 Consulta Ranking General
+2 Consulta Ranking per Tipus
+3 Consulta Ranking Personal
+0 Sortir
+Ranking Personal:
+----------------
+De qui vols consultar el rànquing?
+Carregant informació...
+Generant rànquing...
+Opcions:
+1: Nombre de partides
+2: Nombre de pistes usades (en mitjana)
+3: Millors temps
+4: Veure-ho tot
+0: Sortir
+Usuari: horacio
+horacio ha jugat 0 partida/es
+horacio ha usat NaN pistes en mitjana
+Dificultat	Temps
+3x3:		-
+4x4:		-
+5x5:		-
+6x6:		-
+7x7:		-
+8x8:		-
+9x9:		-
+Opcions:
+1: Nombre de partides
+2: Nombre de pistes usades (en mitjana)
+3: Millors temps
+4: Veure-ho tot
+0: Sortir
+Fi Ranking Personal
+
+MENU RANKING
+1 Consulta Ranking General
+2 Consulta Ranking per Tipus
+3 Consulta Ranking Personal
+0 Sortir
+Fi del programa

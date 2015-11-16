@@ -33,13 +33,14 @@ public class driverEntraKenKen {
 		boolean resoluble;
 		KenKenGenerator KG = new KenKenGenerator();
 		mostrarOpcions();
-		while ((option = sn.nextInt()) != 0) {
+		while (sn.hasNextInt() && (option = sn.nextInt()) != 0) {
 			resoluble = true;
 			TaulerKenKen K;
 			switch (option) {
 			case 1:
 				mostrarOpcionsMaquinaGenerar();
-				String d = sn.next();
+				String d = null;
+				if (sn.hasNext()) d = sn.next();
 				int n;
 				try { 
 					if (Dificultat.esValida(d)) {
@@ -57,7 +58,8 @@ public class driverEntraKenKen {
 				break;
 			case 2:
 				mostrarOpcionsUsuariGenerar();
-				option = sn.nextInt();
+				option = 0;
+				if (sn.hasNextInt()) option = sn.nextInt();
 				switch (option) {
 				case 1:
 					K = KG.generateKenKenbyUser();
@@ -65,7 +67,7 @@ public class driverEntraKenKen {
 					else { 
 						KenKenSolver KS = new KenKenSolver();
 						System.out.println("Comprovem que tingui almenys una solucio");
-						System.out.println("Aquesta acció pot trigar depenent del KenKen");
+						System.out.println("Aquesta accio pot trigar depenent del KenKen");
 						resoluble = KS.comprovaSol(K);
 						if (! resoluble) {
 							System.out.println("KenKen irresoluble");
@@ -93,7 +95,8 @@ public class driverEntraKenKen {
 				System.out.println("1.Soluciona algoritme backtracking");
 				System.out.println("2.Soluciona algoritme IA");
 				System.out.println("3.Guardar KenKen a la BD");
-				int op2 = sn.nextInt();
+				int op2 = 0;
+				if (sn.hasNextInt()) op2 = sn.nextInt();
 				if (op2 == 1) {
 					KenKenSolver KS = new KenKenSolver();
 					double time = KS.backtrackingSolver(K);
@@ -112,11 +115,13 @@ public class driverEntraKenKen {
 					System.out.println("Tauler guardat amb identificador " + id);
 					System.out.println("Vols resoldre el KenKen?");
 					System.out.println("1-Si\n2-No");
-					op2 = sn.nextInt();
+					op2 = 0;
+					if (sn.hasNextInt()) op2 = sn.nextInt();
 					if (op2 == 1) {
 						System.out.println("1.Soluciona algoritme backtracking");
 						System.out.println("2.Soluciona algoritme IA");
-						op2 = sn.nextInt();
+						op2 = 0;
+						if (sn.hasNextInt()) op2 = sn.nextInt();
 						if (op2 == 1) {
 							KenKenSolver KS = new KenKenSolver();
 							double time = KS.backtrackingSolver(K);
@@ -132,7 +137,6 @@ public class driverEntraKenKen {
 			}
 			mostrarOpcions();
 		}
-		sn.close();
 		System.out.println("Fi Programa");
 	}
 }

@@ -88,6 +88,7 @@ public class KenKenSolver {
 	public boolean comprovaSol (TaulerKenKen T) {
 		KK = T;
 		trobat = false;
+		IA();
 		backtrackingIA(0,0);
 		return trobat;
 	}

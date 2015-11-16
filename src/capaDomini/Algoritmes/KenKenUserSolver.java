@@ -90,15 +90,10 @@ public class KenKenUserSolver implements Runnable {
 			if (pistes_demanades == 0) {
 				System.out.println("Tingues en compte que la solucio dun KenKen no es unica.\n"
 						+ "El fet de demanar una pista pot alterar la teva solucio proposada.\n"
+						+ "El programa pot trigar un temps en donar una pista, per aixo pausem el temps.\n"
 						+ "Presiona 1 si vols rebre una pista, 0 en cas contrari.");
 			}
 			if (pistes_demanades > 0 || (ns.hasNextInt() && ns.nextInt() == 1)) 	{		
-				if (t2.getNumCeldasRellenas() != t2.getNumCeldas()) {
-					System.out.println("Aplicant la pista. Aquesta accio pot trigar una estona...");
-					System.out.println("El temps romandra pausat mentre saplica la pista.");
-					//System.out.println("Presiona 1 si vols triar una altra opcio");
-					while (t2.getNumCeldasRellenas() != t2.getNumCeldas()); //&& ns.nextInt() != 1);
-				}
 				if (pistes_demanades < t1.getAlto()-2) {
 					Cella ret = new Cella();
 					findcellabuida(t1,ret);

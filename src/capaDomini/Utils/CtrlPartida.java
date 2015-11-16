@@ -124,13 +124,11 @@ public class CtrlPartida {
 		this.initialTime = System.nanoTime();
 		int option;
 		P.getK().PrintaKenKen();
-		//Scanner ns = new Scanner(System.in);
 		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
-		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,s);
+		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,s,P.getPistes());
 		KenKenCheck KC = new KenKenCheck(P.getK());
 		KUS.combinarTaulers();
-		KUS.resolPerPista(P.getK(),K);
-		//KenKenCheck KC = new KenKenCheck(K);
+		KUS.resolPerPista(K);
 		mostrarOpcions();
 		while (!FI && !guardada && (s.hasNextInt()) && (option=s.nextInt()) != 0) {
 			switch (option) {
@@ -153,7 +151,11 @@ public class CtrlPartida {
 				break;
 			/* Demanar pista */
 			case 3:
+				this.pause();
+				int before = P.getK().getNumCeldasRellenas();
 				KUS.getPista();
+				int after = P.getK().getNumCeldasRellenas();
+				if (after > before) P.setPistes(P.getPistes()+1);
 				if (P.getK().getNumCeldas() == P.getK().getNumCeldasRellenas()) {	//tauler resolt
 					if (!KC.checkKenKen()) {
 						FI = true;
@@ -163,6 +165,7 @@ public class CtrlPartida {
 						System.out.println("Aquesta solucio no es correcta");
 					}
 				}
+				this.resume();
 				break;
 			/* Pausar partida */
 			case 4:

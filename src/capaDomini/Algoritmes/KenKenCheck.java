@@ -3,7 +3,7 @@ package capaDomini.Algoritmes;
 import capaDomini.Utils.*;
 
 public class KenKenCheck {
-	TaulerKenKen t1;
+	private TaulerKenKen t1;
 	
 	public KenKenCheck(TaulerKenKen T) {
 		this.t1 = T;
@@ -32,11 +32,17 @@ public class KenKenCheck {
 		return repeat;
 	}
 	
-	private boolean ctrlRegio () {
+	private boolean ctrlRegio (TaulerKenKen T) {
+		T.PrintaKenKen();
 		int i = 0;
 		boolean mistake = false;
-		while (i < t1.getNRegio() && !mistake) {
-			if (!(t1.getRegio(i).checkRegionC())) {
+		while (i < T.getNRegio() && !mistake) {
+			int res = 0;
+			for (int j = 0; j < T.getRegio(i).getNumCeldas(); j++) {
+				res += T.getRegio(i).getNumero(j);
+			}
+			System.out.println("Calcul regio: " + res);
+			if (!(T.getRegio(i).checkRegionC())) {
 				mistake = true;
 				System.out.println("No es compleix el calcul de la regio "+i);
 			}
@@ -46,18 +52,18 @@ public class KenKenCheck {
 	}
 	
 	public boolean checkKenKen() {
-		boolean error = ctrlRegio();
-		if (!error) {
-			int i = 0;
-			while (i < t1.getAlto() && !error) {
-				int j = 0;
-				while (j < t1.getAncho() && !error) {
-					error = ctrlFilaAndCol(t1.getCella(i, j));
-					j++;
-				}
-				i++;
+		t1.PrintaKenKen();
+		boolean error = false;
+		int i = 0;
+		while (i < t1.getAlto() && !error) {
+			int j = 0;
+			while (j < t1.getAncho() && !error) {
+				error = ctrlFilaAndCol(t1.getCella(i, j));
+				j++;
 			}
+			i++;
 		}
+		if (!error) error = ctrlRegio(t1);
 		return error;
 	}
 }

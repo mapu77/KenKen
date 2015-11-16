@@ -12,6 +12,7 @@ public class CtrlPartida {
 	
 	private Partida P;
 	private boolean FI;
+	private boolean guardada;
 	private long initialTime;
 	private long currentTime = 0;
 	private CtrlPersistencia CP;
@@ -24,6 +25,7 @@ public class CtrlPartida {
 		this.P = p;
 		this.currentTime = p.getTime();
 		this.FI = false;
+		this.guardada = false;
 		CP = new CtrlPersistencia();
 		CtrlPersistencia.setSeparator(" ");
 		s = scan;
@@ -130,7 +132,7 @@ public class CtrlPartida {
 		KUS.resolPerPista(P.getK(),K);
 		//KenKenCheck KC = new KenKenCheck(K);
 		mostrarOpcions();
-		while (!FI && (s.hasNextInt()) && (option=s.nextInt()) != 0) {
+		while (!FI && !guardada && (s.hasNextInt()) && (option=s.nextInt()) != 0) {
 			switch (option) {
 			/* Introduir valor */
 			case 1:
@@ -170,13 +172,13 @@ public class CtrlPartida {
 				break;
 			/* Guardar l'estat de la partida */
 			case 5:
-				this.savePartida();
+				guardada = true;
 				break;
 			/* Reiniciar partida */
 			case 6:
 				KUS.reinicia();
 			}
-			if (!FI) mostrarOpcions();
+			if (!FI || !guardada) mostrarOpcions();
 		}
 		if (FI) this.save();
 		else {
@@ -188,7 +190,6 @@ public class CtrlPartida {
 			else System.out.println("no hi ha option");
 			if (option == 1) { 
 				this.savePartida(); 
-				System.out.println("Partida guardada");
 			}
 		}
 	}

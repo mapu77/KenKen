@@ -51,7 +51,8 @@ public class driverPartida {
 					else {
 						System.out.println("Quin tauler vols jugar?");
 						System.out.println(CJ.mostrarIdTaulers(d));
-						String iden = scan.next();
+						String iden = null;
+						if (scan.hasNext()) iden = scan.next();
 						if (CJ.existeixTauler(iden,d)) {
 							Partida p = new Partida(u, d, iden);
 							CP = new CtrlPartida(p, scan);

@@ -27,23 +27,14 @@ public class KenKenUserSolver implements Runnable {
 		try {
 			int x = 0;
 			int y = 0;
-			if (ns.hasNextInt()) {
-				x = ns.nextInt();
-				System.out.println(x);
-			}
+			if (ns.hasNextInt()) x = ns.nextInt();
 			else System.out.println("no hi ha x");
-			if (ns.hasNextInt()) {
-				y = ns.nextInt();
-				System.out.println(y);
-			}
+			if (ns.hasNextInt()) y = ns.nextInt();
 			else System.out.println("no hi ha y");
 			if ((x<0 || x>=t1.getAlto()) || (y<0 || y>=t1.getAncho())) throw (new ExcepcionPosicionFueraRango());
 			System.out.println("Indica el valor a afegir");
 			int val = 0;
-			if (ns.hasNextInt()) {
-				val = ns.nextInt();
-				System.out.println(val);
-			}
+			if (ns.hasNextInt()) val = ns.nextInt();
 			else System.out.println("no hi ha x");
 			if (val<=0 || val>t1.getAlto()) throw (new ExcepcionValorFueraRango());
 			//System.out.println("valor: " +val);

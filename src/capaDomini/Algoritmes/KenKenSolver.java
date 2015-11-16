@@ -1,5 +1,7 @@
 package capaDomini.Algoritmes;
 
+import java.util.ArrayList;
+
 import capaDomini.Utils.*;
 
 public class KenKenSolver {
@@ -9,11 +11,11 @@ public class KenKenSolver {
 	
 	private static void IA () { // inteligencia artificial
 		for (int i=0; i<KK.getNRegio(); ++i) {
-			if (KK.getRegio(i).getNumCeldas() == 1) { //posem les regions d'1 cel�la en posicio correcta
-				int res = KK.getRegio(i).getResult(); //i les bloquejam perque ningu les pugui tocar
+			if (KK.getRegio(i).getNumCeldas() == 1) { 
+				int res = KK.getRegio(i).getResult(); 
 				if (res > 0 && res <= KK.getAlto()) {
-					KK.getRegio(i).getCella(0).setNumero(res);
-					KK.getRegio(i).getCella(0).bloquear();
+					KK.getRegio(i).getCella(0).setNumero(res);//posem les regions d'1 cel.la en posicio correcta
+					KK.getRegio(i).getCella(0).bloquear();	  //i les bloquejam perque ningu les pugui tocar
 				}
 			}
 		}
@@ -90,11 +92,27 @@ public class KenKenSolver {
 		return trobat;
 	}
 	
+	private void afegeix1r (TaulerKenKen T) {
+		int n = T.getAlto();
+		boolean vb[] = new boolean[n];
+		for (int i=0; i<n; ++i) {
+			vb[i]=false;
+		}
+		for (int i=0; i<n; ++i) {
+			int v = T.getCella(0, i).getNumero();
+			if (v != -1) vb[v-1]=true;
+		}
+		for (int i=0; i<n; ++i) {
+			if (vb[i]==false) T.setNumero(0, 0, i+1);
+		}
+	}
+	
 	public double backtrackingSolver(TaulerKenKen T) {		
 		KK = T;
 		trobat = false;
 		long t0 = System.nanoTime();
 		backtracking(0,0);
+		afegeix1r(KK);
 		long t1 = System.nanoTime();
 		return (double)(t1-t0)/(double)Math.pow(10,9);
 	}
@@ -105,6 +123,7 @@ public class KenKenSolver {
 		long t0 = System.nanoTime();
 		IA();
 		backtrackingIA(0,0);
+		afegeix1r(KK);
 		long t1 = System.nanoTime();
 		return (double)(t1-t0)/(double)Math.pow(10,9);
 	}

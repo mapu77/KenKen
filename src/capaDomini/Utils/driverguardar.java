@@ -9,6 +9,7 @@ import excepciones.ExcepcionDificultatInvalida;
 public class driverguardar {
 
 	private static CtrlJoc CJ;
+	private static Scanner s = new Scanner(System.in);
 	
 	private static void carregarKenKen() {
 		TaulerKenKen K = CJ.llegirTauler("4","3x3");
@@ -38,14 +39,14 @@ public class driverguardar {
 		p.setIdJoc("2");
 		p.setPistes(2);
 		p.setUsuari("Nou");
-		CtrlPartida CP = new CtrlPartida(p);
+		CtrlPartida CP = new CtrlPartida(p,s);
 		CP.save();
 		System.out.println("Hem guardat la partida");
 	}
 	
 	public static void main(String[] args) {
 		Partida p = new Partida("ocapo","4x4");
-		CtrlPartida cp = new CtrlPartida(p);
+		CtrlPartida cp = new CtrlPartida(p,s);
 		cp.play();
 		//carregarKenKen();
 		//guardarPartida();

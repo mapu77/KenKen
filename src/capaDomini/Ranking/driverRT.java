@@ -15,31 +15,35 @@ public class driverRT {
 		System.out.println("0: Sortir");	
 	}
 		
-	public static void mostraRankingPerTipus() {
-		Scanner scan = new Scanner (System.in);
+	public static void mostraRankingPerTipus(Scanner scan) {
 		System.out.println("Ranking per Tipus:");
 		System.out.println("-----------------");
 		System.out.println("Introdueix la dificultat");
-		String d;
+		String d = null;
 		try {
-			d = scan.next();
+			if (scan.hasNext()) d = scan.next();
 			if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 			else {
 				System.out.println("Introdueix el nombre d'entrades");
-				int n = Integer.parseInt(scan.next());
+				int n = 0;
+				if (scan.hasNext()) n = scan.nextInt();
+				else System.out.println("Les entrades no son les correctes");
 				RankingFactory RF = new RankingFactory();
 				RankingPerTipus RT = RF.generarRankingPerTipus(d, n); 
 				mostraOpcions(d);
 				int opt2;
-				while ( (opt2 = scan.nextInt()) != 0) {
+				while (scan.hasNextInt() && (opt2 = scan.nextInt()) != 0) {
 					switch (opt2) {
 					case 1:
 						System.out.println("S'estan visualitzant "+ RT.getnEntrades()+" entrades");
 						break;
 					case 2:
 						System.out.println("Quantes entrades vols veure?");
-						n = scan.nextInt();
-						RT.setnEntrades(n);
+						if (scan.hasNextInt()) {
+							n = scan.nextInt();
+							RT.setnEntrades(n);
+						}
+						else System.out.println("Les entrades no son les correctes");
 						break;
 					case 3:
 						System.out.println("Dificultat: " +d);

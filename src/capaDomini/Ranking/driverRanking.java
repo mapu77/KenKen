@@ -18,16 +18,16 @@ public class driverRanking {
 		Scanner scan = new Scanner(System.in);
 		mostraOpcions();
 		int op;
-		while (	(op=scan.nextInt()) != 0) {
+		while (scan.hasNextInt() && (op = scan.nextInt()) != 0) {
 			switch (op) {
 			case 1:
 				driverRG.mostraRankingGeneral();
 				break;
 			case 2:
-				driverRT.mostraRankingPerTipus();
+				driverRT.mostraRankingPerTipus(scan);
 				break;
 			case 3:
-				driverRP.mostraRankingPersonal();
+				driverRP.mostraRankingPersonal(scan);
 				break;
 			default:
 				System.err.println("Opcio incorrecte");

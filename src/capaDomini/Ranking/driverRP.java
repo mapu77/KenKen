@@ -16,20 +16,21 @@ public class driverRP {
 		System.out.println("0: Sortir");
 	}
 	
-	public static void mostraRankingPersonal() {
-		Scanner scan = new Scanner (System.in);
+	public static void mostraRankingPersonal(Scanner scan) {
 		System.out.println("Ranking Personal:");
 		System.out.println("----------------");
 		System.out.println("De qui vols consultar el rànquing?");
 		try {
-			String u = scan.next();
+			String u = null;
+			if (scan.hasNext()) u = scan.next();
+			else System.err.println("Aquest usuari no es correcte");
 			RankingFactory RF = new RankingFactory();
 			if (CtrlUser.getUsuari(u) == null) throw (new ExcepcionUsuariNoExisteix());
 			else {
 				RankingPersonal RP = RF.generarRankingPersonal(u);				
 				int opt2;
 				mostraOpcions();
-				while ((opt2 = scan.nextInt()) != 0) {
+				while (scan.hasNextInt() && (opt2 = scan.nextInt()) != 0) {
 					switch(opt2) {
 					case 1:
 						System.out.println(u+" ha jugat "+ RP.getResolts()+" partida/es");
@@ -65,10 +66,11 @@ public class driverRP {
 					}
 					mostraOpcions();
 				}
+				if (!scan.hasNextInt()) System.out.println("No has introduit una opcio correcta");
 			}	
 		} catch (ExcepcionUsuariNoExisteix e) {
 			System.out.println(e.getMessage());
 		}				
-		System.out.println("Fi del programa");
+		System.out.println("Fi Ranking Personal");
 	}
 }

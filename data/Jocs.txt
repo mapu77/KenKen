@@ -13,4 +13,3 @@ data/Taulells/3x3/6.txt
 data/Taulells/3x3/7.txt 
 data/Taulells/3x3/8.txt 
 data/Taulells/3x3/9.txt 
-data/Taulells/9x9/2.txt 

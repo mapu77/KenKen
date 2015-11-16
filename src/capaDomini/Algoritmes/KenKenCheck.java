@@ -33,7 +33,6 @@ public class KenKenCheck {
 	}
 	
 	private boolean ctrlRegio (TaulerKenKen T) {
-		T.PrintaKenKen();
 		int i = 0;
 		boolean mistake = false;
 		while (i < T.getNRegio() && !mistake) {
@@ -47,7 +46,6 @@ public class KenKenCheck {
 	}
 	
 	public boolean checkKenKen() {
-		t1.PrintaKenKen();
 		boolean error = false;
 		int i = 0;
 		while (i < t1.getAlto() && !error) {

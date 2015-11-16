@@ -1,0 +1,14 @@
+Introdueix el teu usuari
+JUGAR KENKEN
+0 Sortir
+1 Continuar Partida
+2 Seleccionar Kenken creat
+3 Generar Kenken aleatori
+No tens cap partida guardada
+
+JUGAR KENKEN
+0 Sortir
+1 Continuar Partida
+2 Seleccionar Kenken creat
+3 Generar Kenken aleatori
+Fi del programa

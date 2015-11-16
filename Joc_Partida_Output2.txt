@@ -1,0 +1,306 @@
+Introdueix el teu usuari
+JUGAR KENKEN
+0 Sortir
+1 Continuar Partida
+2 Seleccionar Kenken creat
+3 Generar Kenken aleatori
+Dificultat
+3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9
+Quin tauler vols jugar?
+4.txt	8.txt	5.txt	7.txt	9.txt	6.txt	1.txt	3.txt	2.txt	
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|-1 -1 -1|
+|-+-+-|
+|-1|-1 -1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Ja es pot utilitzar la opcio "Demanar Pista"
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 -1 -1|
+|-+-+-|
+|-1|-1 -1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 7.479320869
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 -1|
+|-+-+-|
+|-1|-1 -1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 14.971753601
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|-1|-1 -1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 22.468104079
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|3|-1 -1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 29.967726622
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|3|2 -1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 37.470951718
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|3|2 1|
+| +-+-|
+|-1 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 44.980660739
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|3|2 1|
+| +-+-|
+|2 -1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 52.493224382
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|3|2 1|
+| +-+-|
+|2 1|-1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Temps jugant: 60.00849689
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+Indica les coordenades(format: x y)
+Indica el valor a afegir
+Configuracio del KenKen per regions
++-----+
+|0 0 0|
+|-+-+-|
+|1|2 2|
+| +-+-|
+|1 1|3|
++-----+
+
+Estat del KenKen
++-----+
+|1 3 2|
+|-+-+-|
+|3|2 1|
+| +-+-|
+|2 1|3|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 6
+Regio num1 -> Operacio: *, Resultat: 6
+Regio num2 -> Operacio: /, Resultat: 2
+Regio num3 -> Operacio: +, Resultat: 3
+Enhorabona! La solucio es correcta
+Temps jugant: 67.528172402
+Opcions
+1. Introduir numero 	 2. Undo 		 3. Demanar Pista
+4. Pausa 		 5. Guardar Partida 	 6. Reiniciar Partida
+0. Sortir
+
+JUGAR KENKEN
+0 Sortir
+1 Continuar Partida
+2 Seleccionar Kenken creat
+3 Generar Kenken aleatori
+Fi del programa

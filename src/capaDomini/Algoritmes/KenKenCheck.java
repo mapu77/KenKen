@@ -37,11 +37,6 @@ public class KenKenCheck {
 		int i = 0;
 		boolean mistake = false;
 		while (i < T.getNRegio() && !mistake) {
-			int res = 0;
-			for (int j = 0; j < T.getRegio(i).getNumCeldas(); j++) {
-				res += T.getRegio(i).getNumero(j);
-			}
-			System.out.println("Calcul regio: " + res);
 			if (!(T.getRegio(i).checkRegionC())) {
 				mistake = true;
 				System.out.println("No es compleix el calcul de la regio "+i);

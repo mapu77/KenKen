@@ -35,7 +35,7 @@ public class CtrlJoc {
 				for (j=1; j<2*nc; j+=2) {
 					int x = Integer.parseInt(T.get(i).get(j));
 					int y = Integer.parseInt(T.get(i).get(j+1));
-					Cella c = new Cella(x,y);
+					Cella c = K.getCella(x, y);
 					VC.add(c);
 				}
 				String op = T.get(i).get(j);

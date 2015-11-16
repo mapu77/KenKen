@@ -38,7 +38,7 @@ public class driverPartida {
 					CP.play();
 				}
 				else {
-					System.err.println("No tens cap partida guardada");
+					System.out.println("No tens cap partida guardada");
 				}
 				break;
 			case 2:
@@ -59,11 +59,11 @@ public class driverPartida {
 							CP.play();
 						}
 						else {
-							System.err.println("Aquest tauler no existeix");
+							System.out.println("Aquest tauler no existeix");
 						}
 					}
 				} catch (ExcepcionDificultatInvalida e) {
-					System.err.println(e.getMessage());
+					System.out.println(e.getMessage());
 				}
 				break;
 			case 3:
@@ -78,11 +78,11 @@ public class driverPartida {
 						CP.play();
 					}
 				} catch (ExcepcionDificultatInvalida e) {
-					System.err.println(e.getMessage());
+					System.out.println(e.getMessage());
 				}		
 				break;
 			default:
-				System.err.println("Opcio incorrecte");
+				System.out.println("Opcio incorrecte");
 			}
 			System.out.println();
 			mostrarOpcions();

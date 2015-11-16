@@ -1,5 +1,7 @@
 package capaDomini.Utils;
 
+import java.util.Scanner;
+
 import capaDomini.Algoritmes.KenKenGenerator;
 import capaDomini.Dificultat.Dificultat;
 import excepciones.*;
@@ -12,6 +14,7 @@ public class Partida {
 	private long time;
 	private CtrlJoc CJ;
 	private TaulerKenKen K;
+	private static Scanner sn;
 	
 	public Partida() {
 		
@@ -36,7 +39,7 @@ public class Partida {
 		this.usuari = u;
 		this.time = 0;
 		int n = Dificultat.toInt(d);
-		K = new KenKenGenerator().generateRandomly(n);
+		K = new KenKenGenerator(sn).generateRandomly(n);
 		this.idJoc = String.valueOf(CJ.guardarTauler(K));
 	}
 	

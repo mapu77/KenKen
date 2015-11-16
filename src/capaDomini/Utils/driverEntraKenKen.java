@@ -7,6 +7,8 @@ import excepciones.ExcepcionDificultatInvalida;
 
 public class driverEntraKenKen {
 	
+	private static Scanner sn = new Scanner(System.in);
+	
 	private static void mostrarOpcions() {
 		System.out.println("KenKen");
 		System.out.println("Options:");
@@ -28,12 +30,11 @@ public class driverEntraKenKen {
 	}
 	
 	public static void main(String[] args) {
-		Scanner sn = new Scanner(System.in);
 		int option;
 		boolean resoluble;
-		KenKenGenerator KG = new KenKenGenerator();
+		KenKenGenerator KG = new KenKenGenerator(sn);
 		mostrarOpcions();
-		while (sn.hasNextInt() && (option = sn.nextInt()) != 0) {
+		while (sn.hasNextInt() && ((option = sn.nextInt()) != 0)) {
 			resoluble = true;
 			TaulerKenKen K;
 			switch (option) {
@@ -60,6 +61,7 @@ public class driverEntraKenKen {
 				mostrarOpcionsUsuariGenerar();
 				option = 0;
 				if (sn.hasNextInt()) option = sn.nextInt();
+				else System.err.println("opcio incorrecta");
 				switch (option) {
 				case 1:
 					K = KG.generateKenKenbyUser();
@@ -97,6 +99,7 @@ public class driverEntraKenKen {
 				System.out.println("3.Guardar KenKen a la BD");
 				int op2 = 0;
 				if (sn.hasNextInt()) op2 = sn.nextInt();
+				else System.err.println("opcio incorrecta");
 				if (op2 == 1) {
 					KenKenSolver KS = new KenKenSolver();
 					double time = KS.backtrackingSolver(K);
@@ -117,11 +120,13 @@ public class driverEntraKenKen {
 					System.out.println("1-Si\n2-No");
 					op2 = 0;
 					if (sn.hasNextInt()) op2 = sn.nextInt();
+					else System.err.println("opcio incorrecta");
 					if (op2 == 1) {
 						System.out.println("1.Soluciona algoritme backtracking");
 						System.out.println("2.Soluciona algoritme IA");
 						op2 = 0;
 						if (sn.hasNextInt()) op2 = sn.nextInt();
+						else System.err.println("opcio incorrecta");
 						if (op2 == 1) {
 							KenKenSolver KS = new KenKenSolver();
 							double time = KS.backtrackingSolver(K);

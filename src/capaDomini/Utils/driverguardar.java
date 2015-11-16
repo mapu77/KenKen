@@ -24,7 +24,7 @@ public class driverguardar {
 			if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 			else {
 				int n = Dificultat.toInt(d);
-				TaulerKenKen K = new KenKenGenerator().generateRandomly(n);
+				TaulerKenKen K = new KenKenGenerator(s).generateRandomly(n);
 				K.PrintaKenKen();
 				CJ.guardarTauler(K);	
 			}

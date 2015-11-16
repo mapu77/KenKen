@@ -1,7 +1,10 @@
 package capaDomini.Algoritmes;
 
 import java.util.*;
+
+import capaDomini.Dificultat.Dificultat;
 import capaDomini.Utils.*;
+import excepciones.ExcepcionDificultatInvalida;
 
 public class KenKenGenerator {
 	
@@ -138,7 +141,6 @@ public class KenKenGenerator {
 					switch (vOps.length){
 					case 2:
 						if (comprovaOp(vOps,"/") != -1) {
-							System.out.println("HI HA DIVISIO");
 							if (comprovaDiv(r) != -1 && new Random().nextBoolean()) {
 								r.setOperation("/");
 								r.setResult(r.calculaRegioDiv());
@@ -149,7 +151,6 @@ public class KenKenGenerator {
 							}
 						}
 						else {
-							System.out.println("NO HI HA DIVISIO");
 							rand = new Random().nextInt(2);
 							r.setOperation(vOps[rand]);
 							if (vOps[rand].equals("*")) r.setResult(r.calculaRegioMult());
@@ -276,54 +277,81 @@ public class KenKenGenerator {
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyParameters(String u) { //(int size, int iniX, String[] vOps) {
+	public TaulerKenKen generateKenKenbyParameters() { //(int size, int iniX, String[] vOps) {
 		Scanner sn = new Scanner(System.in);
 		fi = false;
-		System.out.println("Mida del KenKen:");
-		n = sn.nextInt();
-		K = new TaulerKenKen(n, u);
-		backtrackingGenerateNumbers(0,0);
-		System.out.println("Nombre inicial minim de regions d'una cel.la:");
-		int iniX = sn.nextInt();
-		regions1C (iniX);
-		generateRegions();
-		K.OrdenaVR();
-		System.out.println("Nombre de diferents operacions (m�nim 1)");
-		int nOps = sn.nextInt();
-		System.out.println("Selecciona les operacions (\"+\" es obligatori)");
-		System.out.println("\"+\",\"-\",\"*\",\"/\"");
-		String[] vOps = new String[nOps];
-		int i=0;
-		while (i < nOps) {
-			vOps[i] = sn.next();
-			++i;
+		System.out.println("Mida del KenKen?");
+		System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
+		String d = sn.next();
+		int n;
+		try {
+			if (Dificultat.esValida(d)) {
+				n=Dificultat.toInt(d);
+				K = new TaulerKenKen(n);
+				backtrackingGenerateNumbers(0,0);
+				System.out.println("Nombre inicial minim de regions d'una cel.la:");
+				int iniX = sn.nextInt();
+				regions1C (iniX);
+				generateRegions();
+				K.OrdenaVR();
+				System.out.println("Nombre de diferents operacions (minim 1, maxim 4):");
+				int nOps = sn.nextInt();
+				System.out.println("Selecciona les " + (nOps-1) + " operacions restants (\"+\" ja s'inclou per defecte):");
+				System.out.println("\"-\",\"*\",\"/\"");
+				String[] vOps = new String[nOps];
+				int i=1;
+				vOps[0] = "+";
+				while (i < nOps) {
+					vOps[i] = sn.next();
+					++i;
+				}
+				generateRegionSolutionByOps (vOps);
+				return K;
+			}
+			else throw (new ExcepcionDificultatInvalida());
 		}
-		generateRegionSolutionByOps (vOps);
+		catch (ExcepcionDificultatInvalida e) {
+			K = null;
+			System.err.println(e.getMessage());
+		}
 		return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyUser(String u) {
+	public TaulerKenKen generateKenKenbyUser() {
 		Scanner sn = new Scanner(System.in);
-		System.out.println("Mida del KenKen");
-		int n = sn.nextInt();
-		K = new TaulerKenKen(n, u);
-		System.out.println("Nombre regions");
-		int nr = sn.nextInt();
-		for (int i=0; i<nr; ++i) {
-			Vector<Cella> VC = new Vector<Cella>();
-			System.out.println("Cel.les de la regio " + i);
-			int nc = sn.nextInt();
-			for (int j=0; j<nc; ++j) {
-				System.out.println("Cordenades cel.la " + j + " de la regio " + i);
-				Cella c = K.getCella(sn.nextInt(), sn.nextInt());
-				VC.add(c);
+		System.out.println("Mida del KenKen?");
+		System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
+		String d = sn.next();
+		int n;
+		try { 
+			if (Dificultat.esValida(d)) {
+				n=Dificultat.toInt(d);
+				K = new TaulerKenKen(n);
+				System.out.println("Nombre regions");
+				int nr = sn.nextInt();
+				for (int i=0; i<nr; ++i) {
+					Vector<Cella> VC = new Vector<Cella>();
+					System.out.println("Nombre de cel.les de la regio " + i);
+					int nc = sn.nextInt();
+					for (int j=0; j<nc; ++j) {
+						System.out.println("Cordenades cel.la " + j + " de la regio " + i);
+						Cella c = K.getCella(sn.nextInt(), sn.nextInt());
+						VC.add(c);
+					}
+					System.out.println("Operacio de la regio " + i);
+					String op = sn.next();
+					System.out.println("Resultat de la regio " + i);
+					int res = sn.nextInt();
+					RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
+					K.afegeixRegio(r);
+				}
+				return K;
 			}
-			System.out.println("Operacio de la regio " + i);
-			String op = sn.next();
-			System.out.println("Resultat de la regio " + i);
-			int res = sn.nextInt();
-			RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
-			K.afegeixRegio(r);
+			else throw (new ExcepcionDificultatInvalida());
+		}
+		catch (ExcepcionDificultatInvalida e) {
+			K = null;
+			System.err.println(e.getMessage());
 		}
 		return K;
 	}

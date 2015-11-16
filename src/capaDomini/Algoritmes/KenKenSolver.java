@@ -11,8 +11,10 @@ public class KenKenSolver {
 		for (int i=0; i<KK.getNRegio(); ++i) {
 			if (KK.getRegio(i).getNumCeldas() == 1) { //posem les regions d'1 cel�la en posicio correcta
 				int res = KK.getRegio(i).getResult(); //i les bloquejam perque ningu les pugui tocar
-				KK.getRegio(i).getCella(0).setNumero(res);
-				KK.getRegio(i).getCella(0).bloquear();
+				if (res > 0 && res <= KK.getAlto()) {
+					KK.getRegio(i).getCella(0).setNumero(res);
+					KK.getRegio(i).getCella(0).bloquear();
+				}
 			}
 		}
 	}

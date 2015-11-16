@@ -38,7 +38,7 @@ public class driverPartida {
 					CP.play();
 				}
 				else {
-					System.err.println("No tens partida guardada");
+					System.err.println("No tens cap partida guardada");
 				}
 				break;
 			case 2:

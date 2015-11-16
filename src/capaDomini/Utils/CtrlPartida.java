@@ -42,7 +42,7 @@ public class CtrlPartida {
 		fila.add(P.getUsuari());
 		fila.add(P.getIdJoc());
 		fila.add(P.getD());
-		fila.add(String.valueOf(currentTime));
+		fila.add(String.valueOf((double)currentTime/(double)Math.pow(10,9)));
 		fila.add(String.valueOf(P.getPistes()));
 		Info.add(fila);
 		try {
@@ -121,7 +121,6 @@ public class CtrlPartida {
 	}
 	
 	public void play() {
-		this.initialTime = System.nanoTime();
 		int option;
 		P.getK().PrintaKenKen();
 		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
@@ -130,6 +129,7 @@ public class CtrlPartida {
 		KUS.combinarTaulers();
 		KUS.resolPerPista(K);
 		mostrarOpcions();
+		this.initialTime = System.nanoTime();
 		while (!FI && !guardada && (s.hasNextInt()) && (option=s.nextInt()) != 0) {
 			switch (option) {
 			/* Introduir valor */
@@ -175,12 +175,14 @@ public class CtrlPartida {
 				break;
 			/* Guardar l'estat de la partida */
 			case 5:
+				this.pause();
 				guardada = true;
 				break;
 			/* Reiniciar partida */
 			case 6:
 				KUS.reinicia();
-			}
+			}		
+			System.out.println(this.getcurrentTime());
 			if (!FI || !guardada) mostrarOpcions();
 		}
 		if (FI) this.save();
@@ -205,8 +207,8 @@ public class CtrlPartida {
 		this.initialTime = System.nanoTime();
 	}
 		
-	public long getcurrentTime() {
+	public double getcurrentTime() {
 		currentTime += System.nanoTime() - initialTime;
-		return currentTime;
+		return (double)currentTime/Math.pow(10,9);
 	}
 }

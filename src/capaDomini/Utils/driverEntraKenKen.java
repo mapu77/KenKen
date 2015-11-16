@@ -7,24 +7,38 @@ import excepciones.ExcepcionDificultatInvalida;
 
 public class driverEntraKenKen {
 	
-	public static void main(String[] args) {
+	private static void mostrarOpcions() {
 		System.out.println("KenKen");
 		System.out.println("Options:");
 		System.out.println("0. Sortir");
 		System.out.println("1. Maquina genera KenKen");
 		System.out.println("2. Usuari genera KenKen");
+	}
+	
+	private static void mostrarOpcionsMaquinaGenerar() {
+		System.out.println("Generador aleatori");
+		System.out.println("Mida del KenKen?");
+		System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
+	}
+	
+	private static void mostrarOpcionsUsuariGenerar() {
+		System.out.println("Generador per l'usuari");
+		System.out.println("1-Generador KenKen per l'usuari");
+		System.out.println("2-Generar KenKen a partir d'una serie de parametres");
+	}
+	
+	public static void main(String[] args) {
 		Scanner sn = new Scanner(System.in);
 		int option;
 		boolean resoluble;
 		KenKenGenerator KG = new KenKenGenerator();
+		mostrarOpcions();
 		while ((option = sn.nextInt()) != 0) {
 			resoluble = true;
 			TaulerKenKen K;
 			switch (option) {
 			case 1:
-				System.out.println("Generador aleatori");
-				System.out.println("Mida del KenKen?");
-				System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
+				mostrarOpcionsMaquinaGenerar();
 				String d = sn.next();
 				int n;
 				try { 
@@ -42,9 +56,7 @@ public class driverEntraKenKen {
 				}
 				break;
 			case 2:
-				System.out.println("Generador per l'usuari");
-				System.out.println("1-Generador KenKen per l'usuari");
-				System.out.println("2-Generar KenKen a partir d'una serie de parametres");
+				mostrarOpcionsUsuariGenerar();
 				option = sn.nextInt();
 				switch (option) {
 				case 1:
@@ -52,10 +64,14 @@ public class driverEntraKenKen {
 					if (K==null || K.getAlto()==0) resoluble=false;
 					else { 
 						KenKenSolver KS = new KenKenSolver();
+						System.out.println("Comprovem que tingui almenys una solucio");
+						System.out.println("Aquesta acció pot trigar depenent del KenKen");
 						resoluble = KS.comprovaSol(K);
 						if (! resoluble) {
 							System.out.println("KenKen irresoluble");
 						}
+						else System.out.println("Tot correcte");
+
 					}
 					break;
 				case 2:
@@ -69,8 +85,9 @@ public class driverEntraKenKen {
 				if (resoluble) K.PrintaRegioKenKen();
 				break;
 			default:
-				K = new TaulerKenKen(4);
-					
+				System.out.println("Opcio no valida");
+				resoluble = false;
+				K = new TaulerKenKen(4);					
 			}
 			if (resoluble) {
 				System.out.println("1.Soluciona algoritme backtracking");
@@ -113,11 +130,7 @@ public class driverEntraKenKen {
 					}
 				}
 			}
-			System.out.println("KenKen");
-			System.out.println("Options:");
-			System.out.println("0. Sortir");
-			System.out.println("1. Maquina genera KenKen");
-			System.out.println("2. Usuari genera KenKen");
+			mostrarOpcions();
 		}
 		sn.close();
 		System.out.println("Fi Programa");

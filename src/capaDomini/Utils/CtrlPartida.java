@@ -170,6 +170,7 @@ public class CtrlPartida {
 			/* Pausar partida */
 			case 4:
 				this.pause();
+				System.out.println("Premeu 1 per continuar");
 				while (s.hasNextInt() && s.nextInt()!= 1);
 				this.resume();
 				break;
@@ -182,7 +183,7 @@ public class CtrlPartida {
 			case 6:
 				KUS.reinicia();
 			}		
-			System.out.println(this.getcurrentTime());
+			System.out.println("Temps jugant: " + this.getcurrentTime());
 			if (!FI || !guardada) mostrarOpcions();
 		}
 		if (FI) this.save();

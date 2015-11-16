@@ -123,6 +123,7 @@ public class CtrlPartida {
 		KenKenCheck KC = new KenKenCheck(P.getK());
 		KUS.combinarTaulers();
 		KUS.resolPerPista(P.getK(),K);
+		//KenKenCheck KC = new KenKenCheck(K);
 		mostrarOpcions();
 		while (!FI && (option=ns.nextInt()) != 0) {
 			switch (option) {
@@ -170,9 +171,8 @@ public class CtrlPartida {
 			case 6:
 				KUS.reinicia();
 			}
-			mostrarOpcions();
+			if (!FI) mostrarOpcions();
 		}
-		System.out.println("Sortint del programa...");
 		if (FI) this.save();
 		else {
 			System.out.println("Vols guardar la partida?");

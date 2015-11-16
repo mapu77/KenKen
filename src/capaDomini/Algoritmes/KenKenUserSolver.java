@@ -30,6 +30,7 @@ public class KenKenUserSolver implements Runnable {
 			System.out.println("Indica el valor a afegir");
 			int val = ns.nextInt();
 			if (val<=0 || val>t1.getAlto()) throw (new ExcepcionValorFueraRango());
+			System.out.println("valor: " +val);
 			introdueixvalor(t1,x,y,val);
 			t1.PrintaKenKen();
 		} catch (ExcepcionPosicionFueraRango e) {
@@ -40,18 +41,18 @@ public class KenKenUserSolver implements Runnable {
 	}
 	
 	private void introdueixvalor(TaulerKenKen T, int x, int y, int val) {
-		Cella c = T.getCella(x, y);
+		//Cella c = T.getCella(x, y);
 		Cella copia = new Cella();
-		copia.setX(c.getX());
-		copia.setY(c.getY());
-		copia.setNumero(c.getNumero());
-		if (c.estaVacia()) {
+		copia.setX(x);
+		copia.setY(y);
+		copia.setNumero(T.getNumero(x,y));
+		if (T.getCella(x, y).estaVacia()) {
 			s.addElement(copia);
+			System.out.println("valor2: "+val);
 			T.setNumero(x, y, val);
-
 		}
 		else {
-			System.out.println("Aquesta cella ja conte el valor "+ c.getNumero() + ". Voleu substituir-lo?");
+			System.out.println("Aquesta cella ja conte el valor "+ T.getNumero(x,y) + ". Voleu substituir-lo?");
 			System.out.println("1. Si // 2. No");
 			if (ns.nextInt() == 1) {
 				s.addElement(copia);
@@ -82,11 +83,12 @@ public class KenKenUserSolver implements Runnable {
 			}
 			if (pistes_demanades > 0 || ns.nextInt() == 1) 	{		
 				if (t2.getNumCeldasRellenas() != t2.getNumCeldas()) {
-					System.out.println("Aplicant la pista. Aquesta accio pot trigar una estona");
-					System.out.println("Presiona 1 si vols triar una altra opcio");
-					while (t2.getNumCeldasRellenas() != t2.getNumCeldas() && ns.nextInt() != 1);
+					System.out.println("Aplicant la pista. Aquesta accio pot trigar una estona...");
+					System.out.println("El temps romandra pausat mentre saplica la pista.");
+					//System.out.println("Presiona 1 si vols triar una altra opcio");
+					while (t2.getNumCeldasRellenas() != t2.getNumCeldas()); //&& ns.nextInt() != 1);
 				}
-				else {
+				//if (t2.getNumCeldasRellenas() == t2.getNumCeldas()) {
 					if (pistes_demanades < t1.getAlto()-2) {
 						Cella ret = new Cella();
 						findcellabuida(t1,ret);
@@ -97,7 +99,7 @@ public class KenKenUserSolver implements Runnable {
 						++pistes_demanades;
 					}
 					else { System.out.println("Ja has demanat el maxim de pistes permeses"); }
-				}
+				//}
 			}
 		}
 		else { System.out.println("El taulell ja esta ple"); }

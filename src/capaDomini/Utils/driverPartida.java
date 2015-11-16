@@ -2,7 +2,6 @@ package capaDomini.Utils;
 
 import java.util.*;
 
-import capaDomini.Algoritmes.KenKenGenerator;
 import capaDomini.Dificultat.Dificultat;
 import excepciones.ExcepcionDificultatInvalida;
 
@@ -19,11 +18,15 @@ public class driverPartida {
 	public static void main(String[] args) {
 		System.out.println("Introdueix el teu usuari");
 		Scanner scan = new Scanner(System.in);
-		String u = scan.next();
+		String u = null;
+		if (scan.hasNext()) {
+			u = scan.next();
+		}
+		else System.out.println("Valor incorrecte");
 		mostrarOpcions();
 		int op;
-		while ((op = scan.nextInt()) != 0) {
-			String d;
+		while (scan.hasNextInt() && (op = scan.nextInt()) != 0) {
+			String d = null;
 			CtrlPartida CP;
 			CtrlJoc CJ;
 			switch(op) {
@@ -31,7 +34,7 @@ public class driverPartida {
 				CJ = new CtrlJoc();
 				if (CJ.existeixPartidaGuardada(u)) {
 					Partida p = CJ.loadPartidaGuardada(u);
-					CP = new CtrlPartida(p);
+					CP = new CtrlPartida(p,scan);
 					CP.play();
 				}
 				else {
@@ -41,7 +44,7 @@ public class driverPartida {
 			case 2:
 				System.out.println("Dificultat");
 				System.out.println("3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
-				d = scan.next();
+				if (scan.hasNext()) d = scan.next();
 				CJ = new CtrlJoc();
 				try {
 					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
@@ -51,7 +54,7 @@ public class driverPartida {
 						String iden = scan.next();
 						if (CJ.existeixTauler(iden,d)) {
 							Partida p = new Partida(u, d, iden);
-							CP = new CtrlPartida(p);
+							CP = new CtrlPartida(p, scan);
 							CP.play();
 						}
 						else {
@@ -65,12 +68,12 @@ public class driverPartida {
 			case 3:
 				System.out.println("Dificultat KenKen:");
 				System.out.println("3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
-				d = scan.next();
+				if (scan.hasNext()) d = scan.next();
 				try {
 					if (!Dificultat.esValida(d)) throw (new ExcepcionDificultatInvalida());
 					else {
 						Partida p = new Partida(u,d);
-						CP = new CtrlPartida(p);
+						CP = new CtrlPartida(p,scan);
 						CP.play();
 					}
 				} catch (ExcepcionDificultatInvalida e) {

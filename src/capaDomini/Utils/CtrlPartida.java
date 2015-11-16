@@ -18,13 +18,15 @@ public class CtrlPartida {
 	private String pathPartides = "./data/Partides.txt";
 	private String pathGuardats = "./data/Saved/";
 	private ArrayList<ArrayList<String>> Info;
+	Scanner s;
 	
-	public CtrlPartida(Partida p) {
+	public CtrlPartida(Partida p, Scanner scan) {
 		this.P = p;
 		this.currentTime = p.getTime();
 		this.FI = false;
 		CP = new CtrlPersistencia();
 		CtrlPersistencia.setSeparator(" ");
+		s = scan;
 		try {
 			Info = CtrlPersistencia.loadTable(pathPartides);
 		} catch (IOException e) {
@@ -59,8 +61,11 @@ public class CtrlPartida {
 			System.out.println("Vols sobreescriure la partida?");
 			System.out.println("1-Si");
 			System.out.println("2-No");
-			Scanner sn = new Scanner (System.in);
-			String op = sn.next();
+			String op = null;
+			if (s.hasNext()) {
+				op = s.next();
+			}
+			else System.out.println("no existeix op");
 			if (op.equals("2")) {
 				guarda = false;
 			}
@@ -117,15 +122,15 @@ public class CtrlPartida {
 		this.initialTime = System.nanoTime();
 		int option;
 		P.getK().PrintaKenKen();
-		Scanner ns = new Scanner(System.in);
+		//Scanner ns = new Scanner(System.in);
 		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
-		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K);
+		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,s);
 		KenKenCheck KC = new KenKenCheck(P.getK());
 		KUS.combinarTaulers();
 		KUS.resolPerPista(P.getK(),K);
 		//KenKenCheck KC = new KenKenCheck(K);
 		mostrarOpcions();
-		while (!FI && (option=ns.nextInt()) != 0) {
+		while (!FI && (s.hasNextInt()) && (option=s.nextInt()) != 0) {
 			switch (option) {
 			/* Introduir valor */
 			case 1:
@@ -160,7 +165,7 @@ public class CtrlPartida {
 			/* Pausar partida */
 			case 4:
 				this.pause();
-				while (ns.nextInt()!= 1);
+				while (s.hasNextInt() && s.nextInt()!= 1);
 				this.resume();
 				break;
 			/* Guardar l'estat de la partida */
@@ -178,7 +183,9 @@ public class CtrlPartida {
 			System.out.println("Vols guardar la partida?");
 			System.out.println("1-Si");
 			System.out.println("2-No");
-			option = ns.nextInt();
+			option = 0;
+			if (s.hasNextInt()) option = s.nextInt();
+			else System.out.println("no hi ha option");
 			if (option == 1) { 
 				this.savePartida(); 
 				System.out.println("Partida guardada");

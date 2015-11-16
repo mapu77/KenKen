@@ -12,25 +12,41 @@ public class KenKenUserSolver implements Runnable {
 	private TaulerKenKen t2;
 	private Stack<Cella> s = new Stack<Cella>();
 	private int pistes_demanades = 0;
-	private Scanner ns = new Scanner(System.in);
+	private Scanner ns;
 	
 	public KenKenUserSolver() {}
 
-	public KenKenUserSolver(TaulerKenKen T1, TaulerKenKen T2) {
+	public KenKenUserSolver(TaulerKenKen T1, TaulerKenKen T2, Scanner s) {
 		this.t1 = T1;
 		this.t2 = T2;
+		ns = s;
 	}
 	
 	public void entraCella() {
 		System.out.println("Indica les coordenades(format: x y)");
 		try {
-			int x = ns.nextInt();
-			int y = ns.nextInt();
+			int x = 0;
+			int y = 0;
+			if (ns.hasNextInt()) {
+				x = ns.nextInt();
+				System.out.println(x);
+			}
+			else System.out.println("no hi ha x");
+			if (ns.hasNextInt()) {
+				y = ns.nextInt();
+				System.out.println(y);
+			}
+			else System.out.println("no hi ha y");
 			if ((x<0 || x>=t1.getAlto()) || (y<0 || y>=t1.getAncho())) throw (new ExcepcionPosicionFueraRango());
 			System.out.println("Indica el valor a afegir");
-			int val = ns.nextInt();
+			int val = 0;
+			if (ns.hasNextInt()) {
+				val = ns.nextInt();
+				System.out.println(val);
+			}
+			else System.out.println("no hi ha x");
 			if (val<=0 || val>t1.getAlto()) throw (new ExcepcionValorFueraRango());
-			System.out.println("valor: " +val);
+			//System.out.println("valor: " +val);
 			introdueixvalor(t1,x,y,val);
 			t1.PrintaKenKen();
 		} catch (ExcepcionPosicionFueraRango e) {
@@ -48,16 +64,17 @@ public class KenKenUserSolver implements Runnable {
 		copia.setNumero(T.getNumero(x,y));
 		if (T.getCella(x, y).estaVacia()) {
 			s.addElement(copia);
-			System.out.println("valor2: "+val);
+			//System.out.println("valor2: "+val);
 			T.setNumero(x, y, val);
 		}
 		else {
 			System.out.println("Aquesta cella ja conte el valor "+ T.getNumero(x,y) + ". Voleu substituir-lo?");
 			System.out.println("1. Si // 2. No");
-			if (ns.nextInt() == 1) {
+			if (ns.hasNextInt() && ns.nextInt() == 1) {
 				s.addElement(copia);
 				T.setNumero(x, y, val);
 			}
+			else System.out.println("no hi ha entrada");
 		}
 	}
 	
@@ -81,7 +98,7 @@ public class KenKenUserSolver implements Runnable {
 						+ "El fet de demanar una pista pot alterar la teva solucio proposada.\n"
 						+ "Presiona 1 si vols rebre una pista, 0 en cas contrari.");
 			}
-			if (pistes_demanades > 0 || ns.nextInt() == 1) 	{		
+			if (pistes_demanades > 0 || (ns.hasNextInt() && ns.nextInt() == 1)) 	{		
 				if (t2.getNumCeldasRellenas() != t2.getNumCeldas()) {
 					System.out.println("Aplicant la pista. Aquesta accio pot trigar una estona...");
 					System.out.println("El temps romandra pausat mentre saplica la pista.");
@@ -125,10 +142,11 @@ public class KenKenUserSolver implements Runnable {
 		}
 		t1.PrintaKenKen();
 		pistes_demanades = 0;
+		while (!s.empty()) s.pop();
 	}
 	
 	public void resolPerPista(TaulerKenKen T, TaulerKenKen K) {
-		KenKenUserSolver p = new KenKenUserSolver(T,K);
+		KenKenUserSolver p = new KenKenUserSolver(T,K,ns);
 		new Thread(p).start();
 	}
 	

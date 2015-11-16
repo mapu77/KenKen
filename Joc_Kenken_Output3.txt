@@ -1,0 +1,83 @@
+KenKen
+Options:
+0. Sortir
+1. Maquina genera KenKen
+2. Usuari genera KenKen
+Generador per l'usuari
+1-Generador KenKen per l'usuari
+2-Generar KenKen a partir d'una serie de parametres
+Mida del KenKen?
+Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9
+Nombre regions
+Nombre de cel.les de la regio 0
+Cordenades cel.la 0 de la regio 0
+Cordenades cel.la 1 de la regio 0
+Operacio de la regio 0
+Resultat de la regio 0
+Nombre de cel.les de la regio 1
+Cordenades cel.la 0 de la regio 1
+Cordenades cel.la 1 de la regio 1
+Operacio de la regio 1
+Resultat de la regio 1
+Nombre de cel.les de la regio 2
+Cordenades cel.la 0 de la regio 2
+Cordenades cel.la 1 de la regio 2
+Operacio de la regio 2
+Resultat de la regio 2
+Nombre de cel.les de la regio 3
+Cordenades cel.la 0 de la regio 3
+Operacio de la regio 3
+Resultat de la regio 3
+Nombre de cel.les de la regio 4
+Cordenades cel.la 0 de la regio 4
+Cordenades cel.la 1 de la regio 4
+Operacio de la regio 4
+Resultat de la regio 4
+Comprovem que tingui almenys una solucio
+Aquesta acció pot trigar depenent del KenKen
+Tot correcte
+Configuracio del KenKen per regions
++-----+
+|0 0|1|
+|-+-+ |
+|2|3|1|
+| +-+-|
+|2|4 4|
++-----+
+Informacio de les regions
+Regio num 0 -> Operacio: +, Resultat: 3
+Regio num 1 -> Operacio: +, Resultat: 5
+Regio num 2 -> Operacio: +, Resultat: 5
+Regio num 3 -> Operacio: +, Resultat: 1
+Regio num 4 -> Operacio: +, Resultat: 4
+1.Soluciona algoritme backtracking
+2.Soluciona algoritme IA
+3.Guardar KenKen a la BD
+Tauler guardat amb identificador 10
+Vols resoldre el KenKen?
+1-Si
+2-No
+1.Soluciona algoritme backtracking
+2.Soluciona algoritme IA
+Temps emprat: 4.4349E-5 segons
+
+Estat del KenKen
++-----+
+|1 2|3|
+|-+-+ |
+|3|1|2|
+| +-+-|
+|2|3 1|
++-----+
+Informacio de les regions
+Regio num0 -> Operacio: +, Resultat: 3
+Regio num1 -> Operacio: +, Resultat: 5
+Regio num2 -> Operacio: +, Resultat: 5
+Regio num3 -> Operacio: +, Resultat: 1
+Regio num4 -> Operacio: +, Resultat: 4
+KenKen
+Options:
+0. Sortir
+1. Maquina genera KenKen
+2. Usuari genera KenKen
+Fi Programa

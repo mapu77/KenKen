@@ -1,0 +1,242 @@
+KenKen
+Options:
+0. Sortir
+1. Maquina genera KenKen
+2. Usuari genera KenKen
+Generador per l'usuari
+1-Generador KenKen per l'usuari
+2-Generar KenKen a partir d'una serie de parametres
+Mida del KenKen?
+Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9
+Nombre regions
+Nombre de cel.les de la regio 0
+Cordenades cel.la 0 de la regio 0
+Cordenades cel.la 1 de la regio 0
+Operacio de la regio 0
+Resultat de la regio 0
+Nombre de cel.les de la regio 1
+Cordenades cel.la 0 de la regio 1
+Cordenades cel.la 1 de la regio 1
+Cordenades cel.la 2 de la regio 1
+Cordenades cel.la 3 de la regio 1
+Cordenades cel.la 4 de la regio 1
+Operacio de la regio 1
+Resultat de la regio 1
+Nombre de cel.les de la regio 2
+Cordenades cel.la 0 de la regio 2
+Cordenades cel.la 1 de la regio 2
+Cordenades cel.la 2 de la regio 2
+Cordenades cel.la 3 de la regio 2
+Operacio de la regio 2
+Resultat de la regio 2
+Nombre de cel.les de la regio 3
+Cordenades cel.la 0 de la regio 3
+Cordenades cel.la 1 de la regio 3
+Cordenades cel.la 2 de la regio 3
+Operacio de la regio 3
+Resultat de la regio 3
+Nombre de cel.les de la regio 4
+Cordenades cel.la 0 de la regio 4
+Cordenades cel.la 1 de la regio 4
+Operacio de la regio 4
+Resultat de la regio 4
+Nombre de cel.les de la regio 5
+Cordenades cel.la 0 de la regio 5
+Cordenades cel.la 1 de la regio 5
+Cordenades cel.la 2 de la regio 5
+Cordenades cel.la 3 de la regio 5
+Cordenades cel.la 4 de la regio 5
+Operacio de la regio 5
+Resultat de la regio 5
+Nombre de cel.les de la regio 6
+Cordenades cel.la 0 de la regio 6
+Cordenades cel.la 1 de la regio 6
+Cordenades cel.la 2 de la regio 6
+Operacio de la regio 6
+Resultat de la regio 6
+Nombre de cel.les de la regio 7
+Cordenades cel.la 0 de la regio 7
+Cordenades cel.la 1 de la regio 7
+Cordenades cel.la 2 de la regio 7
+Operacio de la regio 7
+Resultat de la regio 7
+Nombre de cel.les de la regio 8
+Cordenades cel.la 0 de la regio 8
+Cordenades cel.la 1 de la regio 8
+Operacio de la regio 8
+Resultat de la regio 8
+Nombre de cel.les de la regio 9
+Cordenades cel.la 0 de la regio 9
+Cordenades cel.la 1 de la regio 9
+Cordenades cel.la 2 de la regio 9
+Operacio de la regio 9
+Resultat de la regio 9
+Nombre de cel.les de la regio 10
+Cordenades cel.la 0 de la regio 10
+Cordenades cel.la 1 de la regio 10
+Operacio de la regio 10
+Resultat de la regio 10
+Nombre de cel.les de la regio 11
+Cordenades cel.la 0 de la regio 11
+Cordenades cel.la 1 de la regio 11
+Cordenades cel.la 2 de la regio 11
+Cordenades cel.la 3 de la regio 11
+Cordenades cel.la 4 de la regio 11
+Operacio de la regio 11
+Resultat de la regio 11
+Nombre de cel.les de la regio 12
+Cordenades cel.la 0 de la regio 12
+Cordenades cel.la 1 de la regio 12
+Cordenades cel.la 2 de la regio 12
+Cordenades cel.la 3 de la regio 12
+Cordenades cel.la 4 de la regio 12
+Operacio de la regio 12
+Resultat de la regio 12
+Nombre de cel.les de la regio 13
+Cordenades cel.la 0 de la regio 13
+Cordenades cel.la 1 de la regio 13
+Cordenades cel.la 2 de la regio 13
+Operacio de la regio 13
+Resultat de la regio 13
+Nombre de cel.les de la regio 14
+Cordenades cel.la 0 de la regio 14
+Cordenades cel.la 1 de la regio 14
+Operacio de la regio 14
+Resultat de la regio 14
+Nombre de cel.les de la regio 15
+Cordenades cel.la 0 de la regio 15
+Operacio de la regio 15
+Resultat de la regio 15
+Nombre de cel.les de la regio 16
+Cordenades cel.la 0 de la regio 16
+Operacio de la regio 16
+Resultat de la regio 16
+Nombre de cel.les de la regio 17
+Cordenades cel.la 0 de la regio 17
+Cordenades cel.la 1 de la regio 17
+Cordenades cel.la 2 de la regio 17
+Operacio de la regio 17
+Resultat de la regio 17
+Nombre de cel.les de la regio 18
+Cordenades cel.la 0 de la regio 18
+Operacio de la regio 18
+Resultat de la regio 18
+Nombre de cel.les de la regio 19
+Cordenades cel.la 0 de la regio 19
+Cordenades cel.la 1 de la regio 19
+Cordenades cel.la 2 de la regio 19
+Cordenades cel.la 3 de la regio 19
+Operacio de la regio 19
+Resultat de la regio 19
+Nombre de cel.les de la regio 20
+Cordenades cel.la 0 de la regio 20
+Operacio de la regio 20
+Resultat de la regio 20
+Nombre de cel.les de la regio 21
+Cordenades cel.la 0 de la regio 21
+Operacio de la regio 21
+Resultat de la regio 21
+Nombre de cel.les de la regio 22
+Cordenades cel.la 0 de la regio 22
+Cordenades cel.la 1 de la regio 22
+Cordenades cel.la 2 de la regio 22
+Operacio de la regio 22
+Resultat de la regio 22
+Comprovem que tingui almenys una solucio
+Aquesta acció pot trigar depenent del KenKen
+Tot correcte
+Configuracio del KenKen per regions
++---------------+
+|0 0|1|2 2|3 3|4|
+|-+-+ + + +-+ + |
+|1 1 1|2 2|5|3|4|
+| +-+-+-+-+ +-+-|
+|1|6 6 6|7|5|8 8|
+|-+-+-+-+ + +-+-|
+|9|10 10|7 7|5 5 5|
+| +-+-+-+-+-+-+-|
+|9|11 11|12 12 12|13 13|
+| + + +-+-+ +-+ |
+|9|11 11|14 14|12 12|13|
+|-+ +-+-+-+-+-+-|
+|15|11|16|17|18|19|20|21|
+|-+-+-+ +-+ +-+-|
+|22 22 22|17 17|19 19 19|
++---------------+
+Informacio de les regions
+Regio num 0 -> Operacio: /, Resultat: 4
+Regio num 1 -> Operacio: +, Resultat: 12
+Regio num 2 -> Operacio: +, Resultat: 22
+Regio num 3 -> Operacio: *, Resultat: 210
+Regio num 4 -> Operacio: -, Resultat: 5
+Regio num 5 -> Operacio: +, Resultat: 15
+Regio num 6 -> Operacio: *, Resultat: 40
+Regio num 7 -> Operacio: +, Resultat: 15
+Regio num 8 -> Operacio: -, Resultat: 3
+Regio num 9 -> Operacio: +, Resultat: 18
+Regio num 10 -> Operacio: -, Resultat: 3
+Regio num 11 -> Operacio: +, Resultat: 27
+Regio num 12 -> Operacio: +, Resultat: 21
+Regio num 13 -> Operacio: +, Resultat: 11
+Regio num 14 -> Operacio: -, Resultat: 1
+Regio num 15 -> Operacio: +, Resultat: 3
+Regio num 16 -> Operacio: +, Resultat: 6
+Regio num 17 -> Operacio: *, Resultat: 168
+Regio num 18 -> Operacio: +, Resultat: 2
+Regio num 19 -> Operacio: +, Resultat: 17
+Regio num 20 -> Operacio: +, Resultat: 8
+Regio num 21 -> Operacio: +, Resultat: 1
+Regio num 22 -> Operacio: +, Resultat: 12
+1.Soluciona algoritme backtracking
+2.Soluciona algoritme IA
+3.Guardar KenKen a la BD
+Temps emprat: 6.16E-5 segons
+
+Estat del KenKen
++---------------+
+|8 2|1|4 5|6 7|3|
+|-+-+ + + +-+ + |
+|4 3 2|6 7|1|5|8|
+| +-+-+-+-+ +-+-|
+|2|1 8 5|6|3|4 7|
+|-+-+-+-+ + +-+-|
+|5|4 7|8 1|2 3 6|
+| +-+-+-+-+-+-+-|
+|6|8 3|1 4 7|2 5|
+| + + +-+-+ +-+ |
+|7|6 5|2 3|8 1|4|
+|-+ +-+-+-+-+-+-|
+|3|5|6|7|2|4|8|1|
+|-+-+-+ +-+ +-+-|
+|1 7 4|3 8|5 6 2|
++---------------+
+Informacio de les regions
+Regio num0 -> Operacio: /, Resultat: 4
+Regio num1 -> Operacio: +, Resultat: 12
+Regio num2 -> Operacio: +, Resultat: 22
+Regio num3 -> Operacio: *, Resultat: 210
+Regio num4 -> Operacio: -, Resultat: 5
+Regio num5 -> Operacio: +, Resultat: 15
+Regio num6 -> Operacio: *, Resultat: 40
+Regio num7 -> Operacio: +, Resultat: 15
+Regio num8 -> Operacio: -, Resultat: 3
+Regio num9 -> Operacio: +, Resultat: 18
+Regio num10 -> Operacio: -, Resultat: 3
+Regio num11 -> Operacio: +, Resultat: 27
+Regio num12 -> Operacio: +, Resultat: 21
+Regio num13 -> Operacio: +, Resultat: 11
+Regio num14 -> Operacio: -, Resultat: 1
+Regio num15 -> Operacio: +, Resultat: 3
+Regio num16 -> Operacio: +, Resultat: 6
+Regio num17 -> Operacio: *, Resultat: 168
+Regio num18 -> Operacio: +, Resultat: 2
+Regio num19 -> Operacio: +, Resultat: 17
+Regio num20 -> Operacio: +, Resultat: 8
+Regio num21 -> Operacio: +, Resultat: 1
+Regio num22 -> Operacio: +, Resultat: 12
+KenKen
+Options:
+0. Sortir
+1. Maquina genera KenKen
+2. Usuari genera KenKen
+Fi Programa

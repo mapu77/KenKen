@@ -5,6 +5,7 @@
  */
 package capaPresentacio;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -52,6 +53,7 @@ public class PantallaInici extends javax.swing.JFrame {
         signinLabel = new javax.swing.JLabel();
         KenKenPanel = new javax.swing.JPanel();
         kenkenLabel = new javax.swing.JLabel();
+        backgroundLabel = new javax.swing.JLabel();
         mainMenu = new javax.swing.JMenuBar();
         menuitemFile = new javax.swing.JMenu();
         siginItemMenu = new javax.swing.JMenuItem();
@@ -67,6 +69,7 @@ public class PantallaInici extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
+        getContentPane().setLayout(null);
 
         LogInPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
         LogInPanel.setNextFocusableComponent(usernameField);
@@ -159,10 +162,13 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        getContentPane().add(LogInPanel);
+        LogInPanel.setBounds(440, 150, 300, 225);
+
         KenKenPanel.setBorder(null);
         KenKenPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
-        kenkenLabel.setIcon(new javax.swing.ImageIcon("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/img/kenken.jpg")); // NOI18N
+        kenkenLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/kenken.jpg"))); // NOI18N
 
         javax.swing.GroupLayout KenKenPanelLayout = new javax.swing.GroupLayout(KenKenPanel);
         KenKenPanel.setLayout(KenKenPanelLayout);
@@ -185,6 +191,14 @@ public class PantallaInici extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        getContentPane().add(KenKenPanel);
+        KenKenPanel.setBounds(60, 150, 300, 225);
+
+        backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background.jpeg"))); // NOI18N
+        getContentPane().add(backgroundLabel);
+        backgroundLabel.setBounds(0, 0, 800, 600);
+
+        mainMenu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         mainMenu.setName(""); // NOI18N
 
         menuitemFile.setText("File");
@@ -214,7 +228,7 @@ public class PantallaInici extends javax.swing.JFrame {
 
         menuitemHelp.setText("Help");
 
-        aboutItemMenu.setIcon(new javax.swing.ImageIcon("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/img/Help.png")); // NOI18N
+        aboutItemMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/Help.png"))); // NOI18N
         aboutItemMenu.setText("About");
         aboutItemMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,27 +241,6 @@ public class PantallaInici extends javax.swing.JFrame {
 
         setJMenuBar(mainMenu);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(KenKenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(LogInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LogInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(KenKenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(200, Short.MAX_VALUE))
-        );
-
         getAccessibleContext().setAccessibleName("Inici");
 
         pack();
@@ -258,6 +251,7 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_exitItemMenuActionPerformed
 
     private void aboutItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemMenuActionPerformed
+        System.out.println("Clico a AboutButton");
         About about = new About(this);
         about.setVisible(true);
     }//GEN-LAST:event_aboutItemMenuActionPerformed
@@ -271,16 +265,16 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void siginItemMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siginItemMenuMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_siginItemMenuMouseClicked
 
     private void signinLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinLabelMouseClicked
-     //   SignIn login = new SignIn();
-       // login.setVisible(true);
+        SignIn signin = new SignIn(this);
+        signin.setVisible(true);
     }//GEN-LAST:event_signinLabelMouseClicked
 
     private void signinLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_signinLabelPropertyChange
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_signinLabelPropertyChange
 
     private void signinLabelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_signinLabelFocusGained
@@ -292,7 +286,6 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_LogInPanelPropertyChange
 
     private void siginItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siginItemMenuActionPerformed
-        // TODO add your handling code here:
         SignIn signin = new SignIn(this);
         signin.setVisible(true);
     }//GEN-LAST:event_siginItemMenuActionPerformed
@@ -337,6 +330,7 @@ public class PantallaInici extends javax.swing.JFrame {
     private javax.swing.JPanel KenKenPanel;
     private javax.swing.JPanel LogInPanel;
     private javax.swing.JMenuItem aboutItemMenu;
+    private javax.swing.JLabel backgroundLabel;
     private javax.swing.JMenuItem exitItemMenu;
     private javax.swing.JLabel kenkenLabel;
     private javax.swing.JButton loginButton;

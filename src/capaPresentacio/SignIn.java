@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capaPresentacio;
 
 import java.awt.Dimension;
@@ -13,13 +8,13 @@ import java.awt.Rectangle;
  *
  * @author edu
  */
-public class SignIn extends javax.swing.JPanel {
+public class SignIn extends javax.swing.JFrame {
 
     /**
-     * Creates new form SignIn
+     * Creates new form SignIn2
      */
     public SignIn(javax.swing.JFrame parent) {
-        super();
+        super("Sign In");
         initComponents();
         
         Rectangle parentBounds = parent.getBounds();
@@ -27,8 +22,7 @@ public class SignIn extends javax.swing.JPanel {
         // Center in the parent
         int x = Math.max(0, parentBounds.x + (parentBounds.width - size.width) / 2);
         int y = Math.max(0, parentBounds.y + (parentBounds.height - size.height) / 2);
-        setLocation(new Point(x, y));
-    }
+        setLocation(new Point(x, y));    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,8 +40,12 @@ public class SignIn extends javax.swing.JPanel {
         passwordField = new javax.swing.JTextField();
         repeatField = new javax.swing.JTextField();
         buttonPanel = new javax.swing.JPanel();
-        signinButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sign In");
+        setResizable(false);
 
         registerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
@@ -108,13 +106,18 @@ public class SignIn extends javax.swing.JPanel {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        signinButton.setText("Create User");
-        signinButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jButton1.setText("Reset");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createButton.setText("Create User");
+        createButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createButtonActionPerformed(evt);
+            }
+        });
+
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
             }
         });
 
@@ -124,9 +127,9 @@ public class SignIn extends javax.swing.JPanel {
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signinButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         buttonPanelLayout.setVerticalGroup(
@@ -134,12 +137,12 @@ public class SignIn extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
                 .addGap(0, 12, Short.MAX_VALUE)
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(signinButton)
-                    .addComponent(jButton1)))
+                    .addComponent(createButton)
+                    .addComponent(resetButton)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -158,6 +161,8 @@ public class SignIn extends javax.swing.JPanel {
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
@@ -172,19 +177,22 @@ public class SignIn extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_repeatFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_createButtonActionPerformed
 
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton createButton;
     private javax.swing.JTextField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel registerPanel;
     private javax.swing.JTextField repeatField;
-    private javax.swing.JButton signinButton;
+    private javax.swing.JButton resetButton;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables

@@ -5,17 +5,29 @@
  */
 package capaPresentacio;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+
 /**
  *
  * @author edu
  */
-public class About extends javax.swing.JFrame {
+public class About extends javax.swing.JDialog {
 
     /**
      * Creates new form About
      */
-    public About() {
+    public About(javax.swing.JFrame parent) {
+        super(parent, true);
         initComponents();
+        
+        Rectangle parentBounds = parent.getBounds();
+        Dimension size = getSize();
+        // Center in the parent
+        int x = Math.max(0, parentBounds.x + (parentBounds.width - size.width) / 2);
+        int y = Math.max(0, parentBounds.y + (parentBounds.height - size.height) / 2);
+        setLocation(new Point(x, y));
     }
 
     /**
@@ -27,85 +39,76 @@ public class About extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Info = new javax.swing.JPanel();
-        FIB = new javax.swing.JLabel();
-        PROP = new javax.swing.JLabel();
-        QT = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        bt_close = new javax.swing.JButton();
+        infoPanel = new javax.swing.JPanel();
+        fibLabel = new javax.swing.JLabel();
+        propLabel = new javax.swing.JLabel();
+        qtLabel = new javax.swing.JLabel();
+        oriolLabel = new javax.swing.JLabel();
+        eduardLabel = new javax.swing.JLabel();
+        jordiLabel = new javax.swing.JLabel();
+        janLabel = new javax.swing.JLabel();
+        closeButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("About KenKen");
-        setSize(new java.awt.Dimension(400, 300));
-        setType(java.awt.Window.Type.POPUP);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("About");
+        setName("About"); // NOI18N
 
-        Info.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "KenKen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
-        Info.setPreferredSize(new java.awt.Dimension(300, 200));
+        infoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "KenKen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
-        FIB.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
-        FIB.setText("FIB - Facultat d'Informàtica de Barcelona");
+        fibLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        fibLabel.setText("FIB - Facultat d'Informàtica de Barcelona");
 
-        PROP.setText("Projecte de Programació");
+        propLabel.setText("Projecte de Programació");
 
-        QT.setText("Quadrimestre Tardor 2015 - 2016");
+        qtLabel.setText("Quadrimestre de Tardor 2015 - 2016");
 
-        jLabel1.setText("Horacio Rodríguez");
+        oriolLabel.setText("Oriol Capó");
 
-        jLabel2.setText("Oriol Capó");
+        eduardLabel.setText("Eduard Maura");
 
-        jLabel3.setText("Eduard Maura");
+        jordiLabel.setText("Jordi Pont");
 
-        jLabel4.setText("Jordi Pont");
+        janLabel.setText("Jan Teruel");
 
-        jLabel5.setText("Jan Teruel");
-
-        javax.swing.GroupLayout InfoLayout = new javax.swing.GroupLayout(Info);
-        Info.setLayout(InfoLayout);
-        InfoLayout.setHorizontalGroup(
-            InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoLayout.createSequentialGroup()
+        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
+        infoPanel.setLayout(infoPanelLayout);
+        infoPanelLayout.setHorizontalGroup(
+            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(FIB)
-                    .addComponent(PROP)
-                    .addComponent(QT)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(janLabel)
+                    .addComponent(fibLabel)
+                    .addComponent(propLabel)
+                    .addComponent(qtLabel)
+                    .addComponent(oriolLabel)
+                    .addComponent(eduardLabel)
+                    .addComponent(jordiLabel))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
-        InfoLayout.setVerticalGroup(
-            InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(FIB)
+        infoPanelLayout.setVerticalGroup(
+            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelLayout.createSequentialGroup()
+                .addComponent(fibLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PROP)
+                .addComponent(propLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QT)
+                .addComponent(qtLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(oriolLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(eduardLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(jordiLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(janLabel)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
-        bt_close.setText("Close");
-        bt_close.addActionListener(new java.awt.event.ActionListener() {
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_closeActionPerformed(evt);
+                closeButtonActionPerformed(evt);
             }
         });
 
@@ -115,76 +118,42 @@ public class About extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(Info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bt_close, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(Info, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(bt_close)
+                .addGap(35, 35, 35)
+                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(closeButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_closeActionPerformed
-        // Tanca la finestra actual
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_bt_closeActionPerformed
+    }//GEN-LAST:event_closeButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(About.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(About.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(About.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(About.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new About().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel FIB;
-    private javax.swing.JPanel Info;
-    private javax.swing.JLabel PROP;
-    private javax.swing.JLabel QT;
-    private javax.swing.JButton bt_close;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton closeButton;
+    private javax.swing.JLabel eduardLabel;
+    private javax.swing.JLabel fibLabel;
+    private javax.swing.JPanel infoPanel;
+    private javax.swing.JLabel janLabel;
+    private javax.swing.JLabel jordiLabel;
+    private javax.swing.JLabel oriolLabel;
+    private javax.swing.JLabel propLabel;
+    private javax.swing.JLabel qtLabel;
     // End of variables declaration//GEN-END:variables
 }

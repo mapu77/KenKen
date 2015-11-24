@@ -5,6 +5,11 @@
  */
 package capaPresentacio;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+
 /**
  *
  * @author edu
@@ -16,8 +21,17 @@ public class PantallaInici extends javax.swing.JFrame {
      */
     public PantallaInici() {
         initComponents();
+        pack();
+        
+        /* Text per fer semblar el text a un link */
         String text = "<html><u>Not registered?</u></html>";
-        Registration_Link.setText(text);
+        signinLabel.setText(text);
+        
+        /* Centra la pantalla */
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = getSize();
+        setLocation(new Point((screenSize.width - frameSize.width) / 2,
+                              (screenSize.height - frameSize.height) / 2));
     }
 
     /**
@@ -29,182 +43,189 @@ public class PantallaInici extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LogIn = new javax.swing.JPanel();
-        Username_Label = new javax.swing.JLabel();
-        Username_Field = new javax.swing.JTextField();
-        Password_Label = new javax.swing.JLabel();
-        Password_Field = new javax.swing.JPasswordField();
-        LogIn_Button = new javax.swing.JButton();
-        Registration_Link = new javax.swing.JLabel();
-        KenKen = new javax.swing.JPanel();
-        KenKenImage = new javax.swing.JLabel();
-        Menu = new javax.swing.JMenuBar();
-        File = new javax.swing.JMenu();
-        Preferences = new javax.swing.JMenuItem();
-        Exit = new javax.swing.JMenuItem();
-        Help = new javax.swing.JMenu();
-        About = new javax.swing.JMenuItem();
+        LogInPanel = new javax.swing.JPanel();
+        usernameLabel = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        passwordLabel = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+        signinLabel = new javax.swing.JLabel();
+        KenKenPanel = new javax.swing.JPanel();
+        kenkenLabel = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JMenuBar();
+        menuitemFile = new javax.swing.JMenu();
+        siginItemMenu = new javax.swing.JMenuItem();
+        exitItemMenu = new javax.swing.JMenuItem();
+        menuitemHelp = new javax.swing.JMenu();
+        aboutItemMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("KenKen");
+        setBounds(new java.awt.Rectangle(300, 300, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setName("Inici"); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
-        LogIn.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
-        LogIn.setNextFocusableComponent(Username_Field);
-        LogIn.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        LogInPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
+        LogInPanel.setNextFocusableComponent(usernameField);
+        LogInPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                LogInPropertyChange(evt);
+                LogInPanelPropertyChange(evt);
             }
         });
 
-        Username_Label.setText("Username");
-        Username_Label.setAlignmentX(1.0F);
+        usernameLabel.setText("Username");
+        usernameLabel.setAlignmentX(1.0F);
 
-        Username_Field.setAlignmentX(1.0F);
-        Username_Field.setNextFocusableComponent(Password_Field);
-        Username_Field.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setAlignmentX(1.0F);
+        usernameField.setNextFocusableComponent(passwordField);
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Username_FieldActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
 
-        Password_Label.setText("Password");
-        Password_Label.setAlignmentX(1.0F);
+        passwordLabel.setText("Password");
+        passwordLabel.setAlignmentX(1.0F);
 
-        Password_Field.setAlignmentX(1.0F);
+        passwordField.setAlignmentX(1.0F);
 
-        LogIn_Button.setText("Log In");
-        LogIn_Button.setToolTipText("Log In");
-        LogIn_Button.setAlignmentX(1.0F);
-        LogIn_Button.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Log In");
+        loginButton.setToolTipText("Log In");
+        loginButton.setAlignmentX(1.0F);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogIn_ButtonActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        Registration_Link.setForeground(new java.awt.Color(0, 6, 255));
-        Registration_Link.setText("Not registered?");
-        Registration_Link.setAlignmentX(1.0F);
-        Registration_Link.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Registration_Link.addFocusListener(new java.awt.event.FocusAdapter() {
+        signinLabel.setForeground(new java.awt.Color(0, 6, 255));
+        signinLabel.setText("Not registered?");
+        signinLabel.setAlignmentX(1.0F);
+        signinLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signinLabel.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                Registration_LinkFocusGained(evt);
+                signinLabelFocusGained(evt);
             }
         });
-        Registration_Link.addMouseListener(new java.awt.event.MouseAdapter() {
+        signinLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Registration_LinkMouseClicked(evt);
+                signinLabelMouseClicked(evt);
             }
         });
-        Registration_Link.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        signinLabel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                Registration_LinkPropertyChange(evt);
+                signinLabelPropertyChange(evt);
             }
         });
 
-        javax.swing.GroupLayout LogInLayout = new javax.swing.GroupLayout(LogIn);
-        LogIn.setLayout(LogInLayout);
-        LogInLayout.setHorizontalGroup(
-            LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogInLayout.createSequentialGroup()
+        javax.swing.GroupLayout LogInPanelLayout = new javax.swing.GroupLayout(LogInPanel);
+        LogInPanel.setLayout(LogInPanelLayout);
+        LogInPanelLayout.setHorizontalGroup(
+            LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogInPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Username_Field)
-                    .addComponent(Password_Field)
-                    .addGroup(LogInLayout.createSequentialGroup()
-                        .addGroup(LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Username_Label)
-                            .addComponent(Password_Label))
+                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usernameField)
+                    .addComponent(passwordField)
+                    .addGroup(LogInPanelLayout.createSequentialGroup()
+                        .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameLabel)
+                            .addComponent(passwordLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(LogInLayout.createSequentialGroup()
-                        .addComponent(Registration_Link)
+                    .addGroup(LogInPanelLayout.createSequentialGroup()
+                        .addComponent(signinLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addComponent(LogIn_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        LogInLayout.setVerticalGroup(
-            LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogInLayout.createSequentialGroup()
+        LogInPanelLayout.setVerticalGroup(
+            LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogInPanelLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(Username_Label)
+                .addComponent(usernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Username_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Password_Label)
+                .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Password_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Registration_Link)
+                .addComponent(signinLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(LogIn_Button)
+                .addComponent(loginButton)
                 .addContainerGap())
         );
 
-        KenKen.setBorder(null);
-        KenKen.setPreferredSize(new java.awt.Dimension(200, 200));
+        KenKenPanel.setBorder(null);
+        KenKenPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
-        KenKenImage.setIcon(new javax.swing.ImageIcon("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/img/kenken.jpg")); // NOI18N
+        kenkenLabel.setIcon(new javax.swing.ImageIcon("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/img/kenken.jpg")); // NOI18N
 
-        javax.swing.GroupLayout KenKenLayout = new javax.swing.GroupLayout(KenKen);
-        KenKen.setLayout(KenKenLayout);
-        KenKenLayout.setHorizontalGroup(
-            KenKenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout KenKenPanelLayout = new javax.swing.GroupLayout(KenKenPanel);
+        KenKenPanel.setLayout(KenKenPanelLayout);
+        KenKenPanelLayout.setHorizontalGroup(
+            KenKenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(KenKenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(KenKenLayout.createSequentialGroup()
+            .addGroup(KenKenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(KenKenPanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(KenKenImage)
+                    .addComponent(kenkenLabel)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        KenKenLayout.setVerticalGroup(
-            KenKenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        KenKenPanelLayout.setVerticalGroup(
+            KenKenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 225, Short.MAX_VALUE)
-            .addGroup(KenKenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(KenKenLayout.createSequentialGroup()
+            .addGroup(KenKenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(KenKenPanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(KenKenImage)
+                    .addComponent(kenkenLabel)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        Menu.setName(""); // NOI18N
+        mainMenu.setName(""); // NOI18N
 
-        File.setText("File");
+        menuitemFile.setText("File");
 
-        Preferences.setText("Preferences");
-        Preferences.addMouseListener(new java.awt.event.MouseAdapter() {
+        siginItemMenu.setText("Sign In");
+        siginItemMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PreferencesMouseClicked(evt);
+                siginItemMenuMouseClicked(evt);
             }
         });
-        File.add(Preferences);
-
-        Exit.setText("Exit");
-        Exit.addActionListener(new java.awt.event.ActionListener() {
+        siginItemMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitActionPerformed(evt);
+                siginItemMenuActionPerformed(evt);
             }
         });
-        File.add(Exit);
+        menuitemFile.add(siginItemMenu);
 
-        Menu.add(File);
-
-        Help.setText("Help");
-
-        About.setIcon(new javax.swing.ImageIcon("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/img/Help.png")); // NOI18N
-        About.setText("About");
-        About.addActionListener(new java.awt.event.ActionListener() {
+        exitItemMenu.setText("Exit");
+        exitItemMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AboutActionPerformed(evt);
+                exitItemMenuActionPerformed(evt);
             }
         });
-        Help.add(About);
+        menuitemFile.add(exitItemMenu);
 
-        Menu.add(Help);
+        mainMenu.add(menuitemFile);
 
-        setJMenuBar(Menu);
+        menuitemHelp.setText("Help");
+
+        aboutItemMenu.setIcon(new javax.swing.ImageIcon("/home/edu/Documentos/FIB/5qt_15-16/PROP/KenKen/img/Help.png")); // NOI18N
+        aboutItemMenu.setText("About");
+        aboutItemMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutItemMenuActionPerformed(evt);
+            }
+        });
+        menuitemHelp.add(aboutItemMenu);
+
+        mainMenu.add(menuitemHelp);
+
+        setJMenuBar(mainMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,9 +233,9 @@ public class PantallaInici extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(KenKen, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(KenKenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LogInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
@@ -222,51 +243,59 @@ public class PantallaInici extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(KenKen, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LogInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(KenKenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("Inici");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+    private void exitItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_ExitActionPerformed
+    }//GEN-LAST:event_exitItemMenuActionPerformed
 
-    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
-        About about = new About();
+    private void aboutItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemMenuActionPerformed
+        About about = new About(this);
         about.setVisible(true);
-    }//GEN-LAST:event_AboutActionPerformed
+    }//GEN-LAST:event_aboutItemMenuActionPerformed
 
-    private void LogIn_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogIn_ButtonActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LogIn_ButtonActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void Username_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username_FieldActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Username_FieldActionPerformed
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
-    private void PreferencesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PreferencesMouseClicked
+    private void siginItemMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siginItemMenuMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_PreferencesMouseClicked
+    }//GEN-LAST:event_siginItemMenuMouseClicked
 
-    private void Registration_LinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Registration_LinkMouseClicked
-        SignIn login = new SignIn();
-        login.setVisible(true);
-    }//GEN-LAST:event_Registration_LinkMouseClicked
+    private void signinLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinLabelMouseClicked
+     //   SignIn login = new SignIn();
+       // login.setVisible(true);
+    }//GEN-LAST:event_signinLabelMouseClicked
 
-    private void Registration_LinkPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_Registration_LinkPropertyChange
+    private void signinLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_signinLabelPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_Registration_LinkPropertyChange
+    }//GEN-LAST:event_signinLabelPropertyChange
 
-    private void Registration_LinkFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Registration_LinkFocusGained
+    private void signinLabelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_signinLabelFocusGained
 
-    }//GEN-LAST:event_Registration_LinkFocusGained
+    }//GEN-LAST:event_signinLabelFocusGained
 
-    private void LogInPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_LogInPropertyChange
+    private void LogInPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_LogInPanelPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_LogInPropertyChange
+    }//GEN-LAST:event_LogInPanelPropertyChange
+
+    private void siginItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siginItemMenuActionPerformed
+        // TODO add your handling code here:
+        SignIn signin = new SignIn(this);
+        signin.setVisible(true);
+    }//GEN-LAST:event_siginItemMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,20 +334,20 @@ public class PantallaInici extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem About;
-    private javax.swing.JMenuItem Exit;
-    private javax.swing.JMenu File;
-    private javax.swing.JMenu Help;
-    private javax.swing.JPanel KenKen;
-    private javax.swing.JLabel KenKenImage;
-    private javax.swing.JPanel LogIn;
-    private javax.swing.JButton LogIn_Button;
-    private javax.swing.JMenuBar Menu;
-    private javax.swing.JPasswordField Password_Field;
-    private javax.swing.JLabel Password_Label;
-    private javax.swing.JMenuItem Preferences;
-    private javax.swing.JLabel Registration_Link;
-    private javax.swing.JTextField Username_Field;
-    private javax.swing.JLabel Username_Label;
+    private javax.swing.JPanel KenKenPanel;
+    private javax.swing.JPanel LogInPanel;
+    private javax.swing.JMenuItem aboutItemMenu;
+    private javax.swing.JMenuItem exitItemMenu;
+    private javax.swing.JLabel kenkenLabel;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JMenuBar mainMenu;
+    private javax.swing.JMenu menuitemFile;
+    private javax.swing.JMenu menuitemHelp;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JMenuItem siginItemMenu;
+    private javax.swing.JLabel signinLabel;
+    private javax.swing.JTextField usernameField;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

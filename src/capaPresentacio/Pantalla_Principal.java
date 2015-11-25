@@ -20,6 +20,8 @@ public class Pantalla_Principal extends javax.swing.JFrame {
      */
     public Pantalla_Principal() {
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setVisible(true);
         
         Toolkit tool = Toolkit.getDefaultToolkit();
         Dimension dim = new Dimension(tool.getScreenSize());

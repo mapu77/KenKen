@@ -16,6 +16,7 @@ public class SignIn extends javax.swing.JFrame {
     public SignIn(javax.swing.JFrame parent) {
         super("Sign In");
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         Rectangle parentBounds = parent.getBounds();
         Dimension size = getSize();

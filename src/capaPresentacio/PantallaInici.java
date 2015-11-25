@@ -49,8 +49,8 @@ public class PantallaInici extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
-        loginButton = new javax.swing.JButton();
         signinLabel = new javax.swing.JLabel();
+        loginButton = new javax.swing.JButton();
         KenKenPanel = new javax.swing.JPanel();
         kenkenLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
@@ -95,15 +95,6 @@ public class PantallaInici extends javax.swing.JFrame {
 
         passwordField.setAlignmentX(1.0F);
 
-        loginButton.setText("Log In");
-        loginButton.setToolTipText("Log In");
-        loginButton.setAlignmentX(1.0F);
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
-
         signinLabel.setForeground(new java.awt.Color(0, 6, 255));
         signinLabel.setText("Not registered?");
         signinLabel.setAlignmentX(1.0F);
@@ -124,6 +115,15 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
+        loginButton.setText("Log In");
+        loginButton.setToolTipText("Log In");
+        loginButton.setAlignmentX(1.0F);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout LogInPanelLayout = new javax.swing.GroupLayout(LogInPanel);
         LogInPanel.setLayout(LogInPanelLayout);
         LogInPanelLayout.setHorizontalGroup(
@@ -131,18 +131,21 @@ public class PantallaInici extends javax.swing.JFrame {
             .addGroup(LogInPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usernameField)
-                    .addComponent(passwordField)
                     .addGroup(LogInPanelLayout.createSequentialGroup()
                         .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameLabel)
-                            .addComponent(passwordLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(usernameField)
+                            .addComponent(passwordField)
+                            .addGroup(LogInPanelLayout.createSequentialGroup()
+                                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passwordLabel)
+                                    .addComponent(usernameLabel))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(LogInPanelLayout.createSequentialGroup()
                         .addComponent(signinLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addComponent(loginButton)
+                        .addGap(27, 27, 27))))
         );
         LogInPanelLayout.setVerticalGroup(
             LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,16 +159,15 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(signinLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(loginButton)
-                .addContainerGap())
+                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(signinLabel)
+                    .addComponent(loginButton))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         getContentPane().add(LogInPanel);
-        LogInPanel.setBounds(440, 150, 300, 225);
+        LogInPanel.setBounds(440, 150, 284, 193);
 
-        KenKenPanel.setBorder(null);
         KenKenPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
         kenkenLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/kenken.jpg"))); // NOI18N
@@ -256,10 +258,6 @@ public class PantallaInici extends javax.swing.JFrame {
         about.setVisible(true);
     }//GEN-LAST:event_aboutItemMenuActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginButtonActionPerformed
-
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
@@ -289,6 +287,12 @@ public class PantallaInici extends javax.swing.JFrame {
         SignIn signin = new SignIn(this);
         signin.setVisible(true);
     }//GEN-LAST:event_siginItemMenuActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        Pantalla_Principal P = new Pantalla_Principal();
+        setVisible(false);
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments

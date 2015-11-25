@@ -5,6 +5,11 @@
  */
 package capaPresentacio;
 
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+
 /**
  *
  * @author Oriolcapo
@@ -18,6 +23,18 @@ public class Crear_Kenken extends javax.swing.JPanel {
         initComponents();
         jLabel1.setLocation(50,50);
     }
+    
+    public Crear_Kenken(javax.swing.JFrame parent) {
+        super();
+        initComponents();
+        
+        /*Rectangle parentBounds = parent.getBounds();
+        Dimension size = getSize();
+        // Center in the parent
+        int x = Math.max(0, parentBounds.x + (parentBounds.width - size.width) / 2);
+        int y = Math.max(0, parentBounds.y + (parentBounds.height - size.height) / 2);
+        setLocation();*/
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,14 +45,9 @@ public class Crear_Kenken extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setText("Kenken creator");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("Create by Parameters");
 
@@ -46,18 +58,23 @@ public class Crear_Kenken extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("KENKEN CREATOR");
+        jLabel1.setAlignmentX(250.0F);
+        jLabel1.setAlignmentY(300.0F);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(301, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
             .addGroup(layout.createSequentialGroup()
-                .addGap(219, 219, 219)
+                .addGap(169, 169, 169)
                 .addComponent(jLabel1)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(39, 39, 39)
@@ -67,9 +84,9 @@ public class Crear_Kenken extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel1)
-                .addGap(118, 118, 118)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(154, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

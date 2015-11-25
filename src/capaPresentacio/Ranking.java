@@ -7,12 +7,12 @@ package capaPresentacio;
 
 /**
  *
- * @author Jan
+ * @author Oriolcapo
  */
 public class Ranking extends javax.swing.JPanel {
 
     /**
-     * Creates new form Ranking
+     * Creates new form Ranking2
      */
     public Ranking() {
         initComponents();
@@ -27,11 +27,22 @@ public class Ranking extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        GrankingPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         rankingLabel = new javax.swing.JLabel();
         GrankingLabel = new javax.swing.JLabel();
-        TrankingButton = new javax.swing.JButton();
+        GrankingPanel = new javax.swing.JPanel();
         PrankingButton = new javax.swing.JButton();
+        TrankingButton = new javax.swing.JButton();
+
+        setLayout(new java.awt.CardLayout());
+
+        rankingLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        rankingLabel.setText("RANKING");
+        rankingLabel.setAlignmentX(250.0F);
+        rankingLabel.setAlignmentY(300.0F);
+
+        GrankingLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        GrankingLabel.setText("General Ranking:");
 
         GrankingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -46,13 +57,13 @@ public class Ranking extends javax.swing.JPanel {
             .addGap(0, 191, Short.MAX_VALUE)
         );
 
-        rankingLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        rankingLabel.setText("RANKING");
-        rankingLabel.setAlignmentX(250.0F);
-        rankingLabel.setAlignmentY(300.0F);
-
-        GrankingLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        GrankingLabel.setText("General Ranking:");
+        PrankingButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        PrankingButton.setText("Personal Ranking");
+        PrankingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrankingButtonActionPerformed(evt);
+            }
+        });
 
         TrankingButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TrankingButton.setText("Ranking by Type");
@@ -63,60 +74,60 @@ public class Ranking extends javax.swing.JPanel {
             }
         });
 
-        PrankingButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        PrankingButton.setText("Personal Ranking");
-        PrankingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PrankingButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(rankingLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(GrankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(GrankingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(PrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(TrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(76, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(245, 245, 245)
+                .addComponent(rankingLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(GrankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(GrankingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(PrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(62, 62, 62))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addComponent(rankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GrankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(GrankingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void TrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrankingButtonActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_TrankingButtonActionPerformed
+        add(jPanel1, "card2");
+    }// </editor-fold>//GEN-END:initComponents
 
     private void PrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrankingButtonActionPerformed
         // TODO add your handling code here:
+        removeAll();
+        repaint();
+        revalidate();
+        //afegint JPanel
+        add(new PersonalR());
+        repaint();
+        revalidate();
     }//GEN-LAST:event_PrankingButtonActionPerformed
+
+    private void TrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrankingButtonActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_TrankingButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -124,6 +135,7 @@ public class Ranking extends javax.swing.JPanel {
     private javax.swing.JPanel GrankingPanel;
     private javax.swing.JButton PrankingButton;
     private javax.swing.JButton TrankingButton;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel rankingLabel;
     // End of variables declaration//GEN-END:variables
 }

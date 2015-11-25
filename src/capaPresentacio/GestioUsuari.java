@@ -7,7 +7,7 @@ package capaPresentacio;
 
 /**
  *
- * @author Jordi
+ * @author Oriolcapo
  */
 public class GestioUsuari extends javax.swing.JPanel {
 
@@ -37,8 +37,7 @@ public class GestioUsuari extends javax.swing.JPanel {
         ExitButton = new javax.swing.JButton();
         ImgSettings = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(600, 500));
-        setMinimumSize(new java.awt.Dimension(600, 500));
+        setPreferredSize(new java.awt.Dimension(600, 500));
 
         UserSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "User settings", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         UserSettingsPanel.setMaximumSize(new java.awt.Dimension(600, 500));
@@ -81,23 +80,25 @@ public class GestioUsuari extends javax.swing.JPanel {
         UserSettingsPanel.setLayout(UserSettingsPanelLayout);
         UserSettingsPanelLayout.setHorizontalGroup(
             UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(passwordFieldOld)
             .addGroup(UserSettingsPanelLayout.createSequentialGroup()
                 .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PasswordTitle)
-                    .addComponent(NewPasswordTitle))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(passwordFieldNew)
-            .addComponent(passwordFieldNew2)
+                    .addComponent(NewPasswordTitle)
+                    .addGroup(UserSettingsPanelLayout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(ImgSettings)))
+                .addGap(0, 219, Short.MAX_VALUE))
             .addGroup(UserSettingsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SaveButton)
-                .addGap(18, 18, 18)
-                .addComponent(ExitButton))
-            .addGroup(UserSettingsPanelLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(ImgSettings)
-                .addGap(0, 220, Short.MAX_VALUE))
+                .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserSettingsPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SaveButton)
+                        .addGap(8, 8, 8)
+                        .addComponent(ExitButton))
+                    .addComponent(passwordFieldNew2)
+                    .addComponent(passwordFieldNew)
+                    .addComponent(passwordFieldOld, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         UserSettingsPanelLayout.setVerticalGroup(
             UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +117,7 @@ public class GestioUsuari extends javax.swing.JPanel {
                 .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveButton)
                     .addComponent(ExitButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(ImgSettings)
                 .addGap(63, 63, 63))
         );
@@ -125,31 +126,25 @@ public class GestioUsuari extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(UserSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+            .addComponent(UserSettingsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(UserSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+            .addComponent(UserSettingsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordFieldNew2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldNew2ActionPerformed
+    private void passwordFieldOldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldOldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldNew2ActionPerformed
+    }//GEN-LAST:event_passwordFieldOldActionPerformed
 
     private void passwordFieldNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldNewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldNewActionPerformed
 
-    private void passwordFieldOldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldOldActionPerformed
+    private void passwordFieldNew2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldNew2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldOldActionPerformed
+    }//GEN-LAST:event_passwordFieldNew2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

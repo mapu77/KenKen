@@ -24,7 +24,7 @@ public class CtrlUser
 {
 	private static boolean dirty;             // true si s'ha modificat la llista d'usuari
 	protected static ArrayList<User> usuaris; // ordenats per nom
-    private static String path = "data/Usuaris.txt";
+    private static String path = "src/JocsProva/users.txt";
 	
 	// Carrega els usuaris de la BD
 	// si hi ha hagut error al carregar els usuaris llença una excepcio
@@ -85,7 +85,15 @@ public class CtrlUser
     public static ArrayList<User> getTaula() {
         return usuaris;
     }
-	
+
+    // Consulta la contrasenya de l'usuari amb username "nom"
+    public static boolean comprovaPwd(String nom, String pwd) {
+      boolean ret = false;
+      for (User usuari : usuaris) {
+        if (Objects.equals(usuari.getUsername(), nom)) ret = usuari.testPassword(pwd);
+      }
+      return ret;
+    }
 	// Retorna l'Usuari amb username igual a nom
 	// Retorna null si no el troba
 	public static User getUsuari(String nom)

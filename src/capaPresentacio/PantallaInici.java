@@ -51,6 +51,7 @@ public class PantallaInici extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         signinLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
+        errorLabel = new javax.swing.JLabel();
         KenKenPanel = new javax.swing.JPanel();
         kenkenLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
@@ -125,6 +126,10 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
+        errorLabel.setBackground(new Color(214,214,214,0));
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        errorLabel.setOpaque(true);
+
         javax.swing.GroupLayout LogInPanelLayout = new javax.swing.GroupLayout(LogInPanel);
         LogInPanel.setLayout(LogInPanelLayout);
         LogInPanelLayout.setHorizontalGroup(
@@ -132,21 +137,19 @@ public class PantallaInici extends javax.swing.JFrame {
             .addGroup(LogInPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogInPanelLayout.createSequentialGroup()
+                        .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameField)
+                    .addComponent(passwordField)
                     .addGroup(LogInPanelLayout.createSequentialGroup()
                         .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameField)
-                            .addComponent(passwordField)
-                            .addGroup(LogInPanelLayout.createSequentialGroup()
-                                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passwordLabel)
-                                    .addComponent(usernameLabel))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(LogInPanelLayout.createSequentialGroup()
-                        .addComponent(signinLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                        .addComponent(loginButton)
-                        .addGap(27, 27, 27))))
+                            .addComponent(signinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordLabel)
+                            .addComponent(usernameLabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         LogInPanelLayout.setVerticalGroup(
             LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,14 +163,16 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(signinLabel)
-                    .addComponent(loginButton))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(signinLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginButton)
+                    .addComponent(errorLabel))
+                .addContainerGap())
         );
 
         getContentPane().add(LogInPanel);
-        LogInPanel.setBounds(440, 150, 284, 193);
+        LogInPanel.setBounds(440, 150, 281, 223);
 
         KenKenPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
@@ -338,6 +343,7 @@ public class PantallaInici extends javax.swing.JFrame {
     private javax.swing.JPanel LogInPanel;
     private javax.swing.JMenuItem aboutItemMenu;
     private javax.swing.JLabel backgroundLabel;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JMenuItem exitItemMenu;
     private javax.swing.JLabel kenkenLabel;
     private javax.swing.JButton loginButton;

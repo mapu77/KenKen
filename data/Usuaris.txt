@@ -1,5 +1,5 @@
-mapu77 123456789
-ocapo 234567891
-teru 345678912
-jpont 456789123
-horacio 4884782
+mapu77 1234
+ocapo 1234
+teru 1234
+jpont 1234
+horacio 1234

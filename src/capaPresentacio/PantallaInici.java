@@ -5,18 +5,18 @@
  */
 package capaPresentacio;
 
+import capaDomini.Usuari.CtrlUser;
+import capaPersistencia.CtrlPersistencia;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.JFrame;
 
 /**
  *
  * @author edu
  */
-public class PantallaInici extends javax.swing.JFrame {
-
+public class PantallaInici extends javax.swing.JFrame { 
     /**
      * Creates new form PantallaPrincipal
      */
@@ -33,8 +33,10 @@ public class PantallaInici extends javax.swing.JFrame {
         Dimension frameSize = getSize();
         setLocation(new Point((screenSize.width - frameSize.width) / 2,
                               (screenSize.height - frameSize.height) / 2));
+        
+        LogInPanel.setBackground(new Color(214,214,214,153));
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +53,7 @@ public class PantallaInici extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         signinLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
         KenKenPanel = new javax.swing.JPanel();
         kenkenLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
@@ -82,8 +85,17 @@ public class PantallaInici extends javax.swing.JFrame {
         usernameLabel.setText("Username");
         usernameLabel.setAlignmentX(1.0F);
 
+        usernameField.setText("Enter here your username");
         usernameField.setAlignmentX(1.0F);
         usernameField.setNextFocusableComponent(passwordField);
+        usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusLost(evt);
+            }
+        });
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameFieldActionPerformed(evt);
@@ -93,7 +105,21 @@ public class PantallaInici extends javax.swing.JFrame {
         passwordLabel.setText("Password");
         passwordLabel.setAlignmentX(1.0F);
 
+        passwordField.setText("Enter here your password");
         passwordField.setAlignmentX(1.0F);
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusLost(evt);
+            }
+        });
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
 
         loginButton.setText("Log In");
         loginButton.setToolTipText("Log In");
@@ -124,6 +150,10 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
+        errorLabel.setBackground(new Color(214,214,214,0));
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        errorLabel.setOpaque(true);
+
         javax.swing.GroupLayout LogInPanelLayout = new javax.swing.GroupLayout(LogInPanel);
         LogInPanel.setLayout(LogInPanelLayout);
         LogInPanelLayout.setHorizontalGroup(
@@ -139,8 +169,12 @@ public class PantallaInici extends javax.swing.JFrame {
                             .addComponent(passwordLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(LogInPanelLayout.createSequentialGroup()
-                        .addComponent(signinLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(LogInPanelLayout.createSequentialGroup()
+                                .addComponent(signinLabel)
+                                .addGap(0, 84, Short.MAX_VALUE))
+                            .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -157,13 +191,15 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signinLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(loginButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loginButton)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         getContentPane().add(LogInPanel);
-        LogInPanel.setBounds(440, 150, 300, 225);
+        LogInPanel.setBounds(440, 150, 300, 223);
 
         KenKenPanel.setBorder(null);
         KenKenPanel.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -251,13 +287,19 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_exitItemMenuActionPerformed
 
     private void aboutItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemMenuActionPerformed
-        System.out.println("Clico a AboutButton");
         About about = new About(this);
         about.setVisible(true);
     }//GEN-LAST:event_aboutItemMenuActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        String user = usernameField.getText();
+        String pwd = String.valueOf(passwordField.getPassword());
+        Pantalla_Principal P = new Pantalla_Principal(this);
+        /*if (CtrlUser.testlogin(user, pwd)) {
+            
+        }
+        else */errorLabel.setText("<html>Your username<br>or password are incorrect</html>");
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
@@ -290,6 +332,26 @@ public class PantallaInici extends javax.swing.JFrame {
         signin.setVisible(true);
     }//GEN-LAST:event_siginItemMenuActionPerformed
 
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+ 
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
+        usernameField.setText("");
+    }//GEN-LAST:event_usernameFieldFocusGained
+
+    private void usernameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusLost
+        if (usernameField.getText().isEmpty()) usernameField.setText("Enter here your username");
+    }//GEN-LAST:event_usernameFieldFocusLost
+
+    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
+        passwordField.setText("");
+    }//GEN-LAST:event_passwordFieldFocusGained
+
+    private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
+        if (passwordField.getPassword().length == 0) passwordField.setText("Enter your password here");
+    }//GEN-LAST:event_passwordFieldFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -317,7 +379,12 @@ public class PantallaInici extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
+        CtrlPersistencia CP = new CtrlPersistencia();
+        CtrlPersistencia.setSeparator(" ");
+         
+        CtrlUser CU = new CtrlUser();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -331,6 +398,7 @@ public class PantallaInici extends javax.swing.JFrame {
     private javax.swing.JPanel LogInPanel;
     private javax.swing.JMenuItem aboutItemMenu;
     private javax.swing.JLabel backgroundLabel;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JMenuItem exitItemMenu;
     private javax.swing.JLabel kenkenLabel;
     private javax.swing.JButton loginButton;

@@ -1,8 +1,10 @@
 package capaPresentacio;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.TextField;
 
 /**
  *
@@ -11,18 +13,29 @@ import java.awt.Rectangle;
 public class SignIn extends javax.swing.JFrame {
 
     /**
-     * Creates new form SignIn2
+     * Creates new form SignIn
      */
     public SignIn(javax.swing.JFrame parent) {
         super("Sign In");
         initComponents();
         
+        setMinimumSize(new Dimension(400, 300));
+        setMaximumSize(new Dimension(400, 300));
+        setSize(new Dimension(400, 300));
+        
         Rectangle parentBounds = parent.getBounds();
-        Dimension size = getSize();
+        Dimension size = getSize();        
+        
         // Center in the parent
         int x = Math.max(0, parentBounds.x + (parentBounds.width - size.width) / 2);
         int y = Math.max(0, parentBounds.y + (parentBounds.height - size.height) / 2);
-        setLocation(new Point(x, y));    }
+        setLocation(new Point(x, y));    
+        
+        /* Colors traslucids */
+        buttonPanel.setBackground(new Color(214,214,214,0));
+        registerPanel.setBackground(new Color(214,214,214,153));
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,42 +49,71 @@ public class SignIn extends javax.swing.JFrame {
         registerPanel = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
+        usererrorLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
-        passwordField = new javax.swing.JTextField();
-        repeatField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        repeatField = new javax.swing.JPasswordField();
+        repeaterrorLabel = new javax.swing.JLabel();
         buttonPanel = new javax.swing.JPanel();
         createButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        backgroundLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sign In");
         setResizable(false);
+        getContentPane().setLayout(null);
 
         registerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
         usernameLabel.setText("Username");
 
+        usernameField.setText("Enter your username");
+        usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusLost(evt);
+            }
+        });
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameFieldActionPerformed(evt);
             }
         });
 
+        usererrorLabel.setBackground(new Color(214,214,214,0));
+        usererrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        usererrorLabel.setOpaque(true);
+        usererrorLabel.setPreferredSize(new java.awt.Dimension(116, 17));
+
         passwordLabel.setText("Password");
 
-        passwordField.setText("Min. 5 characters");
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
+        passwordField.setText("jPasswordField1");
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusLost(evt);
             }
         });
 
-        repeatField.setText("Repeat your password");
-        repeatField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repeatFieldActionPerformed(evt);
+        repeatField.setText("jPasswordField1");
+        repeatField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                repeatFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                repeatFieldFocusLost(evt);
             }
         });
+
+        repeaterrorLabel.setBackground(new Color(214,214,214,0));
+        repeaterrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        repeaterrorLabel.setOpaque(true);
+        repeaterrorLabel.setPreferredSize(new java.awt.Dimension(116, 17));
 
         javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
         registerPanel.setLayout(registerPanelLayout);
@@ -80,14 +122,16 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(registerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usernameField)
+                    .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addComponent(passwordField)
+                    .addComponent(repeatField)
                     .addGroup(registerPanelLayout.createSequentialGroup()
                         .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usernameLabel)
                             .addComponent(passwordLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(passwordField)
-                    .addComponent(repeatField, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
+                    .addComponent(usererrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(repeaterrorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         registerPanelLayout.setVerticalGroup(
@@ -97,14 +141,21 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(usernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usererrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(repeatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(repeaterrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(registerPanel);
+        registerPanel.setBounds(12, 11, 376, 210);
 
         createButton.setText("Create User");
         createButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -128,71 +179,84 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         buttonPanelLayout.setVerticalGroup(
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
+            .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createButton)
-                    .addComponent(resetButton)))
+                    .addComponent(resetButton))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(registerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        getContentPane().add(buttonPanel);
+        buttonPanel.setBounds(12, 229, 376, 40);
+
+        backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background.jpeg"))); // NOI18N
+        backgroundLabel.setMaximumSize(new java.awt.Dimension(400, 300));
+        backgroundLabel.setMinimumSize(new java.awt.Dimension(400, 300));
+        backgroundLabel.setPreferredSize(new java.awt.Dimension(400, 300));
+        getContentPane().add(backgroundLabel);
+        backgroundLabel.setBounds(0, 0, 400, 300);
+        backgroundLabel.getAccessibleContext().setAccessibleName("SignIn");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
-
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
-    private void repeatFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repeatFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_repeatFieldActionPerformed
-
-    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
+        passwordField.setText("");
+        repeatField.setText("");
+        usernameField.setText("");
+        usererrorLabel.setText("");
     }//GEN-LAST:event_resetButtonActionPerformed
 
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        usererrorLabel.setText("This username already exists");
+        repeaterrorLabel.setText("Passwords don't match");
+    }//GEN-LAST:event_createButtonActionPerformed
+
+    private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
+        usernameField.setText("");
+    }//GEN-LAST:event_usernameFieldFocusGained
+
+    private void usernameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusLost
+        if (usernameField.getText().isEmpty()) usernameField.setText("Enter here your username");
+    }//GEN-LAST:event_usernameFieldFocusLost
+
+    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
+        passwordField.setText("");
+    }//GEN-LAST:event_passwordFieldFocusGained
+
+    private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
+        if (passwordField.getPassword().length == 0) passwordField.setText("jPasswordField1");
+    }//GEN-LAST:event_passwordFieldFocusLost
+
+    private void repeatFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatFieldFocusGained
+        repeatField.setText("");
+    }//GEN-LAST:event_repeatFieldFocusGained
+
+    private void repeatFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatFieldFocusLost
+        if (passwordField.getPassword().length == 0) repeatField.setText("jPasswordField1");
+    }//GEN-LAST:event_repeatFieldFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgroundLabel;
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton createButton;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel registerPanel;
-    private javax.swing.JTextField repeatField;
+    private javax.swing.JPasswordField repeatField;
+    private javax.swing.JLabel repeaterrorLabel;
     private javax.swing.JButton resetButton;
+    private javax.swing.JLabel usererrorLabel;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables

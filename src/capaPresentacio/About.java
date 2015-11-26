@@ -55,7 +55,7 @@ public class About extends javax.swing.JDialog {
         setName("About"); // NOI18N
         setResizable(false);
 
-        infoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "KenKen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        infoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "KenKen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
         fibLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         fibLabel.setText("FIB - Facultat d'Informàtica de Barcelona");
@@ -96,7 +96,7 @@ public class About extends javax.swing.JDialog {
                 .addComponent(propLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(qtLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(oriolLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eduardLabel)

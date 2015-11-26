@@ -5,11 +5,12 @@
  */
 package capaPresentacio;
 
+import capaDomini.Usuari.CtrlUser;
+import capaPersistencia.CtrlPersistencia;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.JFrame;
 
 /**
  *
@@ -23,11 +24,7 @@ public class PantallaInici extends javax.swing.JFrame {
     public PantallaInici() {
         initComponents();
         pack();
-        
-        /* Text per fer semblar el text a un link */
-        String text = "<html><u>Not registered?</u></html>";
-        signinLabel.setText(text);
-        
+              
         /* Centra la pantalla */
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = getSize();
@@ -98,7 +95,7 @@ public class PantallaInici extends javax.swing.JFrame {
         passwordField.setAlignmentX(1.0F);
 
         signinLabel.setForeground(new java.awt.Color(0, 6, 255));
-        signinLabel.setText("Not registered?");
+        signinLabel.setText("<html><u>Not registered?</u></html>");
         signinLabel.setAlignmentX(1.0F);
         signinLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signinLabel.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -138,7 +135,7 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogInPanelLayout.createSequentialGroup()
-                        .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(usernameField)
@@ -148,7 +145,7 @@ public class PantallaInici extends javax.swing.JFrame {
                             .addComponent(signinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordLabel)
                             .addComponent(usernameLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 133, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         LogInPanelLayout.setVerticalGroup(
@@ -163,11 +160,11 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(signinLabel)
+                .addComponent(signinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginButton)
-                    .addComponent(errorLabel))
+                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -259,7 +256,6 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_exitItemMenuActionPerformed
 
     private void aboutItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemMenuActionPerformed
-        System.out.println("Clico a AboutButton");
         About about = new About(this);
         about.setVisible(true);
     }//GEN-LAST:event_aboutItemMenuActionPerformed
@@ -295,9 +291,15 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_siginItemMenuActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-        Pantalla_Principal P = new Pantalla_Principal(this);
-        //setVisible(false);
+        String nom = usernameField.getText();
+        String pwd = String.valueOf(passwordField.getPassword());
+        System.out.println(nom + " " + pwd);
+        if (CtrlUser.comprovaPwd(nom, pwd)) {
+            Pantalla_Principal P = new Pantalla_Principal(this);
+        }
+        else {
+            errorLabel.setText("<html>Username or password<br>are incorrect</html>");
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     
@@ -330,6 +332,11 @@ public class PantallaInici extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        CtrlPersistencia CP = new CtrlPersistencia();
+        CtrlPersistencia.setSeparator(" ");
+        
+        CtrlUser CU = new CtrlUser();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

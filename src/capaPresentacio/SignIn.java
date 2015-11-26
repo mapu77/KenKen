@@ -1,10 +1,11 @@
 package capaPresentacio;
 
+import capaDomini.Usuari.CtrlUser;
+import capaDomini.Usuari.User;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.TextField;
 
 /**
  *
@@ -211,16 +212,26 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO add your handling code here:
         passwordField.setText("");
         repeatField.setText("");
         usernameField.setText("");
-        usererrorLabel.setText("");
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        usererrorLabel.setText("This username already exists");
-        repeaterrorLabel.setText("Passwords don't match");
+        User us = new User(usernameField.getText(),String.valueOf(passwordField.getPassword()));
+        if (passwordField.getPassword().equals(repeatField.getPassword())) {
+            if (CtrlUser.afegeixUsuari(us)) {
+            System.out.println("Afegit correctament");
+            }
+            else {
+                usererrorLabel.setText("This username already exists");
+                repeaterrorLabel.setText("Passwords don't match");
+            }
+        }
+        else {
+                repeaterrorLabel.setText("Passwords don't match");
+        }
+       
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained

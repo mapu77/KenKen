@@ -5,6 +5,9 @@
  */
 package capaPresentacio;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Oriolcapo
@@ -18,6 +21,12 @@ public class PlayKenKen extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        
+        Toolkit tool = Toolkit.getDefaultToolkit();
+        Dimension dim = new Dimension(tool.getScreenSize());
+        int height = (int) dim.getHeight();
+        int width = (int) dim.getWidth();
+        setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
     }
 
     /**
@@ -45,11 +54,11 @@ public class PlayKenKen extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setMaximumSize(new java.awt.Dimension(800, 620));
+        setMinimumSize(new java.awt.Dimension(800, 620));
+        setPreferredSize(new java.awt.Dimension(800, 620));
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 620));
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -77,36 +86,36 @@ public class PlayKenKen extends javax.swing.JFrame {
         jPanel1.add(jPanel3, "card2");
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(233, 60, 509, 506);
+        jPanel1.setBounds(230, 40, 509, 506);
 
         jButton1.setText("UNDO");
         getContentPane().add(jButton1);
-        jButton1.setBounds(33, 60, 168, 60);
+        jButton1.setBounds(30, 40, 168, 60);
 
         jButton2.setText("HINT");
         getContentPane().add(jButton2);
-        jButton2.setBounds(33, 138, 168, 60);
+        jButton2.setBounds(30, 120, 168, 60);
 
         jButton3.setText("RESET");
         getContentPane().add(jButton3);
-        jButton3.setBounds(33, 216, 168, 60);
+        jButton3.setBounds(30, 200, 168, 60);
 
         jButton4.setText("PAUSE");
         getContentPane().add(jButton4);
-        jButton4.setBounds(33, 294, 168, 60);
+        jButton4.setBounds(30, 280, 168, 60);
 
         jButton5.setText("SAVE");
         getContentPane().add(jButton5);
-        jButton5.setBounds(33, 372, 168, 60);
+        jButton5.setBounds(30, 360, 168, 60);
 
         jButton6.setText("EXIT");
         getContentPane().add(jButton6);
-        jButton6.setBounds(33, 450, 168, 116);
+        jButton6.setBounds(30, 430, 168, 116);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Time: 00:00:00");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(665, 28, 92, 21);
+        jLabel1.setBounds(670, 10, 92, 21);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background.jpeg"))); // NOI18N
         getContentPane().add(backgroundLabel);

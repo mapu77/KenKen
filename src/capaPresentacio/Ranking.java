@@ -123,7 +123,7 @@ public class Ranking extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new PersonalR());
+        add(new ByTypeR());
         repaint();
         revalidate();
     }//GEN-LAST:event_TrankingButtonActionPerformed

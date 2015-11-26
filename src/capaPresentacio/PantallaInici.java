@@ -295,7 +295,7 @@ public class PantallaInici extends javax.swing.JFrame {
         String pwd = String.valueOf(passwordField.getPassword());
         System.out.println(nom + " " + pwd);
         if (CtrlUser.comprovaPwd(nom, pwd)) {
-            Pantalla_Principal P = new Pantalla_Principal(this);
+            Pantalla_Principal P = new Pantalla_Principal(this, nom);
         }
         else {
             errorLabel.setText("<html>Username or password<br>are incorrect</html>");

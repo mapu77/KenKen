@@ -16,12 +16,14 @@ import javax.swing.JPanel;
 public class Pantalla_Principal extends javax.swing.JFrame {
 
     private static javax.swing.JFrame parent;
+    private static String user;
     /**
      * Creates new form Pantalla_Principal
      */
-    public Pantalla_Principal(javax.swing.JFrame parent) {
+    public Pantalla_Principal(javax.swing.JFrame parent, String user) {
         initComponents();
         this.parent = parent;
+        this.user = user;
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
         
@@ -42,9 +44,7 @@ public class Pantalla_Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel_GU = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        welcomeToKenken1 = new capaPresentacio.WelcomeToKenken();
         jButton_GestorUsuari = new javax.swing.JButton();
         jButton_CrearKenken = new javax.swing.JButton();
         jButton_JugarKenKen = new javax.swing.JButton();
@@ -56,10 +56,9 @@ public class Pantalla_Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 550));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -67,39 +66,7 @@ public class Pantalla_Principal extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(598, 496));
         jPanel2.setPreferredSize(new java.awt.Dimension(598, 496));
         jPanel2.setLayout(new java.awt.CardLayout());
-
-        jPanel_GU.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel_GU.setMaximumSize(new java.awt.Dimension(598, 496));
-        jPanel_GU.setMinimumSize(new java.awt.Dimension(598, 496));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel2.setText("WELCOME TO KENKEN");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel3.setText("CHOOSE AN OPTION");
-
-        javax.swing.GroupLayout jPanel_GULayout = new javax.swing.GroupLayout(jPanel_GU);
-        jPanel_GU.setLayout(jPanel_GULayout);
-        jPanel_GULayout.setHorizontalGroup(
-            jPanel_GULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_GULayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel_GULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        jPanel_GULayout.setVerticalGroup(
-            jPanel_GULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_GULayout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel_GU, "card2");
+        jPanel2.add(welcomeToKenken1, "card2");
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(190, 34, 600, 496);
@@ -190,7 +157,7 @@ public class Pantalla_Principal extends javax.swing.JFrame {
         jPanel2.repaint();
         jPanel2.revalidate();
         //afegint JPanel
-        jPanel2.add(new GestioUsuari());
+        jPanel2.add(new GestioUsuari(user));
         jPanel2.repaint();
         jPanel2.revalidate();
     }//GEN-LAST:event_jButton_GestorUsuariActionPerformed
@@ -245,12 +212,10 @@ public class Pantalla_Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton_CrearKenken;
     private javax.swing.JButton jButton_GestorUsuari;
     private javax.swing.JButton jButton_JugarKenKen;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel_GU;
+    private capaPresentacio.WelcomeToKenken welcomeToKenken1;
     // End of variables declaration//GEN-END:variables
 }

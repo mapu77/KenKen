@@ -115,6 +115,10 @@ public class Ranking extends javax.swing.JPanel {
 
     private void PrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrankingButtonActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_PrankingButtonActionPerformed
+
+    private void TrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrankingButtonActionPerformed
+        // TODO add your handling code here:
         removeAll();
         repaint();
         revalidate();
@@ -122,11 +126,6 @@ public class Ranking extends javax.swing.JPanel {
         add(new PersonalR());
         repaint();
         revalidate();
-    }//GEN-LAST:event_PrankingButtonActionPerformed
-
-    private void TrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrankingButtonActionPerformed
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_TrankingButtonActionPerformed
 
 

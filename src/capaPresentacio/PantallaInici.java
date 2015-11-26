@@ -65,6 +65,7 @@ public class PantallaInici extends javax.swing.JFrame {
         setTitle("KenKen");
         setBounds(new java.awt.Rectangle(300, 300, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setName("Inici"); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -290,10 +291,12 @@ public class PantallaInici extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        Pantalla_Principal P = new Pantalla_Principal();
+        Pantalla_Principal P = new Pantalla_Principal(this);
         setVisible(false);
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */

@@ -70,8 +70,10 @@ public class GestioUsuari extends javax.swing.JPanel {
             }
         });
 
+        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/SaveButtonn.png"))); // NOI18N
         SaveButton.setText("Save");
 
+        ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ExitButton.png"))); // NOI18N
         ExitButton.setText("Exit");
 
         ImgSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UserSettings.png"))); // NOI18N
@@ -117,7 +119,7 @@ public class GestioUsuari extends javax.swing.JPanel {
                 .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveButton)
                     .addComponent(ExitButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(ImgSettings)
                 .addGap(63, 63, 63))
         );

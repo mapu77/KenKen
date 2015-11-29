@@ -5,6 +5,7 @@
  */
 package capaPresentacio;
 
+import capaDomini.Ranking.RankingGeneral;
 /**
  *
  * @author Oriolcapo
@@ -16,6 +17,11 @@ public class Ranking extends javax.swing.JPanel {
      */
     public Ranking() {
         initComponents();
+        RankingGeneral RG = new RankingGeneral();
+        nJocs.setText(Integer.toString(RG.getnJocs()));
+        nPartides.setText(Integer.toString(RG.getnPartides()));
+        nUsuaris.setText(Integer.toString(RG.getnUsuaris()));
+        popular.setText(RG.getPopular());
     }
 
     /**
@@ -28,34 +34,24 @@ public class Ranking extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        rankingLabel = new javax.swing.JLabel();
         GrankingLabel = new javax.swing.JLabel();
-        GrankingPanel = new javax.swing.JPanel();
         PrankingButton = new javax.swing.JButton();
         TrankingButton = new javax.swing.JButton();
+        jocsLabel = new javax.swing.JLabel();
+        nJocs = new javax.swing.JLabel();
+        partidesLabel = new javax.swing.JLabel();
+        nPartides = new javax.swing.JLabel();
+        usuarisLabel = new javax.swing.JLabel();
+        nUsuaris = new javax.swing.JLabel();
+        popularLabel = new javax.swing.JLabel();
+        popular = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
-        rankingLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        rankingLabel.setText("RANKING");
-        rankingLabel.setAlignmentX(250.0F);
-        rankingLabel.setAlignmentY(300.0F);
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ranking", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
         GrankingLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         GrankingLabel.setText("General Ranking:");
-
-        GrankingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout GrankingPanelLayout = new javax.swing.GroupLayout(GrankingPanel);
-        GrankingPanel.setLayout(GrankingPanelLayout);
-        GrankingPanelLayout.setHorizontalGroup(
-            GrankingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
-        );
-        GrankingPanelLayout.setVerticalGroup(
-            GrankingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 191, Short.MAX_VALUE)
-        );
 
         PrankingButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         PrankingButton.setText("Personal Ranking");
@@ -74,40 +70,76 @@ public class Ranking extends javax.swing.JPanel {
             }
         });
 
+        jocsLabel.setText("Jocs Totals:");
+
+        partidesLabel.setText("Partides jugades:");
+
+        usuarisLabel.setText("Nombre d'usuaris:");
+
+        popularLabel.setText("Joc més popular:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(rankingLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GrankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(GrankingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(PrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(62, 62, 62))
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GrankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jocsLabel)
+                                        .addGap(50, 50, 50)
+                                        .addComponent(nJocs, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(usuarisLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(nUsuaris, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(popularLabel)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(popular, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(partidesLabel)
+                                        .addGap(23, 23, 23)
+                                        .addComponent(nPartides, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(275, 275, 275))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(PrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(rankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(48, 48, 48)
                 .addComponent(GrankingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nJocs, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jocsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(GrankingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(partidesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nPartides, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usuarisLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nUsuaris, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(popularLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(popular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TrankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         add(jPanel1, "card2");
@@ -115,6 +147,13 @@ public class Ranking extends javax.swing.JPanel {
 
     private void PrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrankingButtonActionPerformed
         // TODO add your handling code here:
+        removeAll();
+        repaint();
+        revalidate();
+        //afegint JPanel
+        add(new PersonalR());
+        repaint();
+        revalidate();
     }//GEN-LAST:event_PrankingButtonActionPerformed
 
     private void TrankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrankingButtonActionPerformed
@@ -131,10 +170,16 @@ public class Ranking extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel GrankingLabel;
-    private javax.swing.JPanel GrankingPanel;
     private javax.swing.JButton PrankingButton;
     private javax.swing.JButton TrankingButton;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel rankingLabel;
+    private javax.swing.JLabel jocsLabel;
+    private javax.swing.JLabel nJocs;
+    private javax.swing.JLabel nPartides;
+    private javax.swing.JLabel nUsuaris;
+    private javax.swing.JLabel partidesLabel;
+    private javax.swing.JLabel popular;
+    private javax.swing.JLabel popularLabel;
+    private javax.swing.JLabel usuarisLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,14 +5,17 @@
  */
 package capaPresentacio;
 
+import capaDomini.Ranking.RankingPersonal;
+import capaDomini.Usuari.CtrlUser;
+
 /**
  *
- * @author Oriolcapo
+ * @author Jan
  */
 public class PersonalR extends javax.swing.JPanel {
 
     /**
-     * Creates new form Ranking2
+     * Creates new form PersonalR
      */
     public PersonalR() {
         initComponents();
@@ -27,127 +30,223 @@ public class PersonalR extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        rankingLabel1 = new javax.swing.JLabel();
-        GrankingLabel1 = new javax.swing.JLabel();
-        threeButton = new javax.swing.JButton();
-        fourButton = new javax.swing.JButton();
-        fiveButton = new javax.swing.JButton();
-        sixButton1 = new javax.swing.JButton();
-        sevenButton1 = new javax.swing.JButton();
-        eightButton1 = new javax.swing.JButton();
-        nineButton2 = new javax.swing.JButton();
+        user_label = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        findButton = new javax.swing.JButton();
+        jResoltsLabel = new javax.swing.JLabel();
+        avgpistesLabel = new javax.swing.JLabel();
+        timesLabel = new javax.swing.JLabel();
+        threeLabel = new javax.swing.JLabel();
+        fourLabel = new javax.swing.JLabel();
+        fiveLabel = new javax.swing.JLabel();
+        sixLabel = new javax.swing.JLabel();
+        sevenLabel = new javax.swing.JLabel();
+        eightLabel = new javax.swing.JLabel();
+        nineLabel = new javax.swing.JLabel();
+        jResolts = new javax.swing.JLabel();
+        avgpistes = new javax.swing.JLabel();
+        threetime = new javax.swing.JLabel();
+        fourtime = new javax.swing.JLabel();
+        fivetime = new javax.swing.JLabel();
+        sixtime = new javax.swing.JLabel();
+        seventime = new javax.swing.JLabel();
+        eighttime = new javax.swing.JLabel();
+        ninetime = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
 
-        setLayout(new java.awt.CardLayout());
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personal Ranking", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
-        rankingLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        rankingLabel1.setText("RANKING");
-        rankingLabel1.setAlignmentX(250.0F);
-        rankingLabel1.setAlignmentY(300.0F);
+        user_label.setText("Username");
 
-        GrankingLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        GrankingLabel1.setText("Ranking by Type:");
-
-        threeButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        threeButton.setText("3 x 3");
-        threeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        fourButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        fourButton.setText("4 x 4");
-        fourButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        fiveButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        fiveButton.setText("5 x 5");
-        fiveButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        sixButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        sixButton1.setText("6 x 6");
-        sixButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        sevenButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        sevenButton1.setText("7 x 7");
-        sevenButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        eightButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        eightButton1.setText("8 x 8");
-        eightButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        eightButton1.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eightButton1ActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
 
-        nineButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        nineButton2.setText("9 x 9");
-        nineButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        findButton.setText("Find");
+        findButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(threeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sevenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eightButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(nineButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sixButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GrankingLabel1))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(rankingLabel1)
-                        .addGap(233, 233, 233))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(rankingLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(GrankingLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(threeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sixButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eightButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sevenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(nineButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
-        );
+        jResoltsLabel.setText("Jocs resolts:");
 
-        add(jPanel1, "card2");
+        avgpistesLabel.setText("Mitjana de pistes: ");
+
+        timesLabel.setText("Millors temps:");
+
+        threeLabel.setText("3x3:");
+
+        fourLabel.setText("4x4:");
+
+        fiveLabel.setText("5x5:");
+
+        sixLabel.setText("6x6:");
+
+        sevenLabel.setText("7x7:");
+
+        eightLabel.setText("8x8:");
+
+        nineLabel.setText("9x9:");
+
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(user_label, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(threeLabel)
+                                .addComponent(timesLabel)
+                                .addComponent(fourLabel)
+                                .addComponent(fiveLabel)
+                                .addComponent(sixLabel)
+                                .addComponent(sevenLabel)
+                                .addComponent(eightLabel)
+                                .addComponent(nineLabel))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(threetime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fourtime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fivetime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sixtime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(seventime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eighttime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ninetime, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(avgpistesLabel)
+                            .addGap(18, 18, 18)
+                            .addComponent(avgpistes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(47, 47, 47)
+                            .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jResoltsLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jResolts, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(84, 84, 84))))
+                .addContainerGap(188, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(user_label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jResoltsLabel)
+                    .addComponent(jResolts))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(avgpistesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avgpistes))
+                .addGap(18, 18, 18)
+                .addComponent(timesLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(threeLabel)
+                    .addComponent(threetime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fourLabel)
+                    .addComponent(fourtime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fiveLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fivetime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sixLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sixtime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sevenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seventime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eighttime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ninetime))
+                .addGap(18, 18, 18)
+                .addComponent(errorLabel)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eightButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightButton1ActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_eightButton1ActionPerformed
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
+        // TODO add your handling code here:
+        String user = usernameField.getText();
+        if (CtrlUser.getUsuari(user) != null) {
+            RankingPersonal RP = new RankingPersonal(user);
+            jResolts.setText(Integer.toString(RP.getResolts()));
+            avgpistes.setText(Double.toString(RP.getPistes()));
+            threetime.setText(Double.toString(RP.getBestTime("3x3")));
+            fourtime.setText(Double.toString(RP.getBestTime("4x4")));
+            fivetime.setText(Double.toString(RP.getBestTime("5x5")));
+            sixtime.setText(Double.toString(RP.getBestTime("6x6")));
+            seventime.setText(Double.toString(RP.getBestTime("7x7")));
+            eighttime.setText(Double.toString(RP.getBestTime("8x8")));
+            ninetime.setText(Double.toString(RP.getBestTime("9x9")));
+            errorLabel.setText("");
+        }
+        else {
+            jResolts.setText("");
+            avgpistes.setText("");
+            threetime.setText("");
+            fourtime.setText("");
+            fivetime.setText("");
+            sixtime.setText("");
+            seventime.setText("");
+            eighttime.setText("");
+            ninetime.setText("");
+            errorLabel.setText("<html>Username incorrect</html>");
+        }        
+    }//GEN-LAST:event_findButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel GrankingLabel1;
-    private javax.swing.JButton eightButton1;
-    private javax.swing.JButton fiveButton;
-    private javax.swing.JButton fourButton;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton nineButton2;
-    private javax.swing.JLabel rankingLabel1;
-    private javax.swing.JButton sevenButton1;
-    private javax.swing.JButton sixButton1;
-    private javax.swing.JButton threeButton;
+    private javax.swing.JLabel avgpistes;
+    private javax.swing.JLabel avgpistesLabel;
+    private javax.swing.JLabel eightLabel;
+    private javax.swing.JLabel eighttime;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton findButton;
+    private javax.swing.JLabel fiveLabel;
+    private javax.swing.JLabel fivetime;
+    private javax.swing.JLabel fourLabel;
+    private javax.swing.JLabel fourtime;
+    private javax.swing.JLabel jResolts;
+    private javax.swing.JLabel jResoltsLabel;
+    private javax.swing.JLabel nineLabel;
+    private javax.swing.JLabel ninetime;
+    private javax.swing.JLabel sevenLabel;
+    private javax.swing.JLabel seventime;
+    private javax.swing.JLabel sixLabel;
+    private javax.swing.JLabel sixtime;
+    private javax.swing.JLabel threeLabel;
+    private javax.swing.JLabel threetime;
+    private javax.swing.JLabel timesLabel;
+    private javax.swing.JLabel user_label;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

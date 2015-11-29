@@ -293,7 +293,6 @@ public class PantallaInici extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String nom = usernameField.getText();
         String pwd = String.valueOf(passwordField.getPassword());
-        System.out.println(nom + " " + pwd);
         if (CtrlUser.comprovaPwd(nom, pwd)) {
             PantallaPrincipal P = new PantallaPrincipal(this, nom);
         }

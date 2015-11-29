@@ -5,8 +5,18 @@
  */
 package capaPresentacio;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -14,19 +24,118 @@ import java.awt.Toolkit;
  */
 public class PlayKenKen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PlayKenKen
-     */
-    public PlayKenKen() {
+    ArrayList<ArrayList<Integer> > mat;
+    Scanner sn = new Scanner(System.in);
+    int N, X, Y;
+    
+    public PlayKenKen(int N) {
+        this.N = N;
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        InicialitzaTauler();
         
         Toolkit tool = Toolkit.getDefaultToolkit();
         Dimension dim = new Dimension(tool.getScreenSize());
         int height = (int) dim.getHeight();
         int width = (int) dim.getWidth();
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
+    }
+    
+    private void InicialitzaTauler() {
+        int count = 0;
+        mat = new ArrayList<ArrayList<Integer> >();
+        for (int i=0; i<N; i++) {
+            mat.add(new ArrayList<Integer>());
+            for (int j=0; j<N; ++j) {
+                if (j < 2) {
+                    mat.get(i).add(count);
+                }
+                else {
+                    mat.get(i).add(count+1);
+                }
+            }
+            count+=2;
+        }   
+        int alt = Tauler.getHeight();
+        int bSize = alt/N;
+        count=1;
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                //JButton b = new JButton();
+                JLabel b = new JLabel();
+                Tauler.add(b);
+                b.setBounds(j*bSize, i*bSize, bSize, bSize);
+                MatteBorder border = creaMarge(i,j);
+                b.setBorder(border);
+                b.setVisible(true);
+                b.setHorizontalAlignment(SwingConstants.CENTER);
+                b.setVerticalAlignment(SwingConstants.CENTER);
+                b.setFont(new Font("Comic Sants", Font.PLAIN, 30));
+                b.setText("");
+                //____________
+                b.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent e) {
+                        int a;
+                        if (b.getText().equals("")) a = 0;
+                        else a = Integer.parseInt(b.getText());
+                        if (a < N) b.setText(Integer.toString(a+1));
+                        else b.setText("1");
+                        X = b.getX();
+                        Y = b.getY();
+                        //b.setText("");
+                    }
+                });
+                //_____________
+            }
+            count+=2;
+        }
+    }
+    
+    public MatteBorder creaMarge (int i, int j) {
+        int n = mat.size()-1;
+        int Me = mat.get(i).get(j);        
+        int u=1,d=1,l=1,r=1;
+
+        if (i == 0) {
+            u+=2;
+            if (Me != mat.get(i+1).get(j)) d+=1;
+            if (j>0 && j<n) {
+                if (Me != mat.get(i).get(j+1)) r+=1;
+                if (Me != mat.get(i).get(j-1)) l+=1;
+            }
+        }
+        else if (i == n) {
+            d+=2;
+            if (Me != mat.get(i-1).get(j)) u+=1;
+            if (j>0 && j<n) {
+                if (Me != mat.get(i).get(j+1)) r+=1;
+                if (Me != mat.get(i).get(j-1)) l+=1;
+            }
+        }
+        if (j == 0) {
+            l+=2;
+            if (Me != mat.get(i).get(j+1)) r+=1;
+            if (i>0 && i<n) {
+                if (Me != mat.get(i+1).get(j)) d+=1;
+                if (Me != mat.get(i-1).get(j)) u+=1;
+            }
+        }
+        if (j == n) {
+            r+=2;
+            if (Me != mat.get(i).get(j-1)) l+=1;
+            if (i>0 && i<n) {
+                if (Me != mat.get(i+1).get(j)) d+=1;
+                if (Me != mat.get(i-1).get(j)) u+=1;
+            }
+        }
+        if (i!=0 && i!=n && j!=0 && j!=n) {
+            if (Me != mat.get(i+1).get(j)) d+=1;
+            if (Me != mat.get(i-1).get(j)) u+=1;
+            if (Me != mat.get(i).get(j+1)) r+=1;
+            if (Me != mat.get(i).get(j-1)) l+=1;
+        }
+        return BorderFactory.createMatteBorder(u,l,d,r,Color.black);
     }
 
     /**
@@ -39,14 +148,13 @@ public class PlayKenKen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        Tauler = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        BotoExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -62,28 +170,28 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
-        jPanel1.setLayout(new java.awt.CardLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Oriolcapo\\Documents\\ProjKenKen\\src\\capaPresentacio\\img\\KenKenPuz.jpg")); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addComponent(jLabel3)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout TaulerLayout = new javax.swing.GroupLayout(Tauler);
+        Tauler.setLayout(TaulerLayout);
+        TaulerLayout.setHorizontalGroup(
+            TaulerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 505, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        TaulerLayout.setVerticalGroup(
+            TaulerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 502, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, "card2");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Tauler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Tauler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(230, 40, 509, 506);
@@ -108,9 +216,14 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(30, 360, 168, 60);
 
-        jButton6.setText("EXIT");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(30, 430, 168, 116);
+        BotoExit.setText("EXIT");
+        BotoExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotoExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotoExit);
+        BotoExit.setBounds(30, 446, 168, 100);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Time: 00:00:00");
@@ -132,21 +245,24 @@ public class PlayKenKen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private void BotoExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoExitActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_BotoExitActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotoExit;
+    private javax.swing.JPanel Tauler;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

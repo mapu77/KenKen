@@ -5,17 +5,21 @@
  */
 package capaPresentacio;
 
+import javax.swing.JComboBox;
+
 /**
  *
  * @author Oriolcapo
  */
 public class CrearKenkenManualment extends javax.swing.JPanel {
-
+    
+    String dif;
     /**
      * Creates new form CrearKenkenManualment
      */
     public CrearKenkenManualment() {
         initComponents();
+        dif = "-";
     }
 
     /**
@@ -87,7 +91,7 @@ public class CrearKenkenManualment extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CreatePlay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CreateSave, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PreviewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PreviewLabel))
@@ -100,7 +104,7 @@ public class CrearKenkenManualment extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BoxDificultat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(CreateSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +122,8 @@ public class CrearKenkenManualment extends javax.swing.JPanel {
 
     private void BoxDificultatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDificultatActionPerformed
         // TODO add your handling code here:
-        
+        JComboBox a = (JComboBox)evt.getSource();
+        dif = (String)a.getSelectedItem();
     }//GEN-LAST:event_BoxDificultatActionPerformed
 
     private void CreateSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSaveActionPerformed
@@ -127,7 +132,10 @@ public class CrearKenkenManualment extends javax.swing.JPanel {
 
     private void CreatePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen();
+        int d;
+        if (dif.substring(0,1).equals("-")) d = 2;
+        else d = Integer.parseInt(dif.substring(0,1));
+        PlayKenKen pk = new PlayKenKen(d);
         setVisible(false);
     }//GEN-LAST:event_CreatePlayActionPerformed
 

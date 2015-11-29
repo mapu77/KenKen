@@ -5,17 +5,21 @@
  */
 package capaPresentacio;
 
+import javax.swing.JComboBox;
+
 /**
  *
  * @author Oriolcapo
  */
 public class KenkenBBDD extends javax.swing.JPanel {
 
+    private String dif;
     /**
      * Creates new form KenkenBBDD2
      */
     public KenkenBBDD() {
         initComponents();
+        dif = "-";
     }
 
     /**
@@ -29,7 +33,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        BoxDiff = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -42,7 +46,12 @@ public class KenkenBBDD extends javax.swing.JPanel {
 
         jLabel1.setText("Select difficulty");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "3x3", "4x4", "5x5", "6x6", "7x7", "8x8", "9x9" }));
+        BoxDiff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "3x3", "4x4", "5x5", "6x6", "7x7", "8x8", "9x9" }));
+        BoxDiff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxDiffActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Select Kenken");
 
@@ -66,7 +75,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BoxDiff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -80,7 +89,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BoxDiff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -95,14 +104,23 @@ public class KenkenBBDD extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen();
+        int d;
+        if (dif.substring(0,1).equals("-")) d = 2;
+        else d = Integer.parseInt(dif.substring(0,1));
+        PlayKenKen pk = new PlayKenKen(d);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BoxDiffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDiffActionPerformed
+        // TODO add your handling code here:
+        JComboBox a = (JComboBox)evt.getSource();
+        dif = (String)a.getSelectedItem();
+    }//GEN-LAST:event_BoxDiffActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BoxDiff;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

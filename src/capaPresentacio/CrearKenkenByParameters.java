@@ -7,6 +7,7 @@ package capaPresentacio;
 
 import java.awt.Color;
 import java.awt.image.ColorModel;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -14,11 +15,13 @@ import java.awt.image.ColorModel;
  */
 public class CrearKenkenByParameters extends javax.swing.JPanel {
 
+    private String dif;
     /**
      * Creates new form Create_Kenken_ByParameters
      */
     public CrearKenkenByParameters() {
         initComponents();
+        dif = "-";
     }
 
     /**
@@ -53,6 +56,11 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(600, 500));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "3x3", "4x4", "5x5", "6x6", "7x7", "8x8", "9x9" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Select difficulty");
 
@@ -226,9 +234,18 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen();
+        int d;
+        if (dif.substring(0,1).equals("-")) d = 2;
+        else d = Integer.parseInt(dif.substring(0,1));
+        PlayKenKen pk = new PlayKenKen(d);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        JComboBox a = (JComboBox)evt.getSource();
+        dif = (String)a.getSelectedItem();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

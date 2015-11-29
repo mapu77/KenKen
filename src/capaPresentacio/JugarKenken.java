@@ -103,7 +103,7 @@ public class JugarKenken extends javax.swing.JPanel {
 
     private void Boto_PartidaGuardadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaGuardadaActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen();
+        PlayKenKen pk = new PlayKenKen(5);
     }//GEN-LAST:event_Boto_PartidaGuardadaActionPerformed
 
     private void Boto_PartidaBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaBDActionPerformed

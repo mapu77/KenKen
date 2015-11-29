@@ -52,7 +52,7 @@
                           <Component id="ImgSettings" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="220" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="210" max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -62,18 +62,19 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="errorPasswordLabel" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="396" max="32767" attributes="0"/>
-                          <Component id="SaveButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="ExitButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                       <Component id="repeatField" alignment="0" max="32767" attributes="0"/>
                       <Component id="repeatErrorLabel" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="PswChangedLabel" min="-2" pref="245" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="SaveButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="ExitButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="PswChangedLabel" alignment="1" min="-2" pref="245" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>

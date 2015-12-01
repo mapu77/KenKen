@@ -5,6 +5,8 @@
  */
 package capaPresentacio;
 
+import capaDomini.Algoritmes.KenKenGenerator;
+import capaDomini.Utils.TaulerKenKen;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -30,6 +32,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     
     private static int h=0, m=0, s=0;
     private Timer t;
+    private TaulerKenKen K;
     ArrayList<ArrayList<Integer> > mat;
     Scanner sn = new Scanner(System.in);
     int N, X, Y, BZ;
@@ -40,9 +43,12 @@ public class PlayKenKen extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+        
+        KenKenGenerator KG = new KenKenGenerator(sn);
+        K = KG.generateRandomly(N);
+        
         InicialitzaTauler();
         InicialitzaBotons();
-        Botons.setVisible(true);
         X = -1;
         Y = -1;
         t.start();
@@ -86,24 +92,20 @@ public class PlayKenKen extends javax.swing.JFrame {
     }
     
     private void InicialitzaTauler() {
-        int count = 0;
+        ArrayList<Boolean> Regions = new ArrayList<Boolean>();
+        for (int i=0; i<K.getNRegio();++i) Regions.add(false);
+        
         mat = new ArrayList<ArrayList<Integer> >();
         for (int i=0; i<N; i++) {
             mat.add(new ArrayList<Integer>());
             for (int j=0; j<N; ++j) {
-                if (j < 2) {
-                    mat.get(i).add(count);
-                }
-                else {
-                    mat.get(i).add(count+1);
-                }
+                    mat.get(i).add(K.nRegio(i, j));
             }
-            count+=2;
         }  
+        K.PrintaRegioKenKen();
         int alt = Tauler.getHeight();
         int bSize = alt/N;
         BZ = bSize;
-        count=1;
         for (int i=0; i<N; i++) {
             for (int j=0; j<N; j++) {
                 JLabel b = new JLabel();
@@ -116,8 +118,23 @@ public class PlayKenKen extends javax.swing.JFrame {
                 b.setVerticalAlignment(SwingConstants.CENTER);
                 b.setOpaque(true);                
                 b.setBackground(Color.white);
-                b.setFont(new Font("Comic Sants", Font.PLAIN, 30));
+                b.setFont(new Font("Comic Sants", Font.PLAIN, N>6 ? 30-N : 30));
                 b.setText("");
+                //-------
+                if (! Regions.get(K.nRegio(i, j))) {
+                    Regions.set(K.nRegio(i, j),true);
+                    String a = Integer.toString(K.getRegioIJ(i, j).getResult());
+                    String a1 = K.getRegioIJ(i, j).getOperation();
+                    if (a1.equals("*")) a1 = "x";
+                    a += " " + a1;
+                    JLabel opres = new JLabel(a);
+                    b.add(opres);
+                    opres.setBounds(5, 0, bSize/2, bSize/2);
+                    opres.setVisible(true);
+                    int tamLletra = 20-N;
+                    opres.setFont(new Font("Comic Sants", Font.PLAIN, tamLletra));
+                }
+                //-------
                 //____________
                 b.addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent e) {
@@ -133,7 +150,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                 });
                 //_____________
             }
-            count+=2;
         }
     }
     
@@ -156,42 +172,42 @@ public class PlayKenKen extends javax.swing.JFrame {
         int u=1,d=1,l=1,r=1;
 
         if (i == 0) {
-            u+=2;
-            if (Me != mat.get(i+1).get(j)) d+=1;
+            u+=3;
+            if (Me != mat.get(i+1).get(j)) d+=2;
             if (j>0 && j<n) {
-                if (Me != mat.get(i).get(j+1)) r+=1;
-                if (Me != mat.get(i).get(j-1)) l+=1;
+                if (Me != mat.get(i).get(j+1)) r+=2;
+                if (Me != mat.get(i).get(j-1)) l+=2;
             }
         }
         else if (i == n) {
-            d+=2;
-            if (Me != mat.get(i-1).get(j)) u+=1;
+            d+=3;
+            if (Me != mat.get(i-1).get(j)) u+=2;
             if (j>0 && j<n) {
-                if (Me != mat.get(i).get(j+1)) r+=1;
-                if (Me != mat.get(i).get(j-1)) l+=1;
+                if (Me != mat.get(i).get(j+1)) r+=2;
+                if (Me != mat.get(i).get(j-1)) l+=2;
             }
         }
         if (j == 0) {
-            l+=2;
-            if (Me != mat.get(i).get(j+1)) r+=1;
+            l+=3;
+            if (Me != mat.get(i).get(j+1)) r+=2;
             if (i>0 && i<n) {
-                if (Me != mat.get(i+1).get(j)) d+=1;
-                if (Me != mat.get(i-1).get(j)) u+=1;
+                if (Me != mat.get(i+1).get(j)) d+=2;
+                if (Me != mat.get(i-1).get(j)) u+=2;
             }
         }
         if (j == n) {
-            r+=2;
-            if (Me != mat.get(i).get(j-1)) l+=1;
+            r+=3;
+            if (Me != mat.get(i).get(j-1)) l+=2;
             if (i>0 && i<n) {
-                if (Me != mat.get(i+1).get(j)) d+=1;
-                if (Me != mat.get(i-1).get(j)) u+=1;
+                if (Me != mat.get(i+1).get(j)) d+=2;
+                if (Me != mat.get(i-1).get(j)) u+=2;
             }
         }
         if (i!=0 && i!=n && j!=0 && j!=n) {
-            if (Me != mat.get(i+1).get(j)) d+=1;
-            if (Me != mat.get(i-1).get(j)) u+=1;
-            if (Me != mat.get(i).get(j+1)) r+=1;
-            if (Me != mat.get(i).get(j-1)) l+=1;
+            if (Me != mat.get(i+1).get(j)) d+=2;
+            if (Me != mat.get(i-1).get(j)) u+=2;
+            if (Me != mat.get(i).get(j+1)) r+=2;
+            if (Me != mat.get(i).get(j-1)) l+=2;
         }
         return BorderFactory.createMatteBorder(u,l,d,r,Color.black);
     }
@@ -413,14 +429,6 @@ public class PlayKenKen extends javax.swing.JFrame {
             PauseButton.setText("PAUSE");
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
-    
-/*    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PlayKenKen(9).setVisible(true);
-            }
-        });
-    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;

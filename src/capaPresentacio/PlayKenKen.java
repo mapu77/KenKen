@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -17,23 +19,29 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.Timer;
 
 /**
  *
  * @author Oriolcapo
  */
-public class PlayKenKen extends javax.swing.JFrame {
 
+public class PlayKenKen extends javax.swing.JFrame {
+    
+    private static int h=0, m=0, s=0;
+    private Timer t;
     ArrayList<ArrayList<Integer> > mat;
     Scanner sn = new Scanner(System.in);
     int N, X, Y;
     
     public PlayKenKen(int N) {
         this.N = N;
+        t=new Timer(1000, new startChrono());
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
         InicialitzaTauler();
+        t.start();
         
         Toolkit tool = Toolkit.getDefaultToolkit();
         Dimension dim = new Dimension(tool.getScreenSize());
@@ -137,7 +145,35 @@ public class PlayKenKen extends javax.swing.JFrame {
         }
         return BorderFactory.createMatteBorder(u,l,d,r,Color.black);
     }
-
+    
+    private class startChrono implements ActionListener{
+        
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if (s<59){
+                s++;
+                String sec= (s<10?"0":"")+s;
+                seconds.setText(""+sec);
+            }else{
+                s=0;
+                seconds.setText("00");
+                if(m<59){
+                    m++;
+                    String min= (m<10?"0":"")+m;
+                    minutes.setText(""+min);
+                }else{
+                    m=0;
+                    minutes.setText("00");
+                    h++;
+                    String hr= (h<10?"0":"")+h;
+                    hours.setText(""+hr);
+                }
+                
+                    
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,22 +187,22 @@ public class PlayKenKen extends javax.swing.JFrame {
         Tauler = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ResetButton = new javax.swing.JButton();
+        PauseButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         BotoExit = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        hours = new javax.swing.JLabel();
+        minutes = new javax.swing.JLabel();
+        seconds = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 620));
         setMinimumSize(new java.awt.Dimension(800, 620));
-        setPreferredSize(new java.awt.Dimension(800, 620));
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 620));
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -196,26 +232,42 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(230, 40, 509, 506);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UndoButton.png"))); // NOI18N
         jButton1.setText("UNDO");
         getContentPane().add(jButton1);
         jButton1.setBounds(30, 40, 168, 60);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/HintButton.png"))); // NOI18N
         jButton2.setText("HINT");
         getContentPane().add(jButton2);
         jButton2.setBounds(30, 120, 168, 60);
 
-        jButton3.setText("RESET");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(30, 200, 168, 60);
+        ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResetButton.png"))); // NOI18N
+        ResetButton.setText("RESET");
+        ResetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ResetButton);
+        ResetButton.setBounds(30, 200, 168, 60);
 
-        jButton4.setText("PAUSE");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(30, 280, 168, 60);
+        PauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/PauseButton.png"))); // NOI18N
+        PauseButton.setText("PAUSE");
+        PauseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PauseButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PauseButton);
+        PauseButton.setBounds(30, 280, 168, 60);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/SaveButtonn.png"))); // NOI18N
         jButton5.setText("SAVE");
         getContentPane().add(jButton5);
         jButton5.setBounds(30, 360, 168, 60);
 
+        BotoExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ExitButton.png"))); // NOI18N
         BotoExit.setText("EXIT");
         BotoExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,10 +277,21 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(BotoExit);
         BotoExit.setBounds(30, 446, 168, 100);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Time: 00:00:00");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(670, 10, 92, 21);
+        hours.setText("00");
+        getContentPane().add(hours);
+        hours.setBounds(670, 10, 14, 16);
+
+        minutes.setText("00");
+        getContentPane().add(minutes);
+        minutes.setBounds(690, 10, 14, 16);
+
+        seconds.setText("00");
+        getContentPane().add(seconds);
+        seconds.setBounds(710, 10, 14, 16);
+
+        TimeLabel.setText("Time:");
+        getContentPane().add(TimeLabel);
+        TimeLabel.setBounds(630, 10, 34, 16);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background.jpeg"))); // NOI18N
         getContentPane().add(backgroundLabel);
@@ -250,19 +313,45 @@ public class PlayKenKen extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_BotoExitActionPerformed
     
+    int i=0;
+    
+    private void PauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseButtonActionPerformed
+        if(i==0){
+            t.stop();
+            i=1;
+            PauseButton.setText("CONTINUE");
+        }else{
+            t.start();
+            i=0;
+            PauseButton.setText("PAUSE");
+        }
+    }//GEN-LAST:event_PauseButtonActionPerformed
+
+    private void ResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetButtonActionPerformed
+        t.stop();
+        hours.setText("00"); h=0;
+        minutes.setText("00"); m=0;
+        seconds.setText("00"); s=0;
+        i=0;
+        PauseButton.setText("PAUSE");
+    }//GEN-LAST:event_ResetButtonActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;
+    private javax.swing.JButton PauseButton;
+    private javax.swing.JButton ResetButton;
     private javax.swing.JPanel Tauler;
+    private javax.swing.JLabel TimeLabel;
     private javax.swing.JLabel backgroundLabel;
+    private javax.swing.JLabel hours;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel minutes;
+    private javax.swing.JLabel seconds;
     // End of variables declaration//GEN-END:variables
 }

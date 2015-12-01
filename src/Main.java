@@ -15,6 +15,7 @@ public class Main {
     private static CtrlPresentacio CP;
         public static void main (String[] args) throws Exception {
         // Inicializaciones generales, etc
+        
         CP = new CtrlPresentacio();
         CP.iniciaCtrls();
     }

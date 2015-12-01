@@ -27,9 +27,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="infoPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -74,19 +74,20 @@
                       <Component id="eduardLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jordiLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="fibLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="propLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="qtLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Component id="oriolLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="eduardLabel" min="-2" max="-2" attributes="0"/>
@@ -103,38 +104,56 @@
         <Component class="javax.swing.JLabel" name="fibLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="12" style="1"/>
+              <Font name="SansSerif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="FIB - Facultat d&apos;Inform&#xe0;tica de Barcelona"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;FIB - Facultat d&apos;Inform&#xe0;tica de Barcelona&lt;/b&gt;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="propLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="font" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Projecte de Programaci&#xf3;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="qtLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="font" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Quadrimestre de Tardor 2015 - 2016"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="oriolLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="font" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Oriol Cap&#xf3;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="eduardLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="font" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Eduard Maura"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jordiLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="font" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Jordi Pont"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="janLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="font" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Jan Teruel"/>
           </Properties>
         </Component>
@@ -142,6 +161,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="closeButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="font" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
       <Events>

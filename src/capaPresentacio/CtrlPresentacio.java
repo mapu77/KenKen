@@ -5,9 +5,8 @@
  */
 package capaPresentacio;
 
-import capaDomini.Usuari.CtrlUser;
+import capaDomini.CtrlDomini;
 import capaDomini.Utils.*;
-import capaPersistencia.*;
 import java.util.Scanner;
 /**
  *
@@ -16,13 +15,16 @@ import java.util.Scanner;
 public class CtrlPresentacio {
     
     private CtrlDomini CD;
-    private PantallaInici PI;
     
     public CtrlPresentacio() {}
     
     public void iniciaCtrls() {
         Scanner sn = new Scanner(System.in);
         CD = new CtrlDomini(sn);
-        PI = new PantallaInici();
+        PantallaInici PI = new PantallaInici(this);
     }    
+    
+    public boolean comprovarUsuari(String u, String p) {
+        return CD.comprovarUsuari(u,p);
+    }
 }

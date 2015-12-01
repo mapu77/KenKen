@@ -7,6 +7,7 @@ package capaPresentacio;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -16,12 +17,15 @@ import java.awt.Rectangle;
  */
 public class About extends javax.swing.JDialog {
 
+    private Font font;
     /**
      * Creates new form About
      */
     public About(javax.swing.JFrame parent) {
         super(parent, true);
         initComponents();
+        
+        font = new Font(Font.SANS_SERIF,Font.PLAIN,12);
         
         Rectangle parentBounds = parent.getBounds();
         Dimension size = getSize();
@@ -57,19 +61,25 @@ public class About extends javax.swing.JDialog {
 
         infoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "KenKen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
-        fibLabel.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
-        fibLabel.setText("FIB - Facultat d'Informàtica de Barcelona");
+        fibLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        fibLabel.setText("<html><b>FIB - Facultat d'Informàtica de Barcelona</b></html>");
 
+        propLabel.setFont(font);
         propLabel.setText("Projecte de Programació");
 
+        qtLabel.setFont(font);
         qtLabel.setText("Quadrimestre de Tardor 2015 - 2016");
 
+        oriolLabel.setFont(font);
         oriolLabel.setText("Oriol Capó");
 
+        eduardLabel.setFont(font);
         eduardLabel.setText("Eduard Maura");
 
+        jordiLabel.setFont(font);
         jordiLabel.setText("Jordi Pont");
 
+        janLabel.setFont(font);
         janLabel.setText("Jan Teruel");
 
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
@@ -80,23 +90,24 @@ public class About extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(janLabel)
-                    .addComponent(fibLabel)
+                    .addComponent(fibLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propLabel)
                     .addComponent(qtLabel)
                     .addComponent(oriolLabel)
                     .addComponent(eduardLabel)
                     .addComponent(jordiLabel))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addComponent(fibLabel)
+                .addContainerGap()
+                .addComponent(fibLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(propLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(qtLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(oriolLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eduardLabel)
@@ -107,6 +118,7 @@ public class About extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        closeButton.setFont(font);
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,9 +131,9 @@ public class About extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(40, 40, 40)
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGap(40, 40, 40))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -5,10 +5,10 @@
  */
 package capaPresentacio;
 
-import capaDomini.Usuari.CtrlUser;
-import capaPersistencia.CtrlPersistencia;
+import capaDomini.CtrlDomini;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Toolkit;
 
@@ -18,13 +18,18 @@ import java.awt.Toolkit;
  */
 public class PantallaInici extends javax.swing.JFrame {
 
+    private CtrlPresentacio CP;
+    private Font font;
+    
     /**
      * Creates new form PantallaPrincipal
      */
-    public PantallaInici() {
+    public PantallaInici(CtrlPresentacio CP) {
+        this.CP = CP;
         initComponents();
         pack();
         setVisible(true);      
+        font = new Font(Font.SANS_SERIF,Font.PLAIN,12);
         /* Centra la pantalla */
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = getSize();
@@ -70,6 +75,7 @@ public class PantallaInici extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
+        LogInPanel.setBackground(new Color(214,214,214,153));
         LogInPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
         LogInPanel.setNextFocusableComponent(usernameField);
         LogInPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -78,6 +84,7 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
+        usernameLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         usernameLabel.setText("Username");
         usernameLabel.setAlignmentX(1.0F);
 
@@ -89,12 +96,14 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
+        passwordLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         passwordLabel.setText("Password");
         passwordLabel.setAlignmentX(1.0F);
 
         passwordField.setAlignmentX(1.0F);
 
-        signinLabel.setForeground(new java.awt.Color(0, 6, 255));
+        signinLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        signinLabel.setForeground(new java.awt.Color(0, 0, 255));
         signinLabel.setText("<html><u>Not registered?</u></html>");
         signinLabel.setAlignmentX(1.0F);
         signinLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,6 +123,7 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
+        loginButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         loginButton.setText("Log In");
         loginButton.setToolTipText("Log In");
         loginButton.setAlignmentX(1.0F);
@@ -124,6 +134,7 @@ public class PantallaInici extends javax.swing.JFrame {
         });
 
         errorLabel.setBackground(new Color(214,214,214,0));
+        errorLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
         errorLabel.setOpaque(true);
 
@@ -200,6 +211,7 @@ public class PantallaInici extends javax.swing.JFrame {
         KenKenPanel.setBounds(60, 150, 300, 225);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background.jpeg"))); // NOI18N
+        backgroundLabel.setOpaque(true);
         getContentPane().add(backgroundLabel);
         backgroundLabel.setBounds(0, 0, 800, 600);
 
@@ -293,17 +305,13 @@ public class PantallaInici extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String nom = usernameField.getText();
         String pwd = String.valueOf(passwordField.getPassword());
-        if (CtrlUser.comprovaPwd(nom, pwd)) {
+        if (CP.comprovarUsuari(nom,pwd)) {
             PantallaPrincipal P = new PantallaPrincipal(this, nom);
         }
         else {
             errorLabel.setText("<html>Username or password<br>are incorrect</html>");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
-
-    
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel KenKenPanel;

@@ -277,9 +277,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         hours = new javax.swing.JLabel();
         TimeLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(900, 650));
@@ -423,14 +420,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(backgroundLabel);
         backgroundLabel.setBounds(0, 0, 1000, 730);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
@@ -516,9 +505,6 @@ public class PlayKenKen extends javax.swing.JFrame {
     private javax.swing.JButton UndoButton;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JLabel hours;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel minutes;
     private javax.swing.JLabel seconds;

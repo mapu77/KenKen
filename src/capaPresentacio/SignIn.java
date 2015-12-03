@@ -68,8 +68,10 @@ public class SignIn extends javax.swing.JFrame {
 
         registerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
+        usernameLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         usernameLabel.setText("Username");
 
+        usernameField.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         usernameField.setText("Enter your username");
         usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -86,12 +88,15 @@ public class SignIn extends javax.swing.JFrame {
         });
 
         usererrorLabel.setBackground(new Color(214,214,214,0));
+        usererrorLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         usererrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         usererrorLabel.setOpaque(true);
         usererrorLabel.setPreferredSize(new java.awt.Dimension(116, 17));
 
+        passwordLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         passwordLabel.setText("Password");
 
+        passwordField.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         passwordField.setText("jPasswordField1");
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -102,6 +107,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        repeatField.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         repeatField.setText("jPasswordField1");
         repeatField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -159,6 +165,7 @@ public class SignIn extends javax.swing.JFrame {
         getContentPane().add(registerPanel);
         registerPanel.setBounds(12, 11, 376, 210);
 
+        createButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         createButton.setText("Create User");
         createButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +174,9 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        resetButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         resetButton.setText("Reset");
+        resetButton.setPreferredSize(new java.awt.Dimension(80, 29));
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
@@ -180,8 +189,8 @@ public class SignIn extends javax.swing.JFrame {
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                 .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -190,7 +199,7 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createButton)
-                    .addComponent(resetButton))
+                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

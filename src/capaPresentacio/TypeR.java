@@ -5,6 +5,9 @@
  */
 package capaPresentacio;
 
+import javax.swing.JLabel;
+import java.awt.Font;
+
 /**
  *
  * @author Jan
@@ -17,6 +20,8 @@ public class TypeR extends javax.swing.JPanel {
     public TypeR(String n) {
         initComponents();
         VarDiffLabel.setText(n);
+        scroll.setSize(500,220);
+        results.setSize(500, 220);
     }
 
     /**
@@ -30,29 +35,22 @@ public class TypeR extends javax.swing.JPanel {
 
         entrades = new javax.swing.JComboBox<>();
         entrLabel = new javax.swing.JLabel();
-        typeResults = new javax.swing.JPanel();
         diff = new javax.swing.JLabel();
         VarDiffLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
+        scroll = new javax.swing.JScrollPane();
+        results = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ranking by Type", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
-        entrades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "15", "20" }));
+        entrades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "5", "10", "15", "20" }));
+        entrades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entradesActionPerformed(evt);
+            }
+        });
 
         entrLabel.setText("Nombre d'entrades:");
-
-        typeResults.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout typeResultsLayout = new javax.swing.GroupLayout(typeResults);
-        typeResults.setLayout(typeResultsLayout);
-        typeResultsLayout.setHorizontalGroup(
-            typeResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
-        );
-        typeResultsLayout.setVerticalGroup(
-            typeResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
-        );
 
         diff.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         diff.setText("Difficulty");
@@ -66,25 +64,37 @@ public class TypeR extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout resultsLayout = new javax.swing.GroupLayout(results);
+        results.setLayout(resultsLayout);
+        resultsLayout.setHorizontalGroup(
+            resultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 469, Short.MAX_VALUE)
+        );
+        resultsLayout.setVerticalGroup(
+            resultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+
+        scroll.setViewportView(results);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(typeResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(entrLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(entrades, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(diff, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(VarDiffLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(entrLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(entrades, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(diff, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(VarDiffLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,13 +105,13 @@ public class TypeR extends javax.swing.JPanel {
                     .addComponent(entrLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(diff, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(diff, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(VarDiffLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(typeResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,6 +126,24 @@ public class TypeR extends javax.swing.JPanel {
         revalidate();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void entradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradesActionPerformed
+        // TODO add your handling code here:
+        results.removeAll();
+        int entr = entrades.getSelectedIndex()*5;
+        //entrLabel.setText(Integer.toString(entr));
+        int amplada = 500;
+        int alt = 40*entr;
+        results.setSize(amplada, alt);
+        for (int i = 1; i <= entr; i++) {
+            JLabel pos = new JLabel();
+            results.add(pos);
+            pos.setBounds(10, (i-1)*40+7, 60, 20);
+            pos.setVisible(true);
+            pos.setFont(new Font("sans serif", Font.PLAIN, 20));
+            pos.setText(Integer.toString(i)+".- ");
+        }
+    }//GEN-LAST:event_entradesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel VarDiffLabel;
@@ -123,6 +151,7 @@ public class TypeR extends javax.swing.JPanel {
     private javax.swing.JLabel diff;
     private javax.swing.JLabel entrLabel;
     private javax.swing.JComboBox<String> entrades;
-    private javax.swing.JPanel typeResults;
+    private javax.swing.JPanel results;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,9 +15,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -36,12 +38,17 @@ public class PlayKenKen extends javax.swing.JFrame {
     ArrayList<ArrayList<Integer> > mat;
     Scanner sn = new Scanner(System.in);
     int N, X, Y, BZ;
+    static public ImageIcon imageResume;
+    static public ImageIcon imagePause;
+    
+    URL resume = PlayKenKen.class.getResource("ResumeButton.png");
+    URL pause = PlayKenKen.class.getResource("PauseButton.png");
     
     public PlayKenKen(int N) {
         this.N = N;
         t=new Timer(1000, new startChrono());
         initComponents();
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setVisible(true);
         
         KenKenGenerator KG = new KenKenGenerator(sn);
@@ -56,6 +63,8 @@ public class PlayKenKen extends javax.swing.JFrame {
         Dimension dim = new Dimension(tool.getScreenSize());
         int height = (int) dim.getHeight();
         int width = (int) dim.getWidth();
+        imageResume = new javax.swing.ImageIcon(resume);
+        imagePause = new javax.swing.ImageIcon(pause);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
     }
     
@@ -269,11 +278,8 @@ public class PlayKenKen extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 650));
         setMinimumSize(new java.awt.Dimension(900, 650));
-        setPreferredSize(new java.awt.Dimension(900, 650));
         setResizable(false);
-        setSize(new java.awt.Dimension(900, 650));
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -305,14 +311,17 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(180, 40, 509, 506);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UndoButton.png"))); // NOI18N
         jButton1.setText("UNDO");
         getContentPane().add(jButton1);
-        jButton1.setBounds(30, 40, 110, 60);
+        jButton1.setBounds(30, 40, 130, 60);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/HintButton.png"))); // NOI18N
         jButton2.setText("HINT");
         getContentPane().add(jButton2);
-        jButton2.setBounds(30, 120, 110, 60);
+        jButton2.setBounds(30, 120, 130, 60);
 
+        ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResetButton.png"))); // NOI18N
         ResetButton.setText("RESET");
         ResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,8 +329,9 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ResetButton);
-        ResetButton.setBounds(30, 200, 110, 60);
+        ResetButton.setBounds(30, 200, 130, 60);
 
+        PauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/PauseButton.png"))); // NOI18N
         PauseButton.setText("PAUSE");
         PauseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,12 +339,14 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(PauseButton);
-        PauseButton.setBounds(30, 280, 110, 60);
+        PauseButton.setBounds(30, 280, 130, 60);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/SaveButtonn.png"))); // NOI18N
         jButton5.setText("SAVE");
         getContentPane().add(jButton5);
-        jButton5.setBounds(30, 360, 110, 60);
+        jButton5.setBounds(30, 360, 130, 60);
 
+        BotoExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ExitButton.png"))); // NOI18N
         BotoExit.setText("EXIT");
         BotoExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,7 +354,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotoExit);
-        BotoExit.setBounds(30, 446, 110, 100);
+        BotoExit.setBounds(30, 446, 130, 100);
 
         Botons.setOpaque(false);
 
@@ -360,21 +372,26 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(Botons);
         Botons.setBounds(710, 40, 160, 500);
 
+        TimeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TimeLabel.setText("Time:");
         getContentPane().add(TimeLabel);
-        TimeLabel.setBounds(586, 10, 40, 14);
+        TimeLabel.setBounds(520, 10, 60, 20);
 
+        hours.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         hours.setText("00");
         getContentPane().add(hours);
-        hours.setBounds(630, 10, 20, 14);
+        hours.setBounds(580, 10, 20, 20);
 
+        minutes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         minutes.setText("00");
         getContentPane().add(minutes);
-        minutes.setBounds(650, 10, 20, 14);
+        minutes.setBounds(610, 10, 20, 20);
 
+        seconds.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         seconds.setText("00");
         getContentPane().add(seconds);
-        seconds.setBounds(670, 10, 20, 14);
+        seconds.setBounds(640, 10, 20, 20);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background-gran.jpeg"))); // NOI18N
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -396,6 +413,11 @@ public class PlayKenKen extends javax.swing.JFrame {
     
     private void BotoExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoExitActionPerformed
         // TODO add your handling code here:
+        t.stop();
+        hours.setText("00"); h=0;
+        minutes.setText("00"); m=0;
+        seconds.setText("00"); s=0;
+        II=0;
         setVisible(false);
     }//GEN-LAST:event_BotoExitActionPerformed
 
@@ -408,7 +430,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
         II=0;
-        PauseButton.setText("START");
+        t.restart();
     }//GEN-LAST:event_ResetButtonActionPerformed
 
     private void PauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseButtonActionPerformed
@@ -418,16 +440,19 @@ public class PlayKenKen extends javax.swing.JFrame {
                 t.start();
                 II=0;
                 PauseButton.setText("PAUSE");
+                PauseButton.setIcon(imagePause);
             }
             else {
                 t.stop();
                 II=1;
                 PauseButton.setText("CONTINUE");
+                PauseButton.setIcon(imageResume);
             }
         }else{
             t.start();
             II=0;
             PauseButton.setText("PAUSE");
+            PauseButton.setIcon(imagePause);
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
     

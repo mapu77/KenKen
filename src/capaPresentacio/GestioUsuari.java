@@ -240,11 +240,6 @@ public class GestioUsuari extends javax.swing.JPanel {
         if (CtrlUser.comprovaPwd(user, oldPsw) && newPsw.equals(newPsw2)  && newPsw.length() >= 5) {
             CtrlUser.getUsuari(user).setPassword(newPsw);
             PswChangedLabel.setText(pswChanged);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GestioUsuari.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
 

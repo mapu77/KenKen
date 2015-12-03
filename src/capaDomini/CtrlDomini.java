@@ -36,14 +36,18 @@ public class CtrlDomini {
         return CtrlUser.comprovaPwd(u,p);
     }
     
-    public TaulerKenKen generaKenkenAleatori (int N) {
-        KenKenGenerator KG = new KenKenGenerator(sn);
-        return KG.generateRandomly(N);
-    }
-    
     public boolean existeixUsuari (String u) {
         if (CtrlUser.getUsuari(u) != null) return true;
         return false;
+    }
+    
+    public void changePassword(String u, String pwd) {
+        CtrlUser.getUsuari(u).setPassword(pwd);
+    }
+    
+    public TaulerKenKen generaKenkenAleatori (int N) {
+        KenKenGenerator KG = new KenKenGenerator(sn);
+        return KG.generateRandomly(N);
     }
     
     public double obtenirTempsRP (String u, String diff) {

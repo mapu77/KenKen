@@ -266,11 +266,11 @@ public class PlayKenKen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Tauler = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        UndoButton = new javax.swing.JButton();
+        HintButton = new javax.swing.JButton();
         ResetButton = new javax.swing.JButton();
         PauseButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        SaveButton = new javax.swing.JButton();
         BotoExit = new javax.swing.JButton();
         Botons = new javax.swing.JPanel();
         TimeLabel = new javax.swing.JLabel();
@@ -283,11 +283,8 @@ public class PlayKenKen extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 650));
         setMinimumSize(new java.awt.Dimension(900, 650));
-        setPreferredSize(new java.awt.Dimension(900, 650));
         setResizable(false);
-        setSize(new java.awt.Dimension(900, 650));
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -319,14 +316,22 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(180, 40, 509, 506);
 
-        jButton1.setText("UNDO");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(30, 40, 110, 60);
+        UndoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UndoButton.png"))); // NOI18N
+        UndoButton.setText("UNDO");
+        UndoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UndoButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UndoButton);
+        UndoButton.setBounds(30, 40, 130, 60);
 
-        jButton2.setText("HINT");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(30, 120, 110, 60);
+        HintButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/HintButton.png"))); // NOI18N
+        HintButton.setText("HINT");
+        getContentPane().add(HintButton);
+        HintButton.setBounds(30, 120, 130, 60);
 
+        ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResetButton.png"))); // NOI18N
         ResetButton.setText("RESET");
         ResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,7 +339,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ResetButton);
-        ResetButton.setBounds(30, 200, 110, 60);
+        ResetButton.setBounds(30, 200, 130, 60);
 
         PauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/PauseButton.png"))); // NOI18N
         PauseButton.setText("PAUSE");
@@ -344,12 +349,14 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(PauseButton);
-        PauseButton.setBounds(30, 280, 110, 60);
+        PauseButton.setBounds(30, 280, 130, 60);
 
-        jButton5.setText("SAVE");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(30, 360, 110, 60);
+        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/SaveButtonn.png"))); // NOI18N
+        SaveButton.setText("SAVE");
+        getContentPane().add(SaveButton);
+        SaveButton.setBounds(30, 360, 130, 60);
 
+        BotoExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ExitButton.png"))); // NOI18N
         BotoExit.setText("EXIT");
         BotoExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,7 +364,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotoExit);
-        BotoExit.setBounds(30, 446, 110, 100);
+        BotoExit.setBounds(30, 446, 130, 100);
 
         Botons.setOpaque(false);
 
@@ -377,19 +384,19 @@ public class PlayKenKen extends javax.swing.JFrame {
 
         TimeLabel.setText("Time:");
         getContentPane().add(TimeLabel);
-        TimeLabel.setBounds(586, 10, 40, 14);
+        TimeLabel.setBounds(586, 10, 40, 16);
 
         hours.setText("00");
         getContentPane().add(hours);
-        hours.setBounds(630, 10, 20, 14);
+        hours.setBounds(630, 10, 20, 16);
 
         minutes.setText("00");
         getContentPane().add(minutes);
-        minutes.setBounds(650, 10, 20, 14);
+        minutes.setBounds(650, 10, 20, 16);
 
         seconds.setText("00");
         getContentPane().add(seconds);
-        seconds.setBounds(670, 10, 20, 14);
+        seconds.setBounds(670, 10, 20, 16);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background-gran.jpeg"))); // NOI18N
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -446,19 +453,23 @@ public class PlayKenKen extends javax.swing.JFrame {
             PauseButton.setIcon(imagePause);
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
+
+    private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UndoButtonActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;
     private javax.swing.JPanel Botons;
+    private javax.swing.JButton HintButton;
     private javax.swing.JButton PauseButton;
     private javax.swing.JButton ResetButton;
+    private javax.swing.JButton SaveButton;
     private javax.swing.JPanel Tauler;
     private javax.swing.JLabel TimeLabel;
+    private javax.swing.JButton UndoButton;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JLabel hours;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

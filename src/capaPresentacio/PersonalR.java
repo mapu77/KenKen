@@ -223,7 +223,7 @@ public class PersonalR extends javax.swing.JPanel {
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
         // TODO add your handling code here:
         String user = usernameField.getText();
-        if (CP.existeixUsuari(user) != null) {
+        if (CP.existeixUsuari(user)) {
             if (CP.obtenirResoltsRP(user) == 0) {
                 buidaAll();
                 jResolts.setText("0");
@@ -244,7 +244,7 @@ public class PersonalR extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String user = usernameField.getText();
-            if (CP.existeixUsuari(user) != null) {
+            if (CP.existeixUsuari(user)) {
                 if (CP.obtenirResoltsRP(user) == 0) {
                     buidaAll();
                     jResolts.setText("0");

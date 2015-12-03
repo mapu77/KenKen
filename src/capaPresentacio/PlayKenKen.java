@@ -126,6 +126,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                     String a = Integer.toString(K.getRegioIJ(i, j).getResult());
                     String a1 = K.getRegioIJ(i, j).getOperation();
                     if (a1.equals("*")) a1 = "x";
+                    else if (a1.equals("/")) a1 = "÷";
                     a += " " + a1;
                     JLabel opres = new JLabel(a);
                     b.add(opres);

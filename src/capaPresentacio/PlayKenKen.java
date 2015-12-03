@@ -22,6 +22,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import javax.swing.Timer;
@@ -115,7 +116,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                     mat.get(i).add(K.nRegio(i, j));
             }
         }  
-        K.PrintaRegioKenKen();
         int alt = Tauler.getHeight();
         int bSize = alt/N;
         BZ = bSize;
@@ -436,13 +436,22 @@ public class PlayKenKen extends javax.swing.JFrame {
     
     private void BotoExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoExitActionPerformed
         // TODO add your handling code here:
-        PantallaPrincipal P = new PantallaPrincipal(this.user,CP,parent);
-        dispose();
         t.stop();
         hours.setText("00"); h=0;
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
         II=0;
+        Object[] opciones = {"Save", "Exit"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,
+                "Do you want to save the game?",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,"Save");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            SaveButton.doClick();
+        }
+        PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+        dispose();
     }//GEN-LAST:event_BotoExitActionPerformed
 
     int II = 0;
@@ -477,13 +486,22 @@ public class PlayKenKen extends javax.swing.JFrame {
     }//GEN-LAST:event_UndoButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-       PantallaPrincipal P = new PantallaPrincipal(this.user,CP,parent);
-        dispose();
         t.stop();
         hours.setText("00"); h=0;
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
-        II=0; // TODO add your handling code here:
+        II=0;
+        Object[] opciones = {"Save", "Exit"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,
+                "Do you want to save the game?",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,"Save");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            SaveButton.doClick();
+        }
+        PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+        dispose();
     }//GEN-LAST:event_formWindowClosing
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

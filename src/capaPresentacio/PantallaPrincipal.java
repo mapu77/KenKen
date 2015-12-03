@@ -220,8 +220,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
                 null,opciones,"Acept");
         if (eleccion == JOptionPane.YES_OPTION) {
-        PantallaInici P = new PantallaInici(CP);
-        dispose();
+            PantallaInici P = new PantallaInici(CP);
+            dispose();
         }
         else {
             PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);

@@ -53,7 +53,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         this.user = user;
         t=new Timer(1000, new startChrono());
         initComponents();
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setVisible(true);
         
         KenKenGenerator KG = new KenKenGenerator(sn);
@@ -273,10 +272,10 @@ public class PlayKenKen extends javax.swing.JFrame {
         SaveButton = new javax.swing.JButton();
         BotoExit = new javax.swing.JButton();
         Botons = new javax.swing.JPanel();
-        TimeLabel = new javax.swing.JLabel();
-        hours = new javax.swing.JLabel();
-        minutes = new javax.swing.JLabel();
         seconds = new javax.swing.JLabel();
+        minutes = new javax.swing.JLabel();
+        hours = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -285,6 +284,11 @@ public class PlayKenKen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(900, 650));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -368,35 +372,49 @@ public class PlayKenKen extends javax.swing.JFrame {
 
         Botons.setOpaque(false);
 
+        seconds.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        seconds.setForeground(new java.awt.Color(255, 255, 255));
+        seconds.setText("00");
+
+        minutes.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        minutes.setForeground(new java.awt.Color(255, 255, 255));
+        minutes.setText("00");
+
+        hours.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        hours.setForeground(new java.awt.Color(255, 255, 255));
+        hours.setText("00");
+
+        TimeLabel.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        TimeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        TimeLabel.setText("Time:");
+
         javax.swing.GroupLayout BotonsLayout = new javax.swing.GroupLayout(Botons);
         Botons.setLayout(BotonsLayout);
         BotonsLayout.setHorizontalGroup(
             BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotonsLayout.createSequentialGroup()
+                .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hours, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(minutes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(seconds)
+                .addGap(36, 36, 36))
         );
         BotonsLayout.setVerticalGroup(
             BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(BotonsLayout.createSequentialGroup()
+                .addGroup(BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TimeLabel)
+                    .addComponent(hours)
+                    .addComponent(minutes)
+                    .addComponent(seconds))
+                .addGap(0, 468, Short.MAX_VALUE))
         );
 
         getContentPane().add(Botons);
         Botons.setBounds(710, 40, 160, 500);
-
-        TimeLabel.setText("Time:");
-        getContentPane().add(TimeLabel);
-        TimeLabel.setBounds(586, 10, 40, 16);
-
-        hours.setText("00");
-        getContentPane().add(hours);
-        hours.setBounds(630, 10, 20, 16);
-
-        minutes.setText("00");
-        getContentPane().add(minutes);
-        minutes.setBounds(650, 10, 20, 16);
-
-        seconds.setText("00");
-        getContentPane().add(seconds);
-        seconds.setBounds(670, 10, 20, 16);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background-gran.jpeg"))); // NOI18N
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -457,6 +475,16 @@ public class PlayKenKen extends javax.swing.JFrame {
     private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UndoButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       PantallaPrincipal P = new PantallaPrincipal(this.user,CP,parent);
+        dispose();
+        t.stop();
+        hours.setText("00"); h=0;
+        minutes.setText("00"); m=0;
+        seconds.setText("00"); s=0;
+        II=0; // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;

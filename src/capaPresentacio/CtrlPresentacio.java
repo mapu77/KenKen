@@ -35,6 +35,10 @@ public class CtrlPresentacio {
         return CD.existeixUsuari(u);
     }
     
+    public void changePassword(String u, String newPwd) {
+        CD.changePassword(u,newPwd);
+    }
+    
     public double obtenirPistesRP (String u) {
         return CD.obtenirPistesRP(u);
     }

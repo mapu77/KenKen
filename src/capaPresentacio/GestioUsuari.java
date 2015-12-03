@@ -22,11 +22,13 @@ public class GestioUsuari extends javax.swing.JPanel {
     private static String oldPsw;
     private static String newPsw;
     private static String newPsw2;
+    private static CtrlPresentacio CP;
     /**
      * Creates new form GestioUsuari
      */
-    public GestioUsuari(String user) {
+    public GestioUsuari(String user, CtrlPresentacio CP) {
         this.user = user;
+        this.CP = CP;
         initComponents();
     }
 
@@ -221,30 +223,27 @@ public class GestioUsuari extends javax.swing.JPanel {
         newPsw = passwordField.getText ();
         newPsw2 = repeatField.getText ();        
         
-        if (! CtrlUser.comprovaPwd(user, oldPsw)) {
+        if (!CP.comprovarUsuari(user, oldPsw)) {
             errorPasswordLabel.setText(incPsw);
         }
-        if (! newPsw.equals(newPsw2)) {
+        
+        if (!newPsw.equals(newPsw2)) {
             repeatErrorLabel.setText(pswDontMatch);
         }
         else if (newPsw.equals(newPsw2) && newPsw.length() < 5) {
             repeatErrorLabel.setText(pswSize);
         }
-        if (CtrlUser.comprovaPwd(user, oldPsw) && ePL.equals(incPsw)) {
+        
+        if (CP.comprovarUsuari(user, oldPsw) && ePL.equals(incPsw)) {
             errorPasswordLabel.setText("");
         }
         if (newPsw.equals(newPsw2) && (rEL.equals(pswDontMatch)||rEL.equals(pswEmpty)||newPsw.length() >= 5)) {
             repeatErrorLabel.setText("");
         }
 
-        if (CtrlUser.comprovaPwd(user, oldPsw) && newPsw.equals(newPsw2)  && newPsw.length() >= 5) {
-            CtrlUser.getUsuari(user).setPassword(newPsw);
+        if (CP.comprovarUsuari(user, oldPsw) && newPsw.equals(newPsw2)  && newPsw.length() >= 5) {
+            CP.changePassword(user,newPsw);
             PswChangedLabel.setText(pswChanged);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GestioUsuari.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
 

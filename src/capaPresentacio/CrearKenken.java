@@ -16,6 +16,8 @@ import java.awt.Rectangle;
  */
 public class CrearKenken extends javax.swing.JPanel {
 
+    private String user;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form Crear_Kenken
      */
@@ -23,8 +25,10 @@ public class CrearKenken extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CrearKenken(javax.swing.JFrame parent) {
+    public CrearKenken(String u, javax.swing.JFrame p) {
         super();
+        parent = p;
+        user = u;
         initComponents();
         
         /*Rectangle parentBounds = parent.getBounds();
@@ -106,7 +110,7 @@ public class CrearKenken extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new CrearKenkenManualment());
+        add(new CrearKenkenManualment(user,parent));
         repaint();
         revalidate();        
     }//GEN-LAST:event_Boto_ManuallyActionPerformed
@@ -118,7 +122,7 @@ public class CrearKenken extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new CrearKenkenByParameters());
+        add(new CrearKenkenByParameters(user,parent));
         repaint();
         revalidate();
     }//GEN-LAST:event_Boto_ByParametersActionPerformed

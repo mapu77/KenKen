@@ -13,12 +13,16 @@ import javax.swing.JComboBox;
  */
 public class KenkenBBDD extends javax.swing.JPanel {
 
+    private String user;
     private String dif;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form KenkenBBDD2
      */
-    public KenkenBBDD() {
+    public KenkenBBDD(String u, javax.swing.JFrame pare) {
         initComponents();
+        parent = pare;
+        user = u;
         dif = "-";
     }
 
@@ -107,8 +111,8 @@ public class KenkenBBDD extends javax.swing.JPanel {
         int d;
         if (dif.substring(0,1).equals("-")) d = 2;
         else d = Integer.parseInt(dif.substring(0,1));
-        PlayKenKen pk = new PlayKenKen(d);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(d,user,parent);
+        parent.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BoxDiffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDiffActionPerformed

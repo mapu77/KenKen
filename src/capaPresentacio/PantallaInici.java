@@ -317,7 +317,8 @@ public class PantallaInici extends javax.swing.JFrame {
         String nom = usernameField.getText();
         String pwd = String.valueOf(passwordField.getPassword());
         if (CP.comprovarUsuari(nom,pwd)) {
-            PantallaPrincipal P = new PantallaPrincipal(this, nom, CP);
+            PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
+            dispose();
         }
         else {
             errorLabel.setText("<html>Username or password<br>are incorrect</html>");
@@ -330,7 +331,8 @@ public class PantallaInici extends javax.swing.JFrame {
             String nom = usernameField.getText();
             String pwd = String.valueOf(passwordField.getPassword());
             if (CP.comprovarUsuari(nom,pwd)) {
-                PantallaPrincipal P = new PantallaPrincipal(this, nom, CP);
+                PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
+                dispose();
             }
             else {
                 errorLabel.setText("<html>Username or password<br>are incorrect</html>");
@@ -344,7 +346,8 @@ public class PantallaInici extends javax.swing.JFrame {
             String nom = usernameField.getText();
             String pwd = String.valueOf(passwordField.getPassword());
             if (CP.comprovarUsuari(nom,pwd)) {
-                PantallaPrincipal P = new PantallaPrincipal(this, nom, CP);
+                PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
+                dispose();
             }
             else {
                 errorLabel.setText("<html>Username or password<br>are incorrect</html>");

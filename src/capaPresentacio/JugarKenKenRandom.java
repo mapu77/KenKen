@@ -15,12 +15,16 @@ import java.awt.Toolkit;
  */
 public class JugarKenKenRandom extends javax.swing.JFrame {
 
-    CtrlPresentacio CP;
+    private CtrlPresentacio CP;
+    private String user;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form JugarKenKenRandom
      */
-    public JugarKenKenRandom() {
+    public JugarKenKenRandom(String u, javax.swing.JFrame pare) {
+        user = u;
         initComponents();
+        parent = pare;
         setVisible(true);
         
         /* Centra la pantalla */
@@ -177,44 +181,51 @@ public class JugarKenKenRandom extends javax.swing.JFrame {
 
     private void b3x3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3x3ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(3);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(3,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b3x3ActionPerformed
 
     private void b4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4x4ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(4);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(4,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b4x4ActionPerformed
 
     private void b5x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5x5ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(5);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(5,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b5x5ActionPerformed
 
     private void b6x6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6x6ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(6);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(6,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b6x6ActionPerformed
 
     private void b7x7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7x7ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(7);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(7,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b7x7ActionPerformed
 
     private void b8x8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8x8ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(8);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(8,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b8x8ActionPerformed
 
     private void b9x9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9x9ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(9);
-        setVisible(false);
+        PlayKenKen pk = new PlayKenKen(9,user,parent);
+        parent.dispose();
+        dispose();
     }//GEN-LAST:event_b9x9ActionPerformed
 
 

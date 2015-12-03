@@ -16,11 +16,15 @@ import javax.swing.JComboBox;
 public class CrearKenkenByParameters extends javax.swing.JPanel {
 
     private String dif;
+    private String user;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form Create_Kenken_ByParameters
      */
-    public CrearKenkenByParameters() {
+    public CrearKenkenByParameters(String user, javax.swing.JFrame pare) {
+        parent = pare;
         initComponents();
+        this.user = user;
         dif = "-";
     }
 
@@ -45,8 +49,8 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
         Boto_Div = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        CreateSave = new javax.swing.JButton();
+        CreatePlay = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(600, 500));
         setLayout(new java.awt.CardLayout());
@@ -111,21 +115,21 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
         jLabel5.setMinimumSize(new java.awt.Dimension(350, 350));
         jLabel5.setPreferredSize(new java.awt.Dimension(350, 350));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Create&Save");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        CreateSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CreateSave.setText("Create&Save");
+        CreateSave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreateSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CreateSaveActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Create&Play");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        CreatePlay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CreatePlay.setText("Create&Play");
+        CreatePlay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreatePlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CreatePlayActionPerformed(evt);
             }
         });
 
@@ -136,8 +140,8 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreatePlay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreateSave, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,9 +190,9 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
                             .addComponent(Boto_Mult)
                             .addComponent(Boto_Div))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CreateSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CreatePlay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -228,18 +232,19 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Boto_SumaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CreateSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CreateSaveActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CreatePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayActionPerformed
         // TODO add your handling code here:
         int d;
         if (dif.substring(0,1).equals("-")) d = 2;
         else d = Integer.parseInt(dif.substring(0,1));
-        PlayKenKen pk = new PlayKenKen(d);
+        PlayKenKen pk = new PlayKenKen(d,user,parent);
+        parent.dispose();
         setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_CreatePlayActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -253,8 +258,8 @@ public class CrearKenkenByParameters extends javax.swing.JPanel {
     private javax.swing.JButton Boto_Mult;
     private javax.swing.JButton Boto_Resta;
     private javax.swing.JButton Boto_Suma;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton CreatePlay;
+    private javax.swing.JButton CreateSave;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

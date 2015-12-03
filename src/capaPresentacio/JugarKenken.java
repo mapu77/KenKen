@@ -11,11 +11,15 @@ package capaPresentacio;
  */
 public class JugarKenken extends javax.swing.JPanel {
 
+    private String user;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form JugarKenken2
      */
-    public JugarKenken() {
+    public JugarKenken(String u, javax.swing.JFrame pare) {
         initComponents();
+        parent = pare;
+        user = u;
     }
 
     /**
@@ -103,7 +107,8 @@ public class JugarKenken extends javax.swing.JPanel {
 
     private void Boto_PartidaGuardadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaGuardadaActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(5);
+        PlayKenKen pk = new PlayKenKen(5,user,parent);
+        parent.dispose();
     }//GEN-LAST:event_Boto_PartidaGuardadaActionPerformed
 
     private void Boto_PartidaBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaBDActionPerformed
@@ -112,14 +117,14 @@ public class JugarKenken extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new KenkenBBDD());
+        add(new KenkenBBDD(user,parent));
         repaint();
         revalidate();
     }//GEN-LAST:event_Boto_PartidaBDActionPerformed
 
     private void Boto_PartidaRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaRandomActionPerformed
         // TODO add your handling code here:
-        JugarKenKenRandom pk = new JugarKenKenRandom();
+        JugarKenKenRandom pk = new JugarKenKenRandom(user,parent);
         pk.setVisible(true);
     }//GEN-LAST:event_Boto_PartidaRandomActionPerformed
 

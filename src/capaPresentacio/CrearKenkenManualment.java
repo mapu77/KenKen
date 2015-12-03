@@ -13,12 +13,16 @@ import javax.swing.JComboBox;
  */
 public class CrearKenkenManualment extends javax.swing.JPanel {
     
-    String dif;
+    private String dif;
+    private String user;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form CrearKenkenManualment
      */
-    public CrearKenkenManualment() {
+    public CrearKenkenManualment(String u, javax.swing.JFrame pare) {
         initComponents();
+        parent = pare;
+        user = u;
         dif = "-";
     }
 
@@ -135,7 +139,8 @@ public class CrearKenkenManualment extends javax.swing.JPanel {
         int d;
         if (dif.substring(0,1).equals("-")) d = 2;
         else d = Integer.parseInt(dif.substring(0,1));
-        PlayKenKen pk = new PlayKenKen(d);
+        PlayKenKen pk = new PlayKenKen(d,user,parent);
+        parent.dispose();
         setVisible(false);
     }//GEN-LAST:event_CreatePlayActionPerformed
 

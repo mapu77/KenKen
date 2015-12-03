@@ -7,6 +7,7 @@ package capaPresentacio;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -15,15 +16,15 @@ import javax.swing.JPanel;
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    private static javax.swing.JFrame parent;
     private static String user;
+    private javax.swing.JFrame parent;
     private CtrlPresentacio CP;
     /**
      * Creates new form Pantalla_Principal
      */
-    public PantallaPrincipal(javax.swing.JFrame parent, String user, CtrlPresentacio CP) {
+    public PantallaPrincipal(String user, CtrlPresentacio CP, javax.swing.JFrame pare) {
         initComponents();
-        this.parent = parent;
+        parent = pare;
         this.user = user;
         this.CP = CP;
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -57,10 +58,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         exitItemMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -171,7 +177,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2.repaint();
         jPanel2.revalidate();
         //afegint JPanel
-        jPanel2.add(new CrearKenken());
+        jPanel2.add(new CrearKenken(user,this));
         jPanel2.repaint();
         jPanel2.revalidate();
     }//GEN-LAST:event_jButton_CrearKenkenActionPerformed
@@ -183,7 +189,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2.repaint();
         jPanel2.revalidate();
         //afegint JPanel
-        jPanel2.add(new JugarKenken());
+        jPanel2.add(new JugarKenken(user,this));
         jPanel2.repaint();
         jPanel2.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed
@@ -204,6 +210,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitItemMenuActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Object[] opciones = {"Accept", "Cancel"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,
+                "Do you want to logout?",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,"Acept");
+        if (eleccion == JOptionPane.YES_OPTION) {
+        PantallaInici P = new PantallaInici(CP);
+        dispose();
+        }
+        else {
+            PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
 
 

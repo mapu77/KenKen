@@ -17,6 +17,5 @@ public class Main {
         // Inicializaciones generales, etc
         
         CP = new CtrlPresentacio();
-        CP.iniciaCtrls();
     }
 }

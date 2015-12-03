@@ -30,7 +30,6 @@ public class CtrlDomini {
         CP = new CtrlPersistencia();
         CP.setSeparator(" ");
         CU = new CtrlUser();
-        generaKenkenAleatori (4);
     }
     
     public boolean comprovarUsuari(String u, String p) {
@@ -42,8 +41,9 @@ public class CtrlDomini {
         return KG.generateRandomly(N);
     }
     
-    public User existeixUsuari (String u) {
-        return CtrlUser.getUsuari(u);
+    public boolean existeixUsuari (String u) {
+        if (CtrlUser.getUsuari(u) != null) return true;
+        return false;
     }
     
     public double obtenirTempsRP (String u, String diff) {

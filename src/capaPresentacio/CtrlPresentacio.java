@@ -17,19 +17,21 @@ public class CtrlPresentacio {
     
     private CtrlDomini CD;
     
-    public CtrlPresentacio() {}
+    public CtrlPresentacio() {
+        iniciaCtrls();
+        PantallaInici PI = new PantallaInici(this);
+    }
     
-    public void iniciaCtrls() {
+    private void iniciaCtrls() {
         Scanner sn = new Scanner(System.in);
         CD = new CtrlDomini(sn);
-        PantallaInici PI = new PantallaInici(this);
     }    
     
     public boolean comprovarUsuari(String u, String p) {
         return CD.comprovarUsuari(u,p);
     }
     
-    public User existeixUsuari (String u) {
+    public boolean existeixUsuari (String u) {
         return CD.existeixUsuari(u);
     }
     

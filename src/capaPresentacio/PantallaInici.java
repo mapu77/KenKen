@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -95,12 +96,22 @@ public class PantallaInici extends javax.swing.JFrame {
                 usernameFieldActionPerformed(evt);
             }
         });
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
+            }
+        });
 
         passwordLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         passwordLabel.setText("Password");
         passwordLabel.setAlignmentX(1.0F);
 
         passwordField.setAlignmentX(1.0F);
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
 
         signinLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         signinLabel.setForeground(new java.awt.Color(0, 0, 255));
@@ -180,7 +191,7 @@ public class PantallaInici extends javax.swing.JFrame {
         );
 
         getContentPane().add(LogInPanel);
-        LogInPanel.setBounds(440, 150, 281, 223);
+        LogInPanel.setBounds(440, 150, 281, 209);
 
         KenKenPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 
@@ -306,12 +317,40 @@ public class PantallaInici extends javax.swing.JFrame {
         String nom = usernameField.getText();
         String pwd = String.valueOf(passwordField.getPassword());
         if (CP.comprovarUsuari(nom,pwd)) {
-            PantallaPrincipal P = new PantallaPrincipal(this, nom);
+            PantallaPrincipal P = new PantallaPrincipal(this, nom, CP);
         }
         else {
             errorLabel.setText("<html>Username or password<br>are incorrect</html>");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String nom = usernameField.getText();
+            String pwd = String.valueOf(passwordField.getPassword());
+            if (CP.comprovarUsuari(nom,pwd)) {
+                PantallaPrincipal P = new PantallaPrincipal(this, nom, CP);
+            }
+            else {
+                errorLabel.setText("<html>Username or password<br>are incorrect</html>");
+            }
+        }
+    }//GEN-LAST:event_usernameFieldKeyPressed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String nom = usernameField.getText();
+            String pwd = String.valueOf(passwordField.getPassword());
+            if (CP.comprovarUsuari(nom,pwd)) {
+                PantallaPrincipal P = new PantallaPrincipal(this, nom, CP);
+            }
+            else {
+                errorLabel.setText("<html>Username or password<br>are incorrect</html>");
+            }
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel KenKenPanel;

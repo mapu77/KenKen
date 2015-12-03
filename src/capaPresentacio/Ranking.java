@@ -5,23 +5,24 @@
  */
 package capaPresentacio;
 
-import capaDomini.Ranking.RankingGeneral;
+import capaDomini.CtrlDomini;
 /**
  *
  * @author Oriolcapo
  */
 public class Ranking extends javax.swing.JPanel {
 
+    private CtrlPresentacio CP;
     /**
      * Creates new form Ranking2
      */
-    public Ranking() {
+    public Ranking(CtrlPresentacio CP) {
         initComponents();
-        RankingGeneral RG = new RankingGeneral();
-        nJocs.setText(Integer.toString(RG.getnJocs()));
-        nPartides.setText(Integer.toString(RG.getnPartides()));
-        nUsuaris.setText(Integer.toString(RG.getnUsuaris()));
-        popular.setText(RG.getPopular());
+        this.CP = CP;
+        nJocs.setText(Integer.toString(CP.jocsRG()));
+        nPartides.setText(Integer.toString(CP.partidesRG()));
+        nUsuaris.setText(Integer.toString(CP.usuarisRG()));
+        popular.setText(CP.popularRG());
     }
 
     /**
@@ -151,7 +152,7 @@ public class Ranking extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new PersonalR());
+        add(new PersonalR(CP));
         repaint();
         revalidate();
     }//GEN-LAST:event_PrankingButtonActionPerformed

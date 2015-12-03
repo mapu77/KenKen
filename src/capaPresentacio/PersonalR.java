@@ -5,20 +5,23 @@
  */
 package capaPresentacio;
 
-import capaDomini.Ranking.RankingPersonal;
-import capaDomini.Usuari.CtrlUser;
+import com.sun.glass.events.KeyEvent;
+import java.text.DecimalFormat;
 
 /**
  *
  * @author Jan
  */
 public class PersonalR extends javax.swing.JPanel {
-
+    
+    private CtrlPresentacio CP;
+    
     /**
      * Creates new form PersonalR
      */
-    public PersonalR() {
+    public PersonalR(CtrlPresentacio CP) {
         initComponents();
+        this.CP = CP;
     }
 
     /**
@@ -63,6 +66,11 @@ public class PersonalR extends javax.swing.JPanel {
                 usernameFieldActionPerformed(evt);
             }
         });
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
+            }
+        });
 
         findButton.setText("Find");
         findButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +98,24 @@ public class PersonalR extends javax.swing.JPanel {
         eightLabel.setText("8x8:");
 
         nineLabel.setText("9x9:");
+
+        jResolts.setText("-");
+
+        avgpistes.setText("-");
+
+        threetime.setText("-");
+
+        fourtime.setText("-");
+
+        fivetime.setText("-");
+
+        sixtime.setText("-");
+
+        seventime.setText("-");
+
+        eighttime.setText("-");
+
+        ninetime.setText("-");
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -197,32 +223,70 @@ public class PersonalR extends javax.swing.JPanel {
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
         // TODO add your handling code here:
         String user = usernameField.getText();
-        if (CtrlUser.getUsuari(user) != null) {
-            RankingPersonal RP = new RankingPersonal(user);
-            jResolts.setText(Integer.toString(RP.getResolts()));
-            avgpistes.setText(Double.toString(RP.getPistes()));
-            threetime.setText(Double.toString(RP.getBestTime("3x3")));
-            fourtime.setText(Double.toString(RP.getBestTime("4x4")));
-            fivetime.setText(Double.toString(RP.getBestTime("5x5")));
-            sixtime.setText(Double.toString(RP.getBestTime("6x6")));
-            seventime.setText(Double.toString(RP.getBestTime("7x7")));
-            eighttime.setText(Double.toString(RP.getBestTime("8x8")));
-            ninetime.setText(Double.toString(RP.getBestTime("9x9")));
-            errorLabel.setText("");
+        if (CP.existeixUsuari(user) != null) {
+            if (CP.obtenirResoltsRP(user) == 0) {
+                buidaAll();
+                jResolts.setText("0");
+                errorLabel.setText("<html>No games played by this user</html>");
+            }
+            else {
+                obtenirAll(user);
+                errorLabel.setText("");
+            }
         }
         else {
-            jResolts.setText("");
-            avgpistes.setText("");
-            threetime.setText("");
-            fourtime.setText("");
-            fivetime.setText("");
-            sixtime.setText("");
-            seventime.setText("");
-            eighttime.setText("");
-            ninetime.setText("");
+            buidaAll();
             errorLabel.setText("<html>Username incorrect</html>");
         }        
     }//GEN-LAST:event_findButtonActionPerformed
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String user = usernameField.getText();
+            if (CP.existeixUsuari(user) != null) {
+                if (CP.obtenirResoltsRP(user) == 0) {
+                    buidaAll();
+                    jResolts.setText("0");
+                    errorLabel.setText("<html>No games played by this user</html>");
+                }
+                else {
+                    obtenirAll(user);
+                    errorLabel.setText("");
+                }
+            }
+            else {
+                buidaAll();
+                errorLabel.setText("<html>Username incorrect</html>");
+            }
+        }
+    }//GEN-LAST:event_usernameFieldKeyPressed
+
+    private void obtenirAll (String user) {
+        DecimalFormat decimals = new DecimalFormat("0.0000");
+        jResolts.setText(Integer.toString(CP.obtenirResoltsRP(user)));
+        avgpistes.setText(decimals.format(CP.obtenirPistesRP(user)));
+        threetime.setText(decimals.format(CP.obtenirTempsRP(user, "3x3")));
+        fourtime.setText(decimals.format(CP.obtenirTempsRP(user, "4x4")));
+        fivetime.setText(decimals.format(CP.obtenirTempsRP(user, "5x5")));
+        sixtime.setText(decimals.format(CP.obtenirTempsRP(user, "6x6")));
+        seventime.setText(decimals.format(CP.obtenirTempsRP(user, "7x7")));
+        eighttime.setText(decimals.format(CP.obtenirTempsRP(user, "8x8")));
+        ninetime.setText(decimals.format(CP.obtenirTempsRP(user, "9x9")));
+    }
+    
+    private void buidaAll() {
+        jResolts.setText("-");
+        avgpistes.setText("-");
+        threetime.setText("-");
+        fourtime.setText("-");
+        fivetime.setText("-");
+        sixtime.setText("-");
+        seventime.setText("-");
+        eighttime.setText("-");
+        ninetime.setText("-");
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel avgpistes;

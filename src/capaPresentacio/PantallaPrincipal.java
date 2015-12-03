@@ -17,13 +17,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private static javax.swing.JFrame parent;
     private static String user;
+    private CtrlPresentacio CP;
     /**
      * Creates new form Pantalla_Principal
      */
-    public PantallaPrincipal(javax.swing.JFrame parent, String user) {
+    public PantallaPrincipal(javax.swing.JFrame parent, String user, CtrlPresentacio CP) {
         initComponents();
         this.parent = parent;
         this.user = user;
+        this.CP = CP;
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
         
@@ -193,7 +195,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2.repaint();
         jPanel2.revalidate();
         //afegint JPanel
-        jPanel2.add(new Ranking());
+        jPanel2.add(new Ranking(CP));
         jPanel2.repaint();
         jPanel2.revalidate();
     }//GEN-LAST:event_jButton_ConsultarRankingActionPerformed

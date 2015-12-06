@@ -12,8 +12,9 @@ import capaDomini.Utils.TaulerKenKen;
 import capaDomini.Ranking.RankingGeneral;
 import capaDomini.Ranking.RankingPerTipus;
 import capaDomini.Ranking.RankingPersonal;
+import capaDomini.Ranking.Tupla;
 import capaPersistencia.CtrlPersistencia;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  *
@@ -83,5 +84,18 @@ public class CtrlDomini {
     public String popularRG () {
         RankingGeneral RG = new RankingGeneral();
         return RG.getPopular();
+    }
+    
+    public Tupla obtenirRxT(String d, int e, int i) {
+        RankingPerTipus RT = new RankingPerTipus(d,e);
+        ArrayList<Tupla> v = RT.getTempsJugador();
+        if (i >= v.size()) return null;
+        else {
+            Tupla t = new Tupla();
+            t.setId(v.get(i).getId());
+            t.setUser(v.get(i).getUser());
+            t.setTemps(v.get(i).getTemps());
+            return t;
+        }
     }
 }

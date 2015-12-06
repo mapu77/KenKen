@@ -6,6 +6,7 @@
 package capaPresentacio;
 
 import capaDomini.CtrlDomini;
+import capaDomini.Ranking.Tupla;
 import capaDomini.Utils.*;
 import capaDomini.Usuari.*;
 import java.util.Scanner;
@@ -66,4 +67,20 @@ public class CtrlPresentacio {
     public String popularRG() {
         return CD.popularRG();
     }
+    
+    public String obtenirUserRT (String d, int e, int i) {
+        if (CD.obtenirRxT(d,e,i) != null) return CD.obtenirRxT(d,e,i).getUser();
+        return null;
+    }
+    
+    public double obtenirTimeRT (String d, int e, int i) {
+        if (CD.obtenirRxT(d,e,i) != null) return CD.obtenirRxT(d,e,i).getTemps();
+        return -1;
+    }
+    
+    public String obtenirIdRT (String d, int e, int i) {
+        if (CD.obtenirRxT(d,e,i) != null) return CD.obtenirRxT(d,e,i).getId();
+        return null;
+    }
+    
 }

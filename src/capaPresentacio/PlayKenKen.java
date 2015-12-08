@@ -276,6 +276,8 @@ public class PlayKenKen extends javax.swing.JFrame {
         minutes = new javax.swing.JLabel();
         hours = new javax.swing.JLabel();
         TimeLabel = new javax.swing.JLabel();
+        punts1 = new javax.swing.JLabel();
+        punts2 = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -369,21 +371,29 @@ public class PlayKenKen extends javax.swing.JFrame {
 
         Botons.setOpaque(false);
 
-        seconds.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        seconds.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         seconds.setForeground(new java.awt.Color(255, 255, 255));
         seconds.setText("00");
 
-        minutes.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        minutes.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         minutes.setForeground(new java.awt.Color(255, 255, 255));
         minutes.setText("00");
 
-        hours.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        hours.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         hours.setForeground(new java.awt.Color(255, 255, 255));
         hours.setText("00");
 
-        TimeLabel.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        TimeLabel.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         TimeLabel.setForeground(new java.awt.Color(255, 255, 255));
         TimeLabel.setText("Time:");
+
+        punts1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        punts1.setForeground(new java.awt.Color(255, 255, 255));
+        punts1.setText(":");
+
+        punts2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        punts2.setForeground(new java.awt.Color(255, 255, 255));
+        punts2.setText(":");
 
         javax.swing.GroupLayout BotonsLayout = new javax.swing.GroupLayout(Botons);
         Botons.setLayout(BotonsLayout);
@@ -392,12 +402,16 @@ public class PlayKenKen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotonsLayout.createSequentialGroup()
                 .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hours, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addComponent(hours)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(punts1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(minutes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(punts2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(seconds)
-                .addGap(36, 36, 36))
+                .addGap(89, 89, 89))
         );
         BotonsLayout.setVerticalGroup(
             BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,8 +420,10 @@ public class PlayKenKen extends javax.swing.JFrame {
                     .addComponent(TimeLabel)
                     .addComponent(hours)
                     .addComponent(minutes)
-                    .addComponent(seconds))
-                .addGap(0, 468, Short.MAX_VALUE))
+                    .addComponent(seconds)
+                    .addComponent(punts1)
+                    .addComponent(punts2))
+                .addGap(0, 478, Short.MAX_VALUE))
         );
 
         getContentPane().add(Botons);
@@ -507,6 +523,8 @@ public class PlayKenKen extends javax.swing.JFrame {
     private javax.swing.JLabel hours;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel minutes;
+    private javax.swing.JLabel punts1;
+    private javax.swing.JLabel punts2;
     private javax.swing.JLabel seconds;
     // End of variables declaration//GEN-END:variables
 }

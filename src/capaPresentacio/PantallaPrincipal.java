@@ -53,12 +53,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButton_JugarKenKen = new javax.swing.JButton();
         jButton_ConsultarRanking = new javax.swing.JButton();
         backgroundLabel = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        Menu = new javax.swing.JMenuBar();
+        file = new javax.swing.JMenu();
         exitItemMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        options = new javax.swing.JMenu();
+        userMngrItem = new javax.swing.JMenuItem();
+        submenuCreateKenKen = new javax.swing.JMenu();
+        manItem = new javax.swing.JMenuItem();
+        parItem = new javax.swing.JMenuItem();
+        submenuPlayKenKen = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        submenuRanking = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("KenKen");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
@@ -138,7 +148,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().add(backgroundLabel);
         backgroundLabel.setBounds(0, 0, 800, 575);
 
-        jMenu1.setText("File");
+        file.setText("File");
 
         exitItemMenu.setText("Exit");
         exitItemMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -146,14 +156,76 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 exitItemMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(exitItemMenu);
+        file.add(exitItemMenu);
 
-        jMenuBar1.add(jMenu1);
+        Menu.add(file);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        options.setText("Options");
 
-        setJMenuBar(jMenuBar1);
+        userMngrItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UserManagerIcon.png"))); // NOI18N
+        userMngrItem.setText("User Manager");
+        userMngrItem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        userMngrItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        userMngrItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userMngrItemActionPerformed(evt);
+            }
+        });
+        options.add(userMngrItem);
+
+        submenuCreateKenKen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/CreateIcon.png"))); // NOI18N
+        submenuCreateKenKen.setText("Create KenKen");
+        submenuCreateKenKen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        submenuCreateKenKen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        manItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ManuallyIcon.png"))); // NOI18N
+        manItem.setText("Manually");
+        manItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manItemActionPerformed(evt);
+            }
+        });
+        submenuCreateKenKen.add(manItem);
+
+        parItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ParametersIcon.png"))); // NOI18N
+        parItem.setText("By Parameters");
+        submenuCreateKenKen.add(parItem);
+
+        options.add(submenuCreateKenKen);
+
+        submenuPlayKenKen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/playIcon.png"))); // NOI18N
+        submenuPlayKenKen.setText("Play KenKen");
+        submenuPlayKenKen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        submenuPlayKenKen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResumeIcon.png"))); // NOI18N
+        jMenuItem1.setText("Resume saved game...");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        submenuPlayKenKen.add(jMenuItem1);
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/DBIcon.png"))); // NOI18N
+        jMenuItem2.setText("Select a KenKen");
+        submenuPlayKenKen.add(jMenuItem2);
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RandomIcon.png"))); // NOI18N
+        jMenuItem3.setText("Random KenKen");
+        submenuPlayKenKen.add(jMenuItem3);
+
+        options.add(submenuPlayKenKen);
+
+        submenuRanking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RankingIcon.png"))); // NOI18N
+        submenuRanking.setText("Ranking");
+        submenuRanking.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        submenuRanking.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        options.add(submenuRanking);
+
+        Menu.add(options);
+
+        setJMenuBar(Menu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,19 +300,40 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void manItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void userMngrItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMngrItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userMngrItemActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar Menu;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JMenuItem exitItemMenu;
+    private javax.swing.JMenu file;
     private javax.swing.JButton jButton_ConsultarRanking;
     private javax.swing.JButton jButton_CrearKenken;
     private javax.swing.JButton jButton_GestorUsuari;
     private javax.swing.JButton jButton_JugarKenKen;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem manItem;
+    private javax.swing.JMenu options;
+    private javax.swing.JMenuItem parItem;
+    private javax.swing.JMenu submenuCreateKenKen;
+    private javax.swing.JMenu submenuPlayKenKen;
+    private javax.swing.JMenu submenuRanking;
+    private javax.swing.JMenuItem userMngrItem;
     private capaPresentacio.WelcomeToKenken welcomeToKenken1;
     // End of variables declaration//GEN-END:variables
 }

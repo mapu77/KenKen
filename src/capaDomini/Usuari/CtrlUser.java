@@ -70,8 +70,7 @@ public class CtrlUser
     }
 
 	// Si s'han modificat les dades carregades des de la BD, desar els canvis
-    // Aquest mètode s'ha de cridar quan es vulgin guardar els canvis a la BD
-	public static void end() {
+	private static void end() {
         if (dirty) {
             try {
                 CtrlPersistencia.storeTable(path, codifica());
@@ -138,4 +137,22 @@ public class CtrlUser
         end();
         return dirty;
     }
+    
+        public static boolean modificaUsuari(String nom_actual, String nou_nom, String nou_pwd) {
+      try {
+          for (int i = usuaris.size() - 1; i >= 0; i--) {
+              User usuari = usuaris.get(i);
+              if (Objects.equals(usuari.getUsername(), nom_actual)) {
+                  User aux = new User(nou_nom,nou_pwd);
+                  dirty = usuaris.remove(usuari);
+                  if (dirty) dirty = usuaris.add(aux);
+              }
+          }
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+      end();
+      return dirty;
+  }    
+    
 }

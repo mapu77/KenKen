@@ -12,9 +12,10 @@ import capaDomini.Utils.TaulerKenKen;
 import capaDomini.Ranking.RankingGeneral;
 import capaDomini.Ranking.RankingPerTipus;
 import capaDomini.Ranking.RankingPersonal;
-import capaDomini.Ranking.Tupla;
 import capaPersistencia.CtrlPersistencia;
-import java.util.*;
+import capaDomini.Ranking.Tupla;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -26,13 +27,14 @@ public class CtrlDomini {
     private CtrlPersistencia CP;
     private CtrlUser CU;
     
+    /* Mètode Constructor */
     public CtrlDomini(Scanner sn) {
         this.sn = sn;
         CP = new CtrlPersistencia();
         CP.setSeparator(" ");
         CU = new CtrlUser();
     }
-    
+    /* Mètodes per Gestió d'Usuari */
     public boolean comprovarUsuari(String u, String p) {
         return CtrlUser.comprovaPwd(u,p);
     }
@@ -45,12 +47,17 @@ public class CtrlDomini {
     public void changePassword(String u, String pwd) {
         CtrlUser.getUsuari(u).setPassword(pwd);
     }
+    /* ---------------------------------------------------------------------- */
     
+    /* Mètodes Creació KenKen */
     public TaulerKenKen generaKenkenAleatori (int N) {
         KenKenGenerator KG = new KenKenGenerator(sn);
         return KG.generateRandomly(N);
     }
     
+    /* ----------------------------------------------------------------------- */
+    
+    /* Mètodes per al Ranking */
     public double obtenirTempsRP (String u, String diff) {
         RankingPersonal RP = new RankingPersonal(u);
         return RP.getBestTime(diff);
@@ -98,4 +105,5 @@ public class CtrlDomini {
             return t;
         }
     }
+    /* ---------------------------------------------------------------------- */
 }

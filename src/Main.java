@@ -15,7 +15,7 @@ public class Main {
     private static CtrlPresentacio CP;
         public static void main (String[] args) throws Exception {
         // Inicializaciones generales, etc
-        
+        System.out.println("Iniciant controlador de presentació...");
         CP = new CtrlPresentacio();
     }
 }

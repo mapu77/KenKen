@@ -32,6 +32,7 @@ public class CtrlDomini {
         this.sn = sn;
         CP = new CtrlPersistencia();
         CP.setSeparator(" ");
+        System.out.println("Iniciant controlador de persistència...");
         CU = new CtrlUser();
     }
     /* Mètodes per Gestió d'Usuari */

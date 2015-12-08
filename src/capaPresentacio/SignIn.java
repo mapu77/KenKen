@@ -227,9 +227,10 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        User us = new User(usernameField.getText(),String.valueOf(passwordField.getPassword()));
+        String nom = usernameField.getText();
+        String pass = String.valueOf(passwordField.getPassword());
         if (passwordField.getPassword().equals(repeatField.getPassword())) {
-            if (CtrlUser.afegeixUsuari(us)) {
+            if (CtrlUser.afegeixUsuari(nom, pass)) {
             System.out.println("Afegit correctament");
             }
             else {

@@ -273,7 +273,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2.repaint();
         jPanel2.revalidate();
         //afegint JPanel
-        jPanel2.add(new Ranking(CP));
+        jPanel2.add(new Rankings(CP));
         jPanel2.repaint();
         jPanel2.revalidate();
     }//GEN-LAST:event_jButton_ConsultarRankingActionPerformed

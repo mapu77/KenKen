@@ -13,11 +13,13 @@ import java.awt.Rectangle;
  */
 public class SignIn extends javax.swing.JFrame {
 
+    private static CtrlPresentacio CP;
     /**
      * Creates new form SignIn
      */
-    public SignIn(javax.swing.JFrame parent) {
+    public SignIn(javax.swing.JFrame parent, CtrlPresentacio CP) {
         super("Sign In");
+        this.CP = CP;
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
@@ -229,9 +231,10 @@ public class SignIn extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         String nom = usernameField.getText();
         String pass = String.valueOf(passwordField.getPassword());
-        if (passwordField.getPassword().equals(repeatField.getPassword())) {
+        if (pass.equals(String.valueOf(repeatField.getPassword()))) {
             if (CtrlUser.afegeixUsuari(nom, pass)) {
-            System.out.println("Afegit correctament");
+                PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
+                dispose();
             }
             else {
                 usererrorLabel.setText("This username already exists");

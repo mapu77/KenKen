@@ -26,6 +26,7 @@ public class PantallaInici extends javax.swing.JFrame {
      * Creates new form PantallaPrincipal
      */
     public PantallaInici(CtrlPresentacio CP) {
+        System.out.println("Mostrant pantalla d'inici");
         this.CP = CP;
         initComponents();
         pack();
@@ -292,7 +293,7 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_siginItemMenuMouseClicked
 
     private void signinLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinLabelMouseClicked
-        SignIn signin = new SignIn(this);
+        SignIn signin = new SignIn(this, CP);
         signin.setVisible(true);
     }//GEN-LAST:event_signinLabelMouseClicked
 
@@ -309,7 +310,7 @@ public class PantallaInici extends javax.swing.JFrame {
     }//GEN-LAST:event_LogInPanelPropertyChange
 
     private void siginItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siginItemMenuActionPerformed
-        SignIn signin = new SignIn(this);
+        SignIn signin = new SignIn(this, CP);
         signin.setVisible(true);
     }//GEN-LAST:event_siginItemMenuActionPerformed
 

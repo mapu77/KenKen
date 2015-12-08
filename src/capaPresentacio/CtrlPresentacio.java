@@ -20,6 +20,7 @@ public class CtrlPresentacio {
     
     public CtrlPresentacio() {
         iniciaCtrls();
+        System.out.println("Carregant interfície");
         PantallaInici PI = new PantallaInici(this);
     }
     

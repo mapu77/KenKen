@@ -11,7 +11,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-23,0,0,2,88"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-26,0,0,2,86"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
@@ -200,7 +200,6 @@
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="errorLabel" min="-2" pref="356" max="-2" attributes="0"/>
-                              <Component id="user_label" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="threeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -224,11 +223,6 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="usernameField" min="-2" pref="166" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="findButton" min="-2" pref="119" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="avgpistesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jResoltsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -239,8 +233,16 @@
                                       <Component id="avgpistes" min="-2" pref="88" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="user_label" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="usernameField" alignment="0" pref="166" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="findButton" min="-2" pref="119" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="163" max="32767" attributes="0"/>
+                          <EmptySpace pref="156" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -303,7 +305,7 @@
                               <Component id="nineLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="ninetime" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -312,7 +314,7 @@
                 <Component class="javax.swing.JLabel" name="user_label">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Username"/>
                   </Properties>
@@ -325,6 +327,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="findButton">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Find"/>
                   </Properties>
                   <Events>
@@ -334,7 +339,7 @@
                 <Component class="javax.swing.JLabel" name="jResoltsLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="KenKens solved:"/>
                   </Properties>
@@ -342,7 +347,7 @@
                 <Component class="javax.swing.JLabel" name="jResolts">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
@@ -350,7 +355,7 @@
                 <Component class="javax.swing.JLabel" name="avgpistesLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Average hints:"/>
                   </Properties>
@@ -358,7 +363,7 @@
                 <Component class="javax.swing.JLabel" name="avgpistes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
@@ -366,78 +371,120 @@
                 <Component class="javax.swing.JLabel" name="timesLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="18" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Best times:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="threeLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="3x3:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="fourLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="4x4:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="fiveLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="5x5:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="sixLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="6x6:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="sevenLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="7x7:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="eightLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="8x8:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="nineLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="9x9:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ninetime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="eighttime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="seventime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="sixtime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="fivetime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="fourtime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="threetime">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="-"/>
                   </Properties>
                 </Component>
@@ -462,46 +509,45 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="select_diff1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="select_entries1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="dificultat1" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="entrades1" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="consult2" min="-2" pref="452" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="consult2" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="select_diff1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="dificultat1" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="select_entries1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="entrades1" min="-2" pref="65" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
+                          <EmptySpace pref="31" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="select_diff1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="select_entries1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dificultat1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="entrades1" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="dificultat1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="entrades1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="consult2" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace pref="34" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="148" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="165" max="-2" attributes="0"/>
+                          <EmptySpace pref="138" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -563,7 +609,7 @@
                 <Component class="javax.swing.JLabel" name="select_diff1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Select difficulty"/>
                   </Properties>
@@ -620,13 +666,16 @@
                 <Component class="javax.swing.JLabel" name="select_entries1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="18" style="0"/>
+                      <Font name="SansSerif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Select number of entries"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="consult2">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="12" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Consult"/>
                   </Properties>
                   <Events>

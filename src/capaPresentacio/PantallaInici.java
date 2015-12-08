@@ -75,6 +75,11 @@ public class PantallaInici extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         LogInPanel.setBackground(new Color(214,214,214,153));
@@ -318,6 +323,7 @@ public class PantallaInici extends javax.swing.JFrame {
         String nom = usernameField.getText();
         String pwd = String.valueOf(passwordField.getPassword());
         if (CP.comprovarUsuari(nom,pwd)) {
+            System.out.println("Identificació correcte");
             PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
             dispose();
         }
@@ -332,6 +338,7 @@ public class PantallaInici extends javax.swing.JFrame {
             String nom = usernameField.getText();
             String pwd = String.valueOf(passwordField.getPassword());
             if (CP.comprovarUsuari(nom,pwd)) {
+                System.out.println("Identificació correcte");
                 PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
                 dispose();
             }
@@ -347,6 +354,7 @@ public class PantallaInici extends javax.swing.JFrame {
             String nom = usernameField.getText();
             String pwd = String.valueOf(passwordField.getPassword());
             if (CP.comprovarUsuari(nom,pwd)) {
+                System.out.println("Identificació correcte");
                 PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
                 dispose();
             }
@@ -355,6 +363,10 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        System.out.println("Tancant pantalla d'inici");
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel KenKenPanel;

@@ -20,12 +20,13 @@ public class CtrlPresentacio {
     
     public CtrlPresentacio() {
         iniciaCtrls();
-        System.out.println("Carregant interfície");
+        System.out.println("Carregant interfície...");
         PantallaInici PI = new PantallaInici(this);
     }
     
     private void iniciaCtrls() {
         Scanner sn = new Scanner(System.in);
+        System.out.println("Iniciant controlador del domini...");
         CD = new CtrlDomini(sn);
     }    
     

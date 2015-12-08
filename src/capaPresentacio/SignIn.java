@@ -19,6 +19,7 @@ public class SignIn extends javax.swing.JFrame {
      */
     public SignIn(javax.swing.JFrame parent, CtrlPresentacio CP) {
         super("Sign In");
+        System.out.println("Mostrant sign in");
         this.CP = CP;
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -66,6 +67,11 @@ public class SignIn extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sign In");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         registerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
@@ -238,7 +244,6 @@ public class SignIn extends javax.swing.JFrame {
             }
             else {
                 usererrorLabel.setText("This username already exists");
-                repeaterrorLabel.setText("Passwords don't match");
             }
         }
         else {
@@ -270,6 +275,10 @@ public class SignIn extends javax.swing.JFrame {
     private void repeatFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatFieldFocusLost
         if (passwordField.getPassword().length == 0) repeatField.setText("jPasswordField1");
     }//GEN-LAST:event_repeatFieldFocusLost
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        System.out.println("Tancant sign in");
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;

@@ -28,12 +28,13 @@ public class CrearKenken extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CrearKenken(String u, javax.swing.JFrame p) {
+    public CrearKenken(String u, javax.swing.JFrame p, int index) {
         super();
         parent = p;
         user = u;
         dif = "-";
-        initComponents();
+        initComponents();        
+        tabMenu.setSelectedIndex(index);
     }
 
     /**

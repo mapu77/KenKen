@@ -152,7 +152,7 @@ public class Rankings extends javax.swing.JPanel {
 
         tabMenu2.addTab("General Ranking", generalR);
 
-        user_label.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        user_label.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         user_label.setText("Username");
 
         usernameField.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +166,7 @@ public class Rankings extends javax.swing.JPanel {
             }
         });
 
+        findButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         findButton.setText("Find");
         findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,47 +174,61 @@ public class Rankings extends javax.swing.JPanel {
             }
         });
 
-        jResoltsLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jResoltsLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jResoltsLabel.setText("KenKens solved:");
 
-        jResolts.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jResolts.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jResolts.setText("-");
 
-        avgpistesLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        avgpistesLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         avgpistesLabel.setText("Average hints:");
 
-        avgpistes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        avgpistes.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         avgpistes.setText("-");
 
-        timesLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        timesLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         timesLabel.setText("Best times:");
 
+        threeLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         threeLabel.setText("3x3:");
 
+        fourLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         fourLabel.setText("4x4:");
 
+        fiveLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         fiveLabel.setText("5x5:");
 
+        sixLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         sixLabel.setText("6x6:");
 
+        sevenLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         sevenLabel.setText("7x7:");
 
+        eightLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         eightLabel.setText("8x8:");
 
+        nineLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         nineLabel.setText("9x9:");
 
+        ninetime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ninetime.setText("-");
 
+        eighttime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         eighttime.setText("-");
 
+        seventime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         seventime.setText("-");
 
+        sixtime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         sixtime.setText("-");
 
+        fivetime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         fivetime.setText("-");
 
+        fourtime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         fourtime.setText("-");
 
+        threetime.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         threetime.setText("-");
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
@@ -226,7 +241,6 @@ public class Rankings extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(user_label, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PersonalRLayout.createSequentialGroup()
                         .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(threeLabel)
@@ -247,18 +261,20 @@ public class Rankings extends javax.swing.JPanel {
                             .addComponent(eighttime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ninetime, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PersonalRLayout.createSequentialGroup()
-                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PersonalRLayout.createSequentialGroup()
                         .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(avgpistesLabel)
                             .addComponent(jResoltsLabel))
                         .addGap(18, 18, 18)
                         .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jResolts, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(avgpistes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(163, Short.MAX_VALUE))
+                            .addComponent(avgpistes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PersonalRLayout.createSequentialGroup()
+                        .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(user_label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         PersonalRLayout.setVerticalGroup(
             PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +325,7 @@ public class Rankings extends javax.swing.JPanel {
                 .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ninetime))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         tabMenu2.addTab("Personal Ranking", PersonalR);
@@ -337,7 +353,7 @@ public class Rankings extends javax.swing.JPanel {
             tableRes.getColumnModel().getColumn(3).setPreferredWidth(10);
         }
 
-        select_diff1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        select_diff1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         select_diff1.setText("Select difficulty");
 
         dificultat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "3x3", "4x4", "5x5", "6x6", "7x7", "8x8", "9x9" }));
@@ -366,9 +382,10 @@ public class Rankings extends javax.swing.JPanel {
             }
         });
 
-        select_entries1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        select_entries1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         select_entries1.setText("Select number of entries");
 
+        consult2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         consult2.setText("Consult");
         consult2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,37 +398,37 @@ public class Rankings extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consult2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addComponent(select_diff1)
-                        .addGap(141, 141, 141)
-                        .addComponent(select_entries1))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(dificultat1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(entrades1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(consult2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dificultat1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(select_entries1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(entrades1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(select_diff1)
-                    .addComponent(select_entries1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(select_entries1)
                     .addComponent(dificultat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrades1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(entrades1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(consult2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         tabMenu2.addTab("Ranking by Type", jPanel2);

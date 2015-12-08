@@ -23,6 +23,7 @@ public class About extends javax.swing.JDialog {
      */
     public About(javax.swing.JFrame parent) {
         super(parent, true);
+        System.out.println("Motrant about");
         initComponents();
         
         font = new Font(Font.SANS_SERIF,Font.PLAIN,12);
@@ -58,6 +59,11 @@ public class About extends javax.swing.JDialog {
         setTitle("About");
         setName("About"); // NOI18N
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         infoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "KenKen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
 
@@ -156,6 +162,10 @@ public class About extends javax.swing.JDialog {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        System.out.println("Tancant about");
+    }//GEN-LAST:event_formWindowClosed
 
     
 

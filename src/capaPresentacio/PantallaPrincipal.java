@@ -23,6 +23,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      * Creates new form Pantalla_Principal
      */
     public PantallaPrincipal(String user, CtrlPresentacio CP, javax.swing.JFrame pare) {
+        System.out.println("Mostrant pantalla principal");
         initComponents();
         parent = pare;
         this.user = user;
@@ -46,7 +47,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        menuPanel = new javax.swing.JPanel();
         welcomeToKenken1 = new capaPresentacio.WelcomeToKenken();
         jButton_GestorUsuari = new javax.swing.JButton();
         jButton_CrearKenken = new javax.swing.JButton();
@@ -62,10 +63,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         manItem = new javax.swing.JMenuItem();
         parItem = new javax.swing.JMenuItem();
         submenuPlayKenKen = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        resumeItem = new javax.swing.JMenuItem();
+        selectItem = new javax.swing.JMenuItem();
+        randomItem = new javax.swing.JMenuItem();
         submenuRanking = new javax.swing.JMenu();
+        generalItem = new javax.swing.JMenuItem();
+        personalItem = new javax.swing.JMenuItem();
+        typeRanking = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("KenKen");
@@ -79,15 +83,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
-        jPanel2.setMaximumSize(new java.awt.Dimension(598, 496));
-        jPanel2.setMinimumSize(new java.awt.Dimension(598, 496));
-        jPanel2.setPreferredSize(new java.awt.Dimension(598, 496));
-        jPanel2.setLayout(new java.awt.CardLayout());
-        jPanel2.add(welcomeToKenken1, "card2");
+        menuPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        menuPanel.setMaximumSize(new java.awt.Dimension(598, 496));
+        menuPanel.setMinimumSize(new java.awt.Dimension(598, 496));
+        menuPanel.setPreferredSize(new java.awt.Dimension(598, 496));
+        menuPanel.setLayout(new java.awt.CardLayout());
+        menuPanel.add(welcomeToKenken1, "card2");
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(190, 34, 600, 496);
+        getContentPane().add(menuPanel);
+        menuPanel.setBounds(190, 34, 600, 496);
 
         jButton_GestorUsuari.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_GestorUsuari.setText("User Manager");
@@ -189,6 +193,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         parItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ParametersIcon.png"))); // NOI18N
         parItem.setText("By Parameters");
+        parItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parItemActionPerformed(evt);
+            }
+        });
         submenuCreateKenKen.add(parItem);
 
         options.add(submenuCreateKenKen);
@@ -198,22 +207,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         submenuPlayKenKen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         submenuPlayKenKen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResumeIcon.png"))); // NOI18N
-        jMenuItem1.setText("Resume saved game...");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        resumeItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResumeIcon.png"))); // NOI18N
+        resumeItem.setText("Resume saved game...");
+        resumeItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                resumeItemActionPerformed(evt);
             }
         });
-        submenuPlayKenKen.add(jMenuItem1);
+        submenuPlayKenKen.add(resumeItem);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/DBIcon.png"))); // NOI18N
-        jMenuItem2.setText("Select a KenKen");
-        submenuPlayKenKen.add(jMenuItem2);
+        selectItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/DBIcon.png"))); // NOI18N
+        selectItem.setText("Select a KenKen");
+        submenuPlayKenKen.add(selectItem);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RandomIcon.png"))); // NOI18N
-        jMenuItem3.setText("Random KenKen");
-        submenuPlayKenKen.add(jMenuItem3);
+        randomItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RandomIcon.png"))); // NOI18N
+        randomItem.setText("Random KenKen");
+        submenuPlayKenKen.add(randomItem);
 
         options.add(submenuPlayKenKen);
 
@@ -221,6 +230,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         submenuRanking.setText("Ranking");
         submenuRanking.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         submenuRanking.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        generalItem.setText("General Ranking");
+        generalItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generalItemActionPerformed(evt);
+            }
+        });
+        submenuRanking.add(generalItem);
+
+        personalItem.setText("Personal Ranking");
+        submenuRanking.add(personalItem);
+
+        typeRanking.setText("By Type Ranking");
+        submenuRanking.add(typeRanking);
+
         options.add(submenuRanking);
 
         Menu.add(options);
@@ -233,54 +257,66 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jButton_GestorUsuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GestorUsuariActionPerformed
         // TODO add your handling code here:
         //esborrant JPanel
-        jPanel2.removeAll();
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
         //afegint JPanel
-        jPanel2.add(new GestioUsuari(user,CP));
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.add(new GestioUsuari(user,CP));
+        menuPanel.repaint();
+        menuPanel.revalidate();
     }//GEN-LAST:event_jButton_GestorUsuariActionPerformed
 
     private void jButton_CrearKenkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CrearKenkenActionPerformed
         // TODO add your handling code here:
         //esborrant JPanel
-        jPanel2.removeAll();
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
         //afegint JPanel
-        jPanel2.add(new CrearKenken(user,this));
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.add(new CrearKenken(user,this, 0));
+        menuPanel.repaint();
+        menuPanel.revalidate();
     }//GEN-LAST:event_jButton_CrearKenkenActionPerformed
 
     private void jButton_JugarKenKenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_JugarKenKenActionPerformed
         // TODO add your handling code here:
         //esborrant JPanel
-        jPanel2.removeAll();
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
         //afegint JPanel
-        jPanel2.add(new JugarKenken(user,this));
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.add(new JugarKenken(user,this));
+        menuPanel.repaint();
+        menuPanel.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed
 
     private void jButton_ConsultarRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ConsultarRankingActionPerformed
         // TODO add your handling code here:
         //esborrant JPanel
-        jPanel2.removeAll();
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
         //afegint JPanel
-        jPanel2.add(new Rankings(CP));
-        jPanel2.repaint();
-        jPanel2.revalidate();
+        menuPanel.add(new Rankings(CP));
+        menuPanel.repaint();
+        menuPanel.revalidate();
     }//GEN-LAST:event_jButton_ConsultarRankingActionPerformed
 
     private void exitItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemMenuActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
+        Object[] opciones = {"Accept", "Cancel"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,
+                "Do you want to logout?",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,"Acept");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            System.out.println("Tancant pantalla principal");
+            PantallaInici P = new PantallaInici(CP);
+            dispose();
+        }
+        else {
+            PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+        }
     }//GEN-LAST:event_exitItemMenuActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -292,6 +328,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
                 null,opciones,"Acept");
         if (eleccion == JOptionPane.YES_OPTION) {
+            System.out.println("Tancant pantalla principal");
             PantallaInici P = new PantallaInici(CP);
             dispose();
         }
@@ -301,16 +338,41 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void manItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manItemActionPerformed
-        // TODO add your handling code here:
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        menuPanel.add(new CrearKenken(user,this,0));
+        menuPanel.repaint();
+        menuPanel.revalidate();        
     }//GEN-LAST:event_manItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void resumeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_resumeItemActionPerformed
 
     private void userMngrItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMngrItemActionPerformed
-        // TODO add your handling code here:
+        //esborrant JPanel
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        //afegint JPanel
+        menuPanel.add(new GestioUsuari(user,CP));
+        menuPanel.repaint();
+        menuPanel.revalidate();
     }//GEN-LAST:event_userMngrItemActionPerformed
+
+    private void generalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_generalItemActionPerformed
+
+    private void parItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parItemActionPerformed
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        menuPanel.add(new CrearKenken(user,this,1));
+        menuPanel.repaint();
+        menuPanel.revalidate(); 
+    }//GEN-LAST:event_parItemActionPerformed
 
 
 
@@ -319,20 +381,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JMenuItem exitItemMenu;
     private javax.swing.JMenu file;
+    private javax.swing.JMenuItem generalItem;
     private javax.swing.JButton jButton_ConsultarRanking;
     private javax.swing.JButton jButton_CrearKenken;
     private javax.swing.JButton jButton_GestorUsuari;
     private javax.swing.JButton jButton_JugarKenKen;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuItem manItem;
+    private javax.swing.JPanel menuPanel;
     private javax.swing.JMenu options;
     private javax.swing.JMenuItem parItem;
+    private javax.swing.JMenuItem personalItem;
+    private javax.swing.JMenuItem randomItem;
+    private javax.swing.JMenuItem resumeItem;
+    private javax.swing.JMenuItem selectItem;
     private javax.swing.JMenu submenuCreateKenKen;
     private javax.swing.JMenu submenuPlayKenKen;
     private javax.swing.JMenu submenuRanking;
+    private javax.swing.JMenuItem typeRanking;
     private javax.swing.JMenuItem userMngrItem;
     private capaPresentacio.WelcomeToKenken welcomeToKenken1;
     // End of variables declaration//GEN-END:variables

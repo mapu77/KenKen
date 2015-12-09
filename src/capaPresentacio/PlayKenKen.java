@@ -5,10 +5,8 @@
  */
 package capaPresentacio;
 
-import capaDomini.Algoritmes.KenKenGenerator;
 import capaDomini.Dificultat.Dificultat;
 import capaDomini.Utils.CtrlPartida;
-import capaDomini.Utils.TaulerKenKen;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -19,7 +17,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;

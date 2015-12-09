@@ -80,7 +80,6 @@ public class Rankings extends javax.swing.JPanel {
         dificultat1 = new javax.swing.JComboBox<>();
         entrades1 = new javax.swing.JComboBox<>();
         select_entries1 = new javax.swing.JLabel();
-        consult2 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -152,7 +151,7 @@ public class Rankings extends javax.swing.JPanel {
 
         tabMenu2.addTab("General Ranking", generalR);
 
-        user_label.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        user_label.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         user_label.setText("Username");
 
         usernameField.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +324,7 @@ public class Rankings extends javax.swing.JPanel {
                 .addGroup(PersonalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ninetime))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabMenu2.addTab("Personal Ranking", PersonalR);
@@ -353,7 +352,7 @@ public class Rankings extends javax.swing.JPanel {
             tableRes.getColumnModel().getColumn(3).setPreferredWidth(10);
         }
 
-        select_diff1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        select_diff1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         select_diff1.setText("Select difficulty");
 
         dificultat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "3x3", "4x4", "5x5", "6x6", "7x7", "8x8", "9x9" }));
@@ -382,53 +381,39 @@ public class Rankings extends javax.swing.JPanel {
             }
         });
 
-        select_entries1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        select_entries1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         select_entries1.setText("Select number of entries");
-
-        consult2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        consult2.setText("Consult");
-        consult2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consult2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(45, 45, 45)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(consult2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addComponent(select_diff1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dificultat1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(select_entries1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(entrades1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(entrades1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(select_diff1)
                     .addComponent(select_entries1)
+                    .addComponent(entrades1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dificultat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(entrades1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(consult2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                    .addComponent(select_diff1))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         tabMenu2.addTab("Ranking by Type", jPanel2);
@@ -500,107 +485,20 @@ public class Rankings extends javax.swing.JPanel {
 
     private void dificultat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificultat1ActionPerformed
         // TODO add your handling code here:
+        obtenirR();
     }//GEN-LAST:event_dificultat1ActionPerformed
 
     private void entrades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrades1ActionPerformed
         // TODO add your handling code here:
+        obtenirR();
     }//GEN-LAST:event_entrades1ActionPerformed
 
-    private void consult2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consult2ActionPerformed
-        // TODO add your handling code here:
-        String entr = entrades1.getItemAt(entrades1.getSelectedIndex());
-        String dif = dificultat1.getItemAt(dificultat1.getSelectedIndex());
-        DecimalFormat dec = new DecimalFormat("0.0000");
-        if (!entr.equals("-") && !dif.equals("-")) {
-            String [] cols = {"Position","User","Time","KenKen ID"};
-            DefaultTableModel table = new DefaultTableModel(null,cols);
-            for (int i = 1; i <= Integer.parseInt(entr); i++) {
-                String user = CP.obtenirUserRT(dif, Integer.parseInt(entr), (i-1));
-                String time = dec.format(CP.obtenirTimeRT(dif, Integer.parseInt(entr), (i-1)));
-                String id = CP.obtenirIdRT(dif, Integer.parseInt(entr), (i-1));
-                if (user ==null) {
-                    String [] row = {Integer.toString(i)+".-",user,null,id};
-                    table.addRow(row);
-                }
-                else {
-                    String [] rowwt = {Integer.toString(i)+".-",user,time+" sec",id};
-                    table.addRow(rowwt);
-                }
-                
-            }
-            tableRes.setModel(table);
-            TableColumn columna = tableRes.getColumn("Position");
-            columna.setPreferredWidth(10);
-            columna = tableRes.getColumn("KenKen ID");
-            columna.setPreferredWidth(10);
-            tableRes.setRowHeight(25);
-        }
-    }//GEN-LAST:event_consult2ActionPerformed
-
     private void entrades1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_entrades1KeyPressed
-        // TODO add your handling code here:
-         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            String entr = entrades1.getItemAt(entrades1.getSelectedIndex());
-            String dif = dificultat1.getItemAt(dificultat1.getSelectedIndex());
-            DecimalFormat dec = new DecimalFormat("0.0000");
-            if (!entr.equals("-") && !dif.equals("-")) {
-                String [] cols = {"Position","User","Time","KenKen ID"};
-                DefaultTableModel table = new DefaultTableModel(null,cols);
-                for (int i = 1; i <= Integer.parseInt(entr); i++) {
-                    String user = CP.obtenirUserRT(dif, Integer.parseInt(entr), (i-1));
-                    String time = dec.format(CP.obtenirTimeRT(dif, Integer.parseInt(entr), (i-1)));
-                    String id = CP.obtenirIdRT(dif, Integer.parseInt(entr), (i-1));
-                    if (user ==null) {
-                        String [] row = {Integer.toString(i)+".-",user,null,id};
-                        table.addRow(row);
-                    }
-                    else {
-                        String [] rowwt = {Integer.toString(i)+".-",user,time+" sec",id};
-                        table.addRow(rowwt);
-                    }
 
-                }
-                tableRes.setModel(table);
-                TableColumn columna = tableRes.getColumn("Position");
-                columna.setPreferredWidth(10);
-                columna = tableRes.getColumn("KenKen ID");
-                columna.setPreferredWidth(10);
-                tableRes.setRowHeight(25);
-            }
-        }
     }//GEN-LAST:event_entrades1KeyPressed
 
     private void dificultat1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dificultat1KeyPressed
-        // TODO add your handling code here:
-         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            String entr = entrades1.getItemAt(entrades1.getSelectedIndex());
-            String dif = dificultat1.getItemAt(dificultat1.getSelectedIndex());
-            DecimalFormat dec = new DecimalFormat("0.0000");
-            if (!entr.equals("-") && !dif.equals("-")) {
-                String [] cols = {"Position","User","Time","KenKen ID"};
-                DefaultTableModel table = new DefaultTableModel(null,cols);
-                for (int i = 1; i <= Integer.parseInt(entr); i++) {
-                    String user = CP.obtenirUserRT(dif, Integer.parseInt(entr), (i-1));
-                    String time = dec.format(CP.obtenirTimeRT(dif, Integer.parseInt(entr), (i-1)));
-                    String id = CP.obtenirIdRT(dif, Integer.parseInt(entr), (i-1));
-                    if (user ==null) {
-                        String [] row = {Integer.toString(i)+".-",user,null,id};
-                        table.addRow(row);
-                    }
-                    else {
-                        String [] rowwt = {Integer.toString(i)+".-",user,time+" sec",id};
-                        table.addRow(rowwt);
-                    }
 
-                }
-                tableRes.setModel(table);
-                TableColumn columna = tableRes.getColumn("Position");
-                columna.setPreferredWidth(10);
-                columna = tableRes.getColumn("KenKen ID");
-                columna.setPreferredWidth(10);
-                tableRes.setRowHeight(25);
-            }
-        }
     }//GEN-LAST:event_dificultat1KeyPressed
 
     private void obtenirAll (String user) {
@@ -627,12 +525,45 @@ public class Rankings extends javax.swing.JPanel {
         eighttime.setText("-");
         ninetime.setText("-");
     }
+    
+    private void obtenirR () {
+        String entr = entrades1.getItemAt(entrades1.getSelectedIndex());
+        String dif = dificultat1.getItemAt(dificultat1.getSelectedIndex());
+        DecimalFormat dec = new DecimalFormat("0.0000");
+        String [] cols = {"Position","User","Time","KenKen ID"};
+        DefaultTableModel table = new DefaultTableModel(null,cols) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        if (!entr.equals("-") && !dif.equals("-")) {
+            for (int i = 1; i <= Integer.parseInt(entr); i++) {
+                String user = CP.obtenirUserRT(dif, Integer.parseInt(entr), (i-1));
+                String time = dec.format(CP.obtenirTimeRT(dif, Integer.parseInt(entr), (i-1)));
+                String id = CP.obtenirIdRT(dif, Integer.parseInt(entr), (i-1));
+                if (user ==null) {
+                    String [] row = {Integer.toString(i)+".-",user,null,id};
+                    table.addRow(row);
+                }
+                else {
+                    String [] rowwt = {Integer.toString(i)+".-",user,time+" sec",id};
+                    table.addRow(rowwt);
+                }
+            }
+        }
+        tableRes.setModel(table);
+        TableColumn columna = tableRes.getColumn("Position");
+        columna.setPreferredWidth(10);
+        columna = tableRes.getColumn("KenKen ID");
+        columna.setPreferredWidth(10);
+        tableRes.setRowHeight(27);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PersonalR;
     private javax.swing.JLabel avgpistes;
     private javax.swing.JLabel avgpistesLabel;
-    private javax.swing.JButton consult2;
     private javax.swing.JComboBox<String> dificultat1;
     private javax.swing.JLabel eightLabel;
     private javax.swing.JLabel eighttime;

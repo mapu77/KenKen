@@ -308,7 +308,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 "Do you want to logout?",
                 "Confirmation Message",
                 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
-                null,opciones,"Acept");
+                null,opciones,opciones[0]);
         if (eleccion == JOptionPane.YES_OPTION) {
             System.out.println("Tancant pantalla principal");
             PantallaInici P = new PantallaInici(CP);
@@ -326,7 +326,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 "Do you want to logout?",
                 "Confirmation Message",
                 JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
-                null,opciones,"Acept");
+                null,opciones,opciones[0]);
         if (eleccion == JOptionPane.YES_OPTION) {
             System.out.println("Tancant pantalla principal");
             PantallaInici P = new PantallaInici(CP);

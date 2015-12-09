@@ -16,20 +16,9 @@ public class Partida {
 	private TaulerKenKen K;
 	private static Scanner sn;
 	
+        /* Constructor partida partida guardada */
 	public Partida() {
 		
-	}
-	
-	/* Constructor partida partida guardada */
-	public Partida(String u) {
-		CJ = new CtrlJoc();
-		this.usuari = u;
-		Partida p = CJ.loadPartidaGuardada(u);
-		this.idJoc = p.getIdJoc();
-		this.D = p.getD();
-		this.pistes = p.getPistes();
-		this.time = p.getTime();
-		this.K = p.getK();
 	}
 	
 	/* Creador partida amb KenKen aleatori */

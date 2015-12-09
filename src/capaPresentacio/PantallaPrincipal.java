@@ -75,7 +75,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setTitle("KenKen");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -94,7 +93,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.setBounds(190, 34, 600, 496);
 
         jButton_GestorUsuari.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton_GestorUsuari.setText("User Manager");
+        jButton_GestorUsuari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UserManagerButton.png"))); // NOI18N
+        jButton_GestorUsuari.setText("<html>User <br> \nSettings\n</html>");
         jButton_GestorUsuari.setToolTipText("");
         jButton_GestorUsuari.setMaximumSize(new java.awt.Dimension(164, 110));
         jButton_GestorUsuari.setMinimumSize(new java.awt.Dimension(164, 110));
@@ -108,7 +108,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButton_GestorUsuari.setBounds(14, 34, 166, 110);
 
         jButton_CrearKenken.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton_CrearKenken.setText("Create KenKen");
+        jButton_CrearKenken.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/CreateButton1.png"))); // NOI18N
+        jButton_CrearKenken.setText("<html>Create<br>\n KenKen\n</html>");
         jButton_CrearKenken.setMaximumSize(new java.awt.Dimension(164, 110));
         jButton_CrearKenken.setMinimumSize(new java.awt.Dimension(164, 110));
         jButton_CrearKenken.setPreferredSize(new java.awt.Dimension(164, 110));
@@ -121,7 +122,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButton_CrearKenken.setBounds(14, 162, 166, 108);
 
         jButton_JugarKenKen.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton_JugarKenKen.setText("Play KenKen");
+        jButton_JugarKenKen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/playButton1.png"))); // NOI18N
+        jButton_JugarKenKen.setText("<html>Play<br>\nKenKen\n</html>");
         jButton_JugarKenKen.setMaximumSize(new java.awt.Dimension(164, 110));
         jButton_JugarKenKen.setMinimumSize(new java.awt.Dimension(164, 110));
         jButton_JugarKenKen.setPreferredSize(new java.awt.Dimension(164, 110));
@@ -134,6 +136,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jButton_JugarKenKen.setBounds(14, 294, 166, 109);
 
         jButton_ConsultarRanking.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton_ConsultarRanking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RankingButton1.png"))); // NOI18N
         jButton_ConsultarRanking.setText("Ranking");
         jButton_ConsultarRanking.setMaximumSize(new java.awt.Dimension(164, 110));
         jButton_ConsultarRanking.setMinimumSize(new java.awt.Dimension(164, 110));
@@ -285,7 +288,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.repaint();
         menuPanel.revalidate();
         //afegint JPanel
-        menuPanel.add(new JugarKenken(user,this.CP,this));
+        menuPanel.add(new JugarKenken(user,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed

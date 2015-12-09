@@ -131,7 +131,7 @@ public class JugarKenken extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new KenkenBBDD(user,parent));
+        add(new KenkenBBDD(user,parent,CP));
         repaint();
         revalidate();
     }//GEN-LAST:event_Boto_PartidaBDActionPerformed

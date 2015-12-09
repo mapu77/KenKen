@@ -44,10 +44,10 @@ public class PlayKenKen extends javax.swing.JFrame {
     ArrayList<ArrayList<Integer> > mat;
     static public ImageIcon imageResume;
     static public ImageIcon imagePause;
+    private boolean notpaused;
     
     URL resume = PlayKenKen.class.getResource("./img/ResumeButton.png");
     URL pause = PlayKenKen.class.getResource("./img/PauseButton.png");
-    Scanner sn = new Scanner(System.in);
     int N, X, Y, BZ;
     String d;
     
@@ -106,7 +106,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             else b.setBounds(ancho,k+((i-1)-j)*ancho, ancho, ancho);
             if (i%2 != 0) ++j;
             b.setVisible(true);
-            b.setFont(new Font("Comic Sants", Font.PLAIN, 30));
+            b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
             b.setText(Integer.toString(i+1));
             //___________________
             b.addActionListener(new ActionListener() {
@@ -148,8 +148,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                 b.setVerticalAlignment(SwingConstants.CENTER);
                 b.setOpaque(true);                
                 b.setBackground(Color.white);
-                b.setFont(new Font("Comic Sants", Font.PLAIN, N>6 ? 30-N : 30));
-                System.out.println(CPartida.getValor(i,j));
+                b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, N>6 ? 30-N : 30));
                 if (CPartida.getValor(i,j) != -1) {
                     b.setText(String.valueOf(CPartida.getValor(i,j)));
                 }
@@ -169,7 +168,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                     opres.setBounds(5, 0, bSize/2, bSize/2);
                     opres.setVisible(true);
                     int tamLletra = 20-N;
-                    opres.setFont(new Font("Comic Sants", Font.PLAIN, tamLletra));
+                    opres.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, tamLletra));
                 }
                 //-------
                 //____________
@@ -510,7 +509,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     }//GEN-LAST:event_PauseButtonActionPerformed
 
     private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_UndoButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

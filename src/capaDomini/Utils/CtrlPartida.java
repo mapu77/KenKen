@@ -27,8 +27,6 @@ public class CtrlPartida {
 		this.currentTime = p.getTime();
 		this.FI = false;
 		this.guardada = false;
-		CP = new CtrlPersistencia();
-		CtrlPersistencia.setSeparator(" ");
 		try {
 			Info = CtrlPersistencia.loadTable(pathPartides);
 		} catch (IOException e) {

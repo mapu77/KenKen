@@ -26,7 +26,7 @@ public class CtrlPresentacio {
     
     private void iniciaCtrls() {
         Scanner sn = new Scanner(System.in);
-        System.out.println("Iniciant controlador del domini...");
+        System.out.println("Iniciant controlador de domini...");
         CD = new CtrlDomini(sn);
     }    
     
@@ -91,5 +91,9 @@ public class CtrlPresentacio {
     
     public CtrlPartida crearPartida(String user) {
         return CD.crearPartida(user);
+    }
+    
+    public String obtenirIdJoc (String d) {
+        return CD.obtenirIdJoc(d);
     }
 }

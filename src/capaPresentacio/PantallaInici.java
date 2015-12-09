@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,7 +55,6 @@ public class PantallaInici extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         signinLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        errorLabel = new javax.swing.JLabel();
         KenKenPanel = new javax.swing.JPanel();
         kenkenLabel = new javax.swing.JLabel();
         backgroundLabel = new javax.swing.JLabel();
@@ -149,12 +149,6 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
-        errorLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        errorLabel.setMaximumSize(new java.awt.Dimension(151, 29));
-        errorLabel.setMinimumSize(new java.awt.Dimension(151, 29));
-        errorLabel.setPreferredSize(new java.awt.Dimension(151, 29));
-
         javax.swing.GroupLayout LogInPanelLayout = new javax.swing.GroupLayout(LogInPanel);
         LogInPanel.setLayout(LogInPanelLayout);
         LogInPanelLayout.setHorizontalGroup(
@@ -163,8 +157,7 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LogInPanelLayout.createSequentialGroup()
-                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(163, 163, 163)
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(usernameField)
                     .addComponent(passwordField)
@@ -187,9 +180,7 @@ public class PantallaInici extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(LogInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(loginButton)
                 .addContainerGap())
         );
 
@@ -325,9 +316,16 @@ public class PantallaInici extends javax.swing.JFrame {
             dispose();
         }
         else {
-            errorLabel.setOpaque(true);
-            errorLabel.setBackground(new Color(214,214,214,0));
-            errorLabel.setText("<html>Username or password<br>are incorrect</html>");
+            /*JOptionPane.showOptionDialog(rootPane,
+                "Do you want to logout?",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,"Acept");*/
+            
+            JOptionPane.showMessageDialog(this,
+                    "Username or password are incorrect", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -341,9 +339,7 @@ public class PantallaInici extends javax.swing.JFrame {
                 dispose();
             }
             else {
-                errorLabel.setOpaque(true);
-                errorLabel.setBackground(new Color(214,214,214,0));
-                errorLabel.setText("<html>Username or password<br>are incorrect</html>");
+                
             }
         }
     }//GEN-LAST:event_usernameFieldKeyPressed
@@ -358,9 +354,7 @@ public class PantallaInici extends javax.swing.JFrame {
                 dispose();
             }
             else {
-                errorLabel.setOpaque(true);
-                errorLabel.setBackground(new Color(214,214,214,0));
-                errorLabel.setText("<html>Username or password<br>are incorrect</html>");
+                
             }
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
@@ -374,7 +368,6 @@ public class PantallaInici extends javax.swing.JFrame {
     private javax.swing.JPanel LogInPanel;
     private javax.swing.JMenuItem aboutItemMenu;
     private javax.swing.JLabel backgroundLabel;
-    private javax.swing.JLabel errorLabel;
     private javax.swing.JMenuItem exitItemMenu;
     private javax.swing.JLabel kenkenLabel;
     private javax.swing.JButton loginButton;

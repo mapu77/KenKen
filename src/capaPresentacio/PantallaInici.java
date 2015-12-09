@@ -315,13 +315,7 @@ public class PantallaInici extends javax.swing.JFrame {
             PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
             dispose();
         }
-        else {
-            /*JOptionPane.showOptionDialog(rootPane,
-                "Do you want to logout?",
-                "Confirmation Message",
-                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
-                null,opciones,"Acept");*/
-            
+        else {         
             JOptionPane.showMessageDialog(this,
                     "Username or password are incorrect", 
                     "Error", 
@@ -339,7 +333,10 @@ public class PantallaInici extends javax.swing.JFrame {
                 dispose();
             }
             else {
-                
+                JOptionPane.showMessageDialog(this,
+                    "Username or password are incorrect", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_usernameFieldKeyPressed
@@ -354,7 +351,10 @@ public class PantallaInici extends javax.swing.JFrame {
                 dispose();
             }
             else {
-                
+                JOptionPane.showMessageDialog(this,
+                      "Username or password are incorrect", 
+                      "Error", 
+                      JOptionPane.ERROR_MESSAGE);  
             }
         }
     }//GEN-LAST:event_passwordFieldKeyPressed

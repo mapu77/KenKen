@@ -21,6 +21,7 @@ public class CrearKenken extends javax.swing.JPanel {
     private String user;
     private javax.swing.JFrame parent;
     private String dif;
+    private CtrlPresentacio CP;
     /**
      * Creates new form Crear_Kenken
      */
@@ -28,13 +29,14 @@ public class CrearKenken extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CrearKenken(String u, javax.swing.JFrame p, int index) {
+    public CrearKenken(String u, javax.swing.JFrame p, int index, CtrlPresentacio CP) {
         super();
         parent = p;
         user = u;
         dif = "-";
         initComponents();        
         tabMenu.setSelectedIndex(index);
+        this.CP = CP;
     }
 
     /**
@@ -368,20 +370,20 @@ public class CrearKenken extends javax.swing.JPanel {
 
     private void CreatePlay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlay1ActionPerformed
         // TODO add your handling code here:
-        int d;
-        if (dif.substring(0,1).equals("-")) d = 2;
-        else d = Integer.parseInt(dif.substring(0,1));
-        PlayKenKen pk = new PlayKenKen(d,user,parent);
+        String d;
+        if (dif.substring(0,1).equals("-")) d  = "2x2";
+        else d = dif.substring(0,1);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,parent);
         parent.dispose();
         setVisible(false);
     }//GEN-LAST:event_CreatePlay1ActionPerformed
 
     private void CreatePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayActionPerformed
         // TODO add your handling code here:
-        int d;
-        if (dif.substring(0,1).equals("-")) d = 2;
-        else d = Integer.parseInt(dif.substring(0,1));
-        PlayKenKen pk = new PlayKenKen(d,user,parent);
+        String d;
+        if (dif.substring(0,1).equals("-")) d = "2x2";
+        else d = dif.substring(0,1);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,parent);
         parent.dispose();
         setVisible(false);
     }//GEN-LAST:event_CreatePlayActionPerformed

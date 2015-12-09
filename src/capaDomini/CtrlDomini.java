@@ -119,9 +119,22 @@ public class CtrlDomini {
         CtrlPartida CPart = new CtrlPartida(P);
         return CPart;
     }
+    
     public CtrlPartida crearPartida(String u, String d) {
         Partida P = new Partida(u,d);
         CtrlPartida CPart = new CtrlPartida(P);
         return CPart;
     }
+    /* ---------------------------------------------------------------------- */
+
+    
+    /* Mètodes KenKen BD */
+    
+    public String obtenirIdJoc (String d) {
+        String s = CJ.mostrarIdTaulers(d);
+        return s;
+    }
+    
+    /* ---------------------------------------------------------------------- */
+
 }

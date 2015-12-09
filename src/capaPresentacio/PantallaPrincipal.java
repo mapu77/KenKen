@@ -276,7 +276,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.repaint();
         menuPanel.revalidate();
         //afegint JPanel
-        menuPanel.add(new CrearKenken(user,this, 0));
+        menuPanel.add(new CrearKenken(user,this, 0,CP));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_CrearKenkenActionPerformed
@@ -288,7 +288,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.repaint();
         menuPanel.revalidate();
         //afegint JPanel
-        menuPanel.add(new JugarKenken(user,this));
+        menuPanel.add(new JugarKenken(user,CP,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed
@@ -344,7 +344,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new CrearKenken(user,this,0));
+        menuPanel.add(new CrearKenken(user,this,0,CP));
         menuPanel.repaint();
         menuPanel.revalidate();        
     }//GEN-LAST:event_manItemActionPerformed
@@ -372,7 +372,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new CrearKenken(user,this,1));
+        menuPanel.add(new CrearKenken(user,this,1,CP));
         menuPanel.repaint();
         menuPanel.revalidate(); 
     }//GEN-LAST:event_parItemActionPerformed

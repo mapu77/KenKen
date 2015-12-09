@@ -125,6 +125,13 @@ public class CtrlDomini {
         CtrlPartida CPart = new CtrlPartida(P);
         return CPart;
     }
+    
+    public CtrlPartida crearPartida(String u, String d, String id) {
+        Partida P = new Partida(u,d,id);
+        CtrlPartida CPart = new CtrlPartida(P);
+        return CPart;
+    }
+    
     /* ---------------------------------------------------------------------- */
 
     

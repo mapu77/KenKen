@@ -88,6 +88,10 @@ public class CtrlPresentacio {
     public CtrlPartida crearPartida(String user, String d) {
         return CD.crearPartida(user,d);
     }
+     
+    public CtrlPartida crearPartida(String user, String d, String id) {
+        return CD.crearPartida(user,d, id);
+    }    
     
     public CtrlPartida crearPartida(String user) {
         return CD.crearPartida(user);

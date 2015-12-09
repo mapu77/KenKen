@@ -146,18 +146,17 @@ public class KenkenBBDD extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        // TODO add your handling code here:
-        /*int d;
-        if (dif.substring(0,1).equals("-")) d = 2;
-        else d = Integer.parseInt(dif.substring(0,1));
-        PlayKenKen pk = new PlayKenKen(d,user,parent);
-        parent.dispose();*/
+        String d = String.valueOf(BoxDiff.getSelectedItem());
+        String id = idList.getSelectedValue();
+        id = id.substring(id.length()-1);
+        PlayKenKen pk = new PlayKenKen(d,user,CP, id,parent);
+        parent.dispose();
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void BoxDiffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDiffActionPerformed
         // TODO add your handling code here:
         idList.removeAll();
-        String dif = BoxDiff.getItemAt(BoxDiff.getSelectedIndex());
+        String dif = String.valueOf(BoxDiff.getSelectedItem());
         DefaultListModel list = new DefaultListModel();
         if (!dif.equals("-")) {
             String s = CP.obtenirIdJoc(dif);

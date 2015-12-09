@@ -71,6 +71,16 @@ public class PlayKenKen extends javax.swing.JFrame {
         init();
     }
     
+    public PlayKenKen(String d, String user, CtrlPresentacio CP, String id, javax.swing.JFrame pare) {
+        this.d = d;
+        this.N = Dificultat.toInt(d);
+        this.CP = CP;
+        parent = pare;
+        this.user = user;
+        CPartida = CP.crearPartida(user,d, id);
+        init();
+    }
+    
     private void init() {
         t=new Timer(1000, new startChrono());
         initComponents();

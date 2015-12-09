@@ -14,6 +14,8 @@ import capaDomini.Ranking.RankingPerTipus;
 import capaDomini.Ranking.RankingPersonal;
 import capaPersistencia.CtrlPersistencia;
 import capaDomini.Ranking.Tupla;
+import capaDomini.Utils.CtrlPartida;
+import capaDomini.Utils.Partida;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -107,4 +109,18 @@ public class CtrlDomini {
         }
     }
     /* ---------------------------------------------------------------------- */
+    
+    /* Mètodes per Partida */
+    public CtrlPartida crearPartida(String u) {
+        Partida P = new Partida(u);
+        CtrlPartida CPart = new CtrlPartida(P);
+        return CPart;
+    }
+    public CtrlPartida crearPartida(String u, String d) {
+        System.out.println("Ctrl Domini: Creo Partida");
+        Partida P = new Partida(u,d);
+        System.out.println("Ctrl Domini: Creo CtrlPartida");
+        CtrlPartida CPart = new CtrlPartida(P);
+        return CPart;
+    }
 }

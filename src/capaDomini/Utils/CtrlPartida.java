@@ -6,6 +6,7 @@ import java.util.*;
 
 import capaDomini.Algoritmes.KenKenCheck;
 import capaDomini.Algoritmes.KenKenUserSolver;
+import capaDomini.Dificultat.Dificultat;
 import capaPersistencia.*;
 
 public class CtrlPartida {
@@ -21,6 +22,20 @@ public class CtrlPartida {
 	private ArrayList<ArrayList<String>> Info;
 	Scanner s;
 	
+        public CtrlPartida(Partida p) {
+		this.P = p;
+		this.currentTime = p.getTime();
+		this.FI = false;
+		this.guardada = false;
+		CP = new CtrlPersistencia();
+		CtrlPersistencia.setSeparator(" ");
+		try {
+			Info = CtrlPersistencia.loadTable(pathPartides);
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+        
 	public CtrlPartida(Partida p, Scanner scan) {
 		this.P = p;
 		this.currentTime = p.getTime();
@@ -212,4 +227,28 @@ public class CtrlPartida {
 		currentTime += System.nanoTime() - initialTime;
 		return (double)currentTime/Math.pow(10,9);
 	}
+        /* ------------------------------------------------------------------ */
+        public int getNRegio() {
+            return P.getK().getNRegio();
+        }
+        
+        public int nRegio(int i, int j) {
+            return P.getK().nRegio(i, j);
+        }
+        
+        public int getRegioIJResult(int i, int j) {
+            return P.getK().getRegioIJ(i, j).getResult();
+        }
+        
+        public String getRegioIJOperation(int i, int j) {
+            return P.getK().getRegioIJ(i, j).getOperation();
+        }
+        
+        public String getStringDificultat() {
+            return P.getD();
+        }
+        
+        public int getIntDificultat() {
+            return Dificultat.toInt(P.getD());
+        }
 }

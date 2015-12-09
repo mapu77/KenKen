@@ -253,4 +253,9 @@ public class CtrlPartida {
         public int getValor(int i, int j) {
             return P.getK().getNumero(i, j);
         }
+        
+        public void setValor(int i, int j, int val) {
+            System.out.println(i + " " + j + " " + val);
+            P.getK().setNumero(i, j, val);
+        }
 }

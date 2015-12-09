@@ -122,6 +122,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                     if (X != -1) {
                         JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
                         j.setText(b.getText());
+                        CPartida.setValor(X%N,Y%N,Integer.parseInt(b.getText()));
                     }
                 }
             });

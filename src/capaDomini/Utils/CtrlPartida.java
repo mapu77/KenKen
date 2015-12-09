@@ -251,4 +251,8 @@ public class CtrlPartida {
         public int getIntDificultat() {
             return Dificultat.toInt(P.getD());
         }
+        
+        public int getValor(int i, int j) {
+            return P.getK().getNumero(i, j);
+        }
 }

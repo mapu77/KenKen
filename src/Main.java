@@ -9,7 +9,7 @@ import capaPresentacio.CtrlPresentacio;
 
 /**
  *
- * @author Oriolcapo
+ * @author Oriol Capo, Eduard Maura, Jordi Pont i Jan Teruel
  */
 public class Main {
     private static CtrlPresentacio CP;

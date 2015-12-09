@@ -5,6 +5,9 @@
  */
 package capaPresentacio;
 
+import capaDomini.Utils.CtrlJoc;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Oriolcapo
@@ -14,6 +17,7 @@ public class JugarKenken extends javax.swing.JPanel {
     private String user;
     private javax.swing.JFrame parent;
     private CtrlPresentacio CP;
+    private CtrlJoc CJ;
     /**
      * Creates new form JugarKenken2
      */
@@ -22,6 +26,7 @@ public class JugarKenken extends javax.swing.JPanel {
         parent = pare;
         user = u;
         this.CP = CP;
+        CJ = new CtrlJoc();
     }
 
     /**
@@ -108,9 +113,16 @@ public class JugarKenken extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boto_PartidaGuardadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaGuardadaActionPerformed
-        // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(user, CP, parent);
-        parent.dispose();
+        if (CJ.existeixPartidaGuardada(user)) {
+            PlayKenKen pk = new PlayKenKen(user,CP,parent);
+            parent.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(this,
+                    "You haven't saved any game", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Boto_PartidaGuardadaActionPerformed
 
     private void Boto_PartidaBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaBDActionPerformed

@@ -56,9 +56,9 @@ public class PlayKenKen extends javax.swing.JFrame {
         this.user = user;
         this.CP = CP;
         CPartida = CP.crearPartida(user);
-        init();
         this.d = CPartida.getStringDificultat();
         this.N = CPartida.getIntDificultat();
+        init();
     }
     
     public PlayKenKen(String d, String user, CtrlPresentacio CP, javax.swing.JFrame pare) {
@@ -67,7 +67,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         this.CP = CP;
         parent = pare;
         this.user = user;
-        System.out.println("Hola?");
         CPartida = CP.crearPartida(user,d);
         init();
     }
@@ -150,7 +149,13 @@ public class PlayKenKen extends javax.swing.JFrame {
                 b.setOpaque(true);                
                 b.setBackground(Color.white);
                 b.setFont(new Font("Comic Sants", Font.PLAIN, N>6 ? 30-N : 30));
-                b.setText("");
+                System.out.println(CPartida.getValor(i,j));
+                if (CPartida.getValor(i,j) != -1) {
+                    b.setText(String.valueOf(CPartida.getValor(i,j)));
+                }
+                else {
+                    b.setText("");
+                }
                 //-------
                 if (! Regions.get(CPartida.nRegio(i, j))) {
                     Regions.set(CPartida.nRegio(i,j),true);

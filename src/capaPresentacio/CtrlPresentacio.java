@@ -84,5 +84,13 @@ public class CtrlPresentacio {
         if (CD.obtenirRxT(d,e,i) != null) return CD.obtenirRxT(d,e,i).getId();
         return null;
     }
+
+    public CtrlPartida crearPartida(String user, String d) {
+        System.out.println("CtrlPresentacio: Creo Partida");
+        return CD.crearPartida(user,d);
+    }
     
+    public CtrlPartida crearPartida(String user) {
+        return CD.crearPartida(user);
+    }
 }

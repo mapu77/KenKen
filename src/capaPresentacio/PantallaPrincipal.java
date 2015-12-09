@@ -285,7 +285,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.repaint();
         menuPanel.revalidate();
         //afegint JPanel
-        menuPanel.add(new JugarKenken(user,this));
+        menuPanel.add(new JugarKenken(user,this.CP,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed

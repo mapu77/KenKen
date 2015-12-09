@@ -13,13 +13,15 @@ public class JugarKenken extends javax.swing.JPanel {
 
     private String user;
     private javax.swing.JFrame parent;
+    private CtrlPresentacio CP;
     /**
      * Creates new form JugarKenken2
      */
-    public JugarKenken(String u, javax.swing.JFrame pare) {
+    public JugarKenken(String u, CtrlPresentacio CP, javax.swing.JFrame pare) {
         initComponents();
         parent = pare;
         user = u;
+        this.CP = CP;
     }
 
     /**
@@ -107,7 +109,7 @@ public class JugarKenken extends javax.swing.JPanel {
 
     private void Boto_PartidaGuardadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaGuardadaActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen(5,user,parent);
+        PlayKenKen pk = new PlayKenKen(user, CP, parent);
         parent.dispose();
     }//GEN-LAST:event_Boto_PartidaGuardadaActionPerformed
 
@@ -124,7 +126,7 @@ public class JugarKenken extends javax.swing.JPanel {
 
     private void Boto_PartidaRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaRandomActionPerformed
         // TODO add your handling code here:
-        JugarKenKenRandom pk = new JugarKenKenRandom(user,parent);
+        SelectSize pk = new SelectSize(user,CP,parent);
         pk.setVisible(true);
     }//GEN-LAST:event_Boto_PartidaRandomActionPerformed
 

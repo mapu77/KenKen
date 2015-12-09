@@ -6,6 +6,8 @@
 package capaPresentacio;
 
 import capaDomini.Algoritmes.KenKenGenerator;
+import capaDomini.Dificultat.Dificultat;
+import capaDomini.Utils.CtrlPartida;
 import capaDomini.Utils.TaulerKenKen;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -29,36 +31,52 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Oriolcapo
+ * @author Oriol Capo, Eduard Maura, Jordi Pont i Jan Teruel
  */
 public class PlayKenKen extends javax.swing.JFrame {
     
     private static int h=0, m=0, s=0;
     private Timer t;
-    private TaulerKenKen K;
     private CtrlPresentacio CP;
+    private CtrlPartida CPartida;
     private String user;
     private javax.swing.JFrame parent;
-    ArrayList<ArrayList<Integer> > mat;static public ImageIcon imageResume;
+    ArrayList<ArrayList<Integer> > mat;
+    static public ImageIcon imageResume;
     static public ImageIcon imagePause;
     
     URL resume = PlayKenKen.class.getResource("./img/ResumeButton.png");
     URL pause = PlayKenKen.class.getResource("./img/PauseButton.png");
     Scanner sn = new Scanner(System.in);
     int N, X, Y, BZ;
+    String d;
     
+    public PlayKenKen(String user, CtrlPresentacio CP, javax.swing.JFrame pare) {
+        this.parent = pare;
+        this.user = user;
+        this.CP = CP;
+        CPartida = CP.crearPartida(user);
+        init();
+        this.d = CPartida.getStringDificultat();
+        this.N = CPartida.getIntDificultat();
+    }
     
-    public PlayKenKen(int N, String user, javax.swing.JFrame pare) {
-        this.N = N;
+    public PlayKenKen(String d, String user, CtrlPresentacio CP, javax.swing.JFrame pare) {
+        this.d = d;
+        this.N = Dificultat.toInt(d);
+        this.CP = CP;
         parent = pare;
         this.user = user;
+        System.out.println("Hola?");
+        CPartida = CP.crearPartida(user,d);
+        init();
+    }
+    
+    private void init() {
         t=new Timer(1000, new startChrono());
         initComponents();
         setVisible(true);
-        
-        KenKenGenerator KG = new KenKenGenerator(sn);
-        K = KG.generateRandomly(N);
-        
+       
         InicialitzaTauler();
         InicialitzaBotons();
         X = -1;
@@ -107,13 +125,13 @@ public class PlayKenKen extends javax.swing.JFrame {
     
     private void InicialitzaTauler() {
         ArrayList<Boolean> Regions = new ArrayList<Boolean>();
-        for (int i=0; i<K.getNRegio();++i) Regions.add(false);
+        for (int i=0; i<CPartida.getNRegio();++i) Regions.add(false);
         
         mat = new ArrayList<ArrayList<Integer> >();
         for (int i=0; i<N; i++) {
             mat.add(new ArrayList<Integer>());
             for (int j=0; j<N; ++j) {
-                    mat.get(i).add(K.nRegio(i, j));
+                    mat.get(i).add(CPartida.nRegio(i,j));
             }
         }  
         int alt = Tauler.getHeight();
@@ -134,10 +152,10 @@ public class PlayKenKen extends javax.swing.JFrame {
                 b.setFont(new Font("Comic Sants", Font.PLAIN, N>6 ? 30-N : 30));
                 b.setText("");
                 //-------
-                if (! Regions.get(K.nRegio(i, j))) {
-                    Regions.set(K.nRegio(i, j),true);
-                    String a = Integer.toString(K.getRegioIJ(i, j).getResult());
-                    String a1 = K.getRegioIJ(i, j).getOperation();
+                if (! Regions.get(CPartida.nRegio(i, j))) {
+                    Regions.set(CPartida.nRegio(i,j),true);
+                    String a = Integer.toString(CPartida.getRegioIJResult(i,j));
+                    String a1 = CPartida.getRegioIJOperation(i, j);
                     if (a1.equals("*")) a1 = "x";
                     else if (a1.equals("/")) a1 = "÷";
                     a += " " + a1;

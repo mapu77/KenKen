@@ -86,7 +86,6 @@ public class CtrlPresentacio {
     }
 
     public CtrlPartida crearPartida(String user, String d) {
-        System.out.println("CtrlPresentacio: Creo Partida");
         return CD.crearPartida(user,d);
     }
     

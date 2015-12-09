@@ -14,6 +14,7 @@ import capaDomini.Ranking.RankingPerTipus;
 import capaDomini.Ranking.RankingPersonal;
 import capaPersistencia.CtrlPersistencia;
 import capaDomini.Ranking.Tupla;
+import capaDomini.Utils.CtrlJoc;
 import capaDomini.Utils.CtrlPartida;
 import capaDomini.Utils.Partida;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class CtrlDomini {
     private static Scanner sn;
     private CtrlPersistencia CP;
     private CtrlUser CU;
+    private CtrlJoc CJ;
     
     /* Mètode Constructor */
     public CtrlDomini(Scanner sn) {
@@ -36,6 +38,7 @@ public class CtrlDomini {
         CP.setSeparator(" ");
         System.out.println("Iniciant controlador de persistència...");
         CU = new CtrlUser();
+        CJ = new CtrlJoc();
     }
     /* Mètodes per Gestió d'Usuari */
     public boolean comprovarUsuari(String u, String p) {
@@ -112,14 +115,12 @@ public class CtrlDomini {
     
     /* Mètodes per Partida */
     public CtrlPartida crearPartida(String u) {
-        Partida P = new Partida(u);
+        Partida P = CJ.loadPartidaGuardada(u);
         CtrlPartida CPart = new CtrlPartida(P);
         return CPart;
     }
     public CtrlPartida crearPartida(String u, String d) {
-        System.out.println("Ctrl Domini: Creo Partida");
         Partida P = new Partida(u,d);
-        System.out.println("Ctrl Domini: Creo CtrlPartida");
         CtrlPartida CPart = new CtrlPartida(P);
         return CPart;
     }

@@ -5,7 +5,6 @@
  */
 package capaPresentacio;
 
-import capaDomini.CtrlDomini;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -150,12 +149,10 @@ public class PantallaInici extends javax.swing.JFrame {
             }
         });
 
-        errorLabel.setBackground(new Color(214,214,214,0));
         errorLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
         errorLabel.setMaximumSize(new java.awt.Dimension(151, 29));
         errorLabel.setMinimumSize(new java.awt.Dimension(151, 29));
-        errorLabel.setOpaque(true);
         errorLabel.setPreferredSize(new java.awt.Dimension(151, 29));
 
         javax.swing.GroupLayout LogInPanelLayout = new javax.swing.GroupLayout(LogInPanel);
@@ -328,12 +325,13 @@ public class PantallaInici extends javax.swing.JFrame {
             dispose();
         }
         else {
+            errorLabel.setOpaque(true);
+            errorLabel.setBackground(new Color(214,214,214,0));
             errorLabel.setText("<html>Username or password<br>are incorrect</html>");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String nom = usernameField.getText();
             String pwd = String.valueOf(passwordField.getPassword());
@@ -343,13 +341,14 @@ public class PantallaInici extends javax.swing.JFrame {
                 dispose();
             }
             else {
+                errorLabel.setOpaque(true);
+                errorLabel.setBackground(new Color(214,214,214,0));
                 errorLabel.setText("<html>Username or password<br>are incorrect</html>");
             }
         }
     }//GEN-LAST:event_usernameFieldKeyPressed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String nom = usernameField.getText();
             String pwd = String.valueOf(passwordField.getPassword());
@@ -359,6 +358,8 @@ public class PantallaInici extends javax.swing.JFrame {
                 dispose();
             }
             else {
+                errorLabel.setOpaque(true);
+                errorLabel.setBackground(new Color(214,214,214,0));
                 errorLabel.setText("<html>Username or password<br>are incorrect</html>");
             }
         }

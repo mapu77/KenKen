@@ -50,9 +50,9 @@ public class GestioUsuari extends javax.swing.JPanel {
         ImgSettings = new javax.swing.JLabel();
         errorPasswordLabel = new javax.swing.JLabel();
         repeatErrorLabel = new javax.swing.JLabel();
-        PswChangedLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JTextField();
         repeatField = new javax.swing.JTextField();
+        PswChangedLabel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 500));
         setLayout(new java.awt.CardLayout());
@@ -104,9 +104,9 @@ public class GestioUsuari extends javax.swing.JPanel {
 
         repeatErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        PswChangedLabel.setForeground(new java.awt.Color(0, 0, 204));
-
         passwordField.setText("Introduce your new password...");
+        passwordField.setMaximumSize(new java.awt.Dimension(566, 30));
+        passwordField.setMinimumSize(new java.awt.Dimension(566, 30));
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordFieldFocusGained(evt);
@@ -122,6 +122,8 @@ public class GestioUsuari extends javax.swing.JPanel {
         });
 
         repeatField.setText("Repeat your new password...");
+        repeatField.setMaximumSize(new java.awt.Dimension(566, 30));
+        repeatField.setMinimumSize(new java.awt.Dimension(566, 30));
         repeatField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 repeatFieldFocusGained(evt);
@@ -136,63 +138,69 @@ public class GestioUsuari extends javax.swing.JPanel {
             }
         });
 
+        PswChangedLabel.setForeground(new java.awt.Color(0, 204, 0));
+
         javax.swing.GroupLayout UserSettingsPanelLayout = new javax.swing.GroupLayout(UserSettingsPanel);
         UserSettingsPanel.setLayout(UserSettingsPanelLayout);
         UserSettingsPanelLayout.setHorizontalGroup(
             UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserSettingsPanelLayout.createSequentialGroup()
-                .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PasswordTitle)
-                    .addGroup(UserSettingsPanelLayout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(ImgSettings)))
-                .addGap(0, 210, Short.MAX_VALUE))
+                .addGap(203, 203, 203)
+                .addComponent(ImgSettings)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(UserSettingsPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordFieldOld, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(UserSettingsPanelLayout.createSequentialGroup()
-                        .addComponent(NewPasswordTitle)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(errorPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passwordField)
-                    .addComponent(repeatField)
-                    .addComponent(repeatErrorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserSettingsPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(SaveButton)
+                        .addGap(27, 27, 27)
+                        .addComponent(ExitButton)
+                        .addGap(32, 32, 32))
+                    .addGroup(UserSettingsPanelLayout.createSequentialGroup()
                         .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserSettingsPanelLayout.createSequentialGroup()
-                                .addComponent(SaveButton)
-                                .addGap(8, 8, 8)
-                                .addComponent(ExitButton))
-                            .addComponent(PswChangedLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(repeatField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, UserSettingsPanelLayout.createSequentialGroup()
+                                    .addComponent(NewPasswordTitle)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(repeatErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(passwordFieldOld)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, UserSettingsPanelLayout.createSequentialGroup()
+                                    .addComponent(PasswordTitle)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(errorPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(PswChangedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 7, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         UserSettingsPanelLayout.setVerticalGroup(
             UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserSettingsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PasswordTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
+                .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PasswordTitle)
+                    .addComponent(errorPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addComponent(passwordFieldOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(NewPasswordTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(NewPasswordTitle)
+                    .addComponent(repeatErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(repeatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(repeatErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PswChangedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PswChangedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(UserSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveButton)
                     .addComponent(ExitButton))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(ImgSettings)
-                .addGap(63, 63, 63))
+                .addGap(67, 67, 67))
         );
 
         add(UserSettingsPanel, "card2");
@@ -215,7 +223,7 @@ public class GestioUsuari extends javax.swing.JPanel {
         String pswDontMatch = "<html>New passwords don't match</html>";
         String pswEmpty = "<html>Insert new passwords</html>";
         String pswChanged = "<html>You have changed your password correctly</html>";
-        String pswSize = "<html>Password must have at least 5 characters</html>"; 
+        String pswSize = "<html>Password must have at least 5 characters</html>";       
         
         String ePL = errorPasswordLabel.getText();
         String rEL = repeatErrorLabel.getText ();
@@ -243,6 +251,7 @@ public class GestioUsuari extends javax.swing.JPanel {
 
         if (CP.comprovarUsuari(user, oldPsw) && newPsw.equals(newPsw2)  && newPsw.length() >= 5) {
             CP.changePassword(user,newPsw);
+            CtrlUser.modificaUsuari(user,user,newPsw);
             PswChangedLabel.setText(pswChanged);
         }
     }//GEN-LAST:event_SaveButtonActionPerformed

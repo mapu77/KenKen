@@ -9,6 +9,7 @@ import capaDomini.CtrlDomini;
 import capaDomini.Ranking.Tupla;
 import capaDomini.Utils.*;
 import capaDomini.Usuari.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -99,5 +100,9 @@ public class CtrlPresentacio {
     
     public String obtenirIdJoc (String d) {
         return CD.obtenirIdJoc(d);
+    }
+    
+    public Boolean validaKenKen (int[][] mat, ArrayList<String> ops) {
+        return true;
     }
 }

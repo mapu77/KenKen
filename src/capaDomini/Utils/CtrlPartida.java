@@ -228,6 +228,19 @@ public class CtrlPartida {
 		return (double)currentTime/Math.pow(10,9);
 	}
         /* ------------------------------------------------------------------ */
+        public void reset(){
+            for (int i = 0; i < P.getK().getAlto(); i++) {
+			for (int j = 0; j < P.getK().getAncho(); j++) {
+				if (!(P.getK().getCella(i, j).estaVacia())) {
+					P.getK().borra(i, j);
+				}
+			}
+		}
+		P.getK().PrintaKenKen();
+		//pistes_demanades = 0;
+		while (!pila.empty()) pila.pop();
+        }
+        
         public int getNRegio() {
             return P.getK().getNRegio();
         }
@@ -279,8 +292,7 @@ public class CtrlPartida {
             }
             return -1;
         }
-        
-        public int undoN() {
+         public int undoN() {
             Cella aux = pila.pop();
             if (aux.getNumero() != -1) {
                 P.getK().setNumero(aux.getX(), aux.getY(), aux.getNumero());
@@ -291,4 +303,5 @@ public class CtrlPartida {
             P.getK().PrintaKenKen();
             return aux.getNumero();
         }
+        
 }

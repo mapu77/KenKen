@@ -8,6 +8,7 @@ package capaPresentacio;
 import capaDomini.Dificultat.Dificultat;
 import capaDomini.Utils.CtrlPartida;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -361,11 +362,6 @@ public class PlayKenKen extends javax.swing.JFrame {
 
         HintButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/HintButton.png"))); // NOI18N
         HintButton.setText("HINT");
-        HintButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HintButtonActionPerformed(evt);
-            }
-        });
         getContentPane().add(HintButton);
         HintButton.setBounds(30, 120, 130, 60);
 
@@ -503,6 +499,13 @@ public class PlayKenKen extends javax.swing.JFrame {
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
         II=0;
+        CPartida.reset();
+        for (int i=0; i<N; i++){
+            for(int j=0; j<N; j++){
+              JLabel x = (JLabel) Tauler.getComponentAt(i*BZ,j*BZ);
+                        x.setText(""); 
+            }
+        }
         t.restart();
     }//GEN-LAST:event_ResetButtonActionPerformed
 
@@ -513,11 +516,23 @@ public class PlayKenKen extends javax.swing.JFrame {
             II=1;
             PauseButton.setText("CONTINUE");
             PauseButton.setIcon(imageResume);
+             for (Component c : Botons.getComponents()) {
+                    c.setEnabled(false);
+                }
+             UndoButton.setEnabled(false);
+             HintButton.setEnabled(false);
+             ResetButton.setEnabled(false);
         }else{
             t.start();
             II=0;
             PauseButton.setText("PAUSE");
             PauseButton.setIcon(imagePause);
+            for (Component c : Botons.getComponents()) {
+                    c.setEnabled(true);
+                }
+            UndoButton.setEnabled(true);
+            HintButton.setEnabled(true);
+            ResetButton.setEnabled(true);
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
 
@@ -556,10 +571,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
         dispose();
     }//GEN-LAST:event_formWindowClosing
-
-    private void HintButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HintButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HintButtonActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;

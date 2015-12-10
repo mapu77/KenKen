@@ -20,6 +20,7 @@ public class CtrlPartida {
 	private String pathPartides = "./data/Partides.txt";
 	private String pathGuardats = "./data/Saved/";
 	private ArrayList<ArrayList<String>> Info;
+        private Stack<Cella> pila;
 	Scanner s;
 	
         public CtrlPartida(Partida p) {
@@ -27,6 +28,7 @@ public class CtrlPartida {
 		this.currentTime = p.getTime();
 		this.FI = false;
 		this.guardada = false;
+                this.pila = new Stack<Cella>();
 		try {
 			Info = CtrlPersistencia.loadTable(pathPartides);
 		} catch (IOException e) {
@@ -255,7 +257,38 @@ public class CtrlPartida {
         }
         
         public void setValor(int i, int j, int val) {
-            System.out.println(i + " " + j + " " + val);
+            Cella c = new Cella(i,j);
+            c.setNumero(P.getK().getNumero(i, j));
+            pila.addElement(c);
             P.getK().setNumero(i, j, val);
+            P.getK().PrintaKenKen();
+        }
+        
+        public int undoX() {
+            if (!pila.empty()) {
+                Cella aux = pila.peek();
+                return aux.getX();
+            }
+            return -1;
+        }
+        
+        public int undoY() {
+            if (!pila.empty()) {
+                Cella aux = pila.peek();
+                return aux.getY();
+            }
+            return -1;
+        }
+        
+        public int undoN() {
+            Cella aux = pila.pop();
+            if (aux.getNumero() != -1) {
+                P.getK().setNumero(aux.getX(), aux.getY(), aux.getNumero());
+            }
+            else { 
+                P.getK().borra(aux.getX(), aux.getY()); 
+            }
+            P.getK().PrintaKenKen();
+            return aux.getNumero();
         }
 }

@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import javax.swing.Timer;
+import sun.misc.RequestProcessor;
 
 /**
  *
@@ -42,6 +43,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     private String user;
     private javax.swing.JFrame parent;
     ArrayList<ArrayList<Integer> > mat;
+    private int cont = 0;
     private static ImageIcon imageResume;
     private static ImageIcon imagePause;
     private static ImageIcon imageErase;
@@ -110,6 +112,16 @@ public class PlayKenKen extends javax.swing.JFrame {
         init();
     }
     
+    Runnable rp = new Runnable() {
+        @Override
+        public void run() {
+            CPartida.clonarTauler();
+            CPartida.resoldrePerPista();
+            HintButton.setEnabled(true);
+        }
+    };
+    Thread th;
+    
     private void init() {
         t=new Timer(1000, new startChrono());
         initComponents();
@@ -128,6 +140,9 @@ public class PlayKenKen extends javax.swing.JFrame {
         imagePause = new javax.swing.ImageIcon(pause);
         imageErase = new javax.swing.ImageIcon(erase);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
+        th = new Thread(rp);
+        th.start();
+        HintButton.setEnabled(false);
     }
     
     private void InicialitzaBotons() {
@@ -517,11 +532,7 @@ public class PlayKenKen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void HintButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
-    }
-    
+               
     private void BotoExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoExitActionPerformed
         t.stop();
         hours.setText("00"); h=0;
@@ -561,6 +572,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                         x.setText(""); 
             }
         }
+        cont = 0;
         t.restart();
     }//GEN-LAST:event_ResetButtonActionPerformed
 
@@ -655,6 +667,25 @@ public class PlayKenKen extends javax.swing.JFrame {
             CPartida.saveState();
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private void HintButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HintButtonActionPerformed
+        // TODO add your handling code here:
+        if (cont < N-2) {
+            CPartida.getPista();
+            int x = CPartida.getPistaX();
+            int y = CPartida.getPistaY();
+            int val = CPartida.getPistaN();
+            JLabel b = (JLabel) Tauler.getComponentAt(y*BZ, x*BZ);
+            b.setText(String.valueOf(val));
+            ++cont;
+        }
+        else {
+            JOptionPane.showMessageDialog(this,
+                "You do not have more hints to use",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_HintButtonActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;

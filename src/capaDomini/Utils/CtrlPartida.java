@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import capaDomini.Algoritmes.KenKenCheck;
+import capaDomini.Algoritmes.KenKenSolver;
 import capaDomini.Algoritmes.KenKenUserSolver;
 import capaDomini.Dificultat.Dificultat;
 import capaPersistencia.*;
@@ -21,6 +22,8 @@ public class CtrlPartida {
 	private String pathGuardats = "./data/Saved/";
 	private ArrayList<ArrayList<String>> Info;
         private Stack<Cella> pila;
+        private TaulerKenKen p2;
+        private int pistaX, pistaY, pistaN;
 	Scanner s;
 	
         public CtrlPartida(Partida p) {
@@ -29,6 +32,7 @@ public class CtrlPartida {
 		this.FI = false;
 		this.guardada = false;
                 this.pila = new Stack<Cella>();
+                this.p2 = new TaulerKenKen(P.getK().getAlto());
 		try {
 			Info = CtrlPersistencia.loadTable(pathPartides);
 		} catch (IOException e) {
@@ -243,7 +247,7 @@ public class CtrlPartida {
 				}
 			}
 		}
-		P.getK().PrintaKenKen();
+		//P.getK().PrintaKenKen();
 		//pistes_demanades = 0;
 		while (!pila.empty()) pila.pop();
         }
@@ -281,7 +285,7 @@ public class CtrlPartida {
             c.setNumero(P.getK().getNumero(i, j));
             pila.addElement(c);
             P.getK().setNumero(i, j, val);
-            P.getK().PrintaKenKen();
+            //P.getK().PrintaKenKen();
         }
         
         public int undoX() {
@@ -307,7 +311,7 @@ public class CtrlPartida {
             else { 
                 P.getK().borra(aux.getX(), aux.getY()); 
             }
-            P.getK().PrintaKenKen();
+            //P.getK().PrintaKenKen();
             return aux.getNumero();
         }
         
@@ -350,5 +354,53 @@ public class CtrlPartida {
             } catch (IOException e) {
                     e.printStackTrace();
             }
+        }
+        
+        public void clonarTauler() {
+            for (int i=0; i < P.getK().getNRegio(); i++) {
+                Vector <Cella> vc = new Vector<>();
+                for (int j=0; j < P.getK().getRegio(i).getNumCeldas(); j++) {
+                        Cella c1 = P.getK().getRegio(i).getCella(j);
+                        Cella c2 = p2.getCella(c1.getX(), c1.getY());
+                        c2.setNumero(c1.getNumero());
+                        vc.add(c2);
+                }
+                RegioKenKen r = new RegioKenKen(P.getK().getRegio(i).getNumCeldas(),vc,P.getK().getRegio(i).getOperation(),
+                                P.getK().getRegio(i).getResult(),i);
+                p2.afegeixRegio(r);
+            }
+        }
+         
+        public void resoldrePerPista() {
+            if (!(p2.getNumCeldasRellenas() == p2.getNumCeldas())) {
+                KenKenSolver KS = new KenKenSolver();
+		KS.backtrackingSolver(p2);
+                //p2.PrintaSolucio();
+            }
+        }
+        
+        public void getPista() {
+            int randx = new Random().nextInt(P.getK().getAlto());
+            int randy = new Random().nextInt(P.getK().getAncho());
+            if (p2.getNumero(randx, randy) != P.getK().getNumero(randx, randy)) {
+                P.getK().setNumero(randx, randy, p2.getNumero(randx,randy));
+                pistaX = randx;
+                pistaY = randy;
+                pistaN = p2.getNumero(randx, randy);
+                System.out.println(pistaX + " " + pistaY + " " + pistaN);
+            }
+            else getPista();
+        }
+        
+        public int getPistaX() {
+            return  pistaX;
+        }
+        
+        public int getPistaY() {
+            return pistaY;
+        }
+        
+        public int getPistaN() {
+            return pistaN;
         }
 }

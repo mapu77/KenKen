@@ -5,6 +5,7 @@
  */
 package capaPresentacio;
 
+import capaDomini.Utils.CtrlJoc;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,14 +21,16 @@ public class KenkenBBDD extends javax.swing.JPanel {
     private String user;
     private javax.swing.JFrame parent;
     private CtrlPresentacio CP;
+    private CtrlJoc CJ;
     /**
      * Creates new form KenkenBBDD2
      */
-    public KenkenBBDD(String u, javax.swing.JFrame pare, CtrlPresentacio CP) {
+    public KenkenBBDD(String u, javax.swing.JFrame pare, CtrlPresentacio CP, CtrlJoc CJ) {
         initComponents();
         parent = pare;
         user = u;
         this.CP = CP;
+        this.CJ = CJ;
     }
 
     /**
@@ -149,7 +152,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
         String d = String.valueOf(BoxDiff.getSelectedItem());
         String id = idList.getSelectedValue();
         id = id.substring(id.length()-1);
-        PlayKenKen pk = new PlayKenKen(d,user,CP, id,parent);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,id,CJ,parent);
         parent.dispose();
     }//GEN-LAST:event_playButtonActionPerformed
 

@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import sun.audio.AudioPlayer;
@@ -386,18 +387,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_parItemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+      /*  // TODO add your handling code here:
        InputStream music;
        InputStream music2;
         try{
-            music=new FileInputStream(new File("src\\capaPresentacio\\sounds\\IMPERIAL_MARCH.WAV"));
+            music=new FileInputStream(new File(Paths.get("src/capaPresentacio/sounds/imperial_march.wav").toAbsolutePath().toString()));
             music2=new FileInputStream(new File("src\\capaPresentacio\\sounds\\THINKING-MUSIC-FULL-VERSION.WAV"));
             AudioStream audios=new AudioStream(music2);
             AudioPlayer.player.start(audios);
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
-        }
+        }*/
     }//GEN-LAST:event_formWindowOpened
 
 

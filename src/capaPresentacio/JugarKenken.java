@@ -114,7 +114,7 @@ public class JugarKenken extends javax.swing.JPanel {
 
     private void Boto_PartidaGuardadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaGuardadaActionPerformed
         if (CJ.existeixPartidaGuardada(user)) {
-            PlayKenKen pk = new PlayKenKen(user,CP,parent);
+            PlayKenKen pk = new PlayKenKen(user,CP,CJ,parent);
             parent.dispose();
         }
         else {
@@ -131,14 +131,14 @@ public class JugarKenken extends javax.swing.JPanel {
         repaint();
         revalidate();
         //afegint JPanel
-        add(new KenkenBBDD(user,parent,CP));
+        add(new KenkenBBDD(user,parent,CP,CJ));
         repaint();
         revalidate();
     }//GEN-LAST:event_Boto_PartidaBDActionPerformed
 
     private void Boto_PartidaRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_PartidaRandomActionPerformed
         // TODO add your handling code here:
-        SelectSize pk = new SelectSize(user,CP,parent);
+        SelectSize pk = new SelectSize(user,CP,CJ,parent);
         pk.setVisible(true);
     }//GEN-LAST:event_Boto_PartidaRandomActionPerformed
 

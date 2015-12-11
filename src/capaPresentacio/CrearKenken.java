@@ -5,6 +5,7 @@
  */
 package capaPresentacio;
 
+import capaDomini.Utils.CtrlJoc;
 import java.awt.Color;
 import javax.swing.JFrame;
 import java.awt.Dimension;
@@ -22,6 +23,7 @@ public class CrearKenken extends javax.swing.JPanel {
     private javax.swing.JFrame parent;
     private String dif;
     private CtrlPresentacio CP;
+    private CtrlJoc CJ;
     /**
      * Creates new form Crear_Kenken
      */
@@ -37,6 +39,7 @@ public class CrearKenken extends javax.swing.JPanel {
         initComponents();        
         tabMenu.setSelectedIndex(index);
         this.CP = CP;
+        this.CJ = CJ;
     }
 
     /**
@@ -401,7 +404,7 @@ public class CrearKenken extends javax.swing.JPanel {
         String d;
         if (dif.substring(0,1).equals("-")) d  = "2x2";
         else d = dif.substring(0,1);
-        PlayKenKen pk = new PlayKenKen(d,user,CP,parent);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,CJ,parent);
         parent.dispose();
         setVisible(false);
     }//GEN-LAST:event_CreatePlay1ActionPerformed
@@ -411,7 +414,7 @@ public class CrearKenken extends javax.swing.JPanel {
         String d;
         if (dif.substring(0,1).equals("-")) d = "2x2";
         else d = dif.substring(0,1);
-        PlayKenKen pk = new PlayKenKen(d,user,CP,parent);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,CJ,parent);
         parent.dispose();
         setVisible(false);
     }//GEN-LAST:event_CreatePlayActionPerformed

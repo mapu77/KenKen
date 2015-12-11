@@ -5,6 +5,7 @@
  */
 package capaPresentacio;
 
+import capaDomini.Utils.CtrlJoc;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -16,16 +17,18 @@ import java.awt.Toolkit;
 public class SelectSize extends javax.swing.JFrame {
 
     private CtrlPresentacio CP;
+    private CtrlJoc CJ;
     private String user;
     private javax.swing.JFrame parent;
     /**
      * Creates new form JugarKenKenRandom
      */
-    public SelectSize(String u, CtrlPresentacio CP, javax.swing.JFrame pare) {
+    public SelectSize(String u, CtrlPresentacio CP, CtrlJoc CJ, javax.swing.JFrame pare) {
         user = u;
         initComponents();
         parent = pare;
         this.CP = CP;
+        this.CJ = CJ;
         setVisible(true);
         
         /* Centra la pantalla */
@@ -182,49 +185,49 @@ public class SelectSize extends javax.swing.JFrame {
 
     private void b3x3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3x3ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("3x3",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("3x3",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b3x3ActionPerformed
 
     private void b4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4x4ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("4x4",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("4x4",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b4x4ActionPerformed
 
     private void b5x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5x5ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("5x5",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("5x5",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b5x5ActionPerformed
 
     private void b6x6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6x6ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("6x6",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("6x6",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b6x6ActionPerformed
 
     private void b7x7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7x7ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("7x7",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("7x7",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b7x7ActionPerformed
 
     private void b8x8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8x8ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("8x8",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("8x8",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b8x8ActionPerformed
 
     private void b9x9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9x9ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("9x9",user,CP,parent);
+        PlayKenKen pk = new PlayKenKen("9x9",user,CP,CJ,parent);
         parent.dispose();
         dispose();
     }//GEN-LAST:event_b9x9ActionPerformed

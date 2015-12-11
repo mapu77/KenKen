@@ -505,6 +505,7 @@ public class Edit extends javax.swing.JFrame {
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
         // TODO add your handling code here:
+        ops = new ArrayList<>();
         for (int j=0; j<N; j++) {
             for (int i=0; i<N; i++) {
                 JLabel lab = (JLabel) Tauler.getComponentAt(i*BZ, j*BZ);
@@ -514,9 +515,42 @@ public class Edit extends javax.swing.JFrame {
                 }
             }
         }
-        if (CP.validaKenKen(mat,ops)) validateLabel.setText("You KenKen is correct");
+        int[][] mat2 = transposaMat(mat);
+        printaMat(mat);
+/*        if (CP.validaKenKen(mat,ops)) {
+            validateLabel.setForeground(Color.green);
+            validateLabel.setText("You KenKen is correct");
+        }
+        else {
+            validateLabel.setForeground(Color.red);
+            validateLabel.setText("You KenKen is incorrect");
+        }*/
     }//GEN-LAST:event_validateButtonActionPerformed
 
+    private int[][] transposaMat (int[][] mat) {
+        int[][] mat2 = new int[N][N];
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                mat2[j][i] = mat[i][j];
+            }
+        }
+        return mat2;
+    }
+    
+    private void colocaRegions (int[][] mat) {
+        
+    }
+    
+    private void printaMat (int[][] mat) {
+        int n = mat.length;
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<n; j++) {
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+    
     private boolean KKcomplet () {
         for (int i=0; i<N; i++) {
             for (int j=0; j<N; j++) {

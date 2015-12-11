@@ -6,6 +6,8 @@
 package capaDomini;
 
 import capaDomini.Algoritmes.KenKenGenerator;
+import capaDomini.Algoritmes.KenKenGenerator1;
+import capaDomini.Algoritmes.KenKenSolver;
 import capaDomini.Usuari.CtrlUser;
 import capaDomini.Usuari.User;
 import capaDomini.Utils.TaulerKenKen;
@@ -144,4 +146,9 @@ public class CtrlDomini {
     
     /* ---------------------------------------------------------------------- */
 
+    public Boolean validaKenKen (int[][] mat, ArrayList<String> ops) {
+        TaulerKenKen K = KenKenGenerator1.generateKenKenbyUser(mat, ops);
+        return KenKenSolver.comprovaSol(K);
+    }
+    
 }

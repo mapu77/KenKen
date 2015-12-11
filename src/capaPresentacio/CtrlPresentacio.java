@@ -103,6 +103,6 @@ public class CtrlPresentacio {
     }
     
     public Boolean validaKenKen (int[][] mat, ArrayList<String> ops) {
-        return true;
+        return CD.validaKenKen(mat,ops);
     }
 }

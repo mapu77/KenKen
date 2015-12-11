@@ -85,7 +85,7 @@ public class KenKenSolver {
 		}	
 	}
 	
-	public boolean comprovaSol (TaulerKenKen T) {
+	public static boolean comprovaSol (TaulerKenKen T) {
 		KK = T;
 		trobat = false;
 		IA();

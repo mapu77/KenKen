@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +15,13 @@ import java.awt.Rectangle;
 public class SignIn extends javax.swing.JFrame {
 
     private static CtrlPresentacio CP;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form SignIn
      */
     public SignIn(javax.swing.JFrame parent, CtrlPresentacio CP) {
         super("Sign In");
+        this.parent = parent;
         System.out.println("Mostrant sign in");
         this.CP = CP;
         initComponents();
@@ -54,11 +57,9 @@ public class SignIn extends javax.swing.JFrame {
         registerPanel = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
-        usererrorLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         repeatField = new javax.swing.JPasswordField();
-        repeaterrorLabel = new javax.swing.JLabel();
         buttonPanel = new javax.swing.JPanel();
         createButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
@@ -95,12 +96,6 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        usererrorLabel.setBackground(new Color(214,214,214,0));
-        usererrorLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        usererrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        usererrorLabel.setOpaque(true);
-        usererrorLabel.setPreferredSize(new java.awt.Dimension(116, 17));
-
         passwordLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         passwordLabel.setText("Password");
 
@@ -126,11 +121,6 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        repeaterrorLabel.setBackground(new Color(214,214,214,0));
-        repeaterrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        repeaterrorLabel.setOpaque(true);
-        repeaterrorLabel.setPreferredSize(new java.awt.Dimension(116, 17));
-
         javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
         registerPanel.setLayout(registerPanelLayout);
         registerPanelLayout.setHorizontalGroup(
@@ -145,9 +135,7 @@ public class SignIn extends javax.swing.JFrame {
                         .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usernameLabel)
                             .addComponent(passwordLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(usererrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(repeaterrorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         registerPanelLayout.setVerticalGroup(
@@ -157,17 +145,13 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(usernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usererrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addGap(31, 31, 31)
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(repeatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(repeaterrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         getContentPane().add(registerPanel);
@@ -239,15 +223,27 @@ public class SignIn extends javax.swing.JFrame {
         String pass = String.valueOf(passwordField.getPassword());
         if (pass.equals(String.valueOf(repeatField.getPassword()))) {
             if (CtrlUser.afegeixUsuari(nom, pass)) {
+                JOptionPane.showMessageDialog(this,
+                    "Your username has been created successfully", 
+                    "Information", 
+                    JOptionPane.INFORMATION_MESSAGE);
                 PantallaPrincipal P = new PantallaPrincipal(nom, CP, this);
+                parent.dispose();
                 dispose();
             }
             else {
-                usererrorLabel.setText("This username already exists");
+                JOptionPane.showMessageDialog(this,
+                    "This username already exists\n"
+                            +"Please, try another one", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
         else {
-                repeaterrorLabel.setText("Passwords don't match");
+            JOptionPane.showMessageDialog(this,
+                    "Passwords don't match", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
        
     }//GEN-LAST:event_createButtonActionPerformed
@@ -288,9 +284,7 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel registerPanel;
     private javax.swing.JPasswordField repeatField;
-    private javax.swing.JLabel repeaterrorLabel;
     private javax.swing.JButton resetButton;
-    private javax.swing.JLabel usererrorLabel;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables

@@ -289,7 +289,7 @@ public class CtrlPartida {
             c.setNumero(P.getK().getNumero(i, j));
             pila.addElement(c);
             P.getK().setNumero(i, j, val);
-            //P.getK().PrintaKenKen();
+            P.getK().PrintaKenKen();
         }
         
         public int undoX() {
@@ -406,5 +406,10 @@ public class CtrlPartida {
         
         public int getPistaN() {
             return pistaN;
+        }
+        
+        public void borrar(int i, int j) {
+            P.getK().borra(i, j);
+            P.getK().PrintaKenKen();
         }
 }

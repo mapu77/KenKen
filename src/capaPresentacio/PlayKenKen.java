@@ -174,6 +174,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             b.setVisible(true);
             b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
             if (i==N) {
+                b.setText("");
                 b.setIcon(imageErase);
             }
             else {
@@ -185,8 +186,9 @@ public class PlayKenKen extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if (X != -1) {
                         JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
+                        if (b.getText() == "") CPartida.borrar(Y/BZ,X/BZ);
+                        else CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
                         j.setText(b.getText());
-                        CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
                     }
                 }
             });
@@ -574,8 +576,9 @@ public class PlayKenKen extends javax.swing.JFrame {
         CPartida.reset();
         for (int i=0; i<N; i++){
             for(int j=0; j<N; j++){
-              JLabel x = (JLabel) Tauler.getComponentAt(i*BZ,j*BZ);
-                        x.setText(""); 
+                JLabel x = (JLabel) Tauler.getComponentAt(i*BZ,j*BZ);
+                x.setText(""); 
+                x.setBackground(Color.white);
             }
         }
         cont = 0;

@@ -6,11 +6,16 @@
 package capaPresentacio;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,9 +26,10 @@ public class PantallaInici extends javax.swing.JFrame {
 
     private CtrlPresentacio CP;
     private Font font;
-    
+
     /**
-     * Creates new form PantallaPrincipal
+     * Creador de la vista PantallaInici
+     * @param CP Controlador de presentació
      */
     public PantallaInici(CtrlPresentacio CP) {
         System.out.println("Mostrant pantalla d'inici");
@@ -63,6 +69,7 @@ public class PantallaInici extends javax.swing.JFrame {
         siginItemMenu = new javax.swing.JMenuItem();
         exitItemMenu = new javax.swing.JMenuItem();
         menuitemHelp = new javax.swing.JMenu();
+        guideItem = new javax.swing.JMenuItem();
         aboutItemMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -250,6 +257,15 @@ public class PantallaInici extends javax.swing.JFrame {
 
         menuitemHelp.setText("Help");
 
+        guideItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/guiaIcon.png"))); // NOI18N
+        guideItem.setText("User Guide");
+        guideItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guideItemActionPerformed(evt);
+            }
+        });
+        menuitemHelp.add(guideItem);
+
         aboutItemMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/Help.png"))); // NOI18N
         aboutItemMenu.setText("About");
         aboutItemMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -268,6 +284,10 @@ public class PantallaInici extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Comportament del ítem Exit del menú
+     * @param evt 
+     */
     private void exitItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemMenuActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitItemMenuActionPerformed
@@ -363,12 +383,26 @@ public class PantallaInici extends javax.swing.JFrame {
         System.out.println("Tancant pantalla d'inici");
     }//GEN-LAST:event_formWindowClosed
 
+    private void guideItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guideItemActionPerformed
+        Desktop d = Desktop.getDesktop();
+        try {
+            d.open(new File("ManualdeJoc.pdf"));
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this,
+                      "No user guide found\n"
+                    + "Please contact with the developers", 
+                      "Error", 
+                      JOptionPane.ERROR_MESSAGE);  
+        }
+    }//GEN-LAST:event_guideItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel KenKenPanel;
     private javax.swing.JPanel LogInPanel;
     private javax.swing.JMenuItem aboutItemMenu;
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JMenuItem exitItemMenu;
+    private javax.swing.JMenuItem guideItem;
     private javax.swing.JLabel kenkenLabel;
     private javax.swing.JButton loginButton;
     private javax.swing.JMenuBar mainMenu;

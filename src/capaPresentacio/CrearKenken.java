@@ -24,14 +24,12 @@ public class CrearKenken extends javax.swing.JPanel {
     private String dif;
     private CtrlPresentacio CP;
     private CtrlJoc CJ;
-    /**
-     * Creates new form Crear_Kenken
-     */
+    
     public CrearKenken() {
         initComponents();
     }
     
-    public CrearKenken(String u, javax.swing.JFrame p, int index, CtrlPresentacio CP) {
+    public CrearKenken(String u, javax.swing.JFrame p, int index, CtrlPresentacio CP, CtrlJoc CJ) {
         super();
         parent = p;
         user = u;

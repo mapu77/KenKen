@@ -27,7 +27,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import javax.swing.Timer;
-import sun.misc.RequestProcessor;
 
 /**
  *
@@ -35,13 +34,13 @@ import sun.misc.RequestProcessor;
  */
 public class PlayKenKen extends javax.swing.JFrame {
     
-    private static int h=0, m=0, s=0;
+    private int h,m,s;
     private Timer t;
-    private CtrlPresentacio CP;
+    private final CtrlPresentacio CP;
     private CtrlPartida CPartida;
-    private CtrlJoc CJ;
-    private String user;
-    private javax.swing.JFrame parent;
+    private final CtrlJoc CJ;
+    private final String user;
+    private final javax.swing.JFrame parent;
     ArrayList<ArrayList<Integer> > mat;
     private int cont = 0;
     private static ImageIcon imageResume;
@@ -57,10 +56,11 @@ public class PlayKenKen extends javax.swing.JFrame {
     
     /**
      * Crea la vista per jugar a una partida guardada
-     * @param user
-     * @param CP
-     * @param CJ
-     * @param pare 
+     * 
+     * @param user Usuari
+     * @param CP Controlador de Presentació
+     * @param CJ Controlador de Joc
+     * @param pare Vista pare
      */
     public PlayKenKen(String user, CtrlPresentacio CP, CtrlJoc CJ, javax.swing.JFrame pare) {
         this.parent = pare;
@@ -70,6 +70,12 @@ public class PlayKenKen extends javax.swing.JFrame {
         CPartida = CP.crearPartida(user);
         this.d = CPartida.getStringDificultat();
         this.N = CPartida.getIntDificultat();
+        long time = CPartida.getTime();
+        h = (int)time/3600;
+        time = time%3600;
+        m = (int)time/60;
+        time = time%60;
+        s = (int)time;
         init();
     }
     
@@ -89,6 +95,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         parent = pare;
         this.user = user;
         CPartida = CP.crearPartida(user,d);
+        h = m = s = 0;
         init();
     }
     
@@ -109,6 +116,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         parent = pare;
         this.user = user;
         CPartida = CP.crearPartida(user,d, id);
+        h = m = s = 0;
         init();
     }
     
@@ -123,8 +131,11 @@ public class PlayKenKen extends javax.swing.JFrame {
     Thread th;
     
     private void init() {
-        t=new Timer(1000, new startChrono());
         initComponents();
+        hours.setText(h<10? "0"+String.valueOf(h):String.valueOf(h));
+        minutes.setText(m<10? "0"+String.valueOf(m):String.valueOf(m));
+        seconds.setText(s<10? "0"+String.valueOf(s):String.valueOf(s));
+        t=new Timer(1000, new startChrono());
         setVisible(true);
        
         InicialitzaTauler();
@@ -310,7 +321,6 @@ public class PlayKenKen extends javax.swing.JFrame {
     }
     
     private class startChrono implements ActionListener{
-        
         @Override
         public void actionPerformed(ActionEvent ae) {
             if (s<59){
@@ -331,8 +341,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                     String hr= (h<10?"0":"")+h;
                     hours.setText(""+hr);
                 }
-                
-                    
             }
         }
     }
@@ -535,9 +543,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                
     private void BotoExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoExitActionPerformed
         t.stop();
-        hours.setText("00"); h=0;
-        minutes.setText("00"); m=0;
-        seconds.setText("00"); s=0;
         II=0;
         Object[] opciones = {"Save", "Exit", "Cancel"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,
@@ -554,6 +559,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
             dispose();
         }
+        t.start();
     }//GEN-LAST:event_BotoExitActionPerformed
 
     int II = 0;
@@ -622,9 +628,6 @@ public class PlayKenKen extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         t.stop();
-        hours.setText("00"); h=0;
-        minutes.setText("00"); m=0;
-        seconds.setText("00"); s=0;
         II=0;
         Object[] opciones = {"Save", "Exit", "Cancel"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,
@@ -641,7 +644,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
             dispose();
         }
-        
+        t.start();
     }//GEN-LAST:event_formWindowClosing
     
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
@@ -669,7 +672,6 @@ public class PlayKenKen extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveButtonActionPerformed
 
     private void HintButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HintButtonActionPerformed
-        // TODO add your handling code here:
         if (cont < N-2) {
             CPartida.getPista();
             int x = CPartida.getPistaX();
@@ -677,6 +679,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             int val = CPartida.getPistaN();
             JLabel b = (JLabel) Tauler.getComponentAt(y*BZ, x*BZ);
             b.setText(String.valueOf(val));
+            b.setBackground(new Color(0,200,0));
             ++cont;
         }
         else {

@@ -5,6 +5,7 @@
  */
 package capaPresentacio;
 
+import capaDomini.Utils.CtrlJoc;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -18,6 +19,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private final String user;
     private final javax.swing.JFrame parent;
     private final CtrlPresentacio CP;
+    private final CtrlJoc CJ;
     
     /**
      * Creates new form Pantalla Principal
@@ -32,6 +34,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         parent = pare;
         this.user = user;
         this.CP = CP;
+        CJ = new CtrlJoc();
         setVisible(true);
         
         // Centrem la finestra al monitor
@@ -280,7 +283,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.repaint();
         menuPanel.revalidate();
         //afegint JPanel
-        menuPanel.add(new CrearKenken(user,this, 0, CP));
+        menuPanel.add(new CrearKenken(user,this, 0, CP, CJ));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_CrearKenkenActionPerformed
@@ -292,7 +295,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.repaint();
         menuPanel.revalidate();
         //afegint JPanel
-        menuPanel.add(new JugarKenken(user,CP,this));
+        menuPanel.add(new JugarKenken(user,CP,CJ,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed
@@ -341,13 +344,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new CrearKenken(user,this,0,CP));
+        menuPanel.add(new CrearKenken(user,this,0,CP,CJ));
         menuPanel.repaint();
         menuPanel.revalidate();        
     }//GEN-LAST:event_manItemActionPerformed
 
     private void resumeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeItemActionPerformed
-        // TODO add your handling code here:
+        if (CJ.existeixPartidaGuardada(user)) {
+            PlayKenKen pk = new PlayKenKen(user,CP,CJ,parent);
+            parent.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(this,
+                    "You haven't saved any game", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_resumeItemActionPerformed
 
     private void userMngrItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMngrItemActionPerformed
@@ -369,7 +381,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new CrearKenken(user,this,1,CP));
+        menuPanel.add(new CrearKenken(user,this,1,CP,CJ));
         menuPanel.repaint();
         menuPanel.revalidate(); 
     }//GEN-LAST:event_parItemActionPerformed

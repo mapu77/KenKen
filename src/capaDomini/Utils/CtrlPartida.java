@@ -231,6 +231,10 @@ public class CtrlPartida {
 		this.initialTime = System.nanoTime();
 	}
 		
+        public long getTime() {
+            return currentTime;
+        }
+        
 	public double getcurrentTime() {
 		currentTime += System.nanoTime() - initialTime;
 		return (double)currentTime/Math.pow(10,9);

@@ -21,12 +21,12 @@ public class JugarKenken extends javax.swing.JPanel {
     /**
      * Creates new form JugarKenken2
      */
-    public JugarKenken(String u, CtrlPresentacio CP, javax.swing.JFrame pare) {
+    public JugarKenken(String u, CtrlPresentacio CP, CtrlJoc CJ,javax.swing.JFrame pare) {
         initComponents();
         parent = pare;
         user = u;
         this.CP = CP;
-        CJ = new CtrlJoc();
+        this.CJ = CJ;
     }
 
     /**

@@ -228,4 +228,8 @@ public class CtrlPresentacio {
     public int crearTauler() {
         return CD.crearTauler();
     }
+    
+    public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
+        return CD.generaKenkenPerParametres (N, iniX, vOps);
+    }
 }

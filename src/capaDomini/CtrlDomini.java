@@ -63,6 +63,28 @@ public class CtrlDomini {
         return KG.generateRandomly(N);
     }
     
+    public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
+        KenKenGenerator1 KG = new KenKenGenerator1(sn);
+        K = KG.generateKenKenbyParameters(N,iniX,vOps);
+        int[][] mat = new int[N][N];
+        ArrayList<Boolean> reg = new ArrayList<>();
+        for (int i=0; i<K.getNRegio(); i++) reg.add(false);
+        vOps.clear();
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                int id = K.getRegioIJ(i, j).getId();
+                mat[i][j] = id;
+                if (!reg.get(id)) {
+                    reg.set(id, true);
+                    String res = K.getRegio(id).getOperation();
+                    res += Integer.toString(K.getRegio(id).getResult());
+                    vOps.add(res);
+                }
+                
+            }
+        }
+        return mat;
+    }
     /* ----------------------------------------------------------------------- */
     
     /* Mètodes per al Ranking */
@@ -160,5 +182,4 @@ public class CtrlDomini {
         int id = CJ.guardarTauler(K);
         return id;
     }
-    
 }

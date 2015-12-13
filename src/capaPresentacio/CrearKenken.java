@@ -7,10 +7,6 @@ package capaPresentacio;
 
 import capaDomini.Utils.CtrlJoc;
 import java.awt.Color;
-import javax.swing.JFrame;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -76,8 +72,10 @@ public class CrearKenken extends javax.swing.JPanel {
         previewLabel = new javax.swing.JLabel();
         CreateSaveP = new javax.swing.JButton();
         CreatePlayP = new javax.swing.JButton();
-        PreviewPanel1 = new javax.swing.JLabel();
         fixedFField = new javax.swing.JFormattedTextField();
+        GenerateButton = new javax.swing.JButton();
+        PreviewPanel1 = new javax.swing.JPanel();
+        Tauler1 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(600, 500));
         setMinimumSize(new java.awt.Dimension(600, 500));
@@ -308,11 +306,6 @@ public class CrearKenken extends javax.swing.JPanel {
             }
         });
 
-        PreviewPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        PreviewPanel1.setMaximumSize(new java.awt.Dimension(350, 350));
-        PreviewPanel1.setMinimumSize(new java.awt.Dimension(350, 350));
-        PreviewPanel1.setPreferredSize(new java.awt.Dimension(350, 350));
-
         fixedFField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         fixedFField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         fixedFField.setMaximumSize(new java.awt.Dimension(50, 27));
@@ -324,15 +317,50 @@ public class CrearKenken extends javax.swing.JPanel {
             }
         });
 
+        GenerateButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        GenerateButton.setText("Generate");
+        GenerateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        GenerateButton.setMaximumSize(new java.awt.Dimension(75, 36));
+        GenerateButton.setMinimumSize(new java.awt.Dimension(75, 36));
+        GenerateButton.setName(""); // NOI18N
+        GenerateButton.setPreferredSize(new java.awt.Dimension(75, 36));
+        GenerateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenerateButtonActionPerformed(evt);
+            }
+        });
+
+        PreviewPanel1.setMaximumSize(new java.awt.Dimension(350, 350));
+        PreviewPanel1.setMinimumSize(new java.awt.Dimension(350, 350));
+        PreviewPanel1.setPreferredSize(new java.awt.Dimension(350, 350));
+        PreviewPanel1.setLayout(new java.awt.CardLayout());
+
+        Tauler1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tauler1.setMaximumSize(new java.awt.Dimension(350, 352));
+        Tauler1.setMinimumSize(new java.awt.Dimension(350, 352));
+
+        javax.swing.GroupLayout Tauler1Layout = new javax.swing.GroupLayout(Tauler1);
+        Tauler1.setLayout(Tauler1Layout);
+        Tauler1Layout.setHorizontalGroup(
+            Tauler1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 348, Short.MAX_VALUE)
+        );
+        Tauler1Layout.setVerticalGroup(
+            Tauler1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+
+        PreviewPanel1.add(Tauler1, "card2");
+
         javax.swing.GroupLayout paramPanelLayout = new javax.swing.GroupLayout(paramPanel);
         paramPanel.setLayout(paramPanelLayout);
         paramPanelLayout.setHorizontalGroup(
             paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paramPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CreatePlayP, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CreateSaveP, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CreatePlayP, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(CreateSaveP, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                     .addComponent(fixedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(difLabel)
                     .addComponent(operandLabel)
@@ -345,11 +373,12 @@ public class CrearKenken extends javax.swing.JPanel {
                             .addComponent(Boto_Div, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                             .addComponent(Boto_Resta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(difBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fixedFField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(fixedFField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GenerateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PreviewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(previewLabel))
+                    .addComponent(previewLabel)
+                    .addComponent(PreviewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         paramPanelLayout.setVerticalGroup(
@@ -363,11 +392,11 @@ public class CrearKenken extends javax.swing.JPanel {
                 .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(paramPanelLayout.createSequentialGroup()
                         .addComponent(difBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fixedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fixedFField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(13, 13, 13)
                         .addComponent(operandLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -377,12 +406,14 @@ public class CrearKenken extends javax.swing.JPanel {
                         .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Boto_Mult, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Boto_Div, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CreateSaveP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(GenerateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CreateSaveP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
                         .addComponent(CreatePlayP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PreviewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(PreviewPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         tabMenu.addTab("By Parameters", paramPanel);
@@ -400,7 +431,7 @@ public class CrearKenken extends javax.swing.JPanel {
             createPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createPanelLayout.createSequentialGroup()
                 .addComponent(tabMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         tabMenu.getAccessibleContext().setAccessibleName("");
@@ -436,10 +467,12 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_CreatePlayMActionPerformed
 
     private void CreatePlayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayPActionPerformed
-      /*  
+        String d;
+        if (dif.substring(0,1).equals("-")) d  = "2x2";
+        else d = dif.substring(0,1);
         PlayKenKen pk = new PlayKenKen(d,user,CP,CJ,parent);
         parent.dispose();
-        setVisible(false);*/
+        setVisible(false);
     }//GEN-LAST:event_CreatePlayPActionPerformed
 
     private void CreateSavePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSavePActionPerformed
@@ -455,7 +488,6 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_Boto_DivActionPerformed
 
     private void Boto_MultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_MultActionPerformed
-        // TODO add your handling code here:
         Color c = Boto_Mult.getBackground();
         if (c == Color.white) {
             Boto_Mult.setBackground(Color.gray);
@@ -464,7 +496,6 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_Boto_MultActionPerformed
 
     private void Boto_RestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_RestaActionPerformed
-        // TODO add your handling code here:
         Color c = Boto_Resta.getBackground();
         if (c == Color.white) {
             Boto_Resta.setBackground(Color.gray);
@@ -477,13 +508,11 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_Boto_SumaActionPerformed
 
     private void difBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difBoxActionPerformed
-        // TODO add your handling code here:
         JComboBox a = (JComboBox)evt.getSource();
         dif = (String)a.getSelectedItem();
     }//GEN-LAST:event_difBoxActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
-        // TODO add your handling code here:
         if (dif.equals("-")) errorLabel.setText("You must select a difficulty");
         else {
             errorLabel.setText("");
@@ -494,6 +523,27 @@ public class CrearKenken extends javax.swing.JPanel {
     private void fixedFFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixedFFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fixedFFieldActionPerformed
+
+    private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
+        int N = Integer.parseInt(dif.substring(0, 1));
+        System.out.println(N);
+        int iniX = Integer.parseInt(fixedFField.getText());
+        System.out.println(iniX);
+        ArrayList<String> Ops = new ArrayList<>();
+        Ops.add("+");
+        if (Boto_Resta.getBackground().equals(Color.gray)) Ops.add("-");
+        if (Boto_Mult.getBackground().equals(Color.gray)) Ops.add("*");
+        if (Boto_Div.getBackground().equals(Color.gray)) Ops.add("/");
+        System.out.println(Ops);
+        int[][] mat = CP.generaKenkenPerParametres(N, iniX, Ops);
+        PreviewPanel1.removeAll();
+        PreviewPanel1.repaint();
+        PreviewPanel1.revalidate();
+        PreviewPanel1.add(new Preview(mat,Ops,PreviewPanel1.getBounds()));
+        PreviewPanel1.repaint();
+        PreviewPanel1.revalidate();
+        
+    }//GEN-LAST:event_GenerateButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -507,10 +557,12 @@ public class CrearKenken extends javax.swing.JPanel {
     private javax.swing.JButton CreateSaveM;
     private javax.swing.JButton CreateSaveP;
     private javax.swing.JButton EditButton;
+    private javax.swing.JButton GenerateButton;
     private javax.swing.JLabel PreviewLabel;
     private javax.swing.JPanel PreviewPanel;
-    private javax.swing.JLabel PreviewPanel1;
+    private javax.swing.JPanel PreviewPanel1;
     private javax.swing.JPanel Tauler;
+    private javax.swing.JPanel Tauler1;
     private javax.swing.JPanel createPanel;
     private javax.swing.JComboBox<String> difBox;
     private javax.swing.JLabel difLabel;

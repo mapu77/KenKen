@@ -11,17 +11,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -55,7 +50,7 @@ public class Edit extends javax.swing.JFrame {
     }
     
     private void init() {
-        ops = new ArrayList<String>();
+        ops = new ArrayList<>();
         op = "";
         cont = RegionCount = 0;
         initMatriu();
@@ -87,6 +82,7 @@ public class Edit extends javax.swing.JFrame {
                 b.setBackground(Color.white);
                 b.setText("");
                 b.addMouseListener(new MouseAdapter() {
+                    @Override
                     public void mouseClicked(MouseEvent e) {
                         X = b.getX();
                         Y = b.getY();
@@ -172,8 +168,7 @@ public class Edit extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("EDITOR");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -363,7 +358,7 @@ public class Edit extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(validateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
+                .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -409,7 +404,6 @@ public class Edit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotoSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoSumaActionPerformed
-        // TODO add your handling code here:
         BotoSuma.setBackground(Color.GRAY);
         BotoResta.setBackground(Color.white);
         BotoMult.setBackground(Color.white);
@@ -418,7 +412,6 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_BotoSumaActionPerformed
 
     private void BotoRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoRestaActionPerformed
-        // TODO add your handling code here:
         BotoSuma.setBackground(Color.white);
         BotoResta.setBackground(Color.GRAY);
         BotoMult.setBackground(Color.white);
@@ -427,7 +420,6 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_BotoRestaActionPerformed
 
     private void BotoMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoMultActionPerformed
-        // TODO add your handling code here:
         BotoSuma.setBackground(Color.white);
         BotoResta.setBackground(Color.white);
         BotoMult.setBackground(Color.GRAY);
@@ -436,7 +428,6 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_BotoMultActionPerformed
 
     private void BotoDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoDivActionPerformed
-        // TODO add your handling code here:
         BotoSuma.setBackground(Color.white);
         BotoResta.setBackground(Color.white);
         BotoMult.setBackground(Color.white);
@@ -445,7 +436,6 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_BotoDivActionPerformed
 
     private void BotoSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoSetActionPerformed
-        // TODO add your handling code here:
         boolean ok = true;
         try {
             int a = Integer.parseInt(ResultatText.getText());
@@ -459,8 +449,10 @@ public class Edit extends javax.swing.JFrame {
             for (int j=0; j<N && !found; ++j) {
                 for (int i=0; i<N && !found; ++i) {
                     if (mat[i][j] == RegionCount) {
-                        if ((op.equals("/") || op.equals("-")) && contaCeles(i*BZ,j*BZ) != 2) {
-                            System.out.println("hola caracola");
+                        if (contaCeles(i*BZ,j*BZ) == 1 && !op.equals("+")) {
+                            errorRegionLabel.setText("<html>Region with 1 cell must have the \"+\" operand</html>");
+                        }
+                        else if ((op.equals("/") || op.equals("-")) && contaCeles(i*BZ,j*BZ) != 2) {
                             errorRegionLabel.setText("<html>This region must contain 2 cells</html>");
                         }
                         else {
@@ -476,7 +468,6 @@ public class Edit extends javax.swing.JFrame {
                             setBorders();
                             canviaColorRegio(i*BZ,j*BZ,false);
                             ResultatText.setText("");
-                            errorRegionLabel.setText("<html></html>");
                             errorRegionLabel.setText("<html></html>");
                             BotoSuma.setBackground(Color.white);
                             BotoResta.setBackground(Color.white);
@@ -513,7 +504,7 @@ public class Edit extends javax.swing.JFrame {
             }
         }
         DeleteRegionButton.setEnabled(false);
-        
+        validateLabel.setText("<html></html>");
     }//GEN-LAST:event_DeleteRegionButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -531,7 +522,6 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
-        // TODO add your handling code here:
         ops = new ArrayList<>();
         for (int j=0; j<N; j++) {
             for (int i=0; i<N; i++) {
@@ -561,7 +551,7 @@ public class Edit extends javax.swing.JFrame {
 
         else {
             validateLabel.setForeground(Color.red);
-            validateLabel.setText("You KenKen is incorrect");
+            validateLabel.setText("<html>You KenKen is incorrect</html>");
         }
     }//GEN-LAST:event_validateButtonActionPerformed
 
@@ -632,7 +622,7 @@ public class Edit extends javax.swing.JFrame {
     }
     
     private class Pair {
-        private int x, y;
+        private final int x, y;
         public Pair(int x, int y) {
             this.x = x;
             this.y = y;
@@ -662,8 +652,8 @@ public class Edit extends javax.swing.JFrame {
             }
         }
         if (!ok) return false;
-        Stack<Pair> S = new Stack<Pair>();
-        Vector<Component> V = new Vector<Component>();
+        Stack<Pair> S = new Stack<>();
+        Vector<Component> V = new Vector<>();
         S.push(p);
         V.add(Tauler.getComponent(p.getX()*N+p.getY()));
         JLabel c;

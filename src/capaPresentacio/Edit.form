@@ -9,8 +9,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="0"/>
-    <Property name="title" type="java.lang.String" value="EDITOR"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[800, 600]"/>
     </Property>
@@ -221,7 +220,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="validateButton" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="validateLabel" pref="1" max="32767" attributes="0"/>
+                      <Component id="validateLabel" pref="14" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="exitButton" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>

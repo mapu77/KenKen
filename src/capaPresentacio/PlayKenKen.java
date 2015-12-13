@@ -232,12 +232,12 @@ public class PlayKenKen extends javax.swing.JFrame {
     }
     
     private void InicialitzaTauler() {
-        ArrayList<Boolean> Regions = new ArrayList<Boolean>();
+        ArrayList<Boolean> Regions = new ArrayList<>();
         for (int i=0; i<CPartida.getNRegio();++i) Regions.add(false);
         
-        mat = new ArrayList<ArrayList<Integer> >();
+        mat = new ArrayList< >();
         for (int i=0; i<N; i++) {
-            mat.add(new ArrayList<Integer>());
+            mat.add(new ArrayList<>());
             for (int j=0; j<N; ++j) {
                     mat.get(i).add(CPartida.nRegio(i,j));
             }

@@ -5,6 +5,7 @@ import java.util.*;
 import capaDomini.Dificultat.Dificultat;
 import capaDomini.Utils.*;
 import excepciones.ExcepcionDificultatInvalida;
+import java.util.Random;
 
 public class KenKenGenerator1 {
 	
@@ -25,7 +26,7 @@ public class KenKenGenerator1 {
 			fi = true;
 		}
 		else {
-			Vector<Boolean> used = new Vector<Boolean>();
+			Vector<Boolean> used = new Vector<>();
 			for (int k=0; k<=K.getAncho();++k) used.add(k,false); //initialization used
 			int rand = new Random().nextInt(n)+1;
 			for (int ii=0; ii<K.getAncho() && !fi; ++ii) {
@@ -270,18 +271,28 @@ public class KenKenGenerator1 {
 	}
 	
 	public TaulerKenKen generateRandomly(int size) {
-		n = size;
-		fi = false;
-		K = new TaulerKenKen(n);
-		backtrackingGenerateNumbers(0,0);
-		generateRegions();
-		generateRegionSolution();
-		return K;
+            n = size;
+            fi = false;
+            K = new TaulerKenKen(n);
+            backtrackingGenerateNumbers(0,0);
+            generateRegions();
+            generateRegionSolution();
+            return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyParameters() { //(int size, int iniX, String[] vOps) {
-	
-            return new TaulerKenKen(2);
+	public TaulerKenKen generateKenKenbyParameters(int size, int iniX, ArrayList<String> vOps) {
+            n = size;
+            K = new TaulerKenKen(n);
+            K.PrintaKenKen();
+            backtrackingGenerateNumbers(0,0);
+            regions1C (iniX);
+            generateRegions();
+            K.OrdenaVR();
+            String[] Vops = new String[vOps.size()];
+            for (int i=0; i<vOps.size(); ++i) Vops[i] = vOps.get(i);
+            generateRegionSolutionByOps (Vops);
+            K.PrintaKenKen();
+            return K;
 	}
 	
 	public static TaulerKenKen generateKenKenbyUser(int[][] mat, ArrayList<String> ops) {
@@ -303,7 +314,6 @@ public class KenKenGenerator1 {
                 RegioKenKen r = new RegioKenKen(Vvc.get(i).size(),Vvc.get(i),op,Integer.parseInt(res),i);
                 K.afegeixRegio(r);
             }
-            K.PrintaKenKen();
             return K;
 	}
 	

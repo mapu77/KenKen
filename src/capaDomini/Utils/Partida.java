@@ -42,7 +42,6 @@ public class Partida {
 		K = CJ.llegirTauler(id,d);
 	}
 	
-	
 	public String getUsuari() {
 		return usuari;
 	}

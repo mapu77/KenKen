@@ -178,8 +178,6 @@ public class PlayKenKen extends javax.swing.JFrame {
             if (i==N) {
                 b.setText("Supr");
                 b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-                //b.setIcon(imageErase);
-                
             }
             else {
                 b.setText(Integer.toString(i+1));

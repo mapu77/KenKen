@@ -209,7 +209,8 @@ public class KenkenBBDD extends javax.swing.JPanel {
         // TODO add your handling code here:
         String id = idList.getSelectedValue();
         if  (id != null) {
-            id = id.substring(7);String dif = String.valueOf(BoxDiff.getSelectedItem());
+            id = id.substring(7);
+            String dif = String.valueOf(BoxDiff.getSelectedItem());
             ArrayList<String> vOps = new ArrayList<>();
             int[][] mat = CP.taulerBBDD(id, dif, vOps);
             prevPanel.removeAll();
@@ -219,7 +220,6 @@ public class KenkenBBDD extends javax.swing.JPanel {
             prevPanel.repaint();
             prevPanel.revalidate(); 
         }
-               
     }//GEN-LAST:event_idListValueChanged
 
 

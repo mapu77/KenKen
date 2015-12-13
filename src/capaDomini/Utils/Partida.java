@@ -28,7 +28,7 @@ public class Partida {
 		this.usuari = u;
 		this.time = 0;
 		int n = Dificultat.toInt(d);
-		K = new KenKenGenerator(sn).generateRandomly(n);
+		K = new KenKenGenerator().generateRandomly(n);
 		this.idJoc = String.valueOf(CJ.guardarTauler(K));
 	}
 	

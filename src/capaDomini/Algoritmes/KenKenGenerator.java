@@ -13,13 +13,9 @@ public class KenKenGenerator {
 	private int X[] = {1,0,-1,0};
 	private int Y[] = {0,1,0,-1};
 	private static double probStop;
-	private static Scanner sn;
 	
-	public KenKenGenerator () {
+	public KenKenGenerator() {
             
-        }
-        public KenKenGenerator(Scanner sn) {
-		this.sn = sn;
 	}
 
 	private void backtrackingGenerateNumbers(int i, int j) {
@@ -282,9 +278,9 @@ public class KenKenGenerator {
 	}
 	
 	public TaulerKenKen generateKenKenbyParameters(int size, int iniX, ArrayList<String> vOps) {
+            fi = false;
             n = size;
             K = new TaulerKenKen(n);
-            K.PrintaKenKen();
             backtrackingGenerateNumbers(0,0);
             regions1C (iniX);
             generateRegions();
@@ -292,7 +288,6 @@ public class KenKenGenerator {
             String[] Vops = new String[vOps.size()];
             for (int i=0; i<vOps.size(); ++i) Vops[i] = vOps.get(i);
             generateRegionSolutionByOps (Vops);
-            K.PrintaKenKen();
             return K;
 	}
 	

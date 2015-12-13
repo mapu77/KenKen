@@ -3,7 +3,6 @@ package capaDomini;
 import capaDomini.Algoritmes.KenKenGenerator;
 import capaDomini.Algoritmes.KenKenSolver;
 import capaDomini.Usuari.CtrlUser;
-import capaDomini.Usuari.User;
 import capaDomini.Utils.TaulerKenKen;
 import capaDomini.Ranking.RankingGeneral;
 import capaDomini.Ranking.RankingPerTipus;
@@ -22,15 +21,15 @@ import java.util.Scanner;
  */
 public class CtrlDomini {
     
-    private final CtrlPersistencia CP;
-    private final CtrlUser CU;
-    private final CtrlJoc CJ;
+    private CtrlPersistencia CP;
+    private CtrlUser CU;
+    private CtrlJoc CJ;    
     private TaulerKenKen K;
     
     /* Mètode Constructor */
     public CtrlDomini() {
         CP = new CtrlPersistencia();
-        CtrlPersistencia.setSeparator(" ");
+        CP.setSeparator(" ");
         System.out.println("Iniciant controlador de persistència...");
         CU = new CtrlUser();
         CJ = new CtrlJoc();
@@ -49,13 +48,7 @@ public class CtrlDomini {
         CtrlUser.getUsuari(u).setPassword(pwd);
     }
     /* ---------------------------------------------------------------------- */
-    
-    /* Mètodes Creació KenKen */
-    public TaulerKenKen generaKenkenAleatori (int N) {
-        KenKenGenerator KG = new KenKenGenerator();
-        return KG.generateRandomly(N);
-    }
-    
+        
     public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
         KenKenGenerator KG = new KenKenGenerator();
         K = KG.generateKenKenbyParameters(N,iniX,vOps);

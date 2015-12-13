@@ -573,15 +573,12 @@ public class CrearKenken extends javax.swing.JPanel {
 
     private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
         int N = Integer.parseInt(dif.substring(0, 1));
-        System.out.println(N);
         int iniX = Integer.parseInt(fixedFField.getText());
-        System.out.println(iniX);
         ArrayList<String> Ops = new ArrayList<>();
         Ops.add("+");
         if (Boto_Resta.getBackground().equals(Color.gray)) Ops.add("-");
         if (Boto_Mult.getBackground().equals(Color.gray)) Ops.add("*");
         if (Boto_Div.getBackground().equals(Color.gray)) Ops.add("/");
-        System.out.println(Ops);
         int[][] mat = CP.generaKenkenPerParametres(N, iniX, Ops);
         PreviewPanel1.removeAll();
         PreviewPanel1.repaint();
@@ -625,8 +622,7 @@ public class CrearKenken extends javax.swing.JPanel {
     }
     
     private void BotonsCreate() {
-        System.out.println(PreviewPanel.getForeground());
-        if (PreviewPanel.getForeground().equals(Color.red)) {
+        if (!PreviewPanel.getForeground().equals(Color.red)) {
             CreateSaveM.setEnabled(true);
             CreatePlayM.setEnabled(true);
         }

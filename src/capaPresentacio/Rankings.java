@@ -502,16 +502,32 @@ public class Rankings extends javax.swing.JPanel {
     }//GEN-LAST:event_dificultat1KeyPressed
 
     private void obtenirAll (String user) {
-        DecimalFormat decimals = new DecimalFormat("0.0000");
+        DecimalFormat decimals = new DecimalFormat("0.00");
+        int h, m, s;
+        long time;
         jResolts.setText(Integer.toString(CP.obtenirResoltsRP(user)));
         avgpistes.setText(decimals.format(CP.obtenirPistesRP(user)));
-        threetime.setText(decimals.format(CP.obtenirTempsRP(user, "3x3"))+" sec");
-        fourtime.setText(decimals.format(CP.obtenirTempsRP(user, "4x4"))+" sec");
-        fivetime.setText(decimals.format(CP.obtenirTempsRP(user, "5x5"))+" sec");
-        sixtime.setText(decimals.format(CP.obtenirTempsRP(user, "6x6"))+" sec");
-        seventime.setText(decimals.format(CP.obtenirTempsRP(user, "7x7"))+" sec");
-        eighttime.setText(decimals.format(CP.obtenirTempsRP(user, "8x8"))+" sec");
-        ninetime.setText(decimals.format(CP.obtenirTempsRP(user, "9x9"))+" sec");
+        time = (long)CP.obtenirTempsRP(user, "3x3");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        threetime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
+        time = (long)CP.obtenirTempsRP(user, "4x4");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        fourtime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
+        time = (long)CP.obtenirTempsRP(user, "5x5");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        fivetime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
+        time = (long)CP.obtenirTempsRP(user, "6x6");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        sixtime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
+        time = (long)CP.obtenirTempsRP(user, "7x7");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        seventime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
+        time = (long)CP.obtenirTempsRP(user, "8x8");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        eighttime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
+        time = (long)CP.obtenirTempsRP(user, "9x9");
+        h = (int)time/3600; m = (int)(time%3600)/60; s = (int)(time%3600)%60;
+        ninetime.setText((h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s));
     }
     
     private void buidaAll() {
@@ -540,14 +556,16 @@ public class Rankings extends javax.swing.JPanel {
         if (!entr.equals("-") && !dif.equals("-")) {
             for (int i = 1; i <= Integer.parseInt(entr); i++) {
                 String user = CP.obtenirUserRT(dif, Integer.parseInt(entr), (i-1));
-                String time = dec.format(CP.obtenirTimeRT(dif, Integer.parseInt(entr), (i-1)));
+                long time = (long)CP.obtenirTimeRT(dif, Integer.parseInt(entr), (i-1));
+                int h = (int)time/3600; int m = (int)(time%3600)/60; int s = (int)(time%3600)%60;
+                String t = (h<10? ("0"+h):h) +":"+ (m<10? ("0"+m):m) +":"+ (s<10? ("0"+s):s);
                 String id = CP.obtenirIdRT(dif, Integer.parseInt(entr), (i-1));
                 if (user ==null) {
                     String [] row = {Integer.toString(i)+".-",user,null,id};
                     table.addRow(row);
                 }
                 else {
-                    String [] rowwt = {Integer.toString(i)+".-",user,time+" sec",id};
+                    String [] rowwt = {Integer.toString(i)+".-",user,t,id};
                     table.addRow(rowwt);
                 }
             }

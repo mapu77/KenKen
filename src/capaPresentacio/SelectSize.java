@@ -57,8 +57,9 @@ public class SelectSize extends javax.swing.JFrame {
         b9x9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(300, 250));
+        setTitle("SELECT SIZE");
         setMinimumSize(new java.awt.Dimension(300, 250));
+        setResizable(false);
         setSize(new java.awt.Dimension(300, 250));
         getContentPane().setLayout(new java.awt.CardLayout());
 
@@ -183,19 +184,26 @@ public class SelectSize extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void b3x3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3x3ActionPerformed
+    private void b9x9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9x9ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("3x3",user,CP,CJ,parent);
+        PlayKenKen pk = new PlayKenKen("9x9",user,CP,CJ,parent);
         parent.dispose();
         dispose();
-    }//GEN-LAST:event_b3x3ActionPerformed
+    }//GEN-LAST:event_b9x9ActionPerformed
 
-    private void b4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4x4ActionPerformed
+    private void b8x8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8x8ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("4x4",user,CP,CJ,parent);
+        PlayKenKen pk = new PlayKenKen("8x8",user,CP,CJ,parent);
         parent.dispose();
         dispose();
-    }//GEN-LAST:event_b4x4ActionPerformed
+    }//GEN-LAST:event_b8x8ActionPerformed
+
+    private void b7x7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7x7ActionPerformed
+        // TODO add your handling code here:
+        PlayKenKen pk = new PlayKenKen("7x7",user,CP,CJ,parent);
+        parent.dispose();
+        dispose();
+    }//GEN-LAST:event_b7x7ActionPerformed
 
     private void b5x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5x5ActionPerformed
         // TODO add your handling code here:
@@ -211,26 +219,19 @@ public class SelectSize extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_b6x6ActionPerformed
 
-    private void b7x7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7x7ActionPerformed
+    private void b4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4x4ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("7x7",user,CP,CJ,parent);
+        PlayKenKen pk = new PlayKenKen("4x4",user,CP,CJ,parent);
         parent.dispose();
         dispose();
-    }//GEN-LAST:event_b7x7ActionPerformed
+    }//GEN-LAST:event_b4x4ActionPerformed
 
-    private void b8x8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8x8ActionPerformed
+    private void b3x3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3x3ActionPerformed
         // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("8x8",user,CP,CJ,parent);
+        PlayKenKen pk = new PlayKenKen("3x3",user,CP,CJ,parent);
         parent.dispose();
         dispose();
-    }//GEN-LAST:event_b8x8ActionPerformed
-
-    private void b9x9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9x9ActionPerformed
-        // TODO add your handling code here:
-        PlayKenKen pk = new PlayKenKen("9x9",user,CP,CJ,parent);
-        parent.dispose();
-        dispose();
-    }//GEN-LAST:event_b9x9ActionPerformed
+    }//GEN-LAST:event_b3x3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

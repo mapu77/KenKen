@@ -189,9 +189,14 @@ public class PlayKenKen extends javax.swing.JFrame {
                     if (X != -1) {
                         JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
                         if (!j.getBackground().equals(c)) {
-                            if (b.getText().equals("Supr")) CPartida.borrar(Y/BZ,X/BZ);
-                            else finished = CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
-                            j.setText(b.getText());
+                            if (b.getText().equals("Supr")) {
+                                CPartida.borrar(Y/BZ,X/BZ);
+                                j.setText("");
+                            }
+                            else {
+                                finished = CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
+                                j.setText(b.getText());
+                            }
                             if (finished) {
                                 t.stop();
                                 if (CPartida.correct()){

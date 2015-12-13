@@ -13,6 +13,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,9 +71,9 @@ public class CrearKenken extends javax.swing.JPanel {
         PreviewLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         EditButton = new javax.swing.JButton();
-        CreateSave1 = new javax.swing.JButton();
-        CreatePlay1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        CreateSaveM = new javax.swing.JButton();
+        CreatePlayM = new javax.swing.JButton();
+        errorLabel = new javax.swing.JLabel();
         PreviewPanel = new javax.swing.JPanel();
         Tauler = new javax.swing.JPanel();
         paramPanel = new javax.swing.JPanel();
@@ -85,8 +86,8 @@ public class CrearKenken extends javax.swing.JPanel {
         Boto_Mult = new javax.swing.JButton();
         Boto_Div = new javax.swing.JButton();
         previewLabel = new javax.swing.JLabel();
-        CreateSave = new javax.swing.JButton();
-        CreatePlay = new javax.swing.JButton();
+        CreateSaveP = new javax.swing.JButton();
+        CreatePlayP = new javax.swing.JButton();
         PreviewPanel1 = new javax.swing.JLabel();
         fixedFField = new javax.swing.JFormattedTextField();
 
@@ -124,21 +125,21 @@ public class CrearKenken extends javax.swing.JPanel {
             }
         });
 
-        CreateSave1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        CreateSave1.setText("Create&Save");
-        CreateSave1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        CreateSave1.addActionListener(new java.awt.event.ActionListener() {
+        CreateSaveM.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        CreateSaveM.setText("Create&Save");
+        CreateSaveM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreateSaveM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateSave1ActionPerformed(evt);
+                CreateSaveMActionPerformed(evt);
             }
         });
 
-        CreatePlay1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        CreatePlay1.setText("Create&Play");
-        CreatePlay1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        CreatePlay1.addActionListener(new java.awt.event.ActionListener() {
+        CreatePlayM.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        CreatePlayM.setText("Create&Play");
+        CreatePlayM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreatePlayM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePlay1ActionPerformed(evt);
+                CreatePlayMActionPerformed(evt);
             }
         });
 
@@ -149,8 +150,8 @@ public class CrearKenken extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CreateSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CreatePlay1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreateSaveM, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreatePlayM, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -160,13 +161,13 @@ public class CrearKenken extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CreateSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CreateSaveM, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CreatePlay1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CreatePlayM, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
         PreviewPanel.setMaximumSize(new java.awt.Dimension(350, 350));
         PreviewPanel.setMinimumSize(new java.awt.Dimension(350, 350));
@@ -204,7 +205,7 @@ public class CrearKenken extends javax.swing.JPanel {
                             .addComponent(diffLabel)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 31, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(manualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PreviewLabel)
@@ -223,7 +224,7 @@ public class CrearKenken extends javax.swing.JPanel {
                     .addGroup(manualPanelLayout.createSequentialGroup()
                         .addComponent(BoxDificultat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(PreviewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -301,21 +302,21 @@ public class CrearKenken extends javax.swing.JPanel {
         previewLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         previewLabel.setText("Preview:");
 
-        CreateSave.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        CreateSave.setText("Create&Save");
-        CreateSave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        CreateSave.addActionListener(new java.awt.event.ActionListener() {
+        CreateSaveP.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        CreateSaveP.setText("Create&Save");
+        CreateSaveP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreateSaveP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateSaveActionPerformed(evt);
+                CreateSavePActionPerformed(evt);
             }
         });
 
-        CreatePlay.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        CreatePlay.setText("Create&Play");
-        CreatePlay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        CreatePlay.addActionListener(new java.awt.event.ActionListener() {
+        CreatePlayP.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        CreatePlayP.setText("Create&Play");
+        CreatePlayP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreatePlayP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePlayActionPerformed(evt);
+                CreatePlayPActionPerformed(evt);
             }
         });
 
@@ -342,8 +343,8 @@ public class CrearKenken extends javax.swing.JPanel {
             .addGroup(paramPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CreatePlay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CreateSave, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreatePlayP, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreateSaveP, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fixedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(difLabel)
                     .addComponent(operandLabel)
@@ -389,9 +390,9 @@ public class CrearKenken extends javax.swing.JPanel {
                             .addComponent(Boto_Mult, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Boto_Div, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CreateSave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CreateSaveP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CreatePlay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CreatePlayP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PreviewPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -420,38 +421,42 @@ public class CrearKenken extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BoxDificultatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDificultatActionPerformed
-        // TODO add your handling code here:
         JComboBox a = (JComboBox)evt.getSource();
         dif = (String)a.getSelectedItem();
     }//GEN-LAST:event_BoxDificultatActionPerformed
 
-    private void CreateSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSave1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CreateSave1ActionPerformed
+    private void CreateSaveMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSaveMActionPerformed
+        String d = (String)BoxDificultat.getSelectedItem();
+        int id = CP.crearTauler();
+        JOptionPane.showMessageDialog(this,
+                    "Your KenKen has been saved successfully\n"
+                            + "It is KenKen "+id+" of size " + d, 
+                    "Saved", 
+                    JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_CreateSaveMActionPerformed
 
-    private void CreatePlay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlay1ActionPerformed
-        // TODO add your handling code here:
-        String d;
-        if (dif.substring(0,1).equals("-")) d  = "2x2";
-        else d = dif.substring(0,1);
+    private void CreatePlayMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayMActionPerformed
+        String d = (String)BoxDificultat.getSelectedItem();
+        int id = CP.crearTauler();
+        JOptionPane.showMessageDialog(this,
+                    "Your KenKen has been saved successfully\n"
+                            + "It is KenKen "+id+" of size " + d, 
+                    "Saved", 
+                    JOptionPane.INFORMATION_MESSAGE);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,String.valueOf(id),CJ,parent);
+        parent.dispose();
+    }//GEN-LAST:event_CreatePlayMActionPerformed
+
+    private void CreatePlayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayPActionPerformed
+      /*  
         PlayKenKen pk = new PlayKenKen(d,user,CP,CJ,parent);
         parent.dispose();
-        setVisible(false);
-    }//GEN-LAST:event_CreatePlay1ActionPerformed
+        setVisible(false);*/
+    }//GEN-LAST:event_CreatePlayPActionPerformed
 
-    private void CreatePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayActionPerformed
+    private void CreateSavePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSavePActionPerformed
         // TODO add your handling code here:
-        String d;
-        if (dif.substring(0,1).equals("-")) d = "2x2";
-        else d = dif.substring(0,1);
-        PlayKenKen pk = new PlayKenKen(d,user,CP,CJ,parent);
-        parent.dispose();
-        setVisible(false);
-    }//GEN-LAST:event_CreatePlayActionPerformed
-
-    private void CreateSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CreateSaveActionPerformed
+    }//GEN-LAST:event_CreateSavePActionPerformed
 
     private void Boto_DivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_DivActionPerformed
         // TODO add your handling code here:
@@ -492,9 +497,9 @@ public class CrearKenken extends javax.swing.JPanel {
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
         // TODO add your handling code here:
-        if (dif.equals("-")) jLabel1.setText("You must select a difficulty");
+        if (dif.equals("-")) errorLabel.setText("You must select a difficulty");
         else {
-            jLabel1.setText("");
+            errorLabel.setText("");
             Edit edit = new Edit (Integer.parseInt(dif.substring(0, 1)),user,this.Tauler,CP);
         }
     }//GEN-LAST:event_EditButtonActionPerformed
@@ -510,10 +515,10 @@ public class CrearKenken extends javax.swing.JPanel {
     private javax.swing.JButton Boto_Resta;
     private javax.swing.JButton Boto_Suma;
     private javax.swing.JComboBox<String> BoxDificultat;
-    private javax.swing.JButton CreatePlay;
-    private javax.swing.JButton CreatePlay1;
-    private javax.swing.JButton CreateSave;
-    private javax.swing.JButton CreateSave1;
+    private javax.swing.JButton CreatePlayM;
+    private javax.swing.JButton CreatePlayP;
+    private javax.swing.JButton CreateSaveM;
+    private javax.swing.JButton CreateSaveP;
     private javax.swing.JButton EditButton;
     private javax.swing.JLabel PreviewLabel;
     private javax.swing.JPanel PreviewPanel;
@@ -523,9 +528,9 @@ public class CrearKenken extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> difBox;
     private javax.swing.JLabel difLabel;
     private javax.swing.JLabel diffLabel;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JFormattedTextField fixedFField;
     private javax.swing.JLabel fixedLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel manualPanel;
     private javax.swing.JLabel operandLabel;

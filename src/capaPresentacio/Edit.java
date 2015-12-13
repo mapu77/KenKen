@@ -172,11 +172,17 @@ public class Edit extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("EDITOR");
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         Tauler.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -357,7 +363,7 @@ public class Edit extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(validateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -491,7 +497,6 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_BotoSetActionPerformed
 
     private void DeleteRegionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRegionButtonActionPerformed
-        // TODO add your handling code here:
         canviaColorRegio(X, Y, false);
         eliminaRegio(X,Y);
         cont = 0;
@@ -512,8 +517,17 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteRegionButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        Object[] opciones = {"Accept", "Cancel"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,
+                "Do you want to exit the editor?\n"
+              + "Your progress will be lost",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,opciones[0]);
+        if (eleccion == JOptionPane.YES_OPTION) {
+            System.out.println("Tancant editor");
+            dispose();
+        }
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
@@ -550,6 +564,20 @@ public class Edit extends javax.swing.JFrame {
             validateLabel.setText("You KenKen is incorrect");
         }
     }//GEN-LAST:event_validateButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Object[] opciones = {"Accept", "Cancel"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane,
+                "Do you want to exit the editor?\n"
+              + "Your progress will be lost",
+                "Confirmation Message",
+                JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+                null,opciones,opciones[0]);
+        if (eleccion == JOptionPane.YES_OPTION) {
+            System.out.println("Tancant editor");
+            dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     private int[][] transposaMat (int[][] mat) {
         int[][] mat2 = new int[N][N];

@@ -102,7 +102,7 @@
                                   </Group>
                                   <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jLabel1" max="32767" attributes="0"/>
+                              <Component id="errorLabel" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -126,7 +126,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="BoxDificultat" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="errorLabel" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel2" max="32767" attributes="0"/>
                               </Group>
@@ -187,8 +187,8 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="CreateSave1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Component id="CreatePlay1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Component id="CreateSaveM" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Component id="CreatePlayM" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                                   <Component id="EditButton" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -201,9 +201,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="EditButton" min="-2" pref="36" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="CreateSave1" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="CreateSaveM" min="-2" pref="36" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="CreatePlay1" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="CreatePlayM" min="-2" pref="36" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -226,7 +226,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="CreateSave1">
+                    <Component class="javax.swing.JButton" name="CreateSaveM">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="12" style="0"/>
@@ -239,10 +239,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateSave1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateSaveMActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="CreatePlay1">
+                    <Component class="javax.swing.JButton" name="CreatePlayM">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="12" style="0"/>
@@ -255,12 +255,12 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlay1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlayMActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="errorLabel">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -337,8 +337,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="CreatePlay" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                              <Component id="CreateSave" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="CreatePlayP" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="CreateSaveP" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                               <Component id="fixedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="difLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="operandLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -394,9 +394,9 @@
                                       <Component id="Boto_Div" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="CreateSave" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="CreateSaveP" min="-2" pref="36" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="CreatePlay" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="CreatePlayP" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <Component id="PreviewPanel1" min="-2" pref="350" max="-2" attributes="0"/>
                           </Group>
@@ -556,7 +556,7 @@
                     <Property name="text" type="java.lang.String" value="Preview:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="CreateSave">
+                <Component class="javax.swing.JButton" name="CreateSaveP">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="12" style="0"/>
@@ -569,10 +569,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateSaveActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateSavePActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="CreatePlay">
+                <Component class="javax.swing.JButton" name="CreatePlayP">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="12" style="0"/>
@@ -585,7 +585,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlayActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreatePlayPActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="PreviewPanel1">

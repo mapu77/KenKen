@@ -32,6 +32,7 @@ public class CtrlDomini {
     private CtrlPersistencia CP;
     private CtrlUser CU;
     private CtrlJoc CJ;
+    private TaulerKenKen K;
     
     /* Mètode Constructor */
     public CtrlDomini(Scanner sn) {
@@ -152,8 +153,13 @@ public class CtrlDomini {
     /* ---------------------------------------------------------------------- */
 
     public Boolean validaKenKen (int[][] mat, ArrayList<String> ops) {
-        TaulerKenKen K = KenKenGenerator1.generateKenKenbyUser(mat, ops);
+        K = KenKenGenerator1.generateKenKenbyUser(mat, ops);
         return KenKenSolver.comprovaSol(K);
+    }
+    
+    public int crearTauler() {
+        int id = CJ.guardarTauler(K);
+        return id;
     }
     
 }

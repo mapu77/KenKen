@@ -224,4 +224,8 @@ public class CtrlPresentacio {
     public Boolean validaKenKen (int[][] mat, ArrayList<String> ops) {
         return CD.validaKenKen(mat,ops);
     }
+    
+    public int crearTauler() {
+        return CD.crearTauler();
+    }
 }

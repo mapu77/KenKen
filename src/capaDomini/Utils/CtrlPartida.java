@@ -43,23 +43,7 @@ public class CtrlPartida {
                     Info = CtrlPersistencia.loadTable(pathPartides);
             } catch (IOException e) {
                     System.err.println(e.getMessage());
-            }
-            
-	}
-        
-	public CtrlPartida(Partida p, Scanner scan) {
-            this.P = p;
-            this.currentTime = p.getTime();
-            this.FI = false;
-            this.guardada = false;
-            CP = new CtrlPersistencia();
-            CtrlPersistencia.setSeparator(" ");
-            s = scan;
-            try {
-                    Info = CtrlPersistencia.loadTable(pathPartides);
-            } catch (IOException e) {
-                    System.err.println(e.getMessage());
-            }
+            }   
 	}
 	
 	/**

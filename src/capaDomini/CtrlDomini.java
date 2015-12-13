@@ -9,7 +9,6 @@ import capaDomini.Algoritmes.KenKenGenerator;
 import capaDomini.Algoritmes.KenKenGenerator1;
 import capaDomini.Algoritmes.KenKenSolver;
 import capaDomini.Usuari.CtrlUser;
-import capaDomini.Usuari.User;
 import capaDomini.Utils.TaulerKenKen;
 import capaDomini.Ranking.RankingGeneral;
 import capaDomini.Ranking.RankingPerTipus;

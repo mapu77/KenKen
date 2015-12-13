@@ -41,18 +41,6 @@ public class CrearKenken extends javax.swing.JPanel {
         this.CP = CP;
         this.CJ = CJ;
     }
-        
-    public CrearKenken(String u, javax.swing.JFrame p, int index, CtrlPresentacio CP, int[][] mat, ArrayList<String> ops) {
-        super();
-        parent = p;
-        user = u;
-        dif = "-";
-        initComponents();        
-        tabMenu.setSelectedIndex(index);
-        this.CP = CP;
-        this.CJ = CJ;
-        //this.PreviewPanel = new Preview(mat,ops);
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -459,7 +447,6 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_CreateSavePActionPerformed
 
     private void Boto_DivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_DivActionPerformed
-        // TODO add your handling code here:
         Color c = Boto_Div.getBackground();
         if (c == Color.white) {
             Boto_Div.setBackground(Color.gray);

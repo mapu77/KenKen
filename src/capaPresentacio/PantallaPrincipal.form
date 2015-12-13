@@ -99,6 +99,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Select a KenKen"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectItemActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="randomItem">
                   <Properties>
@@ -107,6 +110,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Random KenKen"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="randomItemActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -132,11 +138,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Personal Ranking"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="personalItemActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="typeRanking">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="By Type Ranking"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeRankingActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

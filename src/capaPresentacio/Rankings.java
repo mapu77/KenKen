@@ -28,6 +28,16 @@ public class Rankings extends javax.swing.JPanel {
         nUsuaris.setText(Integer.toString(CP.usuarisRG()));
         popular.setText(CP.popularRG());
     }
+    
+    public Rankings(CtrlPresentacio CP, int index) {
+        initComponents();
+        this.CP = CP;
+        nJocs.setText(Integer.toString(CP.jocsRG()));
+        nPartides.setText(Integer.toString(CP.partidesRG()));
+        nUsuaris.setText(Integer.toString(CP.usuarisRG()));
+        popular.setText(CP.popularRG());
+        tabMenu2.setSelectedIndex(index);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -442,29 +452,11 @@ public class Rankings extends javax.swing.JPanel {
     }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String user = usernameField.getText();
-            if (CP.existeixUsuari(user)) {
-                if (CP.obtenirResoltsRP(user) == 0) {
-                    buidaAll();
-                    jResolts.setText("0");
-                    errorLabel.setText("<html>No games played by this user</html>");
-                }
-                else {
-                    obtenirAll(user);
-                    errorLabel.setText("");
-                }
-            }
-            else {
-                buidaAll();
-                errorLabel.setText("<html>Username incorrect</html>");
-            }
-        }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            findButton.doClick();
     }//GEN-LAST:event_usernameFieldKeyPressed
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        // TODO add your handling code here:
         String user = usernameField.getText();
         if (CP.existeixUsuari(user)) {
             if (CP.obtenirResoltsRP(user) == 0) {

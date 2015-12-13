@@ -231,10 +231,20 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         selectItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/DBIcon.png"))); // NOI18N
         selectItem.setText("Select a KenKen");
+        selectItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectItemActionPerformed(evt);
+            }
+        });
         submenuPlayKenKen.add(selectItem);
 
         randomItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RandomIcon.png"))); // NOI18N
         randomItem.setText("Random KenKen");
+        randomItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                randomItemActionPerformed(evt);
+            }
+        });
         submenuPlayKenKen.add(randomItem);
 
         options.add(submenuPlayKenKen);
@@ -253,9 +263,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         submenuRanking.add(generalItem);
 
         personalItem.setText("Personal Ranking");
+        personalItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personalItemActionPerformed(evt);
+            }
+        });
         submenuRanking.add(personalItem);
 
         typeRanking.setText("By Type Ranking");
+        typeRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeRankingActionPerformed(evt);
+            }
+        });
         submenuRanking.add(typeRanking);
 
         options.add(submenuRanking);
@@ -363,7 +383,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_userMngrItemActionPerformed
 
     private void generalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalItemActionPerformed
-        // TODO add your handling code here:
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        menuPanel.add(new Rankings(CP,0));
+        menuPanel.repaint();
+        menuPanel.revalidate(); 
     }//GEN-LAST:event_generalItemActionPerformed
 
     private void parItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parItemActionPerformed
@@ -378,6 +403,38 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void selectItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectItemActionPerformed
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        menuPanel.add(new KenkenBBDD(user,parent,CP,CJ));
+        menuPanel.repaint();
+        menuPanel.revalidate();
+    }//GEN-LAST:event_selectItemActionPerformed
+
+    private void randomItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomItemActionPerformed
+        SelectSize pk = new SelectSize(user,CP,CJ,parent);
+        pk.setVisible(true);
+    }//GEN-LAST:event_randomItemActionPerformed
+
+    private void personalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalItemActionPerformed
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        menuPanel.add(new Rankings(CP,1));
+        menuPanel.repaint();
+        menuPanel.revalidate();
+    }//GEN-LAST:event_personalItemActionPerformed
+
+    private void typeRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeRankingActionPerformed
+        menuPanel.removeAll();
+        menuPanel.repaint();
+        menuPanel.revalidate();
+        menuPanel.add(new Rankings(CP,2));
+        menuPanel.repaint();
+        menuPanel.revalidate();
+    }//GEN-LAST:event_typeRankingActionPerformed
 
 
 

@@ -11,11 +11,16 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -26,7 +31,7 @@ public class Edit extends javax.swing.JFrame {
     private ArrayList<String> ops;
     private int[][] mat;
     private String user, op;
-    private javax.swing.JFrame parent;
+    private javax.swing.JPanel parent;
     private CtrlPresentacio CP;
     private int N, X, Y, BZ, cont, RegionCount;
     /**
@@ -38,7 +43,7 @@ public class Edit extends javax.swing.JFrame {
         N = 3;
         init();
     }
-    public Edit(int N, String u, javax.swing.JFrame p, CtrlPresentacio CP) {
+    public Edit(int N, String u, javax.swing.JPanel p, CtrlPresentacio CP) {
         initComponents();
         this.CP = CP;
         this.N = N;
@@ -158,10 +163,10 @@ public class Edit extends javax.swing.JFrame {
         ResultatText = new javax.swing.JTextField();
         BotoSet = new javax.swing.JButton();
         DeleteRegionButton = new javax.swing.JButton();
-        errorRegionLabel = new javax.swing.JLabel();
         validateButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         validateLabel = new javax.swing.JLabel();
+        errorRegionLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
@@ -264,8 +269,6 @@ public class Edit extends javax.swing.JFrame {
             }
         });
 
-        errorRegionLabel.setForeground(new java.awt.Color(255, 0, 0));
-
         validateButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         validateButton.setText("Validate KenKen");
         validateButton.setEnabled(false);
@@ -285,6 +288,8 @@ public class Edit extends javax.swing.JFrame {
 
         validateLabel.setForeground(new java.awt.Color(51, 255, 51));
 
+        errorRegionLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout BotonsLayout = new javax.swing.GroupLayout(Botons);
         Botons.setLayout(BotonsLayout);
         BotonsLayout.setHorizontalGroup(
@@ -296,12 +301,12 @@ public class Edit extends javax.swing.JFrame {
                     .addComponent(CountCeles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotonsLayout.createSequentialGroup()
                         .addGroup(BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(errorRegionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(validateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(exitButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(validateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(BotonsLayout.createSequentialGroup()
-                                .addComponent(errorRegionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(BotoSet))
                             .addComponent(ResultatText, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DeleteRegionButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -343,12 +348,12 @@ public class Edit extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ResultatText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotoSet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(errorRegionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(BotoSet)
                 .addGap(18, 18, 18)
                 .addComponent(DeleteRegionButton)
-                .addGap(70, 70, 70)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(errorRegionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(validateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
@@ -447,28 +452,35 @@ public class Edit extends javax.swing.JFrame {
             for (int j=0; j<N && !found; ++j) {
                 for (int i=0; i<N && !found; ++i) {
                     if (mat[i][j] == RegionCount) {
-                        found = true;
-                        JLabel lab = (JLabel) Tauler.getComponentAt(i*BZ,j*BZ);
-                        String res = ResultatText.getText();
-                        JLabel in = new JLabel(op+res);
-                        lab.add(in);
-                        in.setBounds(5, 0, BZ/2, BZ/2);
-                        ++RegionCount;
-                        cont = 0;
-                        CountCeles.setText("Region with " + cont + " cells");
-                        setBorders();
-                        canviaColorRegio(i*BZ,j*BZ,false);
+                        if ((op.equals("/") || op.equals("-")) && contaCeles(i*BZ,j*BZ) != 2) {
+                            System.out.println("hola caracola");
+                            errorRegionLabel.setText("<html>This region must contain 2 cells</html>");
+                        }
+                        else {
+                            found = true;
+                            JLabel lab = (JLabel) Tauler.getComponentAt(i*BZ,j*BZ);
+                            String res = ResultatText.getText();
+                            JLabel in = new JLabel(op+res);
+                            lab.add(in);
+                            in.setBounds(5, 0, BZ/2, BZ/2);
+                            ++RegionCount;
+                            cont = 0;
+                            CountCeles.setText("Region with " + cont + " cells");
+                            setBorders();
+                            canviaColorRegio(i*BZ,j*BZ,false);
+                            ResultatText.setText("");
+                            errorRegionLabel.setText("<html></html>");
+                            errorRegionLabel.setText("<html></html>");
+                            BotoSuma.setBackground(Color.white);
+                            BotoResta.setBackground(Color.white);
+                            BotoMult.setBackground(Color.white);
+                            BotoDiv.setBackground(Color.white);
+                            op = "";
+                            if (KKcomplet()) validateButton.setEnabled(true);
+                        }
                     }
                 }
             }
-            ResultatText.setText("");
-            BotoSuma.setBackground(Color.white);
-            BotoResta.setBackground(Color.white);
-            BotoMult.setBackground(Color.white);
-            BotoDiv.setBackground(Color.white);
-            op = "";
-            errorRegionLabel.setText("<html></html>");
-            if (KKcomplet()) validateButton.setEnabled(true);
         }
         else {
             if (op.equals("")) errorRegionLabel.setText("<html>Select an operand</html>");
@@ -516,15 +528,28 @@ public class Edit extends javax.swing.JFrame {
             }
         }
         int[][] mat2 = transposaMat(mat);
-        printaMat(mat);
-/*        if (CP.validaKenKen(mat,ops)) {
+        colocaRegions(mat2);
+        if (CP.validaKenKen(mat2,ops)) {
             validateLabel.setForeground(Color.green);
             validateLabel.setText("You KenKen is correct");
+            dispose();
+            //_
+            parent.removeAll();
+            parent.repaint();
+            parent.revalidate();
+            parent = new Preview(mat2,ops);
+            parent.repaint();
+            parent.revalidate();
+            //afegint JPanel
+/*            parent.add(new Preview(mat2,ops));
+            parent.repaint();
+            parent.revalidate();*/
+            //_
         }
         else {
             validateLabel.setForeground(Color.red);
             validateLabel.setText("You KenKen is incorrect");
-        }*/
+        }
     }//GEN-LAST:event_validateButtonActionPerformed
 
     private int[][] transposaMat (int[][] mat) {
@@ -538,7 +563,26 @@ public class Edit extends javax.swing.JFrame {
     }
     
     private void colocaRegions (int[][] mat) {
-        
+        ArrayList<Integer> hola = new ArrayList<>();
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                if (! hola.contains(mat[i][j])) 
+                    hola.add(mat[i][j]);
+            }
+        }
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                int val = mat[i][j];
+                boolean ok = false;
+                for (int k=0; k<hola.size() && !ok; k++) {
+                    if (val == hola.get(k)) {
+                        val = k;
+                        ok = true;
+                    }
+                }
+                mat[i][j] = val;
+            }
+        }
     }
     
     private void printaMat (int[][] mat) {
@@ -711,38 +755,10 @@ public class Edit extends javax.swing.JFrame {
                 }
                 JLabel label = (JLabel) Tauler.getComponentAt(i*BZ,j*BZ);
                 label.setBorder(BorderFactory.createMatteBorder(l,u,r,d,Color.black));
-                //label.setBorder(BorderFactory.createMatteBorder(u,l,d,r,Color.black));
                 
             }
         }
     }
-    
-/*    public static void main(String args[]) {
-       
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Edit().setVisible(true);
-            }
-        });
-    }*/
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

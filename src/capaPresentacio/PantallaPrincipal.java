@@ -1,8 +1,11 @@
 package capaPresentacio;
 
 import capaDomini.Utils.CtrlJoc;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,6 +61,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         backgroundLabel = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
+        userGuideItem = new javax.swing.JMenuItem();
         exitItemMenu = new javax.swing.JMenuItem();
         options = new javax.swing.JMenu();
         userMngrItem = new javax.swing.JMenuItem();
@@ -162,6 +166,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         file.setText("File");
 
+        userGuideItem.setText("User Guide");
+        userGuideItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userGuideItemActionPerformed(evt);
+            }
+        });
+        file.add(userGuideItem);
+
         exitItemMenu.setText("Exit");
         exitItemMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,20 +238,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         selectItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/DBIcon.png"))); // NOI18N
         selectItem.setText("Select a KenKen");
-        selectItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectItemActionPerformed(evt);
-            }
-        });
         submenuPlayKenKen.add(selectItem);
 
         randomItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RandomIcon.png"))); // NOI18N
         randomItem.setText("Random KenKen");
-        randomItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                randomItemActionPerformed(evt);
-            }
-        });
         submenuPlayKenKen.add(randomItem);
 
         options.add(submenuPlayKenKen);
@@ -258,19 +260,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         submenuRanking.add(generalItem);
 
         personalItem.setText("Personal Ranking");
-        personalItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                personalItemActionPerformed(evt);
-            }
-        });
         submenuRanking.add(personalItem);
 
         typeRanking.setText("By Type Ranking");
-        typeRanking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeRankingActionPerformed(evt);
-            }
-        });
         submenuRanking.add(typeRanking);
 
         options.add(submenuRanking);
@@ -431,6 +423,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.revalidate();
     }//GEN-LAST:event_typeRankingActionPerformed
 
+    private void userGuideItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideItemActionPerformed
+        Desktop d = Desktop.getDesktop();
+        try {
+            d.open(new File("ManualdeJoc.pdf"));
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this,
+                      "No user guide found\n"
+                    + "Please contact with the developers", 
+                      "Error", 
+                      JOptionPane.ERROR_MESSAGE);  
+            
+        }    }//GEN-LAST:event_userGuideItemActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -455,6 +460,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu submenuPlayKenKen;
     private javax.swing.JMenu submenuRanking;
     private javax.swing.JMenuItem typeRanking;
+    private javax.swing.JMenuItem userGuideItem;
     private javax.swing.JMenuItem userMngrItem;
     private capaPresentacio.WelcomeToKenken welcomeToKenken1;
     // End of variables declaration//GEN-END:variables

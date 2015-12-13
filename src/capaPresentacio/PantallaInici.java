@@ -286,12 +286,17 @@ public class PantallaInici extends javax.swing.JFrame {
 
     /**
      * Comportament del ítem Exit del menú
-     * @param evt 
+     * @param evt Event
      */
     private void exitItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemMenuActionPerformed
+        System.out.println("Tancant pantalla d'inici");
         System.exit(0);
     }//GEN-LAST:event_exitItemMenuActionPerformed
 
+    /**
+     * Comportament del ítem About del menú
+     * @param evt Event
+     */
     private void aboutItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemMenuActionPerformed
         About about = new About(this);
         about.setVisible(true);
@@ -305,6 +310,10 @@ public class PantallaInici extends javax.swing.JFrame {
 
     }//GEN-LAST:event_siginItemMenuMouseClicked
 
+    /**
+     * Comportament de l'etiqueta Not registered
+     * @param evt 
+     */
     private void signinLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinLabelMouseClicked
         SignIn signin = new SignIn(this, CP);
         signin.setVisible(true);
@@ -322,11 +331,19 @@ public class PantallaInici extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LogInPanelPropertyChange
 
+    /**
+     * Comportament de ítem SignIn del menú
+     * @param evt Event
+     */
     private void siginItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siginItemMenuActionPerformed
         SignIn signin = new SignIn(this, CP);
         signin.setVisible(true);
     }//GEN-LAST:event_siginItemMenuActionPerformed
 
+    /**
+     * Comportament del botó Log In
+     * @param evt Event
+     */
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String nom = usernameField.getText();
         String pwd = String.valueOf(passwordField.getPassword());
@@ -343,6 +360,10 @@ public class PantallaInici extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    /**
+     * Comportament del camp de text del nom d'usuari
+     * @param evt Event
+     */
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String nom = usernameField.getText();
@@ -361,6 +382,10 @@ public class PantallaInici extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_usernameFieldKeyPressed
 
+    /**
+     * Comportament del camp de text de la contrassenya
+     * @param evt Event
+     */
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String nom = usernameField.getText();
@@ -379,10 +404,18 @@ public class PantallaInici extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
 
+    /**
+     * Comportament al tancar la finestra
+     * @param evt Event
+     */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         System.out.println("Tancant pantalla d'inici");
     }//GEN-LAST:event_formWindowClosed
 
+    /**
+     * Comportament del item User Guide
+     * @param evt Event
+     */
     private void guideItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guideItemActionPerformed
         Desktop d = Desktop.getDesktop();
         try {

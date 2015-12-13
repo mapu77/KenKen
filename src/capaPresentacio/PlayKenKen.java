@@ -44,6 +44,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     ArrayList<ArrayList<Integer> > mat;
     private int cont = 0;
     private Color c = new Color(0,200,0);
+    boolean finished = false;
     private static ImageIcon imageResume;
     private static ImageIcon imagePause;
     private static ImageIcon imageErase;
@@ -187,7 +188,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if (X != -1) {
                         JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
-                        boolean finished = false;
                         if (!j.getBackground().equals(c)) {
                             if (b.getText().equals("")) CPartida.borrar(Y/BZ,X/BZ);
                             else finished = CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
@@ -729,7 +729,7 @@ public class PlayKenKen extends javax.swing.JFrame {
 
     private void HintButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HintButtonActionPerformed
         if (cont < N-2) {
-            CPartida.getPista();
+            finished = CPartida.getPista();
             int x = CPartida.getPistaX();
             int y = CPartida.getPistaY();
             int val = CPartida.getPistaN();
@@ -738,7 +738,37 @@ public class PlayKenKen extends javax.swing.JFrame {
             b.setBackground(new Color(0,200,0));
             ++cont;
             if (cont == N-2) HintButton.setEnabled(false);
-            
+            if (finished) {
+                t.stop();
+                if (CPartida.correct()){
+                    long time = h*3600+m*60+s;
+                    CPartida.setcurrentTime(time);
+                    CPartida.saveToRank();
+                    Object[] opciones = {"Play again", "Play another KenKen", "Exit"};
+                    int eleccion = JOptionPane.showOptionDialog(rootPane,
+                            "You have solved this KenKen successfully\n"
+                          + "Your time: "+(h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10? "0"+s:s)+"\n"
+                          + "What do you want to do next?",
+                        "Congratulations!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
+                        null,opciones,opciones[2]);
+                    if (eleccion == JOptionPane.YES_OPTION) 
+                        ResetButton.doClick();
+                    else {
+                        PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+                        dispose();
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(parent,
+                            "We are sorry\n"
+                          + "It seems your solution is not correct\n"
+                          + "Keep trying!", 
+                        "Wrong", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                    t.start();
+                }
+            }
         }
     }//GEN-LAST:event_HintButtonActionPerformed
     

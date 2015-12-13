@@ -66,6 +66,16 @@ public class CtrlDomini {
     public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
         KenKenGenerator KG = new KenKenGenerator(sn);
         K = KG.generateKenKenbyParameters(N,iniX,vOps);
+        return converteixAMatriu (K, vOps);
+    }
+    
+    public int[][] taulerBBDD (String id, String D, ArrayList<String> vOps) {
+        TaulerKenKen K = CJ.llegirTauler(id, D);
+        return converteixAMatriu (K, vOps);
+    }
+    
+    public int[][] converteixAMatriu (TaulerKenKen K, ArrayList<String> vOps) {
+        int N = K.getAlto();
         int[][] mat = new int[N][N];
         ArrayList<Boolean> reg = new ArrayList<>();
         for (int i=0; i<K.getNRegio(); i++) reg.add(false);

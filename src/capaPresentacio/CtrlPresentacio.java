@@ -6,9 +6,7 @@
 package capaPresentacio;
 
 import capaDomini.CtrlDomini;
-import capaDomini.Ranking.Tupla;
 import capaDomini.Utils.*;
-import capaDomini.Usuari.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -231,5 +229,9 @@ public class CtrlPresentacio {
     
     public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
         return CD.generaKenkenPerParametres (N, iniX, vOps);
+    }
+    
+    public int[][] taulerBBDD (String id, String D,ArrayList<String> vOps) {
+        return CD.taulerBBDD(id, D, vOps);
     }
 }

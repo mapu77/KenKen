@@ -547,6 +547,7 @@ public class Edit extends javax.swing.JFrame {
             parent.add(new Preview(mat2,ops,parent.getBounds()));
             parent.repaint();
             parent.revalidate();
+            parent.setForeground(Color.black);
         }
 
         else {

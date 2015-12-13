@@ -1,10 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package capaPresentacio;
 
 import capaDomini.Utils.CtrlJoc;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -31,6 +38,7 @@ public class CrearKenken extends javax.swing.JPanel {
         tabMenu.setSelectedIndex(index);
         this.CP = CP;
         this.CJ = CJ;
+        PreviewPanel.setForeground(Color.red);
     }
     
     /**
@@ -83,6 +91,12 @@ public class CrearKenken extends javax.swing.JPanel {
         tabMenu.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tabMenu.setPreferredSize(new java.awt.Dimension(575, 465));
 
+        manualPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                manualPanelMouseReleased(evt);
+            }
+        });
+
         diffLabel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         diffLabel.setText("Select difficulty");
 
@@ -109,6 +123,7 @@ public class CrearKenken extends javax.swing.JPanel {
         CreateSaveM.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         CreateSaveM.setText("Create&Save");
         CreateSaveM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreateSaveM.setEnabled(false);
         CreateSaveM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateSaveMActionPerformed(evt);
@@ -118,6 +133,7 @@ public class CrearKenken extends javax.swing.JPanel {
         CreatePlayM.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         CreatePlayM.setText("Create&Play");
         CreatePlayM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreatePlayM.setEnabled(false);
         CreatePlayM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreatePlayMActionPerformed(evt);
@@ -286,6 +302,7 @@ public class CrearKenken extends javax.swing.JPanel {
         CreateSaveP.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         CreateSaveP.setText("Create&Save");
         CreateSaveP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreateSaveP.setEnabled(false);
         CreateSaveP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateSavePActionPerformed(evt);
@@ -295,6 +312,7 @@ public class CrearKenken extends javax.swing.JPanel {
         CreatePlayP.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         CreatePlayP.setText("Create&Play");
         CreatePlayP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CreatePlayP.setEnabled(false);
         CreatePlayP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreatePlayPActionPerformed(evt);
@@ -306,15 +324,34 @@ public class CrearKenken extends javax.swing.JPanel {
         fixedFField.setMaximumSize(new java.awt.Dimension(50, 27));
         fixedFField.setMinimumSize(new java.awt.Dimension(50, 27));
         fixedFField.setPreferredSize(new java.awt.Dimension(50, 27));
+        fixedFField.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                fixedFFieldInputMethodTextChanged(evt);
+            }
+        });
         fixedFField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fixedFFieldActionPerformed(evt);
+            }
+        });
+        fixedFField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fixedFFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fixedFFieldKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fixedFFieldKeyTyped(evt);
             }
         });
 
         GenerateButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         GenerateButton.setText("Generate");
         GenerateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        GenerateButton.setEnabled(false);
         GenerateButton.setMaximumSize(new java.awt.Dimension(75, 36));
         GenerateButton.setMinimumSize(new java.awt.Dimension(75, 36));
         GenerateButton.setName(""); // NOI18N
@@ -489,6 +526,7 @@ public class CrearKenken extends javax.swing.JPanel {
             Boto_Div.setBackground(Color.gray);
         }
         else Boto_Div.setBackground(Color.white);
+        comprovaGenerate();
     }//GEN-LAST:event_Boto_DivActionPerformed
 
     private void Boto_MultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_MultActionPerformed
@@ -497,6 +535,7 @@ public class CrearKenken extends javax.swing.JPanel {
             Boto_Mult.setBackground(Color.gray);
         }
         else Boto_Mult.setBackground(Color.white);
+        comprovaGenerate();
     }//GEN-LAST:event_Boto_MultActionPerformed
 
     private void Boto_RestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_RestaActionPerformed
@@ -505,6 +544,7 @@ public class CrearKenken extends javax.swing.JPanel {
             Boto_Resta.setBackground(Color.gray);
         }
         else Boto_Resta.setBackground(Color.white);
+        comprovaGenerate();
     }//GEN-LAST:event_Boto_RestaActionPerformed
 
     private void Boto_SumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_SumaActionPerformed
@@ -514,18 +554,21 @@ public class CrearKenken extends javax.swing.JPanel {
     private void difBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difBoxActionPerformed
         JComboBox a = (JComboBox)evt.getSource();
         dif = (String)a.getSelectedItem();
+        comprovaGenerate();
     }//GEN-LAST:event_difBoxActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
         if (dif.equals("-")) errorLabel.setText("You must select a difficulty");
         else {
             errorLabel.setText("");
-            Edit edit = new Edit (Integer.parseInt(dif.substring(0, 1)),user,this.Tauler,CP);
+            Edit edit = new Edit (Integer.parseInt(dif.substring(0, 1)),user,this.PreviewPanel,CP);
+            BotonsCreate();
         }
     }//GEN-LAST:event_EditButtonActionPerformed
 
     private void fixedFFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixedFFieldActionPerformed
         // TODO add your handling code here:
+        comprovaGenerate();
     }//GEN-LAST:event_fixedFFieldActionPerformed
 
     private void GenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateButtonActionPerformed
@@ -546,9 +589,52 @@ public class CrearKenken extends javax.swing.JPanel {
         PreviewPanel1.add(new Preview(mat,Ops,PreviewPanel1.getBounds()));
         PreviewPanel1.repaint();
         PreviewPanel1.revalidate();
+        CreateSaveP.setEnabled(true);
+        CreatePlayP.setEnabled(true);
         
     }//GEN-LAST:event_GenerateButtonActionPerformed
 
+    private void fixedFFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_fixedFFieldInputMethodTextChanged
+        // TODO add your handling code here:
+        comprovaGenerate();
+    }//GEN-LAST:event_fixedFFieldInputMethodTextChanged
+
+    private void fixedFFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fixedFFieldKeyTyped
+        // TODO add your handling code here:
+        comprovaGenerate();
+    }//GEN-LAST:event_fixedFFieldKeyTyped
+
+    private void fixedFFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fixedFFieldKeyReleased
+        // TODO add your handling code here:
+        comprovaGenerate();
+    }//GEN-LAST:event_fixedFFieldKeyReleased
+
+    private void fixedFFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fixedFFieldKeyPressed
+        // TODO add your handling code here:
+        comprovaGenerate();
+    }//GEN-LAST:event_fixedFFieldKeyPressed
+
+    private void manualPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualPanelMouseReleased
+        // TODO add your handling code here:
+        BotonsCreate();
+    }//GEN-LAST:event_manualPanelMouseReleased
+
+    private void comprovaGenerate() {
+        if (!dif.equals("-") && !fixedFField.getText().equals("")) GenerateButton.setEnabled(true);
+        else GenerateButton.setEnabled(false);
+    }
+    
+    private void BotonsCreate() {
+        System.out.println(PreviewPanel.getForeground());
+        if (PreviewPanel.getForeground().equals(Color.red)) {
+            CreateSaveM.setEnabled(true);
+            CreatePlayM.setEnabled(true);
+        }
+        else {
+            CreateSaveM.setEnabled(false);
+            CreatePlayM.setEnabled(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boto_Div;

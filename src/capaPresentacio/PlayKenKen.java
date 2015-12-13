@@ -760,15 +760,21 @@ public class PlayKenKen extends javax.swing.JFrame {
             if (eleccion == JOptionPane.YES_OPTION) {
                 long time = h*3600+m*60+s;
                 CPartida.setcurrentTime(time);
-                System.out.println("Guardant la partida...");
                 CPartida.saveState();
+                JOptionPane.showMessageDialog(parent,
+                        "Your game has been saved successfully" , 
+                        "Confirmation Message", 
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else {
             long time = h*3600+m*60+s;
             CPartida.setcurrentTime(time);
-            System.out.println("Guardant la partida...");
             CPartida.saveState();
+            JOptionPane.showMessageDialog(parent,
+                        "Your game has been saved successfully" , 
+                        "Confirmation Message", 
+                        JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
 
@@ -810,7 +816,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                           + "It seems your solution is not correct\n"
                           + "Keep trying!", 
                         "Wrong", 
-                        JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
                     t.start();
                 }
             }
@@ -822,7 +828,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         for (int i=0; i<N; ++i) {
             for (int j=0; j<N; ++j) {
                 int val = CPartida.getValorSolved(i,j);
-                JLabel l = (JLabel)Tauler.getComponentAt(i*BZ,j*BZ);
+                JLabel l = (JLabel)Tauler.getComponentAt(j*BZ,i*BZ);
                 l.setText(String.valueOf(val));
             }
         }

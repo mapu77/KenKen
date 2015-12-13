@@ -23,36 +23,43 @@ public class CtrlPartida {
 	private ArrayList<ArrayList<String>> Info;
         private Stack<Cella> pila;
         private TaulerKenKen p2;
+        private KenKenCheck KC;
         private int pistaX, pistaY, pistaN;
 	Scanner s;
 	
+        /**
+         * Constructor del Controlador de partida
+         * @param p Partida
+         */
         public CtrlPartida(Partida p) {
-		this.P = p;
-		this.currentTime = p.getTime();
-		this.FI = false;
-		this.guardada = false;
-                this.pila = new Stack<Cella>();
-                this.p2 = new TaulerKenKen(P.getK().getAlto());
-		try {
-			Info = CtrlPersistencia.loadTable(pathPartides);
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
+            this.P = p;
+            this.currentTime = p.getTime();
+            this.FI = false;
+            this.guardada = false;
+            this.pila = new Stack<Cella>();
+            this.p2 = new TaulerKenKen(P.getK().getAlto());
+            KC = new KenKenCheck(P.getK());
+            try {
+                    Info = CtrlPersistencia.loadTable(pathPartides);
+            } catch (IOException e) {
+                    System.err.println(e.getMessage());
+            }
+            
 	}
         
 	public CtrlPartida(Partida p, Scanner scan) {
-		this.P = p;
-		this.currentTime = p.getTime();
-		this.FI = false;
-		this.guardada = false;
-		CP = new CtrlPersistencia();
-		CtrlPersistencia.setSeparator(" ");
-		s = scan;
-		try {
-			Info = CtrlPersistencia.loadTable(pathPartides);
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
+            this.P = p;
+            this.currentTime = p.getTime();
+            this.FI = false;
+            this.guardada = false;
+            CP = new CtrlPersistencia();
+            CtrlPersistencia.setSeparator(" ");
+            s = scan;
+            try {
+                    Info = CtrlPersistencia.loadTable(pathPartides);
+            } catch (IOException e) {
+                    System.err.println(e.getMessage());
+            }
 	}
 	
 	/**
@@ -284,12 +291,21 @@ public class CtrlPartida {
             return P.getK().getNumero(i, j);
         }
         
-        public void setValor(int i, int j, int val) {
+        public boolean setValor(int i, int j, int val) {
             Cella c = new Cella(i,j);
             c.setNumero(P.getK().getNumero(i, j));
             pila.addElement(c);
             P.getK().setNumero(i, j, val);
-            P.getK().PrintaKenKen();
+            return this.finished();
+        }
+        
+        public boolean finished() {
+            return P.getK().getNumCeldas() == P.getK().getNumCeldasRellenas();
+        }
+        
+        
+        public boolean correct() {
+            return !KC.checkKenKen();
         }
         
         public int undoX() {
@@ -318,6 +334,21 @@ public class CtrlPartida {
             //P.getK().PrintaKenKen();
             return aux.getNumero();
         }
+        
+        public void saveToRank() {
+		ArrayList<String> fila = new ArrayList<String>();
+		fila.add(P.getUsuari());
+		fila.add(P.getIdJoc());
+		fila.add(P.getD());
+		fila.add(String.valueOf(currentTime));
+		fila.add(String.valueOf(P.getPistes()));
+		Info.add(fila);
+		try {
+			CtrlPersistencia.storeTable(pathPartides,Info);
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+		}
+	}
         
         public void saveState() {
             String u = P.getUsuari();
@@ -379,7 +410,6 @@ public class CtrlPartida {
             if (!(p2.getNumCeldasRellenas() == p2.getNumCeldas())) {
                 KenKenSolver KS = new KenKenSolver();
 		KS.backtrackingSolver(p2);
-                //p2.PrintaSolucio();
             }
         }
         
@@ -391,7 +421,6 @@ public class CtrlPartida {
                 pistaX = randx;
                 pistaY = randy;
                 pistaN = p2.getNumero(randx, randy);
-                System.out.println(pistaX + " " + pistaY + " " + pistaN);
             }
             else getPista();
         }

@@ -265,48 +265,36 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_GestorUsuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GestorUsuariActionPerformed
-        // TODO add your handling code here:
-        //esborrant JPanel
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        //afegint JPanel
         menuPanel.add(new GestioUsuari(user,CP));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_GestorUsuariActionPerformed
 
     private void jButton_CrearKenkenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CrearKenkenActionPerformed
-        // TODO add your handling code here:
-        //esborrant JPanel
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        //afegint JPanel
         menuPanel.add(new CrearKenken(user,this, 0, CP, CJ));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_CrearKenkenActionPerformed
 
     private void jButton_JugarKenKenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_JugarKenKenActionPerformed
-        // TODO add your handling code here:
-        //esborrant JPanel
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        //afegint JPanel
         menuPanel.add(new JugarKenken(user,CP,CJ,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_jButton_JugarKenKenActionPerformed
 
     private void jButton_ConsultarRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ConsultarRankingActionPerformed
-        // TODO add your handling code here:
-        //esborrant JPanel
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        //afegint JPanel
         menuPanel.add(new Rankings(CP));
         menuPanel.repaint();
         menuPanel.revalidate();
@@ -363,18 +351,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_resumeItemActionPerformed
 
     private void userMngrItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMngrItemActionPerformed
-        //esborrant JPanel
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        //afegint JPanel
         menuPanel.add(new GestioUsuari(user,CP));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_userMngrItemActionPerformed
 
     private void generalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalItemActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_generalItemActionPerformed
 
     private void parItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parItemActionPerformed

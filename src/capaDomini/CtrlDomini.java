@@ -116,6 +116,11 @@ public class CtrlDomini {
     /* ---------------------------------------------------------------------- */
     
     /* Mètodes per Partida */
+    /**
+     * Mètode per carregar una partida guardada
+     * @param u Usuari
+     * @return El controlador associat a la partida
+     */
     public CtrlPartida crearPartida(String u) {
         Partida P = CJ.loadPartidaGuardada(u);
         CtrlPartida CPart = new CtrlPartida(P);

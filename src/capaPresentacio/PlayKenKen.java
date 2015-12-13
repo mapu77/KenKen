@@ -130,11 +130,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         public void run() {
             CPartida.clonarTauler();
             CPartida.resoldrePerPista();
-            if (cont == N-2) HintButton.setEnabled(false);
-            else {
-                HintButton.setEnabled(true);
-            }
-            solveButton.setEnabled(true);
+            HintButton.setEnabled(true);
         }
     };
     Thread th;
@@ -159,9 +155,13 @@ public class PlayKenKen extends javax.swing.JFrame {
         imageResume = new javax.swing.ImageIcon(resume);
         imagePause = new javax.swing.ImageIcon(pause);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
-        th = new Thread(rp);
-        th.start();
         HintButton.setEnabled(false);
+        if (CPartida.resolem()) {
+            th = new Thread(rp);
+            th.start();
+        }
+        else HintButton.setEnabled(true);
+        solveButton.setEnabled(true);
     }
     
     private void InicialitzaBotons() {

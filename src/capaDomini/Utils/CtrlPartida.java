@@ -37,7 +37,11 @@ public class CtrlPartida {
             this.FI = false;
             this.guardada = false;
             this.pila = new Stack<Cella>();
-            this.p2 = new TaulerKenKen(P.getK().getAlto());
+            if (P.getSol() != null) {
+                this.p2 = P.getSol();
+                p2.PrintaKenKen();
+            }
+            else this.p2 = new TaulerKenKen(P.getK().getAlto());
             KC = new KenKenCheck(P.getK());
             try {
                     Info = CtrlPersistencia.loadTable(pathPartides);
@@ -242,8 +246,7 @@ public class CtrlPartida {
 				}
 			}
 		}
-		//P.getK().PrintaKenKen();
-		//pistes_demanades = 0;
+		P.setPistes(0);
 		while (!pila.empty()) pila.pop();
         }
         
@@ -290,8 +293,7 @@ public class CtrlPartida {
         
         public boolean finished() {
             return P.getK().getNumCeldas() == P.getK().getNumCeldasRellenas();
-        }
-        
+        } 
         
         public boolean correct() {
             return !KC.checkKenKen();
@@ -400,6 +402,10 @@ public class CtrlPartida {
                 KenKenSolver KS = new KenKenSolver();
                 KS.backtrackingSolver(p2);
             }
+        }
+        
+        public boolean resolem() {
+            return (p2.getNumCeldasRellenas() != p2.getNumCeldas());
         }
         
         public boolean getPista() {

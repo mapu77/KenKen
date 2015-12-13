@@ -14,6 +14,7 @@ public class Partida {
 	private long time;
 	private CtrlJoc CJ;
 	private TaulerKenKen K;
+        private TaulerKenKen p2;
 	private static Scanner sn;
 	
         /* Constructor partida partida guardada */
@@ -29,6 +30,7 @@ public class Partida {
 		this.time = 0;
 		int n = Dificultat.toInt(d);
 		K = new KenKenGenerator().generateRandomly(n);
+                p2 = new KenKenGenerator().solution();
 		this.idJoc = String.valueOf(CJ.guardarTauler(K));
 	}
 	
@@ -40,6 +42,7 @@ public class Partida {
 		this.D = d;
 		this.time = 0;
 		K = CJ.llegirTauler(id,d);
+                p2 = new KenKenGenerator().solution();
 	}
 	
 	public String getUsuari() {
@@ -84,6 +87,10 @@ public class Partida {
 	
 	public TaulerKenKen getK() {
 		return K;
+	}
+        
+        public TaulerKenKen getSol() {
+		return p2;
 	}
 
 	public void setK(TaulerKenKen k) {

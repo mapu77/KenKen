@@ -8,6 +8,7 @@ import java.util.Random;
 public class KenKenGenerator {
 	
 	private static TaulerKenKen K;
+        private static TaulerKenKen t2;
 	private int n;
 	private static boolean fi;
 	private int X[] = {1,0,-1,0};
@@ -211,11 +212,12 @@ public class KenKenGenerator {
 		// Traiem els numeros del tauler
 		for (int i=0; i<K.getAlto(); ++i) {
 			for (int j=0; j<K.getAncho(); ++j) {
+                                t2.setNumero(i, j, K.getNumero(i, j));
 				K.borra(i,j);
 			}
 		}
 	}
-	
+        
 	public void generateRegionSolution() {
 		for (int i=0; i<K.getNRegio(); ++i) {
 			RegioKenKen r = K.getRegio(i);
@@ -262,7 +264,8 @@ public class KenKenGenerator {
 		// Traiem els numeros del tauler
 		for (int i=0; i<K.getAlto(); ++i) {
 			for (int j=0; j<K.getAncho(); ++j) {
-				K.borra(i,j);
+                            t2.setNumero(i, j, K.getNumero(i, j));
+                            K.borra(i,j);
 			}
 		}
 	}
@@ -271,16 +274,22 @@ public class KenKenGenerator {
             n = size;
             fi = false;
             K = new TaulerKenKen(n);
+            t2 = new TaulerKenKen(n);
             backtrackingGenerateNumbers(0,0);
             generateRegions();
             generateRegionSolution();
             return K;
 	}
+        
+        public TaulerKenKen solution() {
+            return t2;
+        }
 	
 	public TaulerKenKen generateKenKenbyParameters(int size, int iniX, ArrayList<String> vOps) {
             fi = false;
             n = size;
             K = new TaulerKenKen(n);
+            t2 = new TaulerKenKen(n);
             backtrackingGenerateNumbers(0,0);
             regions1C (iniX);
             generateRegions();

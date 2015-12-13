@@ -208,16 +208,18 @@ public class KenkenBBDD extends javax.swing.JPanel {
     private void idListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_idListValueChanged
         // TODO add your handling code here:
         String id = idList.getSelectedValue();
-        id = id.substring(7);
-        String dif = String.valueOf(BoxDiff.getSelectedItem());
-        ArrayList<String> vOps = new ArrayList<>();
-        int[][] mat = CP.taulerBBDD(id, dif, vOps);
-        prevPanel.removeAll();
-        prevPanel.repaint();
-        prevPanel.revalidate();
-        prevPanel.add(new Preview(mat,vOps,prevPanel.getBounds()));
-        prevPanel.repaint();
-        prevPanel.revalidate();        
+        if  (id != null) {
+            id = id.substring(7);String dif = String.valueOf(BoxDiff.getSelectedItem());
+            ArrayList<String> vOps = new ArrayList<>();
+            int[][] mat = CP.taulerBBDD(id, dif, vOps);
+            prevPanel.removeAll();
+            prevPanel.repaint();
+            prevPanel.revalidate();
+            prevPanel.add(new Preview(mat,vOps,prevPanel.getBounds()));
+            prevPanel.repaint();
+            prevPanel.revalidate(); 
+        }
+               
     }//GEN-LAST:event_idListValueChanged
 
 

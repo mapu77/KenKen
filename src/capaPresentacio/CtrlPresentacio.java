@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capaPresentacio;
 
 import capaDomini.CtrlDomini;
-import capaDomini.Ranking.Tupla;
 import capaDomini.Utils.*;
-import capaDomini.Usuari.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 /**
  *
  * @author PROP 12 - KenKen
@@ -33,9 +25,8 @@ public class CtrlPresentacio {
      * En particular instancia el Controlador del Domini
      */
     private void iniciaCtrls() {
-        Scanner sn = new Scanner(System.in);
         System.out.println("Iniciant controlador de domini...");
-        CD = new CtrlDomini(sn);
+        CD = new CtrlDomini();
     }    
     
     /**

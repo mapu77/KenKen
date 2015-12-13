@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package capaDomini;
 
 import capaDomini.Algoritmes.KenKenGenerator;
@@ -27,17 +22,15 @@ import java.util.Scanner;
  */
 public class CtrlDomini {
     
-    private static Scanner sn;
-    private CtrlPersistencia CP;
-    private CtrlUser CU;
-    private CtrlJoc CJ;
+    private final CtrlPersistencia CP;
+    private final CtrlUser CU;
+    private final CtrlJoc CJ;
     private TaulerKenKen K;
     
     /* Mètode Constructor */
-    public CtrlDomini(Scanner sn) {
-        this.sn = sn;
+    public CtrlDomini() {
         CP = new CtrlPersistencia();
-        CP.setSeparator(" ");
+        CtrlPersistencia.setSeparator(" ");
         System.out.println("Iniciant controlador de persistència...");
         CU = new CtrlUser();
         CJ = new CtrlJoc();
@@ -59,12 +52,12 @@ public class CtrlDomini {
     
     /* Mètodes Creació KenKen */
     public TaulerKenKen generaKenkenAleatori (int N) {
-        KenKenGenerator KG = new KenKenGenerator(sn);
+        KenKenGenerator KG = new KenKenGenerator();
         return KG.generateRandomly(N);
     }
     
     public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
-        KenKenGenerator KG = new KenKenGenerator(sn);
+        KenKenGenerator KG = new KenKenGenerator();
         K = KG.generateKenKenbyParameters(N,iniX,vOps);
         int[][] mat = new int[N][N];
         ArrayList<Boolean> reg = new ArrayList<>();

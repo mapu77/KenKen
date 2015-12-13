@@ -2,9 +2,7 @@ package capaDomini.Algoritmes;
 
 import java.util.*;
 
-import capaDomini.Dificultat.Dificultat;
 import capaDomini.Utils.*;
-import excepciones.ExcepcionDificultatInvalida;
 import java.util.Random;
 
 public class KenKenGenerator {
@@ -17,7 +15,10 @@ public class KenKenGenerator {
 	private static double probStop;
 	private static Scanner sn;
 	
-	public KenKenGenerator(Scanner sn) {
+	public KenKenGenerator () {
+            
+        }
+        public KenKenGenerator(Scanner sn) {
 		this.sn = sn;
 	}
 
@@ -110,7 +111,7 @@ public class KenKenGenerator {
 	
 	private int comprovaOp (String[] vOps, String op) {
 		for (int i=0; i<vOps.length; ++i) {
-			if (vOps[i] == op) return i;
+			if (vOps[i].equals(op)) return i;
 		}
 		return -1;
 	}
@@ -297,7 +298,7 @@ public class KenKenGenerator {
 	
 	public static TaulerKenKen generateKenKenbyUser(int[][] mat, ArrayList<String> ops) {
             int N = mat.length;
-            TaulerKenKen K = new TaulerKenKen(N);
+            K = new TaulerKenKen(N);
             Vector<Vector<Cella>> Vvc = new Vector<>();
             for (int i=0; i<ops.size();++i) Vvc.add(new Vector<>());
             

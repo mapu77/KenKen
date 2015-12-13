@@ -42,7 +42,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     private final String user;
     private final javax.swing.JFrame parent;
     ArrayList<ArrayList<Integer> > mat;
-    private int cont = 0;
+    private int cont;
     private Color c = new Color(0,200,0);
     boolean finished = false;
     private static ImageIcon imageResume;
@@ -72,6 +72,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         CPartida = CP.crearPartida(user);
         this.d = CPartida.getStringDificultat();
         this.N = CPartida.getIntDificultat();
+        this.cont = CPartida.getNPistes();
         long time = CPartida.getTime();
         h = (int)time/3600;
         time = time%3600;
@@ -96,6 +97,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         this.CJ = CJ;
         parent = pare;
         this.user = user;
+        this.cont = 0;
         CPartida = CP.crearPartida(user,d);
         h = m = s = 0;
         init();
@@ -117,6 +119,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         this.CJ = CJ;
         parent = pare;
         this.user = user;
+        this.cont = 0;
         CPartida = CP.crearPartida(user,d, id);
         h = m = s = 0;
         init();
@@ -127,7 +130,10 @@ public class PlayKenKen extends javax.swing.JFrame {
         public void run() {
             CPartida.clonarTauler();
             CPartida.resoldrePerPista();
-            HintButton.setEnabled(true);
+            if (cont == N-2) HintButton.setEnabled(false);
+            else {
+                HintButton.setEnabled(true);
+            }
             solveButton.setEnabled(true);
         }
     };

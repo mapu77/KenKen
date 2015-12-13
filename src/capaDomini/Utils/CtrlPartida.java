@@ -424,7 +424,6 @@ public class CtrlPartida {
         }
         
         public int getPistaN() {
-            System.out.println(P.getPistes());
             P.setPistes(P.getPistes()+1);
             return pistaN;
         }
@@ -435,5 +434,9 @@ public class CtrlPartida {
             pila.addElement(c);
             P.getK().borra(i, j);
             P.getK().PrintaKenKen();
+        }
+        
+        public int getNPistes() {
+            return P.getPistes();
         }
 }

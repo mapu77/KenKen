@@ -337,8 +337,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="CreatePlayP" alignment="0" pref="116" max="32767" attributes="0"/>
-                              <Component id="CreateSaveP" alignment="0" pref="116" max="32767" attributes="0"/>
+                              <Component id="CreatePlayP" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CreateSaveP" alignment="0" max="32767" attributes="0"/>
                               <Component id="fixedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="difLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="operandLabel" alignment="0" min="-2" max="-2" attributes="0"/>

@@ -467,16 +467,25 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_CreatePlayMActionPerformed
 
     private void CreatePlayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayPActionPerformed
-        String d;
-        if (dif.substring(0,1).equals("-")) d  = "2x2";
-        else d = dif.substring(0,1);
-        PlayKenKen pk = new PlayKenKen(d,user,CP,CJ,parent);
+        String d = (String)difBox.getSelectedItem();
+        int id = CP.crearTauler();
+        JOptionPane.showMessageDialog(this,
+                    "Your KenKen has been saved successfully\n"
+                            + "It is KenKen "+id+" of size " + d, 
+                    "Saved", 
+                    JOptionPane.INFORMATION_MESSAGE);
+        PlayKenKen pk = new PlayKenKen(d,user,CP,String.valueOf(id),CJ,parent);
         parent.dispose();
-        setVisible(false);
     }//GEN-LAST:event_CreatePlayPActionPerformed
 
     private void CreateSavePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSavePActionPerformed
-        // TODO add your handling code here:
+        String d = (String)BoxDificultat.getSelectedItem();
+        int id = CP.crearTauler();
+        JOptionPane.showMessageDialog(this,
+                    "Your KenKen has been saved successfully\n"
+                            + "It is KenKen "+id+" of size " + d, 
+                    "Saved", 
+                    JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_CreateSavePActionPerformed
 
     private void Boto_DivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_DivActionPerformed

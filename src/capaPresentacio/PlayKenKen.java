@@ -201,7 +201,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                                     Object[] opciones = {"Play again", "Play another KenKen", "Exit"};
                                     int eleccion = JOptionPane.showOptionDialog(rootPane,
                                             "You have solved this KenKen successfully\n"
-                                          + "Your time: "+h+":"+m+":"+s+"\n"
+                                          + "Your time: "+(h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10? "0"+s:s)+"\n"
                                           + "What do you want to do next?",
                                         "Congratulations!",
                                         JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,

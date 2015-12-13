@@ -6,9 +6,9 @@
 package capaDomini;
 
 import capaDomini.Algoritmes.KenKenGenerator;
-import capaDomini.Algoritmes.KenKenGenerator1;
 import capaDomini.Algoritmes.KenKenSolver;
 import capaDomini.Usuari.CtrlUser;
+import capaDomini.Usuari.User;
 import capaDomini.Utils.TaulerKenKen;
 import capaDomini.Ranking.RankingGeneral;
 import capaDomini.Ranking.RankingPerTipus;
@@ -64,7 +64,7 @@ public class CtrlDomini {
     }
     
     public int[][] generaKenkenPerParametres (int N, int iniX, ArrayList<String> vOps) {
-        KenKenGenerator1 KG = new KenKenGenerator1(sn);
+        KenKenGenerator KG = new KenKenGenerator(sn);
         K = KG.generateKenKenbyParameters(N,iniX,vOps);
         int[][] mat = new int[N][N];
         ArrayList<Boolean> reg = new ArrayList<>();
@@ -174,7 +174,7 @@ public class CtrlDomini {
     /* ---------------------------------------------------------------------- */
 
     public Boolean validaKenKen (int[][] mat, ArrayList<String> ops) {
-        K = KenKenGenerator1.generateKenKenbyUser(mat, ops);
+        K = KenKenGenerator.generateKenKenbyUser(mat, ops);
         return KenKenSolver.comprovaSol(K);
     }
     

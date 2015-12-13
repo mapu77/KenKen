@@ -5,6 +5,7 @@ import java.util.*;
 import capaDomini.Dificultat.Dificultat;
 import capaDomini.Utils.*;
 import excepciones.ExcepcionDificultatInvalida;
+import java.util.Random;
 
 public class KenKenGenerator {
 	
@@ -25,7 +26,7 @@ public class KenKenGenerator {
 			fi = true;
 		}
 		else {
-			Vector<Boolean> used = new Vector<Boolean>();
+			Vector<Boolean> used = new Vector<>();
 			for (int k=0; k<=K.getAncho();++k) used.add(k,false); //initialization used
 			int rand = new Random().nextInt(n)+1;
 			for (int ii=0; ii<K.getAncho() && !fi; ++ii) {
@@ -270,111 +271,50 @@ public class KenKenGenerator {
 	}
 	
 	public TaulerKenKen generateRandomly(int size) {
-		n = size;
-		fi = false;
-		K = new TaulerKenKen(n);
-		backtrackingGenerateNumbers(0,0);
-		generateRegions();
-		generateRegionSolution();
-		return K;
+            n = size;
+            fi = false;
+            K = new TaulerKenKen(n);
+            backtrackingGenerateNumbers(0,0);
+            generateRegions();
+            generateRegionSolution();
+            return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyParameters() { //(int size, int iniX, String[] vOps) {
-		fi = false;
-		System.out.println("Mida del KenKen?");
-		System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
-		String d = null;
-		if (sn.hasNext()) d = sn.next();
-		try {
-			if (Dificultat.esValida(d)) {
-				n = Dificultat.toInt(d);
-				K = new TaulerKenKen(n);
-				backtrackingGenerateNumbers(0,0);
-				System.out.println("Nombre inicial minim de regions d'una cel.la:");
-				int iniX = 0;
-				if (sn.hasNextInt()) iniX = sn.nextInt();
-				else System.err.println("valor incorrecte");
-				regions1C (iniX);
-				generateRegions();
-				K.OrdenaVR();
-				System.out.println("Nombre de diferents operacions (minim 1, maxim 4):");
-				int nOps = 0;
-				if (sn.hasNextInt()) nOps = sn.nextInt();
-				else System.err.println("valor incorrecte");
-				System.out.println("Selecciona les " + (nOps-1) + " operacions restants (\"+\" ja s'inclou per defecte):");
-				System.out.println("\"-\",\"*\",\"/\"");
-				String[] vOps = new String[nOps];
-				int i=1;
-				vOps[0] = "+";
-				while (i < nOps) {
-					vOps[i] = null;
-					if (sn.hasNext()) vOps[i] = sn.next();
-					else System.err.println("informacio incorrecta");
-					++i;
-				}
-				generateRegionSolutionByOps (vOps);
-				return K;
-			}
-			else throw (new ExcepcionDificultatInvalida());
-		}
-		catch (ExcepcionDificultatInvalida e) {
-			K = null;
-			System.err.println(e.getMessage());
-		}
-		return K;
+	public TaulerKenKen generateKenKenbyParameters(int size, int iniX, ArrayList<String> vOps) {
+            n = size;
+            K = new TaulerKenKen(n);
+            K.PrintaKenKen();
+            backtrackingGenerateNumbers(0,0);
+            regions1C (iniX);
+            generateRegions();
+            K.OrdenaVR();
+            String[] Vops = new String[vOps.size()];
+            for (int i=0; i<vOps.size(); ++i) Vops[i] = vOps.get(i);
+            generateRegionSolutionByOps (Vops);
+            K.PrintaKenKen();
+            return K;
 	}
 	
-	public TaulerKenKen generateKenKenbyUser() {
-		System.out.println("Mida del KenKen?");
-		System.out.println("Opcions: 3x3, 4x4, 5x5, 6x6, 7x7, 8x8, 9x9");
-		String d = null;
-		if (sn.hasNext()) d = sn.next();
-		int n;
-		try { 
-			if (Dificultat.esValida(d)) {
-				n=Dificultat.toInt(d);
-				K = new TaulerKenKen(n);
-				System.out.println("Nombre regions");
-				int nr = 0;
-				if (sn.hasNextInt()) nr = sn.nextInt();
-				else System.err.println("valor incorrecte");
-				for (int i=0; i<nr; ++i) {
-					Vector<Cella> VC = new Vector<Cella>();
-					System.out.println("Nombre de cel.les de la regio " + i);
-					int nc = 0;
-					if (sn.hasNextInt()) nc = sn.nextInt();
-					else System.err.println("valor incorrecte");
-					for (int j=0; j<nc; ++j) {
-						System.out.println("Cordenades cel.la " + j + " de la regio " + i);
-						int x = 0;
-						int y = 0;
-						if (sn.hasNextInt()) x = sn.nextInt();
-						else System.err.println("valor incorrecte");
-						if (sn.hasNextInt()) y = sn.nextInt();
-						else System.err.println("valor incorrecte");
-						Cella c = K.getCella(x,y);
-						VC.add(c);
-					}
-					System.out.println("Operacio de la regio " + i);
-					String op = null;
-					if (sn.hasNext()) op = sn.next();
-					else System.err.println("operacio incorrecta");
-					System.out.println("Resultat de la regio " + i);
-					int res = 0;
-					if (sn.hasNextInt()) res = sn.nextInt();
-					else System.err.println("valor incorrecte");
-					RegioKenKen r = new RegioKenKen(nc,VC,op,res,i);
-					K.afegeixRegio(r);
-				}
-				return K;
-			}
-			else throw (new ExcepcionDificultatInvalida());
-		}
-		catch (ExcepcionDificultatInvalida e) {
-			K = null;
-			System.err.println(e.getMessage());
-		}
-		return K;
+	public static TaulerKenKen generateKenKenbyUser(int[][] mat, ArrayList<String> ops) {
+            int N = mat.length;
+            TaulerKenKen K = new TaulerKenKen(N);
+            Vector<Vector<Cella>> Vvc = new Vector<>();
+            for (int i=0; i<ops.size();++i) Vvc.add(new Vector<>());
+            
+            for (int i=0; i<N; i++) {
+                for (int j=0; j<N; j++) {
+                    Cella c = K.getCella(i, j);
+                    Vvc.get(mat[i][j]).add(c);
+                }
+            }
+            
+            for (int i=0; i<ops.size(); i++) {
+                String op = ops.get(i).substring(0, 1);
+                String res = ops.get(i).substring(1);
+                RegioKenKen r = new RegioKenKen(Vvc.get(i).size(),Vvc.get(i),op,Integer.parseInt(res),i);
+                K.afegeixRegio(r);
+            }
+            return K;
 	}
 	
 }

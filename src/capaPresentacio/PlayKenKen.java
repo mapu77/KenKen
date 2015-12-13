@@ -43,6 +43,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     private final javax.swing.JFrame parent;
     ArrayList<ArrayList<Integer> > mat;
     private int cont = 0;
+    private Color c = new Color(0,200,0);
     private static ImageIcon imageResume;
     private static ImageIcon imagePause;
     private static ImageIcon imageErase;
@@ -187,38 +188,40 @@ public class PlayKenKen extends javax.swing.JFrame {
                     if (X != -1) {
                         JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
                         boolean finished = false;
-                        if (b.getText().equals("")) CPartida.borrar(Y/BZ,X/BZ);
-                        else finished = CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
-                        j.setText(b.getText());
-                        if (finished) {
-                            t.stop();
-                            if (CPartida.correct()){
-                                long time = h*3600+m*60+s;
-                                CPartida.setcurrentTime(time);
-                                CPartida.saveToRank();
-                                Object[] opciones = {"Play again", "Play another KenKen", "Exit"};
-                                int eleccion = JOptionPane.showOptionDialog(rootPane,
-                                        "You have solved this KenKen successfully\n"
-                                      + "Your time: "+h+":"+m+":"+s+"\n"
-                                      + "What do you want to do next?",
-                                    "Congratulations!",
-                                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
-                                    null,opciones,opciones[2]);
-                                if (eleccion == JOptionPane.YES_OPTION) 
-                                    ResetButton.doClick();
-                                else {
-                                    PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
-                                    dispose();
+                        if (!j.getBackground().equals(c)) {
+                            if (b.getText().equals("")) CPartida.borrar(Y/BZ,X/BZ);
+                            else finished = CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
+                            j.setText(b.getText());
+                            if (finished) {
+                                t.stop();
+                                if (CPartida.correct()){
+                                    long time = h*3600+m*60+s;
+                                    CPartida.setcurrentTime(time);
+                                    CPartida.saveToRank();
+                                    Object[] opciones = {"Play again", "Play another KenKen", "Exit"};
+                                    int eleccion = JOptionPane.showOptionDialog(rootPane,
+                                            "You have solved this KenKen successfully\n"
+                                          + "Your time: "+h+":"+m+":"+s+"\n"
+                                          + "What do you want to do next?",
+                                        "Congratulations!",
+                                        JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
+                                        null,opciones,opciones[2]);
+                                    if (eleccion == JOptionPane.YES_OPTION) 
+                                        ResetButton.doClick();
+                                    else {
+                                        PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+                                        dispose();
+                                    }
                                 }
-                            }
-                            else {
-                                JOptionPane.showMessageDialog(parent,
-                                        "We are sorry\n"
-                                      + "It seems your solution is not correct\n"
-                                      + "Keep trying!", 
-                                    "Wrong", 
-                                    JOptionPane.INFORMATION_MESSAGE);
-                                t.start();
+                                else {
+                                    JOptionPane.showMessageDialog(parent,
+                                            "We are sorry\n"
+                                          + "It seems your solution is not correct\n"
+                                          + "Keep trying!", 
+                                        "Wrong", 
+                                        JOptionPane.INFORMATION_MESSAGE);
+                                    t.start();
+                                }
                             }
                         }
                     }
@@ -283,12 +286,17 @@ public class PlayKenKen extends javax.swing.JFrame {
                     public void mouseClicked(MouseEvent e) {
                         if (X != -1) {
                             JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
-                            j.setBackground(Color.white);canviaColorRegio(X,Y,false);
+                            if (!j.getBackground().equals(c)) {
+                                j.setBackground(Color.white);
+                            }
+                            canviaColorRegio(X,Y,false);
                         }
                         X = b.getX();
                         Y = b.getY();
-                        canviaColorRegio(X,Y,true);
-                        b.setBackground(Color.ORANGE);
+                        if (!b.getBackground().equals(c)) {
+                            canviaColorRegio(X,Y,true);
+                            b.setBackground(Color.ORANGE);
+                        }
                     }
                 });
                 //_____________
@@ -302,8 +310,14 @@ public class PlayKenKen extends javax.swing.JFrame {
             for (int j=0; j<BZ*N; j+=BZ) {
                 if (mat.get(i/BZ).get(j/BZ) == val) {
                     JLabel label = (JLabel) Tauler.getComponentAt(j,i);
-                    if (b) label.setBackground(Color.LIGHT_GRAY);
-                    else label.setBackground(Color.white);
+                    if (b) {
+                        if (!(label.getBackground().equals(c))) label.setBackground(Color.LIGHT_GRAY);
+                    }
+                    else {
+                        if (!(label.getBackground().equals(c))) {
+                            label.setBackground(Color.white);
+                        }
+                    }
                 }
             }
         }
@@ -605,6 +619,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
         II=0;
+        HintButton.setEnabled(true);
         CPartida.reset();
         for (int i=0; i<N; i++){
             for(int j=0; j<N; j++){
@@ -654,10 +669,16 @@ public class PlayKenKen extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
         else {
-            int val = CPartida.undoN();
-            JLabel b = (JLabel) Tauler.getComponentAt(j*BZ, i*BZ);
-            if (val == -1) b.setText("");
-            else b.setText(String.valueOf(val));
+            int val = CPartida.undoN(); // fa el "pop" a CtrlPartida
+            JLabel d = (JLabel) Tauler.getComponentAt(j*BZ, i*BZ);
+            if (d.getBackground().equals(c)) {
+                UndoButtonActionPerformed(evt);
+            }
+            else {
+                JLabel b = (JLabel) Tauler.getComponentAt(j*BZ, i*BZ);
+                if (val == -1) b.setText("");
+                else b.setText(String.valueOf(val));
+            }
         }
     }//GEN-LAST:event_UndoButtonActionPerformed
 
@@ -716,12 +737,8 @@ public class PlayKenKen extends javax.swing.JFrame {
             b.setText(String.valueOf(val));
             b.setBackground(new Color(0,200,0));
             ++cont;
-        }
-        else {
-            JOptionPane.showMessageDialog(this,
-                "You do not have more hints to use",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+            if (cont == N-2) HintButton.setEnabled(false);
+            
         }
     }//GEN-LAST:event_HintButtonActionPerformed
     

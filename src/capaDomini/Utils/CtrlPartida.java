@@ -296,6 +296,7 @@ public class CtrlPartida {
             c.setNumero(P.getK().getNumero(i, j));
             pila.addElement(c);
             P.getK().setNumero(i, j, val);
+            P.getK().PrintaKenKen();
             return this.finished();
         }
         
@@ -331,7 +332,7 @@ public class CtrlPartida {
             else { 
                 P.getK().borra(aux.getX(), aux.getY()); 
             }
-            //P.getK().PrintaKenKen();
+            P.getK().PrintaKenKen();
             return aux.getNumero();
         }
         
@@ -409,7 +410,7 @@ public class CtrlPartida {
         public void resoldrePerPista() {
             if (!(p2.getNumCeldasRellenas() == p2.getNumCeldas())) {
                 KenKenSolver KS = new KenKenSolver();
-		KS.backtrackingSolver(p2);
+                KS.backtrackingSolver(p2);
             }
         }
         
@@ -438,6 +439,9 @@ public class CtrlPartida {
         }
         
         public void borrar(int i, int j) {
+            Cella c = new Cella(i,j);
+            c.setNumero(P.getK().getNumero(i, j));
+            pila.addElement(c);
             P.getK().borra(i, j);
             P.getK().PrintaKenKen();
         }

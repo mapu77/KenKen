@@ -46,22 +46,7 @@ public class CtrlPartida {
             }
             
 	}
-        
-	public CtrlPartida(Partida p, Scanner scan) {
-            this.P = p;
-            this.currentTime = p.getTime();
-            this.FI = false;
-            this.guardada = false;
-            CP = new CtrlPersistencia();
-            CtrlPersistencia.setSeparator(" ");
-            s = scan;
-            try {
-                    Info = CtrlPersistencia.loadTable(pathPartides);
-            } catch (IOException e) {
-                    System.err.println(e.getMessage());
-            }
-	}
-	
+
 	/**
          * Guarda a la BD una partida acabada 
          */
@@ -289,6 +274,10 @@ public class CtrlPartida {
         
         public int getValor(int i, int j) {
             return P.getK().getNumero(i, j);
+        }
+        
+        public int getValorSolved(int i, int j) {
+            return p2.getNumero(i,j);
         }
         
         public boolean setValor(int i, int j, int val) {

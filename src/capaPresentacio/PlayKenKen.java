@@ -47,11 +47,11 @@ public class PlayKenKen extends javax.swing.JFrame {
     boolean finished = false;
     private static ImageIcon imageResume;
     private static ImageIcon imagePause;
-    private static ImageIcon imageErase;
+    private boolean solved = false;
+  
     
     URL resume = PlayKenKen.class.getResource("./img/ResumeButton.png");
     URL pause = PlayKenKen.class.getResource("./img/PauseButton.png");
-    URL erase = PlayKenKen.class.getResource("./img/BorrarIcon.gif");
     
     int N, X, Y, BZ;
     String d;
@@ -128,6 +128,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             CPartida.clonarTauler();
             CPartida.resoldrePerPista();
             HintButton.setEnabled(true);
+            solveButton.setEnabled(true);
         }
     };
     Thread th;
@@ -151,7 +152,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         int width = (int) dim.getWidth();
         imageResume = new javax.swing.ImageIcon(resume);
         imagePause = new javax.swing.ImageIcon(pause);
-        imageErase = new javax.swing.ImageIcon(erase);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
         th = new Thread(rp);
         th.start();
@@ -159,7 +159,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     }
     
     private void InicialitzaBotons() {
-        int ancho = Botons.getWidth()/2;
+        int ancho = 65;
         //____
         int NN = N/2;
         if (N%2 != 0) ++NN;
@@ -177,7 +177,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
             if (i==N) {
                 b.setText("Supr");
-                b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+                b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 13));
             }
             else {
                 b.setText(Integer.toString(i+1));
@@ -422,6 +422,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         TimeLabel = new javax.swing.JLabel();
         punts1 = new javax.swing.JLabel();
         punts2 = new javax.swing.JLabel();
+        solveButton = new javax.swing.JButton();
         backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -436,6 +437,10 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jPanel1.setMaximumSize(new java.awt.Dimension(509, 506));
+
+        Tauler.setMaximumSize(new java.awt.Dimension(505, 502));
+        Tauler.setMinimumSize(new java.awt.Dimension(505, 502));
 
         javax.swing.GroupLayout TaulerLayout = new javax.swing.GroupLayout(Tauler);
         Tauler.setLayout(TaulerLayout);
@@ -464,6 +469,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(180, 40, 509, 506);
 
+        UndoButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         UndoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/UndoButton.png"))); // NOI18N
         UndoButton.setText("UNDO");
         UndoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -474,6 +480,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(UndoButton);
         UndoButton.setBounds(30, 40, 130, 60);
 
+        HintButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         HintButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/HintButton.png"))); // NOI18N
         HintButton.setText("HINT");
         HintButton.addActionListener(new java.awt.event.ActionListener() {
@@ -484,6 +491,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(HintButton);
         HintButton.setBounds(30, 120, 130, 60);
 
+        ResetButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ResetButton.png"))); // NOI18N
         ResetButton.setText("RESET");
         ResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -494,6 +502,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(ResetButton);
         ResetButton.setBounds(30, 200, 130, 60);
 
+        PauseButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         PauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/PauseButton.png"))); // NOI18N
         PauseButton.setText("PAUSE");
         PauseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -504,6 +513,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(PauseButton);
         PauseButton.setBounds(30, 280, 130, 60);
 
+        SaveButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/SaveButtonn.png"))); // NOI18N
         SaveButton.setText("SAVE");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -514,6 +524,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         getContentPane().add(SaveButton);
         SaveButton.setBounds(30, 360, 130, 60);
 
+        BotoExit.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         BotoExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/ExitButton.png"))); // NOI18N
         BotoExit.setText("EXIT");
         BotoExit.addActionListener(new java.awt.event.ActionListener() {
@@ -550,22 +561,33 @@ public class PlayKenKen extends javax.swing.JFrame {
         punts2.setForeground(new java.awt.Color(255, 255, 255));
         punts2.setText(":");
 
+        solveButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        solveButton.setText("Solve");
+        solveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solveButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BotonsLayout = new javax.swing.GroupLayout(Botons);
         Botons.setLayout(BotonsLayout);
         BotonsLayout.setHorizontalGroup(
             BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotonsLayout.createSequentialGroup()
-                .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hours)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(punts1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(minutes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(punts2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(seconds)
+                .addGroup(BotonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BotonsLayout.createSequentialGroup()
+                        .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hours)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(punts1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(minutes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(punts2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seconds))
+                    .addComponent(solveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(89, 89, 89))
         );
         BotonsLayout.setVerticalGroup(
@@ -578,11 +600,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     .addComponent(seconds)
                     .addComponent(punts1)
                     .addComponent(punts2))
-                .addGap(0, 478, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 448, Short.MAX_VALUE)
+                .addComponent(solveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(Botons);
-        Botons.setBounds(710, 40, 160, 500);
+        Botons.setBounds(710, 40, 160, 510);
 
         backgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/background-gran.jpeg"))); // NOI18N
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -595,24 +618,30 @@ public class PlayKenKen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
                
     private void BotoExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoExitActionPerformed
-        t.stop();
-        II=0;
-        Object[] opciones = {"Save", "Exit", "Cancel"};
-        int eleccion = JOptionPane.showOptionDialog(rootPane,
-                "Do you want to save the game?",
-                "Confirmation Message",
-                JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
-                null,opciones,"Save");
-        if (eleccion == JOptionPane.YES_OPTION) {
-            SaveButton.doClick();
+        if (!solved) {
+            t.stop(); 
+            II=0;
+            Object[] opciones = {"Save", "Exit", "Cancel"};
+            int eleccion = JOptionPane.showOptionDialog(rootPane,
+                    "Do you want to save the game?",
+                    "Confirmation Message",
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
+                    null,opciones,"Save");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                SaveButton.doClick();
+                PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+                dispose();
+            }
+            else if (eleccion == JOptionPane.NO_OPTION) {
+                PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+                dispose();
+            }
+            t.start();
+        }
+        else {
             PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
             dispose();
         }
-        else if (eleccion == JOptionPane.NO_OPTION) {
-            PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
-            dispose();
-        }
-        t.start();
     }//GEN-LAST:event_BotoExitActionPerformed
 
     int II = 0;
@@ -687,24 +716,30 @@ public class PlayKenKen extends javax.swing.JFrame {
     }//GEN-LAST:event_UndoButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        t.stop();
-        II=0;
-        Object[] opciones = {"Save", "Exit", "Cancel"};
-        int eleccion = JOptionPane.showOptionDialog(rootPane,
-                "Do you want to save the game?",
-                "Confirmation Message",
-                JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
-                null,opciones,"Save");
-        if (eleccion == JOptionPane.YES_OPTION) {
-            SaveButton.doClick();
+        if (!solved) {
+            t.stop(); 
+            II=0;
+            Object[] opciones = {"Save", "Exit", "Cancel"};
+            int eleccion = JOptionPane.showOptionDialog(rootPane,
+                    "Do you want to save the game?",
+                    "Confirmation Message",
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,
+                    null,opciones,"Save");
+            if (eleccion == JOptionPane.YES_OPTION) {
+                SaveButton.doClick();
+                PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+                dispose();
+            }
+            else if (eleccion == JOptionPane.NO_OPTION) {
+                PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
+                dispose();
+            }
+            t.start();
+        }
+        else {
             PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
             dispose();
         }
-        else if (eleccion == JOptionPane.NO_OPTION) {
-            PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
-            dispose();
-        }
-        t.start();
     }//GEN-LAST:event_formWindowClosing
     
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
@@ -775,6 +810,26 @@ public class PlayKenKen extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_HintButtonActionPerformed
+
+    private void solveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solveButtonActionPerformed
+        t.stop();
+        for (int i=0; i<N; ++i) {
+            for (int j=0; j<N; ++j) {
+                int val = CPartida.getValorSolved(i,j);
+                JLabel l = (JLabel)Tauler.getComponentAt(i*BZ,j*BZ);
+                l.setText(String.valueOf(val));
+            }
+        }
+        UndoButton.setEnabled(false);
+        HintButton.setEnabled(false);
+        PauseButton.setEnabled(false);
+        ResetButton.setEnabled(false);
+        SaveButton.setEnabled(false);
+        hours.setText("00");
+        minutes.setText("00");
+        seconds.setText("00");
+        solved = true;
+    }//GEN-LAST:event_solveButtonActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotoExit;
@@ -793,5 +848,6 @@ public class PlayKenKen extends javax.swing.JFrame {
     private javax.swing.JLabel punts1;
     private javax.swing.JLabel punts2;
     private javax.swing.JLabel seconds;
+    private javax.swing.JButton solveButton;
     // End of variables declaration//GEN-END:variables
 }

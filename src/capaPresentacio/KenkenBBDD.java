@@ -51,6 +51,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         idList = new javax.swing.JList<>();
         prevPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -102,6 +103,8 @@ public class KenkenBBDD extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -117,7 +120,8 @@ public class KenkenBBDD extends javax.swing.JPanel {
                             .addComponent(selectLabel)
                             .addComponent(playButton, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                             .addComponent(diffLabel)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(prevPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,9 +142,11 @@ public class KenkenBBDD extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(prevPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
@@ -150,10 +156,13 @@ public class KenkenBBDD extends javax.swing.JPanel {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         String d = String.valueOf(BoxDiff.getSelectedItem());
-        String id = idList.getSelectedValue();
-        id = id.substring(id.length()-1);
-        PlayKenKen pk = new PlayKenKen(d,user,CP,id,CJ,parent);
-        parent.dispose();
+        if (d.equals("-")) jLabel1.setText("You must select a difficulty");
+        else {
+            String id = idList.getSelectedValue();
+            id = id.substring(id.length()-1);
+            PlayKenKen pk = new PlayKenKen(d,user,CP,id,CJ,parent);
+            parent.dispose();
+        }
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void BoxDiffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxDiffActionPerformed
@@ -182,6 +191,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> BoxDiff;
     private javax.swing.JLabel diffLabel;
     private javax.swing.JList<String> idList;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton playButton;

@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    private final CtrlJoc CJ;
     private final String user;
     private final javax.swing.JFrame parent;
     private final CtrlPresentacio CP;
+    private final CtrlJoc CJ;
     
     /**
      * Creates new form Pantalla Principal
@@ -94,9 +94,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.setMinimumSize(new java.awt.Dimension(598, 496));
         menuPanel.setPreferredSize(new java.awt.Dimension(598, 496));
         menuPanel.setLayout(new java.awt.CardLayout());
-
-        welcomeToKenken1.setMaximumSize(new java.awt.Dimension(603, 501));
-        welcomeToKenken1.setMinimumSize(new java.awt.Dimension(603, 501));
         menuPanel.add(welcomeToKenken1, "card2");
 
         getContentPane().add(menuPanel);
@@ -363,7 +360,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_userMngrItemActionPerformed
 
     private void generalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalItemActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_generalItemActionPerformed
 
     private void parItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parItemActionPerformed

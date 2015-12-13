@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 import javax.swing.JComboBox;
 
 /**
@@ -25,7 +24,7 @@ public class CrearKenken extends javax.swing.JPanel {
     private String dif;
     private CtrlPresentacio CP;
     private CtrlJoc CJ;
-
+    
     public CrearKenken() {
         initComponents();
     }
@@ -40,19 +39,7 @@ public class CrearKenken extends javax.swing.JPanel {
         this.CP = CP;
         this.CJ = CJ;
     }
-        
-    public CrearKenken(String u, javax.swing.JFrame p, int index, CtrlPresentacio CP, int[][] mat, ArrayList<String> ops) {
-        super();
-        parent = p;
-        user = u;
-        dif = "-";
-        initComponents();        
-        tabMenu.setSelectedIndex(index);
-        this.CP = CP;
-        this.CJ = CJ;
-        //this.PreviewPanel = new Preview(mat,ops);
-    }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,15 +54,13 @@ public class CrearKenken extends javax.swing.JPanel {
         manualPanel = new javax.swing.JPanel();
         diffLabel = new javax.swing.JLabel();
         BoxDificultat = new javax.swing.JComboBox<>();
+        PreviewPanel = new javax.swing.JLabel();
         PreviewLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         EditButton = new javax.swing.JButton();
         CreateSave1 = new javax.swing.JButton();
         CreatePlay1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        PreviewPanel = new javax.swing.JPanel();
-        Tauler = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         paramPanel = new javax.swing.JPanel();
         difLabel = new javax.swing.JLabel();
         difBox = new javax.swing.JComboBox<>();
@@ -112,6 +97,11 @@ public class CrearKenken extends javax.swing.JPanel {
                 BoxDificultatActionPerformed(evt);
             }
         });
+
+        PreviewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PreviewPanel.setMaximumSize(new java.awt.Dimension(350, 350));
+        PreviewPanel.setMinimumSize(new java.awt.Dimension(350, 350));
+        PreviewPanel.setPreferredSize(new java.awt.Dimension(350, 350));
 
         PreviewLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         PreviewLabel.setText("Preview:");
@@ -169,33 +159,6 @@ public class CrearKenken extends javax.swing.JPanel {
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
 
-        PreviewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        PreviewPanel.setMaximumSize(new java.awt.Dimension(350, 350));
-        PreviewPanel.setMinimumSize(new java.awt.Dimension(350, 350));
-        PreviewPanel.setPreferredSize(new java.awt.Dimension(350, 350));
-        PreviewPanel.setLayout(new java.awt.CardLayout());
-
-        jButton1.setText("jButton1");
-
-        javax.swing.GroupLayout TaulerLayout = new javax.swing.GroupLayout(Tauler);
-        Tauler.setLayout(TaulerLayout);
-        TaulerLayout.setHorizontalGroup(
-            TaulerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TaulerLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jButton1)
-                .addContainerGap(184, Short.MAX_VALUE))
-        );
-        TaulerLayout.setVerticalGroup(
-            TaulerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TaulerLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
-
-        PreviewPanel.add(Tauler, "card2");
-
         javax.swing.GroupLayout manualPanelLayout = new javax.swing.GroupLayout(manualPanel);
         manualPanel.setLayout(manualPanelLayout);
         manualPanelLayout.setHorizontalGroup(
@@ -212,8 +175,8 @@ public class CrearKenken extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(manualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PreviewLabel)
-                    .addComponent(PreviewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PreviewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PreviewLabel))
                 .addContainerGap())
         );
         manualPanelLayout.setVerticalGroup(
@@ -225,13 +188,13 @@ public class CrearKenken extends javax.swing.JPanel {
                     .addComponent(PreviewLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(manualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PreviewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(manualPanelLayout.createSequentialGroup()
                         .addComponent(BoxDificultat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(PreviewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(40, 40, 40))
         );
 
@@ -500,7 +463,7 @@ public class CrearKenken extends javax.swing.JPanel {
         if (dif.equals("-")) jLabel1.setText("You must select a difficulty");
         else {
             jLabel1.setText("");
-            Edit edit = new Edit (Integer.parseInt(dif.substring(0, 1)),user,this.Tauler,CP);
+            Edit edit = new Edit (Integer.parseInt(dif.substring(0, 1)),user,parent,CP);
         }
     }//GEN-LAST:event_EditButtonActionPerformed
 
@@ -521,16 +484,14 @@ public class CrearKenken extends javax.swing.JPanel {
     private javax.swing.JButton CreateSave1;
     private javax.swing.JButton EditButton;
     private javax.swing.JLabel PreviewLabel;
-    private javax.swing.JPanel PreviewPanel;
+    private javax.swing.JLabel PreviewPanel;
     private javax.swing.JLabel PreviewPanel1;
-    private javax.swing.JPanel Tauler;
     private javax.swing.JPanel createPanel;
     private javax.swing.JComboBox<String> difBox;
     private javax.swing.JLabel difLabel;
     private javax.swing.JLabel diffLabel;
     private javax.swing.JFormattedTextField fixedFField;
     private javax.swing.JLabel fixedLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel manualPanel;

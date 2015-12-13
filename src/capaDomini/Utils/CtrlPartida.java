@@ -46,7 +46,6 @@ public class CtrlPartida {
             }
             
 	}
-
 	/**
          * Guarda a la BD una partida acabada 
          */

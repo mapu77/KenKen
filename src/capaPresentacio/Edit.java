@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -530,22 +531,20 @@ public class Edit extends javax.swing.JFrame {
         int[][] mat2 = transposaMat(mat);
         colocaRegions(mat2);
         if (CP.validaKenKen(mat2,ops)) {
-            validateLabel.setForeground(Color.green);
-            validateLabel.setText("You KenKen is correct");
+            JOptionPane.showMessageDialog(this,
+                    "Your KenKen is correct!", 
+                    "Well Done", 
+                    JOptionPane.INFORMATION_MESSAGE);
             dispose();
             //_
             parent.removeAll();
             parent.repaint();
             parent.revalidate();
-            parent = new Preview(mat2,ops);
+            parent.add(new Preview(mat2,ops,parent.getBounds()));
             parent.repaint();
             parent.revalidate();
-            //afegint JPanel
-/*            parent.add(new Preview(mat2,ops));
-            parent.repaint();
-            parent.revalidate();*/
-            //_
         }
+
         else {
             validateLabel.setForeground(Color.red);
             validateLabel.setText("You KenKen is incorrect");

@@ -75,7 +75,6 @@ public class CrearKenken extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         PreviewPanel = new javax.swing.JPanel();
         Tauler = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         paramPanel = new javax.swing.JPanel();
         difLabel = new javax.swing.JLabel();
         difBox = new javax.swing.JComboBox<>();
@@ -169,29 +168,25 @@ public class CrearKenken extends javax.swing.JPanel {
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
 
-        PreviewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         PreviewPanel.setMaximumSize(new java.awt.Dimension(350, 350));
         PreviewPanel.setMinimumSize(new java.awt.Dimension(350, 350));
         PreviewPanel.setPreferredSize(new java.awt.Dimension(350, 350));
         PreviewPanel.setLayout(new java.awt.CardLayout());
 
-        jButton1.setText("jButton1");
+        Tauler.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tauler.setMaximumSize(new java.awt.Dimension(350, 350));
+        Tauler.setMinimumSize(new java.awt.Dimension(350, 350));
+        Tauler.setPreferredSize(new java.awt.Dimension(350, 350));
 
         javax.swing.GroupLayout TaulerLayout = new javax.swing.GroupLayout(Tauler);
         Tauler.setLayout(TaulerLayout);
         TaulerLayout.setHorizontalGroup(
             TaulerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TaulerLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jButton1)
-                .addContainerGap(184, Short.MAX_VALUE))
+            .addGap(0, 348, Short.MAX_VALUE)
         );
         TaulerLayout.setVerticalGroup(
             TaulerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TaulerLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+            .addGap(0, 357, Short.MAX_VALUE)
         );
 
         PreviewPanel.add(Tauler, "card2");
@@ -530,7 +525,6 @@ public class CrearKenken extends javax.swing.JPanel {
     private javax.swing.JLabel diffLabel;
     private javax.swing.JFormattedTextField fixedFField;
     private javax.swing.JLabel fixedLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel manualPanel;

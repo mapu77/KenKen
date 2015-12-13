@@ -6,6 +6,7 @@
 package capaPresentacio;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -29,8 +30,10 @@ public class Preview extends javax.swing.JPanel {
         initComponents();
     }
     
-    public Preview(int[][] mat, ArrayList<String> ops) {
+    public Preview(int[][] mat, ArrayList<String> ops, Rectangle r) {
         initComponents();
+        this.setBounds(r);
+        Tauler.setBounds(r);
         this.mat = mat;
         this.ops = ops;
         this.N = mat.length;
@@ -42,6 +45,9 @@ public class Preview extends javax.swing.JPanel {
         int alt = getHeight();
         int bSize = alt/N;
         BZ = bSize;
+        ArrayList<Boolean> reg = new ArrayList<>();
+        for (int i=0; i<ops.size(); i++) reg.add(false);
+        
         for (int i=0; i<N; i++) {
             for (int j=0; j<N; j++) {
                 JLabel b = new JLabel();
@@ -49,11 +55,27 @@ public class Preview extends javax.swing.JPanel {
                 b.setBounds(j*bSize, i*bSize, bSize, bSize);
                 b.setOpaque(true);                
                 b.setBackground(Color.white);
-                b.setText("H");
                 b.setVisible(true);
+                if (!reg.get(mat[i][j])) {
+                    reg.set(mat[i][j], true);
+                    JLabel lab = new JLabel(ops.get(mat[i][j]));
+                    b.add(lab);
+                    lab.setBounds(5, 0, BZ/2, BZ/2);
+                }
             }
         }
-        //setBorders();
+        mat = transposaMat(mat);
+        setBorders();
+    }
+    
+    private int[][] transposaMat (int[][] mat) {
+        int[][] mat2 = new int[N][N];
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                mat2[j][i] = mat[i][j];
+            }
+        }
+        return mat2;
     }
     
     private void setBorders() {

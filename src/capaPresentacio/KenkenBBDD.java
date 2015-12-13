@@ -6,6 +6,7 @@
 package capaPresentacio;
 
 import capaDomini.Utils.CtrlJoc;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -51,6 +52,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         idList = new javax.swing.JList<>();
         prevPanel = new javax.swing.JPanel();
+        prevPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
@@ -88,20 +90,32 @@ public class KenkenBBDD extends javax.swing.JPanel {
         previewLabel.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         previewLabel.setText("KenKen Preview");
 
+        idList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                idListValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(idList);
 
-        prevPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        prevPanel.setMaximumSize(new java.awt.Dimension(326, 336));
+        prevPanel.setMinimumSize(new java.awt.Dimension(326, 336));
+        prevPanel.setPreferredSize(new java.awt.Dimension(326, 336));
+        prevPanel.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout prevPanelLayout = new javax.swing.GroupLayout(prevPanel);
-        prevPanel.setLayout(prevPanelLayout);
-        prevPanelLayout.setHorizontalGroup(
-            prevPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        prevPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout prevPanel1Layout = new javax.swing.GroupLayout(prevPanel1);
+        prevPanel1.setLayout(prevPanel1Layout);
+        prevPanel1Layout.setHorizontalGroup(
+            prevPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 324, Short.MAX_VALUE)
         );
-        prevPanelLayout.setVerticalGroup(
-            prevPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        prevPanel1Layout.setVerticalGroup(
+            prevPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 334, Short.MAX_VALUE)
         );
+
+        prevPanel.add(prevPanel1, "card2");
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -191,6 +205,21 @@ public class KenkenBBDD extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_BoxDiffPropertyChange
 
+    private void idListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_idListValueChanged
+        // TODO add your handling code here:
+        String id = idList.getSelectedValue();
+        id = id.substring(7);
+        String dif = String.valueOf(BoxDiff.getSelectedItem());
+        ArrayList<String> vOps = new ArrayList<>();
+        int[][] mat = CP.taulerBBDD(id, dif, vOps);
+        prevPanel.removeAll();
+        prevPanel.repaint();
+        prevPanel.revalidate();
+        prevPanel.add(new Preview(mat,vOps,prevPanel.getBounds()));
+        prevPanel.repaint();
+        prevPanel.revalidate();        
+    }//GEN-LAST:event_idListValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BoxDiff;
@@ -201,6 +230,7 @@ public class KenkenBBDD extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton playButton;
     private javax.swing.JPanel prevPanel;
+    private javax.swing.JPanel prevPanel1;
     private javax.swing.JLabel previewLabel;
     private javax.swing.JLabel selectLabel;
     // End of variables declaration//GEN-END:variables

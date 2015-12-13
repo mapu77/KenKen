@@ -414,7 +414,7 @@ public class CtrlPartida {
             }
         }
         
-        public void getPista() {
+        public boolean getPista() {
             int randx = new Random().nextInt(P.getK().getAlto());
             int randy = new Random().nextInt(P.getK().getAncho());
             if (p2.getNumero(randx, randy) != P.getK().getNumero(randx, randy)) {
@@ -424,6 +424,7 @@ public class CtrlPartida {
                 pistaN = p2.getNumero(randx, randy);
             }
             else getPista();
+            return finished();
         }
         
         public int getPistaX() {
@@ -435,6 +436,8 @@ public class CtrlPartida {
         }
         
         public int getPistaN() {
+            System.out.println(P.getPistes());
+            P.setPistes(P.getPistes()+1);
             return pistaN;
         }
         

@@ -158,9 +158,8 @@ public class KenkenBBDD extends javax.swing.JPanel {
         String d = String.valueOf(BoxDiff.getSelectedItem());
         if (d.equals("-")) jLabel1.setText("You must select a difficulty");
         else {
-            String id = idList.getSelectedValue();
-            id = id.substring(id.length()-1);
-            PlayKenKen pk = new PlayKenKen(d,user,CP,id,CJ,parent);
+            int id = idList.getSelectedIndex() + 1;
+            PlayKenKen pk = new PlayKenKen(d,user,CP,Integer.toString(id),CJ,parent);
             parent.dispose();
         }
     }//GEN-LAST:event_playButtonActionPerformed
@@ -173,8 +172,14 @@ public class KenkenBBDD extends javax.swing.JPanel {
         if (!dif.equals("-")) {
             String s = CP.obtenirIdJoc(dif);
             String []vs = s.split(".txt");
-            for (String v : vs) {
-                list.addElement("KenKen " +v);
+            int cont = 0;
+            while (cont < vs.length) {
+                int i = 0;
+                while (i < vs.length && !(vs[i].equals(Integer.toString((cont+1))))) {
+                    ++i;
+                }
+                list.addElement("KenKen " +(cont+1));
+                ++cont;
             }
             list.remove(list.getSize()-1);            
         }

@@ -678,12 +678,12 @@ public class PlayKenKen extends javax.swing.JFrame {
             II=1;
             PauseButton.setText("CONTINUE");
             PauseButton.setIcon(imageResume);
-             for (Component c : Botons.getComponents()) {
-                    c.setEnabled(false);
-                }
-             UndoButton.setEnabled(false);
-             HintButton.setEnabled(false);
-             ResetButton.setEnabled(false);
+            for (Component c : Botons.getComponents()) {
+                   c.setEnabled(false);
+               }
+            UndoButton.setEnabled(false);
+            HintButton.setEnabled(false);
+            ResetButton.setEnabled(false);
         }else{
             t.start();
             II=0;
@@ -825,6 +825,9 @@ public class PlayKenKen extends javax.swing.JFrame {
                 JLabel l = (JLabel)Tauler.getComponentAt(i*BZ,j*BZ);
                 l.setText(String.valueOf(val));
             }
+        }
+        for (Component c : Botons.getComponents()) {
+            c.setEnabled(false);
         }
         UndoButton.setEnabled(false);
         HintButton.setEnabled(false);

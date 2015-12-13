@@ -176,8 +176,10 @@ public class PlayKenKen extends javax.swing.JFrame {
             b.setVisible(true);
             b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
             if (i==N) {
-                b.setText("");
-                b.setIcon(imageErase);
+                b.setText("Supr");
+                b.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+                //b.setIcon(imageErase);
+                
             }
             else {
                 b.setText(Integer.toString(i+1));
@@ -189,7 +191,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                     if (X != -1) {
                         JLabel j = (JLabel) Tauler.getComponentAt(X,Y);
                         if (!j.getBackground().equals(c)) {
-                            if (b.getText().equals("")) CPartida.borrar(Y/BZ,X/BZ);
+                            if (b.getText().equals("Supr")) CPartida.borrar(Y/BZ,X/BZ);
                             else finished = CPartida.setValor(Y/BZ,X/BZ,Integer.parseInt(b.getText()));
                             j.setText(b.getText());
                             if (finished) {
@@ -270,7 +272,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                     String a = Integer.toString(CPartida.getRegioIJResult(i,j));
                     String a1 = CPartida.getRegioIJOperation(i, j);
                     if (a1.equals("*")) a1 = "x";
-                    else if (a1.equals("/")) a1 = "÷";
                     a += " " + a1;
                     JLabel opres = new JLabel(a);
                     b.add(opres);

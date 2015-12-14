@@ -213,7 +213,7 @@ public class KenKenGenerator {
 		for (int i=0; i<K.getAlto(); ++i) {
 			for (int j=0; j<K.getAncho(); ++j) {
                                 t2.setNumero(i, j, K.getNumero(i, j));
-                                t2.PrintaKenKen();
+                                //t2.PrintaKenKen();
 				K.borra(i,j);
 			}
 		}

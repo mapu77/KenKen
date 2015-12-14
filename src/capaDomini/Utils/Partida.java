@@ -19,7 +19,7 @@ public class Partida {
 	
         /* Constructor partida partida guardada */
 	public Partida() {
-		
+           
 	}
 	
 	/* Creador partida amb KenKen aleatori */
@@ -31,6 +31,7 @@ public class Partida {
 		int n = Dificultat.toInt(d);
 		K = new KenKenGenerator().generateRandomly(n);
                 p2 = new KenKenGenerator().solution();
+                p2.PrintaKenKen();
 		this.idJoc = String.valueOf(CJ.guardarTauler(K));
 	}
 	
@@ -42,7 +43,7 @@ public class Partida {
 		this.D = d;
 		this.time = 0;
 		K = CJ.llegirTauler(id,d);
-                p2 = new KenKenGenerator().solution();
+                p2 = null;
 	}
 	
 	public String getUsuari() {

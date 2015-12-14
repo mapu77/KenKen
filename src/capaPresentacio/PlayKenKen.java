@@ -45,6 +45,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     private int cont;
     private Color c = new Color(0,200,0);
     boolean finished = false;
+    boolean pista = false;
     private static ImageIcon imageResume;
     private static ImageIcon imagePause;
     private boolean solved = false;
@@ -128,9 +129,11 @@ public class PlayKenKen extends javax.swing.JFrame {
     Runnable rp = new Runnable() {
         @Override
         public void run() {
-            CPartida.clonarTauler();
             CPartida.resoldrePerPista();
-            HintButton.setEnabled(true);
+            pista = true;
+            HintButton.setEnabled(pista);
+            solveButton.setEnabled(pista);
+            System.out.println("Pista available");
         }
     };
     Thread th;
@@ -156,12 +159,15 @@ public class PlayKenKen extends javax.swing.JFrame {
         imagePause = new javax.swing.ImageIcon(pause);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
         HintButton.setEnabled(false);
+        solveButton.setEnabled(false);
         if (CPartida.resolem()) {
             th = new Thread(rp);
             th.start();
         }
-        else HintButton.setEnabled(true);
-        solveButton.setEnabled(true);
+        else {
+            HintButton.setEnabled(true);
+            solveButton.setEnabled(true);
+        }
     }
     
     private void InicialitzaBotons() {
@@ -658,7 +664,8 @@ public class PlayKenKen extends javax.swing.JFrame {
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
         II=0;
-        HintButton.setEnabled(true);
+        if (HintButton.isEnabled()) HintButton.setEnabled(true);
+        else HintButton.setEnabled(false);
         CPartida.reset();
         for (int i=0; i<N; i++){
             for(int j=0; j<N; j++){
@@ -682,6 +689,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                    c.setEnabled(false);
                }
             UndoButton.setEnabled(false);
+            pista = (HintButton.isEnabled());
             HintButton.setEnabled(false);
             ResetButton.setEnabled(false);
         }else{
@@ -693,8 +701,9 @@ public class PlayKenKen extends javax.swing.JFrame {
                     c.setEnabled(true);
                 }
             UndoButton.setEnabled(true);
-            HintButton.setEnabled(true);
+            HintButton.setEnabled(pista);
             ResetButton.setEnabled(true);
+            solveButton.setEnabled(pista);
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
 

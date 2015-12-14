@@ -38,7 +38,7 @@ public class CrearKenken extends javax.swing.JPanel {
         tabMenu.setSelectedIndex(index);
         this.CP = CP;
         this.CJ = CJ;
-        PreviewPanel.setForeground(Color.red);
+        PreviewPanel.setForeground(Color.black);
     }
     
     /**
@@ -123,7 +123,6 @@ public class CrearKenken extends javax.swing.JPanel {
         CreateSaveM.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         CreateSaveM.setText("Create&Save");
         CreateSaveM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        CreateSaveM.setEnabled(false);
         CreateSaveM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateSaveMActionPerformed(evt);
@@ -133,7 +132,6 @@ public class CrearKenken extends javax.swing.JPanel {
         CreatePlayM.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         CreatePlayM.setText("Create&Play");
         CreatePlayM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        CreatePlayM.setEnabled(false);
         CreatePlayM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreatePlayMActionPerformed(evt);
@@ -169,6 +167,11 @@ public class CrearKenken extends javax.swing.JPanel {
         PreviewPanel.setMaximumSize(new java.awt.Dimension(350, 350));
         PreviewPanel.setMinimumSize(new java.awt.Dimension(350, 350));
         PreviewPanel.setPreferredSize(new java.awt.Dimension(350, 350));
+        PreviewPanel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PreviewPanelFocusGained(evt);
+            }
+        });
         PreviewPanel.setLayout(new java.awt.CardLayout());
 
         Tauler.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -477,25 +480,41 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_BoxDificultatActionPerformed
 
     private void CreateSaveMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSaveMActionPerformed
-        String d = (String)BoxDificultat.getSelectedItem();
-        int id = CP.crearTauler();
-        JOptionPane.showMessageDialog(this,
-                    "Your KenKen has been saved successfully\n"
-                            + "It is KenKen "+id+" of size " + d, 
-                    "Saved", 
-                    JOptionPane.INFORMATION_MESSAGE);
+        if (PreviewPanel.getForeground().equals(Color.red)) {
+            String d = (String)BoxDificultat.getSelectedItem();
+            int id = CP.crearTauler();
+            JOptionPane.showMessageDialog(this,
+                        "Your KenKen has been saved successfully\n"
+                                + "It is KenKen "+id+" of size " + d, 
+                        "Saved", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            removeAll();
+            repaint();
+            revalidate();
+            add(new WelcomeToKenken());
+            repaint();
+            revalidate();
+        }
+        else {
+            errorLabel.setText("<html>You must create a KenKen</html>");
+        }
     }//GEN-LAST:event_CreateSaveMActionPerformed
 
     private void CreatePlayMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayMActionPerformed
-        String d = (String)BoxDificultat.getSelectedItem();
-        int id = CP.crearTauler();
-        JOptionPane.showMessageDialog(this,
-                    "Your KenKen has been saved successfully\n"
-                            + "It is KenKen "+id+" of size " + d, 
-                    "Saved", 
-                    JOptionPane.INFORMATION_MESSAGE);
-        PlayKenKen pk = new PlayKenKen(d,user,CP,String.valueOf(id),CJ,parent);
-        parent.dispose();
+        if (PreviewPanel.getForeground().equals(Color.red)) {
+            String d = (String)BoxDificultat.getSelectedItem();
+            int id = CP.crearTauler();
+            JOptionPane.showMessageDialog(this,
+                        "Your KenKen has been saved successfully\n"
+                                + "It is KenKen "+id+" of size " + d, 
+                        "Saved", 
+                        JOptionPane.INFORMATION_MESSAGE);
+            PlayKenKen pk = new PlayKenKen(d,user,CP,String.valueOf(id),CJ,parent);
+            parent.dispose();
+        }
+        else {
+            errorLabel.setText("<html>You must create a KenKen</html>");
+        }
     }//GEN-LAST:event_CreatePlayMActionPerformed
 
     private void CreatePlayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePlayPActionPerformed
@@ -518,6 +537,12 @@ public class CrearKenken extends javax.swing.JPanel {
                             + "It is KenKen "+id+" of size " + d, 
                     "Saved", 
                     JOptionPane.INFORMATION_MESSAGE);
+        removeAll();
+        repaint();
+        revalidate();
+        add(new WelcomeToKenken());
+        repaint();
+        revalidate();
     }//GEN-LAST:event_CreateSavePActionPerformed
 
     private void Boto_DivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boto_DivActionPerformed
@@ -562,7 +587,7 @@ public class CrearKenken extends javax.swing.JPanel {
         else {
             errorLabel.setText("");
             Edit edit = new Edit (Integer.parseInt(dif.substring(0, 1)),user,this.PreviewPanel,CP);
-            BotonsCreate();
+            errorLabel.setText("<html></html>");
         }
     }//GEN-LAST:event_EditButtonActionPerformed
 
@@ -613,8 +638,11 @@ public class CrearKenken extends javax.swing.JPanel {
 
     private void manualPanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualPanelMouseReleased
         // TODO add your handling code here:
-        BotonsCreate();
     }//GEN-LAST:event_manualPanelMouseReleased
+
+    private void PreviewPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PreviewPanelFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PreviewPanelFocusGained
 
     private void comprovaGenerate() {
         if (!dif.equals("-") && !fixedFField.getText().equals("")) GenerateButton.setEnabled(true);

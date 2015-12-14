@@ -213,6 +213,7 @@ public class KenKenGenerator {
 		for (int i=0; i<K.getAlto(); ++i) {
 			for (int j=0; j<K.getAncho(); ++j) {
                                 t2.setNumero(i, j, K.getNumero(i, j));
+                                t2.PrintaKenKen();
 				K.borra(i,j);
 			}
 		}
@@ -303,6 +304,7 @@ public class KenKenGenerator {
 	public static TaulerKenKen generateKenKenbyUser(int[][] mat, ArrayList<String> ops) {
             int N = mat.length;
             K = new TaulerKenKen(N);
+            t2 = new TaulerKenKen(N);
             Vector<Vector<Cella>> Vvc = new Vector<>();
             for (int i=0; i<ops.size();++i) Vvc.add(new Vector<>());
             

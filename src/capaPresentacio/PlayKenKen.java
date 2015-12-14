@@ -641,10 +641,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     null,opciones,"Save");
             if (eleccion == JOptionPane.YES_OPTION) {
                 SaveButton.doClick();
+                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
             else if (eleccion == JOptionPane.NO_OPTION) {
+                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
@@ -742,10 +744,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     null,opciones,"Save");
             if (eleccion == JOptionPane.YES_OPTION) {
                 SaveButton.doClick();
+                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
             else if (eleccion == JOptionPane.NO_OPTION) {
+                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }

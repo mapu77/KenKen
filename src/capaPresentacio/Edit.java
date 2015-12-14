@@ -358,9 +358,9 @@ public class Edit extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(validateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(validateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
 
@@ -552,7 +552,7 @@ public class Edit extends javax.swing.JFrame {
 
         else {
             validateLabel.setForeground(Color.red);
-            validateLabel.setText("<html>You KenKen is incorrect</html>");
+            validateLabel.setText("<html>There is not a solution for your KenKen</html>");
         }
     }//GEN-LAST:event_validateButtonActionPerformed
 

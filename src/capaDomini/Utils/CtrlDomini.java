@@ -16,12 +16,10 @@ import java.util.Scanner;
  */
 public class CtrlDomini {
     
-    private static Scanner sn;
     private CtrlPersistencia CP;
     private CtrlUser CU;
     
-    public CtrlDomini(Scanner sn) {
-        this.sn = sn;
+    public CtrlDomini() {
         CP = new CtrlPersistencia();
         CP.setSeparator(" ");
         CU = new CtrlUser();
@@ -29,7 +27,7 @@ public class CtrlDomini {
     }
     
     public TaulerKenKen generaKenkenAleatori (int N) {
-        KenKenGenerator KG = new KenKenGenerator(sn);
+        KenKenGenerator KG = new KenKenGenerator();
         return KG.generateRandomly(N);
     }
 }

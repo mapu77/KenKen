@@ -17,15 +17,9 @@ public class KenKenCheck {
 		while((j+incr < t1.getAncho() || i+incr < t1.getAlto()) && !repeat) {
 			if (j+incr < t1.getAncho()) {
 				repeat = (c.getNumero() == t1.getNumero(i, j+incr));
-				if (repeat) {
-					System.out.println("La cella ("+i+","+(j+incr)+") esta repetida a la seva fila");
-				}
 			}
 			if (i+incr < t1.getAncho() && !repeat) {
 				repeat = (c.getNumero() == t1.getNumero(i+incr, j));
-				if (repeat) {
-					System.out.println("La cella ("+(i+incr)+","+j+") esta repetida a la seva columna");
-				}
 			}
 			incr++;
 		}
@@ -38,7 +32,6 @@ public class KenKenCheck {
 		while (i < T.getNRegio() && !mistake) {
 			if (!(T.getRegio(i).checkRegionC())) {
 				mistake = true;
-				System.out.println("No es compleix el calcul de la regio "+i);
 			}
 			i++;
 		}

@@ -530,7 +530,7 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_CreatePlayPActionPerformed
 
     private void CreateSavePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateSavePActionPerformed
-        String d = (String)BoxDificultat.getSelectedItem();
+        String d = (String)difBox.getSelectedItem();
         int id = CP.crearTauler();
         JOptionPane.showMessageDialog(this,
                     "Your KenKen has been saved successfully\n"

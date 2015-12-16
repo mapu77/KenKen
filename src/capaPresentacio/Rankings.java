@@ -17,6 +17,7 @@ import javax.swing.table.TableColumn;
 public class Rankings extends javax.swing.JPanel {
 
     private CtrlPresentacio CP;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form Rankings
      */
@@ -29,8 +30,9 @@ public class Rankings extends javax.swing.JPanel {
         popular.setText(CP.popularRG());
     }
     
-    public Rankings(CtrlPresentacio CP, int index) {
+    public Rankings(CtrlPresentacio CP, int index, javax.swing.JFrame p) {
         initComponents();
+        this.parent = p;
         this.CP = CP;
         nJocs.setText(Integer.toString(CP.jocsRG()));
         nPartides.setText(Integer.toString(CP.partidesRG()));

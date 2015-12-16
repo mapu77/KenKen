@@ -370,7 +370,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void resumeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeItemActionPerformed
         if (CJ.existeixPartidaGuardada(user)) {
             PlayKenKen pk = new PlayKenKen(user,CP,CJ,parent);
-            parent.dispose();
+            dispose();
         }
         else {
             JOptionPane.showMessageDialog(this,
@@ -415,13 +415,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new KenkenBBDD(user,parent,CP,CJ));
+        menuPanel.add(new KenkenBBDD(user,this,CP,CJ));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_selectItemActionPerformed
 
     private void randomItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomItemActionPerformed
-        SelectSize pk = new SelectSize(user,CP,CJ,parent);
+        SelectSize pk = new SelectSize(user,CP,CJ,this);
         pk.setVisible(true);
     }//GEN-LAST:event_randomItemActionPerformed
 

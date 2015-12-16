@@ -20,7 +20,6 @@ import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -46,17 +45,12 @@ public class PlayKenKen extends javax.swing.JFrame {
     private Color c = new Color(0,200,0);
     boolean finished = false;
     boolean pista = false;
-    //private static ImageIcon imageResume;
-    //private static ImageIcon imagePause;
     private boolean solved = false;
     private boolean thread;
-  
-    
-    URL resume = PlayKenKen.class.getResource("./img/ResumeButton.png");
-    URL pause = PlayKenKen.class.getResource("./img/PauseButton.png");
-    
     int N, X, Y, BZ;
     String d;
+    URL resume = PlayKenKen.class.getResource("./img/ResumeButton.png");
+    URL pause = PlayKenKen.class.getResource("./img/PauseButton.png");    
     
     /**
      * Crea la vista per jugar a una partida guardada
@@ -82,7 +76,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         time = time%60;
         s = (int)time;
         init();
-        CPartida.resoldrePerPista();
     }
     
     /** 
@@ -159,8 +152,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         Dimension dim = new Dimension(tool.getScreenSize());
         int height = (int) dim.getHeight();
         int width = (int) dim.getWidth();
-        //imageResume = new javax.swing.ImageIcon(resume);
-        //imagePause = new javax.swing.ImageIcon(pause);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
         HintButton.setEnabled(false);
         solveButton.setEnabled(false);
@@ -180,12 +171,10 @@ public class PlayKenKen extends javax.swing.JFrame {
     
     private void InicialitzaBotons() {
         int ancho = 65;
-        //____
         int NN = N/2;
         if (N%2 != 0) ++NN;
         int midaB = NN*ancho;
         int k = (Botons.getHeight()-midaB)/2;
-        //____
         int j = 0;
         for (int i=0; i<N+1; i++) {
             JButton b = new JButton();
@@ -202,7 +191,6 @@ public class PlayKenKen extends javax.swing.JFrame {
             else {
                 b.setText(Integer.toString(i+1));
             }
-            //___________________
             b.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -252,7 +240,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                     }
                 }
             });
-            //__________________
         }
     }
     
@@ -289,7 +276,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                 else {
                     b.setText("");
                 }
-                //-------
                 if (! Regions.get(CPartida.nRegio(i, j))) {
                     Regions.set(CPartida.nRegio(i,j),true);
                     String a = Integer.toString(CPartida.getRegioIJResult(i,j));
@@ -303,8 +289,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                     int tamLletra = 20-N;
                     opres.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, tamLletra));
                 }
-                //-------
-                //____________
                 b.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -323,7 +307,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                         }
                     }
                 });
-                //_____________
             }
         }
     }
@@ -688,13 +671,11 @@ public class PlayKenKen extends javax.swing.JFrame {
     }//GEN-LAST:event_ResetButtonActionPerformed
 
     private void PauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseButtonActionPerformed
-        // TODO add your handling code here:
         if(II==0){
             pista = HintButton.isEnabled();
             t.stop();
             II=1;
             PauseButton.setText("CONTINUE");
-            //PauseButton.setIcon(imageResume);
             for (Component c : Botons.getComponents()) {
                    c.setEnabled(false);
                }
@@ -705,7 +686,6 @@ public class PlayKenKen extends javax.swing.JFrame {
             t.start();
             II=0;
             PauseButton.setText("PAUSE");
-            //PauseButton.setIcon(imagePause);
             for (Component c : Botons.getComponents()) {
                     c.setEnabled(true);
                 }

@@ -131,9 +131,11 @@ public class PlayKenKen extends javax.swing.JFrame {
         public void run() {
             CPartida.resoldrePerPista();
             pista = true;
-            HintButton.setEnabled(pista);
+            if (cont < N-2) {
+                HintButton.setEnabled(pista);
+                System.out.println("Pista available");
+            }
             solveButton.setEnabled(pista);
-            System.out.println("Pista available");
         }
     };
     Thread th;
@@ -165,7 +167,9 @@ public class PlayKenKen extends javax.swing.JFrame {
             th.start();
         }
         else {
-            HintButton.setEnabled(true);
+            if (cont < N-2) {
+                HintButton.setEnabled(true);
+            }
             solveButton.setEnabled(true);
         }
     }
@@ -641,12 +645,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     null,opciones,"Save");
             if (eleccion == JOptionPane.YES_OPTION) {
                 SaveButton.doClick();
-                th.stop();
+//                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
             else if (eleccion == JOptionPane.NO_OPTION) {
-                th.stop();
+//                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
@@ -666,8 +670,6 @@ public class PlayKenKen extends javax.swing.JFrame {
         minutes.setText("00"); m=0;
         seconds.setText("00"); s=0;
         II=0;
-        if (HintButton.isEnabled()) HintButton.setEnabled(true);
-        else HintButton.setEnabled(false);
         CPartida.reset();
         for (int i=0; i<N; i++){
             for(int j=0; j<N; j++){
@@ -676,6 +678,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                 x.setBackground(Color.white);
             }
         }
+        HintButton.setEnabled(true);        
         cont = 0;
         t.restart();
     }//GEN-LAST:event_ResetButtonActionPerformed
@@ -691,7 +694,6 @@ public class PlayKenKen extends javax.swing.JFrame {
                    c.setEnabled(false);
                }
             UndoButton.setEnabled(false);
-            pista = (HintButton.isEnabled());
             HintButton.setEnabled(false);
             ResetButton.setEnabled(false);
         }else{
@@ -705,7 +707,6 @@ public class PlayKenKen extends javax.swing.JFrame {
             UndoButton.setEnabled(true);
             HintButton.setEnabled(pista);
             ResetButton.setEnabled(true);
-            solveButton.setEnabled(!CPartida.resolem());
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
 
@@ -744,12 +745,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     null,opciones,"Save");
             if (eleccion == JOptionPane.YES_OPTION) {
                 SaveButton.doClick();
-                th.stop();
+//                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
             else if (eleccion == JOptionPane.NO_OPTION) {
-                th.stop();
+//                th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }

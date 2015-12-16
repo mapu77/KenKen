@@ -46,8 +46,8 @@ public class PlayKenKen extends javax.swing.JFrame {
     private Color c = new Color(0,200,0);
     boolean finished = false;
     boolean pista = false;
-    private static ImageIcon imageResume;
-    private static ImageIcon imagePause;
+    //private static ImageIcon imageResume;
+    //private static ImageIcon imagePause;
     private boolean solved = false;
   
     
@@ -155,8 +155,8 @@ public class PlayKenKen extends javax.swing.JFrame {
         Dimension dim = new Dimension(tool.getScreenSize());
         int height = (int) dim.getHeight();
         int width = (int) dim.getWidth();
-        imageResume = new javax.swing.ImageIcon(resume);
-        imagePause = new javax.swing.ImageIcon(pause);
+        //imageResume = new javax.swing.ImageIcon(resume);
+        //imagePause = new javax.swing.ImageIcon(pause);
         setLocation(width/2 - getWidth()/2, height/2 - getHeight()/2);
         HintButton.setEnabled(false);
         solveButton.setEnabled(false);
@@ -686,7 +686,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             t.stop();
             II=1;
             PauseButton.setText("CONTINUE");
-            PauseButton.setIcon(imageResume);
+            //PauseButton.setIcon(imageResume);
             for (Component c : Botons.getComponents()) {
                    c.setEnabled(false);
                }
@@ -698,7 +698,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             t.start();
             II=0;
             PauseButton.setText("PAUSE");
-            PauseButton.setIcon(imagePause);
+            //PauseButton.setIcon(imagePause);
             for (Component c : Botons.getComponents()) {
                     c.setEnabled(true);
                 }

@@ -705,7 +705,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             UndoButton.setEnabled(true);
             HintButton.setEnabled(pista);
             ResetButton.setEnabled(true);
-            solveButton.setEnabled(pista);
+            solveButton.setEnabled(!CPartida.resolem());
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
 

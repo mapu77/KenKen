@@ -238,10 +238,20 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         selectItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/DBIcon.png"))); // NOI18N
         selectItem.setText("Select a KenKen");
+        selectItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectItemActionPerformed(evt);
+            }
+        });
         submenuPlayKenKen.add(selectItem);
 
         randomItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/capaPresentacio/img/RandomIcon.png"))); // NOI18N
         randomItem.setText("Random KenKen");
+        randomItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                randomItemActionPerformed(evt);
+            }
+        });
         submenuPlayKenKen.add(randomItem);
 
         options.add(submenuPlayKenKen);
@@ -260,9 +270,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         submenuRanking.add(generalItem);
 
         personalItem.setText("Personal Ranking");
+        personalItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personalItemActionPerformed(evt);
+            }
+        });
         submenuRanking.add(personalItem);
 
         typeRanking.setText("By Type Ranking");
+        typeRanking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeRankingActionPerformed(evt);
+            }
+        });
         submenuRanking.add(typeRanking);
 
         options.add(submenuRanking);
@@ -373,7 +393,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new Rankings(CP,0));
+        menuPanel.add(new Rankings(CP,0,this));
         menuPanel.repaint();
         menuPanel.revalidate(); 
     }//GEN-LAST:event_generalItemActionPerformed
@@ -409,7 +429,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new Rankings(CP,1));
+        menuPanel.add(new Rankings(CP,1,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_personalItemActionPerformed
@@ -418,7 +438,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         menuPanel.removeAll();
         menuPanel.repaint();
         menuPanel.revalidate();
-        menuPanel.add(new Rankings(CP,2));
+        menuPanel.add(new Rankings(CP,2,this));
         menuPanel.repaint();
         menuPanel.revalidate();
     }//GEN-LAST:event_typeRankingActionPerformed

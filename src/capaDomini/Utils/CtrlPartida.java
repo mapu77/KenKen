@@ -402,7 +402,6 @@ public class CtrlPartida {
                 clonarTauler();
                 KenKenSolver KS = new KenKenSolver();
                 KS.backtrackingSolver(p2);
-                //p2.PrintaKenKen();
             }
         }
         

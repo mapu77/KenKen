@@ -49,6 +49,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     //private static ImageIcon imageResume;
     //private static ImageIcon imagePause;
     private boolean solved = false;
+    private boolean thread;
   
     
     URL resume = PlayKenKen.class.getResource("./img/ResumeButton.png");
@@ -81,6 +82,7 @@ public class PlayKenKen extends javax.swing.JFrame {
         time = time%60;
         s = (int)time;
         init();
+        CPartida.resoldrePerPista();
     }
     
     /** 
@@ -165,12 +167,14 @@ public class PlayKenKen extends javax.swing.JFrame {
         if (CPartida.resolem()) {
             th = new Thread(rp);
             th.start();
+            thread = true;
         }
         else {
             if (cont < N-2) {
                 HintButton.setEnabled(true);
             }
             solveButton.setEnabled(true);
+            thread = false;
         }
     }
     
@@ -645,12 +649,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     null,opciones,"Save");
             if (eleccion == JOptionPane.YES_OPTION) {
                 SaveButton.doClick();
-//                th.stop();
+                if(thread) th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
             else if (eleccion == JOptionPane.NO_OPTION) {
-//                th.stop();
+                if (thread) th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
@@ -686,6 +690,7 @@ public class PlayKenKen extends javax.swing.JFrame {
     private void PauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseButtonActionPerformed
         // TODO add your handling code here:
         if(II==0){
+            pista = HintButton.isEnabled();
             t.stop();
             II=1;
             PauseButton.setText("CONTINUE");
@@ -707,6 +712,7 @@ public class PlayKenKen extends javax.swing.JFrame {
             UndoButton.setEnabled(true);
             HintButton.setEnabled(pista);
             ResetButton.setEnabled(true);
+            solveButton.setEnabled(!CPartida.resolem());
         }
     }//GEN-LAST:event_PauseButtonActionPerformed
 
@@ -745,12 +751,12 @@ public class PlayKenKen extends javax.swing.JFrame {
                     null,opciones,"Save");
             if (eleccion == JOptionPane.YES_OPTION) {
                 SaveButton.doClick();
-//                th.stop();
+                if (thread) th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }
             else if (eleccion == JOptionPane.NO_OPTION) {
-//                th.stop();
+                if (thread) th.stop();
                 PantallaPrincipal P = new PantallaPrincipal(user,CP,parent);
                 dispose();
             }

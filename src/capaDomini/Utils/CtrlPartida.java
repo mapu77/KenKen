@@ -39,7 +39,6 @@ public class CtrlPartida {
             this.pila = new Stack<Cella>();
             if (P.getSol() != null) {
                 this.p2 = P.getSol();
-                p2.PrintaKenKen();
             }
             else this.p2 = new TaulerKenKen(P.getK().getAlto());
             KC = new KenKenCheck(P.getK());
@@ -140,7 +139,6 @@ public class CtrlPartida {
 	
 	public void play() {
 		int option;
-		P.getK().PrintaKenKen();
 		TaulerKenKen K = new TaulerKenKen(P.getK().getAlto());
 		KenKenUserSolver KUS = new KenKenUserSolver(P.getK(),K,s,P.getPistes());
 		KenKenCheck KC = new KenKenCheck(P.getK());
@@ -287,7 +285,6 @@ public class CtrlPartida {
             c.setNumero(P.getK().getNumero(i, j));
             pila.addElement(c);
             P.getK().setNumero(i, j, val);
-            //P.getK().PrintaKenKen();
             return this.finished();
         }
         
@@ -322,7 +319,6 @@ public class CtrlPartida {
             else { 
                 P.getK().borra(aux.getX(), aux.getY()); 
             }
-            //P.getK().PrintaKenKen();
             return aux.getNumero();
         }
         
@@ -440,7 +436,6 @@ public class CtrlPartida {
             c.setNumero(P.getK().getNumero(i, j));
             pila.addElement(c);
             P.getK().borra(i, j);
-            //P.getK().PrintaKenKen();
         }
         
         public int getNPistes() {

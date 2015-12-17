@@ -284,7 +284,7 @@ public class PlayKenKen extends javax.swing.JFrame {
                     a += " " + a1;
                     JLabel opres = new JLabel(a);
                     b.add(opres);
-                    opres.setBounds(5, 0, bSize/2, bSize/2);
+                    opres.setBounds(5, 0, bSize, bSize/2);
                     opres.setVisible(true);
                     int tamLletra = 20-N;
                     opres.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, tamLletra));

@@ -645,7 +645,10 @@ public class CrearKenken extends javax.swing.JPanel {
     }//GEN-LAST:event_PreviewPanelFocusGained
 
     private void comprovaGenerate() {
-        if (!dif.equals("-") && !fixedFField.getText().equals("")) GenerateButton.setEnabled(true);
+        int d = 0, n=0;
+        if (!dif.equals("-")) d = Integer.parseInt(dif.substring(0,dif.length()/2));
+        if (!fixedFField.getText().equals("")) n = Integer.parseInt(fixedFField.getText());
+        if (!dif.equals("-") && !fixedFField.getText().equals("") && n <= d*d) GenerateButton.setEnabled(true);
         else GenerateButton.setEnabled(false);
     }
     
